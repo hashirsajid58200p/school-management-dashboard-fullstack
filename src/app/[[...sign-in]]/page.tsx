@@ -18,9 +18,9 @@ const LoginPage = () => {
   return (
     <div className="h-screen flex items-center justify-center bg-[#f7f8fa]">
       <div className="bg-white p-12 rounded-md shadow-2xl flex flex-col gap-4 w-[400px]">
-        <h1 className="text-xl font-bold flex items-center gap-2">
+        <h1 className="text-lg font-bold flex items-center gap-2">
           <Image src="/logo.png" alt="" width={24} height={24} />
-          SchoolHs
+          School Management Dashboard
         </h1>
         <h2 className="text-gray-400">Sign in to your account</h2>
         
