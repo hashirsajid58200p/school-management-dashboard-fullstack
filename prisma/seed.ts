@@ -24,6 +24,15 @@ function splitName(full: string): { name: string; surname: string } {
   return { name, surname };
 }
 
+function generateId(prefix: string): string {
+  const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+  let randomPart = "";
+  for (let i = 0; i < 8; i++) {
+    randomPart += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return `${prefix}_${randomPart}`;
+}
+
 const DAY_MAP: Record<string, { day: Day; date: string }> = {
   MONDAY:    { day: Day.MONDAY,    date: "2025-01-06" },
   TUESDAY:   { day: Day.TUESDAY,   date: "2025-01-07" },
@@ -103,7 +112,7 @@ async function main() {
     const { name, surname } = splitName(t.name);
     
     const isTestTeacher = (i === 0);
-    const dbId = isTestTeacher ? teacherClerkId : `teacher_data_${t.id}`;
+    const dbId = isTestTeacher ? teacherClerkId : generateId("teacher");
     const email = isTestTeacher ? "teacher@school.com" : (t.email ?? `teacher${t.id}@school.com`);
     const password = "password";
 
@@ -160,7 +169,7 @@ async function main() {
     const { name, surname } = splitName(p.name);
     
     const isTestParent = (i === 0);
-    const dbId = isTestParent ? parentClerkId : `parent_data_${p.id}`;
+    const dbId = isTestParent ? parentClerkId : generateId("parent");
     const email = isTestParent ? "parent@school.com" : (p.email ?? `parent${p.id}@home.com`);
     const password = "password";
 
@@ -211,7 +220,7 @@ async function main() {
     if (!parentDbId) continue;
 
     const isTestStudent = !testStudentAssigned;
-    const dbId = isTestStudent ? studentClerkId : `student_data_${s.id}`;
+    const dbId = isTestStudent ? studentClerkId : generateId("student");
     const email = isTestStudent ? "student@school.com" : ((s as any).email ?? `student${s.id}@students.school.com`);
     const password = "password";
     if (isTestStudent) testStudentAssigned = true;
