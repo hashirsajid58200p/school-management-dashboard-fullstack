@@ -1,4 +1,23 @@
+import { cookies } from "next/headers";
+
 export const auth = () => {
+  const cookieStore = cookies();
+  const mockUserStr = cookieStore.get("mock_user")?.value;
+  if (mockUserStr) {
+    try {
+      const mockUser = JSON.parse(decodeURIComponent(mockUserStr));
+      return {
+        userId: mockUser.id,
+        sessionClaims: {
+          metadata: {
+            role: mockUser.role
+          }
+        }
+      };
+    } catch (e) {}
+  }
+  
+  // Default fallback if no cookie is set
   return {
     userId: "admin1",
     sessionClaims: {
@@ -10,6 +29,23 @@ export const auth = () => {
 };
 
 export const currentUser = async () => {
+  const cookieStore = cookies();
+  const mockUserStr = cookieStore.get("mock_user")?.value;
+  if (mockUserStr) {
+    try {
+      const mockUser = JSON.parse(decodeURIComponent(mockUserStr));
+      return {
+        id: mockUser.id,
+        firstName: mockUser.firstName,
+        lastName: mockUser.lastName,
+        publicMetadata: {
+          role: mockUser.role
+        }
+      };
+    } catch (e) {}
+  }
+
+  // Default fallback if no cookie is set
   return {
     id: "admin1",
     firstName: "Admin",
@@ -22,11 +58,21 @@ export const currentUser = async () => {
 
 export const clerkClient = {
   users: {
-    getUser: async (id: string) => ({
-      id,
-      publicMetadata: { role: "admin" },
-      emailAddresses: [{ id: "eml_1", emailAddress: "admin@example.com" }]
-    }),
+    getUser: async (id: string) => {
+      const role = id.startsWith("teacher")
+        ? "teacher"
+        : id.startsWith("student")
+        ? "student"
+        : id.startsWith("parent")
+        ? "parent"
+        : "admin";
+
+      return {
+        id,
+        publicMetadata: { role },
+        emailAddresses: [{ id: "eml_1", emailAddress: `${id}@example.com` }]
+      };
+    },
     createUser: async (params: any) => ({
       id: "mock_user_" + Math.random().toString(36).substr(2, 9),
       ...params
@@ -56,14 +102,12 @@ export const clerkClient = {
 
 export const clerkMiddleware = (handler: any) => {
   return async (req: any, event: any) => {
-    // Mock middleware: Let all requests pass through
     return;
   };
 };
 
 export const createRouteMatcher = (routes: string[]) => {
   return (req: any) => {
-    // Return false so nothing gets blocked by the mock
     return false;
   };
 };

@@ -5,15 +5,34 @@ export const ClerkProvider = ({ children }: { children: React.ReactNode }) => {
 };
 
 export const useUser = () => {
+  // Default to Admin fallback
+  let mockUser = {
+    id: "admin1",
+    role: "admin",
+    firstName: "Admin",
+    lastName: "User"
+  };
+
+  if (typeof window !== "undefined") {
+    const match = document.cookie.match(/(^| )mock_user=([^;]+)/);
+    if (match) {
+      try {
+        mockUser = JSON.parse(decodeURIComponent(match[2]));
+      } catch (e) {
+        console.error("Failed to parse mock_user cookie", e);
+      }
+    }
+  }
+
   return {
     isLoaded: true,
     isSignedIn: true,
     user: {
-      id: "admin1",
-      firstName: "Admin",
-      lastName: "User",
+      id: mockUser.id,
+      firstName: mockUser.firstName,
+      lastName: mockUser.lastName,
       publicMetadata: {
-        role: "admin"
+        role: mockUser.role
       }
     }
   };
@@ -34,6 +53,7 @@ export const useSignIn = () => {
 };
 
 export const UserButton = () => {
+  // Optional: Read avatar image dynamically if any
   return (
     <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
       <img
