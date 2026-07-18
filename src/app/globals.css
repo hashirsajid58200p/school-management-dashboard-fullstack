@@ -72,8 +72,11 @@
 .rbc-event {
   border: none !important;
   color: black !important;
-  padding: 6px 10px !important;
-  margin: 2px 4px !important;
+  padding: 10px !important;
+  margin-top: 8px !important;
+  margin-bottom: 0px !important;
+  margin-left: 4px !important;
+  margin-right: 4px !important;
   width: 98% !important;
 }
 
