@@ -1,4 +1,4 @@
-import { clerkClient, clerkMiddleware, createRouteMatcher } from "./mocks/clerk-server";
+import { clerkClient, clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { routeAccessMap } from "./lib/settings";
 import { NextResponse } from "next/server";
 

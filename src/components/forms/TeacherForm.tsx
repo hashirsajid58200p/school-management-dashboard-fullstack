@@ -67,6 +67,9 @@ const TeacherForm = ({
       <div className="w-full flex justify-center items-center py-4 border-b border-gray-100">
         <CldUploadWidget
           uploadPreset="school"
+          options={{
+            folder: "school-management-system/teachers"
+          }}
           onSuccess={(result, { widget }) => {
             setImg(result.info);
             widget.close();
