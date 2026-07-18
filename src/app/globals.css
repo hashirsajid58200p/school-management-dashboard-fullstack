@@ -75,6 +75,10 @@
   padding: 10px !important;
   margin: 10px !important;
   width: 99% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
 }
 
 .rbc-event:nth-child(1) {
@@ -102,9 +106,15 @@
   background-color: #fdf2fb !important;
 }
 
-.rbc-event-label{
+.rbc-event-label {
   color: gray !important;
-  margin-bottom: 5px;
+  margin-bottom: 2px !important;
+  font-size: 11px !important;
+}
+
+.rbc-event-content {
+  font-weight: 700 !important;
+  font-size: 13px !important;
 }
 
 /* Hide scrollbar globally but keep scroll functionality */
