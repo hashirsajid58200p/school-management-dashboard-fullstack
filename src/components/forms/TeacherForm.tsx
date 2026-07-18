@@ -63,6 +63,30 @@ const TeacherForm = ({
       <h1 className="text-xl font-semibold">
         {type === "create" ? "Create a new teacher" : "Update the teacher"}
       </h1>
+
+      <div className="w-full flex justify-center items-center py-4 border-b border-gray-100">
+        <CldUploadWidget
+          uploadPreset="school"
+          onSuccess={(result, { widget }) => {
+            setImg(result.info);
+            widget.close();
+          }}
+        >
+          {({ open }) => {
+            return (
+              <div
+                className="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-md p-6 cursor-pointer hover:border-hsYellow hover:bg-gray-50 transition-all w-full md:w-1/2 text-center"
+                onClick={() => open()}
+              >
+                <Image src="/upload.png" alt="" width={32} height={32} className="mb-2" />
+                <span className="text-sm text-gray-600 font-semibold">Upload a photo</span>
+                {img && <span className="text-xs text-green-600 font-medium mt-1">✓ Photo uploaded successfully!</span>}
+              </div>
+            );
+          }}
+        </CldUploadWidget>
+      </div>
+
       <span className="text-xs text-gray-400 font-medium">
         Authentication Information
       </span>
@@ -150,7 +174,7 @@ const TeacherForm = ({
         <div className="flex flex-col gap-2 w-full md:w-1/4">
           <label className="text-xs text-gray-500">Sex</label>
           <select
-            className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full"
+            className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full bg-white focus:outline-none focus:ring-2 focus:ring-hsYellow focus:border-transparent transition-all cursor-pointer"
             {...register("sex")}
             defaultValue={data?.sex}
           >
@@ -184,29 +208,6 @@ const TeacherForm = ({
               {errors.subjects.message.toString()}
             </p>
           )}
-        </div>
-        
-        <div className="w-full flex justify-center items-center py-4 border-t border-gray-100 mt-4">
-          <CldUploadWidget
-            uploadPreset="school"
-            onSuccess={(result, { widget }) => {
-              setImg(result.info);
-              widget.close();
-            }}
-          >
-            {({ open }) => {
-              return (
-                <div
-                  className="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-md p-6 cursor-pointer hover:border-hsYellow hover:bg-gray-50 transition-all w-full md:w-1/2 text-center"
-                  onClick={() => open()}
-                >
-                  <Image src="/upload.png" alt="" width={32} height={32} className="mb-2" />
-                  <span className="text-sm text-gray-600 font-semibold">Upload a photo</span>
-                  {img && <span className="text-xs text-green-600 font-medium mt-1">✓ Photo uploaded successfully!</span>}
-                </div>
-              );
-            }}
-          </CldUploadWidget>
         </div>
       </div>
       {state.error && (

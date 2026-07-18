@@ -46,7 +46,7 @@ const SingleTeacherPage = async ({
         <div className="flex flex-col lg:flex-row gap-4">
           {/* USER INFO CARD */}
           <div className="bg-hsSky py-6 px-4 rounded-md flex-1 flex gap-4">
-            <div className="w-1/3">
+            <div className="w-36 h-36 flex-shrink-0">
               <Image
                 src={teacher.img || "/noAvatar.png"}
                 alt=""
