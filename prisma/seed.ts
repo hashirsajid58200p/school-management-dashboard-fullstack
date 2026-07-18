@@ -1,30 +1,55 @@
-const { PrismaClient, UserSex, Day } = require("@prisma/client");
+import {
+  teachersData,
+  studentsData,
+  parentsData,
+  subjectsData,
+  classesData,
+  lessonsData,
+  examsData,
+  assignmentsData,
+  resultsData,
+  eventsData,
+  announcementsData,
+} from "../src/lib/data";
+import { PrismaClient, UserSex, Day } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-function getTeacherForSubject(subjectName: string, lessonIndex: number, seededTeachers: any[]): any {
-  const subjectTeacherIndices: { [key: string]: number[] } = {
-    "Mathematics": [0, 5, 10], // Jane (index 0 is test teacher), Diana (index 5), Ian (index 10)
-    "English Language": [1, 7, 10],
-    "Science": [0, 9, 11],
-    "History": [1, 8, 12],
-    "Geography": [3, 8, 13],
-    "Physics": [2, 5, 12],
-    "Chemistry": [2, 6, 14],
-    "Biology": [3, 6, 13],
-    "Fine Arts": [4, 7, 11],
-    "Music": [4, 9, 14]
-  };
+// ── helpers ──────────────────────────────────────────────────────────────────
 
-  const indices = subjectTeacherIndices[subjectName] || [0];
-  const selectedIndex = indices[lessonIndex % indices.length];
-  return seededTeachers[selectedIndex];
+/** Split "First Last" into { name, surname } */
+function splitName(full: string): { name: string; surname: string } {
+  const parts = full.trim().split(" ");
+  const name = parts[0];
+  const surname = parts.slice(1).join(" ") || "Unknown";
+  return { name, surname };
 }
 
+/** Map lesson day/time to a deterministic DB Day enum + ISO DateTime string */
+const DAY_MAP: Record<string, { day: Day; date: string }> = {
+  MONDAY:    { day: Day.MONDAY,    date: "2025-01-06" },
+  TUESDAY:   { day: Day.TUESDAY,   date: "2025-01-07" },
+  WEDNESDAY: { day: Day.WEDNESDAY, date: "2025-01-08" },
+  THURSDAY:  { day: Day.THURSDAY,  date: "2025-01-09" },
+  FRIDAY:    { day: Day.FRIDAY,    date: "2025-01-10" },
+};
+
+/** Grades 1-5: 4 slots; grades 6-10: 6 slots — indexed by lesson position within the day */
+const SLOTS = [
+  { start: "08:00:00", end: "08:45:00" },
+  { start: "09:00:00", end: "09:45:00" },
+  { start: "10:00:00", end: "10:45:00" },
+  { start: "11:00:00", end: "11:45:00" },
+  { start: "12:00:00", end: "12:45:00" },
+  { start: "13:00:00", end: "13:45:00" },
+];
+
+const WEEKDAYS = [Day.MONDAY, Day.TUESDAY, Day.WEDNESDAY, Day.THURSDAY, Day.FRIDAY];
+
+// ── main ──────────────────────────────────────────────────────────────────────
+
 async function main() {
-  console.log("Starting database cleanup...");
-  
-  // 1. Clean up old data in reverse dependency order
+  console.log("🧹  Cleaning old data...");
   await prisma.attendance.deleteMany({});
   await prisma.result.deleteMany({});
   await prisma.assignment.deleteMany({});
@@ -39,403 +64,402 @@ async function main() {
   await prisma.teacher.deleteMany({});
   await prisma.grade.deleteMany({});
   await prisma.admin.deleteMany({});
+  console.log("✅  Cleanup done.\n");
 
-  console.log("Cleanup complete. Resolving Clerk test accounts...");
-
-  // 2. Fetch real Clerk test user IDs
-  let adminClerkId = "admin1";
-  let teacherClerkId = "teacher1";
-  let studentClerkId = "student1";
-  let parentClerkId = "parent1";
+  // ── 1. Resolve Clerk test IDs ──────────────────────────────────────────────
+  let adminClerkId   = "admin_seed_1";
+  let teacherClerkId = "teacher_seed_1";
+  let studentClerkId = "student_seed_1";
+  let parentClerkId  = "parent_seed_1";
 
   const secretKey = process.env.CLERK_SECRET_KEY;
   if (secretKey) {
     try {
-      console.log("Fetching test user IDs from Clerk API...");
-      const response = await fetch("https://api.clerk.com/v1/users?limit=100", {
-        headers: {
-          "Authorization": `Bearer ${secretKey}`,
-          "Content-Type": "application/json"
-        }
+      console.log("🔑  Fetching Clerk test user IDs...");
+      const res = await fetch("https://api.clerk.com/v1/users?limit=100", {
+        headers: { Authorization: `Bearer ${secretKey}` },
       });
-      if (response.ok) {
-        const users = (await response.json()) as any[];
-        const adminUser = users.find((u: any) => u.email_addresses?.some((e: any) => e.email_address === "admin+clerk_test@school.com"));
-        const teacherUser = users.find((u: any) => u.email_addresses?.some((e: any) => e.email_address === "teacher+clerk_test@school.com"));
-        const studentUser = users.find((u: any) => u.email_addresses?.some((e: any) => e.email_address === "student+clerk_test@school.com"));
-        const parentUser = users.find((u: any) => u.email_addresses?.some((e: any) => e.email_address === "parent+clerk_test@school.com"));
-
-        if (adminUser) {
-          adminClerkId = adminUser.id;
-          console.log(`- Found Admin ID: ${adminClerkId}`);
-        }
-        if (teacherUser) {
-          teacherClerkId = teacherUser.id;
-          console.log(`- Found Teacher ID: ${teacherClerkId}`);
-        }
-        if (studentUser) {
-          studentClerkId = studentUser.id;
-          console.log(`- Found Student ID: ${studentClerkId}`);
-        }
-        if (parentUser) {
-          parentClerkId = parentUser.id;
-          console.log(`- Found Parent ID: ${parentClerkId}`);
-        }
-      } else {
-        console.warn("Failed to fetch user list from Clerk API (status:", response.status, ")");
+      if (res.ok) {
+        const users = (await res.json()) as any[];
+        const find = (email: string) =>
+          users.find((u: any) =>
+            u.email_addresses?.some((e: any) => e.email_address === email)
+          );
+        adminClerkId   = find("admin+clerk_test@school.com")?.id   ?? adminClerkId;
+        teacherClerkId = find("teacher+clerk_test@school.com")?.id ?? teacherClerkId;
+        studentClerkId = find("student+clerk_test@school.com")?.id ?? studentClerkId;
+        parentClerkId  = find("parent+clerk_test@school.com")?.id  ?? parentClerkId;
+        console.log(`  Admin   → ${adminClerkId}`);
+        console.log(`  Teacher → ${teacherClerkId}`);
+        console.log(`  Student → ${studentClerkId}`);
+        console.log(`  Parent  → ${parentClerkId}\n`);
       }
     } catch (e: any) {
-      console.warn("Could not connect to Clerk API to retrieve test user IDs:", e.message);
+      console.warn("  ⚠️  Could not reach Clerk API:", e.message);
     }
-  } else {
-    console.warn("CLERK_SECRET_KEY not found in env, using fallbacks.");
   }
 
-  // 3. Seed Admin
-  await prisma.admin.create({
-    data: {
-      id: adminClerkId,
-      username: "admin"
-    }
-  });
-  console.log("Admin seeded.");
+  // ── 2. Admin ───────────────────────────────────────────────────────────────
+  await prisma.admin.create({ data: { id: adminClerkId, username: "admin" } });
+  console.log("✅  Admin seeded.");
 
-  // 4. Seed Grades (Levels 1-10)
-  const grades = [];
-  for (let i = 1; i <= 10; i++) {
-    const grade = await prisma.grade.create({
-      data: { level: i }
-    });
-    grades.push(grade);
+  // ── 3. Grades 1-10 ────────────────────────────────────────────────────────
+  const gradeMap = new Map<number, number>(); // level → db id
+  for (let lvl = 1; lvl <= 10; lvl++) {
+    const g = await prisma.grade.create({ data: { level: lvl } });
+    gradeMap.set(lvl, g.id);
   }
-  console.log("Grades 1-10 seeded.");
+  console.log("✅  Grades 1-10 seeded.");
 
-  // 5. Seed Subjects
-  const subjectNames = [
-    "Mathematics",
-    "English Language",
-    "Science",
-    "History",
-    "Geography",
-    "Physics",
-    "Chemistry",
-    "Biology",
-    "Fine Arts",
-    "Music"
-  ];
-  const subjects = [];
-  for (const name of subjectNames) {
-    const sub = await prisma.subject.create({
-      data: { name }
-    });
-    subjects.push(sub);
+  // ── 4. Subjects ───────────────────────────────────────────────────────────
+  const subjectMap = new Map<string, number>(); // name → db id
+  for (const sub of subjectsData) {
+    const dbSub = await prisma.subject.create({ data: { name: sub.name } });
+    subjectMap.set(sub.name, dbSub.id);
   }
-  console.log("Subjects seeded.");
+  console.log(`✅  ${subjectsData.length} subjects seeded.`);
 
-  // 6. Seed Teachers
-  const teacherNames = [
-    { name: "Jane", surname: "Doe", email: "teacher+clerk_test@school.com", subjects: ["Mathematics", "Science"] },
-    { name: "John", surname: "Smith", email: "john.smith@school.com", subjects: ["English Language", "History"] },
-    { name: "Alice", surname: "Johnson", email: "alice.j@school.com", subjects: ["Physics", "Chemistry"] },
-    { name: "Bob", surname: "Brown", email: "bob.b@school.com", subjects: ["Biology", "Geography"] },
-    { name: "Charlie", surname: "Davis", email: "charlie.d@school.com", subjects: ["Fine Arts", "Music"] },
-    { name: "Diana", surname: "Miller", email: "diana.m@school.com", subjects: ["Mathematics", "Physics"] },
-    { name: "Ethan", surname: "Wilson", email: "ethan.w@school.com", subjects: ["Chemistry", "Biology"] },
-    { name: "Fiona", surname: "Moore", email: "fiona.m@school.com", subjects: ["English Language", "Fine Arts"] },
-    { name: "George", surname: "Taylor", email: "george.t@school.com", subjects: ["History", "Geography"] },
-    { name: "Hannah", surname: "Anderson", email: "hannah.a@school.com", subjects: ["Science", "Music"] },
-    { name: "Ian", surname: "Thomas", email: "ian.t@school.com", subjects: ["Mathematics", "English Language"] },
-    { name: "Julia", surname: "Jackson", email: "julia.j@school.com", subjects: ["Science", "Fine Arts"] },
-    { name: "Kevin", surname: "White", email: "kevin.w@school.com", subjects: ["Physics", "History"] },
-    { name: "Laura", surname: "Harris", email: "laura.h@school.com", subjects: ["Geography", "Biology"] },
-    { name: "Marcus", surname: "Martin", email: "marcus.m@school.com", subjects: ["Chemistry", "Music"] }
-  ];
+  // ── 5. Teachers ───────────────────────────────────────────────────────────
+  const teacherMap = new Map<string, string>(); // full name → db id
+  // Teacher #1 in data gets the real Clerk teacher ID so the test login works
+  for (let i = 0; i < teachersData.length; i++) {
+    const t = teachersData[i];
+    const { name, surname } = splitName(t.name);
+    const dbId = i === 0 ? teacherClerkId : `teacher_data_${t.id}`;
 
-  const teachers = [];
-  for (let i = 0; i < teacherNames.length; i++) {
-    const t = teacherNames[i];
-    const teacherSubjects = subjects.filter(s => t.subjects.includes(s.name)).map(s => ({ id: s.id }));
-    
-    const dbTeacher = await prisma.teacher.create({
+    // Ensure every teacher has a unique phone (fallback if missing/duplicate)
+    const phone = t.phone
+      ? t.phone.replace(/\s+/g, "")
+      : `+1-555-000-${String(i + 1).padStart(4, "0")}`;
+
+    // Connect subjects this teacher teaches
+    const subjectConnects = (t.subjects ?? [])
+      .filter((s: string) => subjectMap.has(s))
+      .map((s: string) => ({ id: subjectMap.get(s)! }));
+
+    await prisma.teacher.create({
       data: {
-        id: i === 0 ? teacherClerkId : `teacher_${i + 1}`,
-        username: i === 0 ? `teacher_test` : `teacher_${i + 1}`,
-        name: t.name,
-        surname: t.surname,
-        email: t.email,
-        phone: `123-456-78${String(i + 1).padStart(2, "0")}`,
-        address: `${100 + i * 15} Academic Way, Scholastic City`,
+        id:        dbId,
+        username:  `teacher_${t.id}`,
+        name,
+        surname,
+        email:     t.email ?? `teacher${t.id}@school.com`,
+        phone,
+        address:   t.address ?? "School Address",
+        img:       (t as any).photo ?? null,
         bloodType: "O+",
-        sex: i % 2 === 0 ? UserSex.FEMALE : UserSex.MALE,
-        birthday: new Date("1980-01-01"),
-        subjects: {
-          connect: teacherSubjects
-        }
-      }
+        sex:       i % 2 === 0 ? UserSex.MALE : UserSex.FEMALE,
+        birthday:  new Date("1985-06-15"),
+        subjects:  { connect: subjectConnects },
+      },
     });
-    teachers.push(dbTeacher);
+    teacherMap.set(t.name, dbId);
   }
-  console.log("Teachers seeded.");
+  console.log(`✅  ${teachersData.length} teachers seeded.`);
 
-  // 7. Seed Classes ("1A" through "10A")
-  const classes = [];
-  for (let i = 0; i < 10; i++) {
-    const grade = grades[i];
-    const supervisor = teachers[i % teachers.length];
-    const dbClass = await prisma.class.create({
+  // ── 6. Classes ────────────────────────────────────────────────────────────
+  const classMap = new Map<string, number>(); // class name → db id
+  for (const cls of classesData) {
+    const gradeId  = gradeMap.get(cls.grade)!;
+    const supervisorId = cls.supervisor ? teacherMap.get(cls.supervisor) ?? undefined : undefined;
+    const dbClass  = await prisma.class.create({
       data: {
-        name: `${i + 1}A`,
-        capacity: 30,
-        gradeId: grade.id,
-        supervisorId: supervisor.id
-      }
+        name:        cls.name,
+        capacity:    cls.capacity,
+        gradeId,
+        supervisorId,
+      },
     });
-    classes.push(dbClass);
+    classMap.set(cls.name, dbClass.id);
   }
-  console.log("Classes seeded.");
+  console.log(`✅  ${classesData.length} classes seeded.`);
 
-  // 8. Seed Parents
-  const parents = [];
-  for (let i = 0; i < 15; i++) {
-    const dbParent = await prisma.parent.create({
+  // ── 7. Parents ────────────────────────────────────────────────────────────
+  const parentMap = new Map<string, string>(); // full name → db id
+  for (let i = 0; i < parentsData.length; i++) {
+    const p = parentsData[i];
+    const { name, surname } = splitName(p.name);
+    const dbId = i === 0 ? parentClerkId : `parent_data_${p.id}`;
+
+    const phone = p.phone
+      ? p.phone.replace(/\s+/g, "")
+      : `+1-555-100-${String(i + 1).padStart(4, "0")}`;
+
+    await prisma.parent.create({
       data: {
-        id: i === 0 ? parentClerkId : `parent_${i + 1}`,
-        username: i === 0 ? `parent_test` : `parent_${i + 1}`,
-        name: i === 0 ? "Robert (Test)" : `ParentName_${i + 1}`,
-        surname: i === 0 ? "Doe" : `ParentSurname_${i + 1}`,
-        email: i === 0 ? "parent+clerk_test@school.com" : `parent_${i + 1}@example.com`,
-        phone: `321-654-98${String(i + 1).padStart(2, "0")}`,
-        address: `${200 + i * 20} Family Blvd, Residential Zone`
-      }
+        id:       dbId,
+        username: `parent_${p.id}`,
+        name,
+        surname,
+        email:    p.email ?? `parent${p.id}@home.com`,
+        phone,
+        address:  p.address ?? "Home Address",
+      },
     });
-    parents.push(dbParent);
+    parentMap.set(p.name, dbId);
   }
-  console.log("Parents seeded.");
+  console.log(`✅  ${parentsData.length} parents seeded.`);
 
-  // 9. Seed Students (3 students per class, 30 students total)
-  const students = [];
-  let studentCounter = 0;
-  for (let i = 0; i < classes.length; i++) {
-    const cls = classes[i];
-    const grade = grades[i];
-    
-    for (let sIdx = 0; sIdx < 3; sIdx++) {
-      studentCounter++;
-      const isTestStudent = (cls.name === "4A" && sIdx === 0);
-      
-      const parent = isTestStudent ? parents[0] : parents[studentCounter % parents.length];
-      const dbStudent = await prisma.student.create({
-        data: {
-          id: isTestStudent ? studentClerkId : `student_${studentCounter}`,
-          username: isTestStudent ? `student_test` : `student_${studentCounter}`,
-          name: isTestStudent ? "John (Test)" : `StudentName_${studentCounter}`,
-          surname: isTestStudent ? "Doe" : `StudentSurname_${studentCounter}`,
-          email: isTestStudent ? "student+clerk_test@school.com" : `student_${studentCounter}@example.com`,
-          phone: `987-654-32${String(studentCounter).padStart(2, "0")}`,
-          address: `${300 + studentCounter * 10} Student Lane, School Suburbs`,
-          bloodType: "A-",
-          sex: studentCounter % 2 === 0 ? UserSex.MALE : UserSex.FEMALE,
-          birthday: new Date("2012-05-15"),
-          classId: cls.id,
-          gradeId: grade.id,
-          parentId: parent.id
-        }
-      });
-      students.push(dbStudent);
+  // Build student → parent lookup
+  const studentParentMap = new Map<string, string>(); // student name → parent db id
+  for (const p of parentsData) {
+    const parentDbId = parentMap.get(p.name);
+    if (!parentDbId) continue;
+    for (const childName of (p.students ?? [])) {
+      studentParentMap.set(childName, parentDbId);
     }
   }
-  console.log("Students seeded.");
 
-  // 10. Seed Lessons (Monday to Friday, 4 slots per day)
-  const weekdays = [
-    { day: Day.MONDAY, dateStr: "2025-01-06" },
-    { day: Day.TUESDAY, dateStr: "2025-01-07" },
-    { day: Day.WEDNESDAY, dateStr: "2025-01-08" },
-    { day: Day.THURSDAY, dateStr: "2025-01-09" },
-    { day: Day.FRIDAY, dateStr: "2025-01-10" }
-  ];
+  // ── 8. Students ───────────────────────────────────────────────────────────
+  const studentMap = new Map<string, string>(); // full name → db id
+  // Find first student in class "4A" or first overall for the test account
+  // We'll assign testStudentClerkId to first student whose class exists in DB
+  let testStudentAssigned = false;
+  const fallbackParentId  = Array.from(parentMap.values())[0];
 
-  const slots = [
-    { start: "08:30:00", end: "09:15:00" },
-    { start: "09:30:00", end: "10:15:00" },
-    { start: "10:30:00", end: "11:15:00" },
-    { start: "11:30:00", end: "12:15:00" }
-  ];
+  for (let i = 0; i < studentsData.length; i++) {
+    const s = studentsData[i];
+    const { name, surname } = splitName(s.name);
 
-  const lessons = [];
-  let lessonCounter = 0;
-
-  for (const cls of classes) {
-    for (let d = 0; d < weekdays.length; d++) {
-      const wk = weekdays[d];
-      
-      for (let s = 0; s < slots.length; s++) {
-        lessonCounter++;
-        const slot = slots[s];
-        const subject = subjects[(lessonCounter + cls.id) % subjects.length];
-        
-        // Dynamic subject-teacher lookup
-        const teacher = getTeacherForSubject(subject.name, lessonCounter, teachers);
-
-        const startTimeStr = `${wk.dateStr}T${slot.start}`;
-        const endTimeStr = `${wk.dateStr}T${slot.end}`;
-
-        const dbLesson = await prisma.lesson.create({
-          data: {
-            name: subject.name,
-            day: wk.day,
-            startTime: new Date(startTimeStr),
-            endTime: new Date(endTimeStr),
-            subjectId: subject.id,
-            classId: cls.id,
-            teacherId: teacher.id
-          }
-        });
-        lessons.push(dbLesson);
-      }
+    const classId  = classMap.get(s.class);
+    const gradeId  = gradeMap.get(s.grade);
+    if (!classId || !gradeId) {
+      console.warn(`  ⚠️  Skipping student "${s.name}" — class "${s.class}" not found`);
+      continue;
     }
-  }
-  console.log(`Successfully seeded ${lessons.length} lessons across all classes.`);
 
-  // 11. Seed Exams (Mid-term in January, Final-term in June)
-  const exams = [];
-  const testStudentId = studentClerkId;
+    const parentDbId = studentParentMap.get(s.name) ?? fallbackParentId;
+    if (!parentDbId) {
+      console.warn(`  ⚠️  Skipping student "${s.name}" — no parent found`);
+      continue;
+    }
 
-  const testStudentObj = await prisma.student.findUnique({
-    where: { id: testStudentId }
-  });
-  
-  if (testStudentObj) {
-    const classLessons = await prisma.lesson.findMany({
-      where: { classId: testStudentObj.classId }
+    // First student gets the real Clerk student ID
+    const isTestStudent = !testStudentAssigned;
+    const dbId = isTestStudent ? studentClerkId : `student_data_${s.id}`;
+    if (isTestStudent) testStudentAssigned = true;
+
+    const phone = (s as any).phone
+      ? (s as any).phone.replace(/\s+/g, "")
+      : `+1-444-000-${String(i + 1).padStart(4, "0")}`;
+
+    // Determine sex from section name (Blue → MALE, White → FEMALE, Gray → alternating)
+    let sex: UserSex;
+    if (s.class.endsWith("-Blue"))  sex = UserSex.MALE;
+    else if (s.class.endsWith("-White")) sex = UserSex.FEMALE;
+    else sex = i % 2 === 0 ? UserSex.MALE : UserSex.FEMALE;
+
+    await prisma.student.create({
+      data: {
+        id:        dbId,
+        username:  `student_${s.id}`,
+        name,
+        surname,
+        email:     (s as any).email ?? `student${s.id}@students.school.com`,
+        phone,
+        address:   (s as any).address ?? "Student Home Address",
+        bloodType: "A+",
+        sex,
+        birthday:  new Date(`${2019 - s.grade}-06-01`),
+        classId,
+        gradeId,
+        parentId:  parentDbId,
+      },
     });
+    studentMap.set(s.name, dbId);
+  }
+  console.log(`✅  ${studentMap.size} students seeded.`);
 
-    for (let i = 0; i < classLessons.length; i++) {
-      const lesson = classLessons[i];
-      
-      const midExam = await prisma.exam.create({
-        data: {
-          title: `${lesson.name} Mid-Term`,
-          startTime: new Date(`2025-01-22T${i % 2 === 0 ? "09:00:00" : "11:00:00"}`),
-          endTime: new Date(`2025-01-22T${i % 2 === 0 ? "10:30:00" : "12:30:00"}`),
-          lessonId: lesson.id
-        }
-      });
-      exams.push(midExam);
+  // ── 9. Lessons ────────────────────────────────────────────────────────────
+  // Group data.ts lessons by class, then build a proper Mon-Fri schedule
+  // distributing across days and time slots deterministically.
+  const lessonDbMap = new Map<number, number>(); // data.ts lesson id → db lesson id
 
-      const finalExam = await prisma.exam.create({
-        data: {
-          title: `${lesson.name} Final-Term`,
-          startTime: new Date(`2025-06-18T${i % 2 === 0 ? "09:00:00" : "11:00:00"}`),
-          endTime: new Date(`2025-06-18T${i % 2 === 0 ? "10:30:00" : "12:30:00"}`),
-          lessonId: lesson.id
-        }
-      });
-      exams.push(finalExam);
-    }
-    console.log(`Seeded ${exams.length} exams for Class 4A.`);
+  // Group lessons by class
+  const lessonsByClass = new Map<string, typeof lessonsData>();
+  for (const lesson of lessonsData) {
+    const arr = lessonsByClass.get(lesson.class) ?? [];
+    arr.push(lesson);
+    lessonsByClass.set(lesson.class, arr);
   }
 
-  // 12. Seed Assignments
-  const assignments = [];
-  if (testStudentObj) {
-    const classLessons = await prisma.lesson.findMany({
-      where: { classId: testStudentObj.classId }
-    });
-
-    for (let i = 0; i < classLessons.length; i++) {
-      const lesson = classLessons[i];
-      const assign = await prisma.assignment.create({
-        data: {
-          title: `${lesson.name} Assignment`,
-          startDate: new Date("2025-01-06T08:00:00"),
-          dueDate: new Date("2025-01-13T17:00:00"),
-          lessonId: lesson.id
-        }
-      });
-      assignments.push(assign);
+  let lessonDbCount = 0;
+  for (const [className, classLessons] of Array.from(lessonsByClass.entries())) {
+    const classId = classMap.get(className);
+    if (!classId) {
+      console.warn(`  ⚠️  Lessons: class "${className}" not in DB, skipping`);
+      continue;
     }
-    console.log(`Seeded ${assignments.length} assignments for Class 4A.`);
-  }
 
-  // 13. Seed Results for Exams and Assignments
-  if (testStudentObj) {
-    const class4AStudents = await prisma.student.findMany({
-      where: { classId: testStudentObj.classId }
-    });
+    // Assign each lesson a day and slot cyclically
+    for (let li = 0; li < classLessons.length; li++) {
+      const lesson = classLessons[li];
+      const subjectId = subjectMap.get(lesson.subject);
+      if (!subjectId) continue;
 
-    for (const st of class4AStudents) {
-      for (const ex of exams) {
-        await prisma.result.create({
-          data: {
-            score: Math.floor(Math.random() * (99 - 65 + 1)) + 65,
-            studentId: st.id,
-            examId: ex.id
-          }
-        });
+      const teacherId = teacherMap.get(lesson.teacher);
+      if (!teacherId) {
+        console.warn(`  ⚠️  Lesson teacher "${lesson.teacher}" not found`);
+        continue;
       }
 
-      for (const asgn of assignments) {
-        await prisma.result.create({
-          data: {
-            score: Math.floor(Math.random() * (100 - 70 + 1)) + 70,
-            studentId: st.id,
-            assignmentId: asgn.id
-          }
-        });
-      }
+      const dayEnum  = WEEKDAYS[li % 5];
+      const dayKey   = Object.keys(DAY_MAP).find(k => DAY_MAP[k].day === dayEnum)!;
+      const dateStr  = DAY_MAP[dayKey].date;
+      const slot     = SLOTS[Math.floor(li / 5) % SLOTS.length];
+
+      const dbLesson = await prisma.lesson.create({
+        data: {
+          name:      lesson.subject,
+          day:       dayEnum,
+          startTime: new Date(`${dateStr}T${slot.start}`),
+          endTime:   new Date(`${dateStr}T${slot.end}`),
+          subjectId,
+          classId,
+          teacherId,
+        },
+      });
+      lessonDbMap.set(lesson.id, dbLesson.id);
+      lessonDbCount++;
     }
-    console.log("Seeded results scores for Class 4A students.");
   }
+  console.log(`✅  ${lessonDbCount} lessons seeded.`);
 
-  // 14. Seed School Events
-  const events = [
-    { title: "Science Fair", dateStr: "2025-01-15", start: "09:00:00", end: "14:00:00" },
-    { title: "Annual Sports Day", dateStr: "2025-02-12", start: "08:00:00", end: "16:00:00" },
-    { title: "Parent Teacher Meeting", dateStr: "2025-01-24", start: "14:00:00", end: "17:00:00" },
-    { title: "Art & Craft Exhibition", dateStr: "2025-03-05", start: "10:00:00", end: "15:00:00" }
-  ];
+  // ── 10. Exams ─────────────────────────────────────────────────────────────
+  const examDbMap = new Map<number, number>(); // data id → db id
+  let examCount = 0;
+  for (const exam of examsData) {
+    const classId = classMap.get(exam.class);
+    if (!classId) continue;
 
-  for (const ev of events) {
+    // Find a lesson in this class for this subject to link the exam
+    const lesson = lessonsData.find(
+      l => l.class === exam.class && l.subject === exam.subject
+    );
+    const lessonDbId = lesson ? lessonDbMap.get(lesson.id) : undefined;
+    if (!lessonDbId) continue;
+
+    // Mid-term vs Final-term based on date
+    const isMid = exam.date <= "2025-05-01";
+    const startHour = isMid ? "09:00:00" : "10:00:00";
+    const endHour   = isMid ? "10:30:00" : "11:30:00";
+
+    const dbExam = await prisma.exam.create({
+      data: {
+        title:     `${exam.subject} ${isMid ? "Mid-Term" : "Final-Term"} Exam`,
+        startTime: new Date(`${exam.date}T${startHour}`),
+        endTime:   new Date(`${exam.date}T${endHour}`),
+        lessonId:  lessonDbId,
+      },
+    });
+    examDbMap.set(exam.id, dbExam.id);
+    examCount++;
+  }
+  console.log(`✅  ${examCount} exams seeded.`);
+
+  // ── 11. Assignments ───────────────────────────────────────────────────────
+  const assignDbMap = new Map<number, number>(); // data id → db id
+  let assignCount = 0;
+  for (const asgn of assignmentsData) {
+    const classId = classMap.get(asgn.class);
+    if (!classId) continue;
+
+    const lesson = lessonsData.find(
+      l => l.class === asgn.class && l.subject === asgn.subject
+    );
+    const lessonDbId = lesson ? lessonDbMap.get(lesson.id) : undefined;
+    if (!lessonDbId) continue;
+
+    const dbAsgn = await prisma.assignment.create({
+      data: {
+        title:     `${asgn.subject} Assignment`,
+        startDate: new Date("2025-01-06T08:00:00"),
+        dueDate:   new Date(`${asgn.dueDate}T17:00:00`),
+        lessonId:  lessonDbId,
+      },
+    });
+    assignDbMap.set(asgn.id, dbAsgn.id);
+    assignCount++;
+  }
+  console.log(`✅  ${assignCount} assignments seeded.`);
+
+  // ── 12. Results ───────────────────────────────────────────────────────────
+  let resultCount = 0;
+  for (const result of resultsData) {
+    const studentDbId = studentMap.get(result.student);
+    if (!studentDbId) continue;
+
+    let examDbId: number | undefined;
+    let assignDbId: number | undefined;
+
+    if (result.type === "exam") {
+      // Find the matching exam by subject + class + approximate date
+      const matchingExam = examsData.find(
+        e => e.class === result.class && e.subject === result.subject && e.date === result.date
+      );
+      examDbId = matchingExam ? examDbMap.get(matchingExam.id) : undefined;
+      if (!examDbId) continue;
+    } else {
+      // Find the matching assignment by subject + class
+      const matchingAsgn = assignmentsData.find(
+        a => a.class === result.class && a.subject === result.subject
+      );
+      assignDbId = matchingAsgn ? assignDbMap.get(matchingAsgn.id) : undefined;
+      if (!assignDbId) continue;
+    }
+
+    await prisma.result.create({
+      data: {
+        score:        result.score,
+        studentId:    studentDbId,
+        examId:       examDbId,
+        assignmentId: assignDbId,
+      },
+    });
+    resultCount++;
+  }
+  console.log(`✅  ${resultCount} results seeded.`);
+
+  // ── 13. Events ────────────────────────────────────────────────────────────
+  let eventCount = 0;
+  for (const ev of eventsData) {
+    const classId = ev.class ? classMap.get(ev.class) : undefined;
     await prisma.event.create({
       data: {
-        title: ev.title,
-        description: `Join us for our school's annual ${ev.title}.`,
-        startTime: new Date(`${ev.dateStr}T${ev.start}`),
-        endTime: new Date(`${ev.dateStr}T${ev.end}`)
-      }
+        title:       ev.title,
+        description: `${ev.title} — a school event for all participants.`,
+        startTime:   new Date(`${ev.date}T${ev.startTime}:00`),
+        endTime:     new Date(`${ev.date}T${ev.endTime}:00`),
+        classId:     classId ?? null,
+      },
     });
+    eventCount++;
   }
-  console.log("Seeded school-wide events.");
+  console.log(`✅  ${eventCount} events seeded.`);
 
-  // 15. Seed Announcements
-  const announcements = [
-    { title: "Mid-Term Exam Dates Announced", dateStr: "2025-01-05" },
-    { title: "School Picnic Scheduled for February", dateStr: "2025-01-12" },
-    { title: "New Library Books Collection Available", dateStr: "2025-01-20" },
-    { title: "Winter Sports Registration Open", dateStr: "2025-01-08" }
-  ];
-
-  for (const ann of announcements) {
+  // ── 14. Announcements ─────────────────────────────────────────────────────
+  let annCount = 0;
+  for (const ann of announcementsData) {
+    const classId = (ann as any).class ? classMap.get((ann as any).class) : undefined;
     await prisma.announcement.create({
       data: {
-        title: ann.title,
-        description: `${ann.title} details are available on the notice board. Please contact administration for queries.`,
-        date: new Date(`${ann.dateStr}T08:00:00`)
-      }
+        title:       ann.title,
+        description: `${ann.title}. Please check the notice board for full details.`,
+        date:        new Date(`${ann.date}T08:00:00`),
+        classId:     classId ?? null,
+      },
     });
+    annCount++;
   }
-  console.log("Seeded announcements.");
+  console.log(`✅  ${annCount} announcements seeded.`);
 
-  console.log("\n--- Reseeding completed successfully! ---");
+  console.log("\n🎉  Database fully seeded from data.ts!");
 }
 
 main()
-  .then(async () => {
-    await prisma.$disconnect();
-  })
-  .catch(async (e: any) => {
-    console.error(e);
+  .then(() => prisma.$disconnect())
+  .catch(async (e) => {
+    console.error("❌  Seed failed:", e);
     await prisma.$disconnect();
     process.exit(1);
   });
