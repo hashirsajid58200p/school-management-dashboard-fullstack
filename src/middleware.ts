@@ -16,11 +16,12 @@ const matchers = Object.keys(routeAccessMap).map((route) => ({
 export function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname;
   
-  // 1. Skip static assets & api routes
+  // 1. Skip static assets, api routes, and static files
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||
-    pathname.match(/\.(html|css|js|png|jpg|jpeg|gif|svg|ico|webp)$/)
+    pathname.includes(".") ||
+    pathname === "/favicon.ico"
   ) {
     return NextResponse.next();
   }
