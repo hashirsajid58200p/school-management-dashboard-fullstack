@@ -12,7 +12,7 @@ export default function SignUpPage() {
             termsPageUrl: undefined,
           },
           variables: {
-            colorPrimary: "#FAE27C", // hsYellow Accent Color
+            colorPrimary: "#CFCEFF", // hsPurple Accent Color
             colorBackground: "#ffffff",
             colorText: "#000000",
             colorTextSecondary: "#4b5563",
@@ -20,8 +20,13 @@ export default function SignUpPage() {
           },
           elements: {
             card: "shadow-2xl border border-gray-100",
-            formButtonPrimary: "bg-hsYellow text-black hover:bg-yellow-400 border-none transition-all font-bold text-sm",
+            formButtonPrimary: "bg-hsPurple text-black hover:bg-[#b5b4f8] border-none transition-all font-bold text-sm",
             footer: "hidden", // Hide footer references to Clerk
+            socialButtonsBlockButton: "hidden", // Hide social login buttons
+            socialButtonsBlock: "hidden",
+            socialButtons: "hidden",
+            socialButtonsIconButton: "hidden",
+            socialButtonsDivider: "hidden", // Hide "or" divider
           }
         }}
       />
