@@ -29,7 +29,7 @@ export const teachersData = [
     "photo": "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=400",
     "phone": "+1-555-188-1002",
     "subjects": [
-      "Islamic Studies",
+      "Religious Education",
       "Physical Education"
     ],
     "classes": [
@@ -75,7 +75,7 @@ export const teachersData = [
     "photo": "https://images.pexels.com/photos/428328/pexels-photo-428328.jpeg?auto=compress&cs=tinysrgb&w=400",
     "phone": "+1-555-177-1004",
     "subjects": [
-      "Urdu Language",
+      "French Language",
       "Physics",
       "Biology"
     ],
@@ -98,9 +98,9 @@ export const teachersData = [
     "photo": "https://images.pexels.com/photos/1187765/pexels-photo-1187765.jpeg?auto=compress&cs=tinysrgb&w=400",
     "phone": "+1-555-163-1005",
     "subjects": [
-      "Urdu Language",
+      "French Language",
       "Computer Science",
-      "Pakistan Studies"
+      "History"
     ],
     "classes": [
       "5-Gray",
@@ -120,7 +120,7 @@ export const teachersData = [
     "photo": "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=400",
     "phone": "+1-555-136-1006",
     "subjects": [
-      "Islamic Studies",
+      "Religious Education",
       "Computer Science",
       "Biology"
     ],
@@ -211,9 +211,9 @@ export const teachersData = [
     "photo": "https://images.pexels.com/photos/1300402/pexels-photo-1300402.jpeg?auto=compress&cs=tinysrgb&w=400",
     "phone": "+1-555-157-1010",
     "subjects": [
-      "Islamic Studies",
+      "Religious Education",
       "Social Studies",
-      "Pakistan Studies"
+      "History"
     ],
     "classes": [
       "1-Blue",
@@ -235,7 +235,7 @@ export const teachersData = [
     "photo": "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&w=400",
     "phone": "+1-555-162-1011",
     "subjects": [
-      "Islamic Studies",
+      "Religious Education",
       "Physics"
     ],
     "classes": [
@@ -257,7 +257,7 @@ export const teachersData = [
     "subjects": [
       "English Language",
       "Computer Science",
-      "Pakistan Studies"
+      "History"
     ],
     "classes": [
       "1-Blue",
@@ -328,7 +328,7 @@ export const teachersData = [
     "photo": "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400",
     "phone": "+1-555-148-1015",
     "subjects": [
-      "Islamic Studies",
+      "Religious Education",
       "Physical Education"
     ],
     "classes": [
@@ -348,7 +348,7 @@ export const teachersData = [
     "photo": "https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&w=400",
     "phone": "+1-555-151-1016",
     "subjects": [
-      "Urdu Language",
+      "French Language",
       "Computer Science"
     ],
     "classes": [
@@ -437,7 +437,7 @@ export const teachersData = [
     "photo": "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400",
     "phone": "+1-555-188-1020",
     "subjects": [
-      "Urdu Language",
+      "French Language",
       "Computer Science"
     ],
     "classes": [
@@ -459,7 +459,7 @@ export const teachersData = [
     "photo": "https://images.pexels.com/photos/1587614/pexels-photo-1587614.jpeg?auto=compress&cs=tinysrgb&w=400",
     "phone": "+1-555-190-1021",
     "subjects": [
-      "Islamic Studies",
+      "Religious Education",
       "General Science"
     ],
     "classes": [
@@ -479,9 +479,9 @@ export const teachersData = [
     "photo": "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=400",
     "phone": "+1-555-158-1022",
     "subjects": [
-      "Urdu Language",
+      "French Language",
       "Chemistry",
-      "Pakistan Studies"
+      "History"
     ],
     "classes": [
       "2-White",
@@ -502,7 +502,7 @@ export const teachersData = [
     "photo": "https://images.pexels.com/photos/1462637/pexels-photo-1462637.jpeg?auto=compress&cs=tinysrgb&w=400",
     "phone": "+1-555-148-1023",
     "subjects": [
-      "Urdu Language",
+      "French Language",
       "Physics"
     ],
     "classes": [
@@ -5746,7 +5746,7 @@ export const subjectsData = [
   },
   {
     "id": 3,
-    "name": "Urdu Language",
+    "name": "French Language",
     "teachers": [
       "Matthew Henderson",
       "Jack Young",
@@ -5758,7 +5758,7 @@ export const subjectsData = [
   },
   {
     "id": 4,
-    "name": "Islamic Studies",
+    "name": "Religious Education",
     "teachers": [
       "Daniel Hill",
       "Raymond King",
@@ -5844,7 +5844,7 @@ export const subjectsData = [
   },
   {
     "id": 12,
-    "name": "Pakistan Studies",
+    "name": "History",
     "teachers": [
       "Jack Young",
       "Brian Thompson",
@@ -6035,7 +6035,7 @@ export const classesData = [
 export const lessonsData = [
   {
     "id": 1,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-Blue",
     "teacher": "Daniel Hill"
   },
@@ -6053,7 +6053,7 @@ export const lessonsData = [
   },
   {
     "id": 4,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-Blue",
     "teacher": "Sarah Jackson"
   },
@@ -6065,13 +6065,13 @@ export const lessonsData = [
   },
   {
     "id": 6,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-Blue",
     "teacher": "Daniel Hill"
   },
   {
     "id": 7,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-Blue",
     "teacher": "Sarah Jackson"
   },
@@ -6101,7 +6101,7 @@ export const lessonsData = [
   },
   {
     "id": 12,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-Blue",
     "teacher": "Sarah Jackson"
   },
@@ -6125,7 +6125,7 @@ export const lessonsData = [
   },
   {
     "id": 16,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-Blue",
     "teacher": "Daniel Hill"
   },
@@ -6155,13 +6155,13 @@ export const lessonsData = [
   },
   {
     "id": 21,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-White",
     "teacher": "Brian Thompson"
   },
   {
     "id": 22,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-White",
     "teacher": "Carolyn Lee"
   },
@@ -6239,7 +6239,7 @@ export const lessonsData = [
   },
   {
     "id": 35,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-White",
     "teacher": "Brian Thompson"
   },
@@ -6251,7 +6251,7 @@ export const lessonsData = [
   },
   {
     "id": 37,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-White",
     "teacher": "Brian Thompson"
   },
@@ -6263,13 +6263,13 @@ export const lessonsData = [
   },
   {
     "id": 39,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-White",
     "teacher": "Carolyn Lee"
   },
   {
     "id": 40,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-White",
     "teacher": "Carolyn Lee"
   },
@@ -6287,7 +6287,7 @@ export const lessonsData = [
   },
   {
     "id": 43,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-Gray",
     "teacher": "Sarah Jackson"
   },
@@ -6299,13 +6299,13 @@ export const lessonsData = [
   },
   {
     "id": 45,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-Gray",
     "teacher": "George Rogers"
   },
   {
     "id": 46,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-Gray",
     "teacher": "Sarah Jackson"
   },
@@ -6341,7 +6341,7 @@ export const lessonsData = [
   },
   {
     "id": 52,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-Gray",
     "teacher": "George Rogers"
   },
@@ -6359,7 +6359,7 @@ export const lessonsData = [
   },
   {
     "id": 55,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-Gray",
     "teacher": "Sarah Jackson"
   },
@@ -6371,7 +6371,7 @@ export const lessonsData = [
   },
   {
     "id": 57,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-Gray",
     "teacher": "George Rogers"
   },
@@ -6425,7 +6425,7 @@ export const lessonsData = [
   },
   {
     "id": 66,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-Blue",
     "teacher": "Emily Sullivan"
   },
@@ -6437,7 +6437,7 @@ export const lessonsData = [
   },
   {
     "id": 68,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-Blue",
     "teacher": "Sarah Jackson"
   },
@@ -6473,7 +6473,7 @@ export const lessonsData = [
   },
   {
     "id": 74,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-Blue",
     "teacher": "Sarah Jackson"
   },
@@ -6485,7 +6485,7 @@ export const lessonsData = [
   },
   {
     "id": 76,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-Blue",
     "teacher": "Emily Sullivan"
   },
@@ -6503,19 +6503,19 @@ export const lessonsData = [
   },
   {
     "id": 79,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-Blue",
     "teacher": "Emily Sullivan"
   },
   {
     "id": 80,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-Blue",
     "teacher": "Sarah Jackson"
   },
   {
     "id": 81,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-White",
     "teacher": "Brian Thompson"
   },
@@ -6539,7 +6539,7 @@ export const lessonsData = [
   },
   {
     "id": 85,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-White",
     "teacher": "Kimberly Cox"
   },
@@ -6581,7 +6581,7 @@ export const lessonsData = [
   },
   {
     "id": 92,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-White",
     "teacher": "Brian Thompson"
   },
@@ -6593,7 +6593,7 @@ export const lessonsData = [
   },
   {
     "id": 94,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-White",
     "teacher": "Brian Thompson"
   },
@@ -6605,7 +6605,7 @@ export const lessonsData = [
   },
   {
     "id": 96,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-White",
     "teacher": "Kimberly Cox"
   },
@@ -6629,7 +6629,7 @@ export const lessonsData = [
   },
   {
     "id": 100,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-White",
     "teacher": "Kimberly Cox"
   },
@@ -6641,7 +6641,7 @@ export const lessonsData = [
   },
   {
     "id": 102,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-Gray",
     "teacher": "Sarah Jackson"
   },
@@ -6659,7 +6659,7 @@ export const lessonsData = [
   },
   {
     "id": 105,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-Gray",
     "teacher": "Daniel Hill"
   },
@@ -6671,7 +6671,7 @@ export const lessonsData = [
   },
   {
     "id": 107,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-Gray",
     "teacher": "Sarah Jackson"
   },
@@ -6707,13 +6707,13 @@ export const lessonsData = [
   },
   {
     "id": 113,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-Gray",
     "teacher": "Daniel Hill"
   },
   {
     "id": 114,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-Gray",
     "teacher": "Sarah Jackson"
   },
@@ -6731,7 +6731,7 @@ export const lessonsData = [
   },
   {
     "id": 117,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-Gray",
     "teacher": "Daniel Hill"
   },
@@ -6779,7 +6779,7 @@ export const lessonsData = [
   },
   {
     "id": 125,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-Blue",
     "teacher": "Raymond King"
   },
@@ -6815,19 +6815,19 @@ export const lessonsData = [
   },
   {
     "id": 131,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-Blue",
     "teacher": "Rachel Hill"
   },
   {
     "id": 132,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-Blue",
     "teacher": "Raymond King"
   },
   {
     "id": 133,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-Blue",
     "teacher": "Rachel Hill"
   },
@@ -6851,7 +6851,7 @@ export const lessonsData = [
   },
   {
     "id": 137,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-Blue",
     "teacher": "Rachel Hill"
   },
@@ -6863,7 +6863,7 @@ export const lessonsData = [
   },
   {
     "id": 139,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-Blue",
     "teacher": "Raymond King"
   },
@@ -6875,13 +6875,13 @@ export const lessonsData = [
   },
   {
     "id": 141,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-White",
     "teacher": "Raymond King"
   },
   {
     "id": 142,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-White",
     "teacher": "Carolyn Lee"
   },
@@ -6923,13 +6923,13 @@ export const lessonsData = [
   },
   {
     "id": 149,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-White",
     "teacher": "Carolyn Lee"
   },
   {
     "id": 150,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-White",
     "teacher": "Raymond King"
   },
@@ -6941,13 +6941,13 @@ export const lessonsData = [
   },
   {
     "id": 152,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-White",
     "teacher": "Carolyn Lee"
   },
   {
     "id": 153,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-White",
     "teacher": "Raymond King"
   },
@@ -7001,13 +7001,13 @@ export const lessonsData = [
   },
   {
     "id": 162,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-Gray",
     "teacher": "Carolyn Lee"
   },
   {
     "id": 163,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-Gray",
     "teacher": "Jerry Wilson"
   },
@@ -7025,7 +7025,7 @@ export const lessonsData = [
   },
   {
     "id": 166,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-Gray",
     "teacher": "Carolyn Lee"
   },
@@ -7037,7 +7037,7 @@ export const lessonsData = [
   },
   {
     "id": 168,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-Gray",
     "teacher": "Jerry Wilson"
   },
@@ -7073,7 +7073,7 @@ export const lessonsData = [
   },
   {
     "id": 174,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-Gray",
     "teacher": "Jerry Wilson"
   },
@@ -7091,7 +7091,7 @@ export const lessonsData = [
   },
   {
     "id": 177,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-Gray",
     "teacher": "Carolyn Lee"
   },
@@ -7127,7 +7127,7 @@ export const lessonsData = [
   },
   {
     "id": 183,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-Blue",
     "teacher": "Sarah Jackson"
   },
@@ -7139,7 +7139,7 @@ export const lessonsData = [
   },
   {
     "id": 185,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-Blue",
     "teacher": "Sarah Jackson"
   },
@@ -7151,13 +7151,13 @@ export const lessonsData = [
   },
   {
     "id": 187,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-Blue",
     "teacher": "Emily Sullivan"
   },
   {
     "id": 188,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-Blue",
     "teacher": "Sarah Jackson"
   },
@@ -7211,7 +7211,7 @@ export const lessonsData = [
   },
   {
     "id": 197,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-Blue",
     "teacher": "Emily Sullivan"
   },
@@ -7223,7 +7223,7 @@ export const lessonsData = [
   },
   {
     "id": 199,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-Blue",
     "teacher": "Emily Sullivan"
   },
@@ -7253,13 +7253,13 @@ export const lessonsData = [
   },
   {
     "id": 204,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-White",
     "teacher": "Matthew Henderson"
   },
   {
     "id": 205,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-White",
     "teacher": "Matthew Henderson"
   },
@@ -7271,7 +7271,7 @@ export const lessonsData = [
   },
   {
     "id": 207,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-White",
     "teacher": "Jerry Wilson"
   },
@@ -7289,13 +7289,13 @@ export const lessonsData = [
   },
   {
     "id": 210,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-White",
     "teacher": "Jerry Wilson"
   },
   {
     "id": 211,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-White",
     "teacher": "Jerry Wilson"
   },
@@ -7313,7 +7313,7 @@ export const lessonsData = [
   },
   {
     "id": 214,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-White",
     "teacher": "Matthew Henderson"
   },
@@ -7361,7 +7361,7 @@ export const lessonsData = [
   },
   {
     "id": 222,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-Gray",
     "teacher": "Brian Thompson"
   },
@@ -7379,7 +7379,7 @@ export const lessonsData = [
   },
   {
     "id": 225,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-Gray",
     "teacher": "Brian Thompson"
   },
@@ -7445,25 +7445,25 @@ export const lessonsData = [
   },
   {
     "id": 236,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-Gray",
     "teacher": "Brian Thompson"
   },
   {
     "id": 237,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-Gray",
     "teacher": "Sarah Jackson"
   },
   {
     "id": 238,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-Gray",
     "teacher": "Sarah Jackson"
   },
   {
     "id": 239,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-Gray",
     "teacher": "Sarah Jackson"
   },
@@ -7481,7 +7481,7 @@ export const lessonsData = [
   },
   {
     "id": 242,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-Blue",
     "teacher": "Daniel Hill"
   },
@@ -7523,7 +7523,7 @@ export const lessonsData = [
   },
   {
     "id": 249,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-Blue",
     "teacher": "Kimberly Cox"
   },
@@ -7547,7 +7547,7 @@ export const lessonsData = [
   },
   {
     "id": 253,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-Blue",
     "teacher": "Daniel Hill"
   },
@@ -7565,7 +7565,7 @@ export const lessonsData = [
   },
   {
     "id": 256,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-Blue",
     "teacher": "Daniel Hill"
   },
@@ -7583,19 +7583,19 @@ export const lessonsData = [
   },
   {
     "id": 259,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-Blue",
     "teacher": "Kimberly Cox"
   },
   {
     "id": 260,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-Blue",
     "teacher": "Kimberly Cox"
   },
   {
     "id": 261,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-White",
     "teacher": "Sarah Jackson"
   },
@@ -7613,7 +7613,7 @@ export const lessonsData = [
   },
   {
     "id": 264,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-White",
     "teacher": "Jerry Wilson"
   },
@@ -7637,7 +7637,7 @@ export const lessonsData = [
   },
   {
     "id": 268,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-White",
     "teacher": "Jerry Wilson"
   },
@@ -7655,7 +7655,7 @@ export const lessonsData = [
   },
   {
     "id": 271,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-White",
     "teacher": "Jerry Wilson"
   },
@@ -7667,7 +7667,7 @@ export const lessonsData = [
   },
   {
     "id": 273,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-White",
     "teacher": "Sarah Jackson"
   },
@@ -7691,7 +7691,7 @@ export const lessonsData = [
   },
   {
     "id": 277,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-White",
     "teacher": "Sarah Jackson"
   },
@@ -7751,13 +7751,13 @@ export const lessonsData = [
   },
   {
     "id": 287,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-Gray",
     "teacher": "Jack Young"
   },
   {
     "id": 288,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-Gray",
     "teacher": "Jack Young"
   },
@@ -7787,7 +7787,7 @@ export const lessonsData = [
   },
   {
     "id": 293,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-Gray",
     "teacher": "Daniel Hill"
   },
@@ -7799,19 +7799,19 @@ export const lessonsData = [
   },
   {
     "id": 295,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-Gray",
     "teacher": "Daniel Hill"
   },
   {
     "id": 296,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-Gray",
     "teacher": "Daniel Hill"
   },
   {
     "id": 297,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-Gray",
     "teacher": "Jack Young"
   },
@@ -7835,7 +7835,7 @@ export const lessonsData = [
   },
   {
     "id": 301,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "6-Blue",
     "teacher": "Kimberly Cox"
   },
@@ -7865,7 +7865,7 @@ export const lessonsData = [
   },
   {
     "id": 306,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "6-Blue",
     "teacher": "Matthew Henderson"
   },
@@ -7883,13 +7883,13 @@ export const lessonsData = [
   },
   {
     "id": 309,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "6-Blue",
     "teacher": "Matthew Henderson"
   },
   {
     "id": 310,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "6-Blue",
     "teacher": "Matthew Henderson"
   },
@@ -7907,7 +7907,7 @@ export const lessonsData = [
   },
   {
     "id": 313,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "6-Blue",
     "teacher": "Kimberly Cox"
   },
@@ -7979,7 +7979,7 @@ export const lessonsData = [
   },
   {
     "id": 325,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "6-Blue",
     "teacher": "George Rogers"
   },
@@ -7991,19 +7991,19 @@ export const lessonsData = [
   },
   {
     "id": 327,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "6-Blue",
     "teacher": "George Rogers"
   },
   {
     "id": 328,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "6-Blue",
     "teacher": "Kimberly Cox"
   },
   {
     "id": 329,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "6-Blue",
     "teacher": "George Rogers"
   },
@@ -8033,31 +8033,31 @@ export const lessonsData = [
   },
   {
     "id": 334,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "6-White",
     "teacher": "Kimberly Cox"
   },
   {
     "id": 335,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "6-White",
     "teacher": "Kimberly Cox"
   },
   {
     "id": 336,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "6-White",
     "teacher": "Brian Thompson"
   },
   {
     "id": 337,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "6-White",
     "teacher": "Kimberly Cox"
   },
   {
     "id": 338,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "6-White",
     "teacher": "Kimberly Cox"
   },
@@ -8087,13 +8087,13 @@ export const lessonsData = [
   },
   {
     "id": 343,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "6-White",
     "teacher": "Brian Thompson"
   },
   {
     "id": 344,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "6-White",
     "teacher": "Kimberly Cox"
   },
@@ -8177,13 +8177,13 @@ export const lessonsData = [
   },
   {
     "id": 358,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "6-White",
     "teacher": "Kimberly Cox"
   },
   {
     "id": 359,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "6-White",
     "teacher": "Brian Thompson"
   },
@@ -8201,25 +8201,25 @@ export const lessonsData = [
   },
   {
     "id": 362,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "7-Blue",
     "teacher": "Andrew Flores"
   },
   {
     "id": 363,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "7-Blue",
     "teacher": "Emily Sullivan"
   },
   {
     "id": 364,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "7-Blue",
     "teacher": "Emily Sullivan"
   },
   {
     "id": 365,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "7-Blue",
     "teacher": "Rachel Hill"
   },
@@ -8249,7 +8249,7 @@ export const lessonsData = [
   },
   {
     "id": 370,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "7-Blue",
     "teacher": "Andrew Flores"
   },
@@ -8315,7 +8315,7 @@ export const lessonsData = [
   },
   {
     "id": 381,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "7-Blue",
     "teacher": "Andrew Flores"
   },
@@ -8333,7 +8333,7 @@ export const lessonsData = [
   },
   {
     "id": 384,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "7-Blue",
     "teacher": "Emily Sullivan"
   },
@@ -8357,13 +8357,13 @@ export const lessonsData = [
   },
   {
     "id": 388,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "7-Blue",
     "teacher": "Rachel Hill"
   },
   {
     "id": 389,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "7-Blue",
     "teacher": "Rachel Hill"
   },
@@ -8387,13 +8387,13 @@ export const lessonsData = [
   },
   {
     "id": 393,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "7-White",
     "teacher": "Daniel Hill"
   },
   {
     "id": 394,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "7-White",
     "teacher": "Kimberly Cox"
   },
@@ -8429,13 +8429,13 @@ export const lessonsData = [
   },
   {
     "id": 400,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "7-White",
     "teacher": "Jack Young"
   },
   {
     "id": 401,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "7-White",
     "teacher": "Jack Young"
   },
@@ -8453,7 +8453,7 @@ export const lessonsData = [
   },
   {
     "id": 404,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "7-White",
     "teacher": "Kimberly Cox"
   },
@@ -8471,13 +8471,13 @@ export const lessonsData = [
   },
   {
     "id": 407,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "7-White",
     "teacher": "Kimberly Cox"
   },
   {
     "id": 408,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "7-White",
     "teacher": "Daniel Hill"
   },
@@ -8489,7 +8489,7 @@ export const lessonsData = [
   },
   {
     "id": 410,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "7-White",
     "teacher": "Jack Young"
   },
@@ -8531,7 +8531,7 @@ export const lessonsData = [
   },
   {
     "id": 417,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "7-White",
     "teacher": "Daniel Hill"
   },
@@ -8561,19 +8561,19 @@ export const lessonsData = [
   },
   {
     "id": 422,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "8-Blue",
     "teacher": "Jerry Wilson"
   },
   {
     "id": 423,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "8-Blue",
     "teacher": "Brian Thompson"
   },
   {
     "id": 424,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "8-Blue",
     "teacher": "Brian Thompson"
   },
@@ -8585,7 +8585,7 @@ export const lessonsData = [
   },
   {
     "id": 426,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "8-Blue",
     "teacher": "Brian Thompson"
   },
@@ -8633,7 +8633,7 @@ export const lessonsData = [
   },
   {
     "id": 434,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "8-Blue",
     "teacher": "Jerry Wilson"
   },
@@ -8645,7 +8645,7 @@ export const lessonsData = [
   },
   {
     "id": 436,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "8-Blue",
     "teacher": "Jerry Wilson"
   },
@@ -8669,7 +8669,7 @@ export const lessonsData = [
   },
   {
     "id": 440,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "8-Blue",
     "teacher": "Matthew Henderson"
   },
@@ -8681,7 +8681,7 @@ export const lessonsData = [
   },
   {
     "id": 442,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "8-Blue",
     "teacher": "Matthew Henderson"
   },
@@ -8729,13 +8729,13 @@ export const lessonsData = [
   },
   {
     "id": 450,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "8-Blue",
     "teacher": "Matthew Henderson"
   },
   {
     "id": 451,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "8-White",
     "teacher": "Raymond King"
   },
@@ -8747,7 +8747,7 @@ export const lessonsData = [
   },
   {
     "id": 453,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "8-White",
     "teacher": "Kimberly Cox"
   },
@@ -8777,7 +8777,7 @@ export const lessonsData = [
   },
   {
     "id": 458,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "8-White",
     "teacher": "Raymond King"
   },
@@ -8813,7 +8813,7 @@ export const lessonsData = [
   },
   {
     "id": 464,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "8-White",
     "teacher": "Kimberly Cox"
   },
@@ -8825,13 +8825,13 @@ export const lessonsData = [
   },
   {
     "id": 466,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "8-White",
     "teacher": "Jack Young"
   },
   {
     "id": 467,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "8-White",
     "teacher": "Raymond King"
   },
@@ -8849,7 +8849,7 @@ export const lessonsData = [
   },
   {
     "id": 470,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "8-White",
     "teacher": "Jack Young"
   },
@@ -8891,7 +8891,7 @@ export const lessonsData = [
   },
   {
     "id": 477,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "8-White",
     "teacher": "Kimberly Cox"
   },
@@ -8903,7 +8903,7 @@ export const lessonsData = [
   },
   {
     "id": 479,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "8-White",
     "teacher": "Jack Young"
   },
@@ -8915,13 +8915,13 @@ export const lessonsData = [
   },
   {
     "id": 481,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "9-Blue",
     "teacher": "Matthew Henderson"
   },
   {
     "id": 482,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "9-Blue",
     "teacher": "Jack Young"
   },
@@ -8933,7 +8933,7 @@ export const lessonsData = [
   },
   {
     "id": 484,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "9-Blue",
     "teacher": "Daniel Hill"
   },
@@ -8969,7 +8969,7 @@ export const lessonsData = [
   },
   {
     "id": 490,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "9-Blue",
     "teacher": "Daniel Hill"
   },
@@ -8993,7 +8993,7 @@ export const lessonsData = [
   },
   {
     "id": 494,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "9-Blue",
     "teacher": "Matthew Henderson"
   },
@@ -9017,7 +9017,7 @@ export const lessonsData = [
   },
   {
     "id": 498,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "9-Blue",
     "teacher": "Matthew Henderson"
   },
@@ -9035,7 +9035,7 @@ export const lessonsData = [
   },
   {
     "id": 501,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "9-Blue",
     "teacher": "Daniel Hill"
   },
@@ -9053,7 +9053,7 @@ export const lessonsData = [
   },
   {
     "id": 504,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "9-Blue",
     "teacher": "Jack Young"
   },
@@ -9089,7 +9089,7 @@ export const lessonsData = [
   },
   {
     "id": 510,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "9-Blue",
     "teacher": "Jack Young"
   },
@@ -9113,7 +9113,7 @@ export const lessonsData = [
   },
   {
     "id": 514,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "9-White",
     "teacher": "Jack Young"
   },
@@ -9137,19 +9137,19 @@ export const lessonsData = [
   },
   {
     "id": 518,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "9-White",
     "teacher": "Jack Young"
   },
   {
     "id": 519,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "9-White",
     "teacher": "Matthew Henderson"
   },
   {
     "id": 520,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "9-White",
     "teacher": "Matthew Henderson"
   },
@@ -9173,7 +9173,7 @@ export const lessonsData = [
   },
   {
     "id": 524,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "9-White",
     "teacher": "Brian Thompson"
   },
@@ -9185,7 +9185,7 @@ export const lessonsData = [
   },
   {
     "id": 526,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "9-White",
     "teacher": "Matthew Henderson"
   },
@@ -9215,7 +9215,7 @@ export const lessonsData = [
   },
   {
     "id": 531,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "9-White",
     "teacher": "Brian Thompson"
   },
@@ -9257,7 +9257,7 @@ export const lessonsData = [
   },
   {
     "id": 538,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "9-White",
     "teacher": "Brian Thompson"
   },
@@ -9269,7 +9269,7 @@ export const lessonsData = [
   },
   {
     "id": 540,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "9-White",
     "teacher": "Jack Young"
   },
@@ -9281,25 +9281,25 @@ export const lessonsData = [
   },
   {
     "id": 542,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "10-Blue",
     "teacher": "Andrew Flores"
   },
   {
     "id": 543,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "10-Blue",
     "teacher": "Matthew Henderson"
   },
   {
     "id": 544,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "10-Blue",
     "teacher": "George Rogers"
   },
   {
     "id": 545,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "10-Blue",
     "teacher": "Matthew Henderson"
   },
@@ -9323,7 +9323,7 @@ export const lessonsData = [
   },
   {
     "id": 549,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "10-Blue",
     "teacher": "George Rogers"
   },
@@ -9377,13 +9377,13 @@ export const lessonsData = [
   },
   {
     "id": 558,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "10-Blue",
     "teacher": "Andrew Flores"
   },
   {
     "id": 559,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "10-Blue",
     "teacher": "Andrew Flores"
   },
@@ -9437,7 +9437,7 @@ export const lessonsData = [
   },
   {
     "id": 568,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "10-Blue",
     "teacher": "Matthew Henderson"
   },
@@ -9449,7 +9449,7 @@ export const lessonsData = [
   },
   {
     "id": 570,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "10-Blue",
     "teacher": "George Rogers"
   },
@@ -9461,7 +9461,7 @@ export const lessonsData = [
   },
   {
     "id": 572,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "10-White",
     "teacher": "Emily Sullivan"
   },
@@ -9473,13 +9473,13 @@ export const lessonsData = [
   },
   {
     "id": 574,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "10-White",
     "teacher": "Emily Sullivan"
   },
   {
     "id": 575,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "10-White",
     "teacher": "Andrew Flores"
   },
@@ -9521,7 +9521,7 @@ export const lessonsData = [
   },
   {
     "id": 582,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "10-White",
     "teacher": "Matthew Henderson"
   },
@@ -9557,7 +9557,7 @@ export const lessonsData = [
   },
   {
     "id": 588,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "10-White",
     "teacher": "Matthew Henderson"
   },
@@ -9593,13 +9593,13 @@ export const lessonsData = [
   },
   {
     "id": 594,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "10-White",
     "teacher": "Andrew Flores"
   },
   {
     "id": 595,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "10-White",
     "teacher": "Emily Sullivan"
   },
@@ -9617,7 +9617,7 @@ export const lessonsData = [
   },
   {
     "id": 598,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "10-White",
     "teacher": "Matthew Henderson"
   },
@@ -9629,7 +9629,7 @@ export const lessonsData = [
   },
   {
     "id": 600,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "10-White",
     "teacher": "Andrew Flores"
   }
@@ -9666,28 +9666,28 @@ export const examsData = [
   },
   {
     "id": 5,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-Blue",
     "teacher": "Sarah Jackson",
     "date": "2025-03-12"
   },
   {
     "id": 6,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-Blue",
     "teacher": "Sarah Jackson",
     "date": "2025-06-11"
   },
   {
     "id": 7,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-Blue",
     "teacher": "Daniel Hill",
     "date": "2025-03-13"
   },
   {
     "id": 8,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-Blue",
     "teacher": "Daniel Hill",
     "date": "2025-06-12"
@@ -9778,28 +9778,28 @@ export const examsData = [
   },
   {
     "id": 21,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-White",
     "teacher": "Carolyn Lee",
     "date": "2025-03-12"
   },
   {
     "id": 22,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-White",
     "teacher": "Carolyn Lee",
     "date": "2025-06-11"
   },
   {
     "id": 23,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-White",
     "teacher": "Brian Thompson",
     "date": "2025-03-13"
   },
   {
     "id": 24,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-White",
     "teacher": "Brian Thompson",
     "date": "2025-06-12"
@@ -9890,28 +9890,28 @@ export const examsData = [
   },
   {
     "id": 37,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-Gray",
     "teacher": "Sarah Jackson",
     "date": "2025-03-12"
   },
   {
     "id": 38,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-Gray",
     "teacher": "Sarah Jackson",
     "date": "2025-06-11"
   },
   {
     "id": 39,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-Gray",
     "teacher": "George Rogers",
     "date": "2025-03-13"
   },
   {
     "id": 40,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-Gray",
     "teacher": "George Rogers",
     "date": "2025-06-12"
@@ -10002,28 +10002,28 @@ export const examsData = [
   },
   {
     "id": 53,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-Blue",
     "teacher": "Sarah Jackson",
     "date": "2025-03-12"
   },
   {
     "id": 54,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-Blue",
     "teacher": "Sarah Jackson",
     "date": "2025-06-11"
   },
   {
     "id": 55,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-Blue",
     "teacher": "Emily Sullivan",
     "date": "2025-03-13"
   },
   {
     "id": 56,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-Blue",
     "teacher": "Emily Sullivan",
     "date": "2025-06-12"
@@ -10114,28 +10114,28 @@ export const examsData = [
   },
   {
     "id": 69,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-White",
     "teacher": "Kimberly Cox",
     "date": "2025-03-12"
   },
   {
     "id": 70,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-White",
     "teacher": "Kimberly Cox",
     "date": "2025-06-11"
   },
   {
     "id": 71,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-White",
     "teacher": "Brian Thompson",
     "date": "2025-03-13"
   },
   {
     "id": 72,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-White",
     "teacher": "Brian Thompson",
     "date": "2025-06-12"
@@ -10226,28 +10226,28 @@ export const examsData = [
   },
   {
     "id": 85,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-Gray",
     "teacher": "Sarah Jackson",
     "date": "2025-03-12"
   },
   {
     "id": 86,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-Gray",
     "teacher": "Sarah Jackson",
     "date": "2025-06-11"
   },
   {
     "id": 87,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-Gray",
     "teacher": "Daniel Hill",
     "date": "2025-03-13"
   },
   {
     "id": 88,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-Gray",
     "teacher": "Daniel Hill",
     "date": "2025-06-12"
@@ -10338,28 +10338,28 @@ export const examsData = [
   },
   {
     "id": 101,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-Blue",
     "teacher": "Rachel Hill",
     "date": "2025-03-12"
   },
   {
     "id": 102,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-Blue",
     "teacher": "Rachel Hill",
     "date": "2025-06-11"
   },
   {
     "id": 103,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-Blue",
     "teacher": "Raymond King",
     "date": "2025-03-13"
   },
   {
     "id": 104,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-Blue",
     "teacher": "Raymond King",
     "date": "2025-06-12"
@@ -10450,28 +10450,28 @@ export const examsData = [
   },
   {
     "id": 117,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-White",
     "teacher": "Carolyn Lee",
     "date": "2025-03-12"
   },
   {
     "id": 118,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-White",
     "teacher": "Carolyn Lee",
     "date": "2025-06-11"
   },
   {
     "id": 119,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-White",
     "teacher": "Raymond King",
     "date": "2025-03-13"
   },
   {
     "id": 120,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-White",
     "teacher": "Raymond King",
     "date": "2025-06-12"
@@ -10562,28 +10562,28 @@ export const examsData = [
   },
   {
     "id": 133,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-Gray",
     "teacher": "Carolyn Lee",
     "date": "2025-03-12"
   },
   {
     "id": 134,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-Gray",
     "teacher": "Carolyn Lee",
     "date": "2025-06-11"
   },
   {
     "id": 135,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-Gray",
     "teacher": "Jerry Wilson",
     "date": "2025-03-13"
   },
   {
     "id": 136,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-Gray",
     "teacher": "Jerry Wilson",
     "date": "2025-06-12"
@@ -10674,28 +10674,28 @@ export const examsData = [
   },
   {
     "id": 149,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-Blue",
     "teacher": "Sarah Jackson",
     "date": "2025-03-12"
   },
   {
     "id": 150,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-Blue",
     "teacher": "Sarah Jackson",
     "date": "2025-06-11"
   },
   {
     "id": 151,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-Blue",
     "teacher": "Emily Sullivan",
     "date": "2025-03-13"
   },
   {
     "id": 152,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-Blue",
     "teacher": "Emily Sullivan",
     "date": "2025-06-12"
@@ -10786,28 +10786,28 @@ export const examsData = [
   },
   {
     "id": 165,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-White",
     "teacher": "Matthew Henderson",
     "date": "2025-03-12"
   },
   {
     "id": 166,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-White",
     "teacher": "Matthew Henderson",
     "date": "2025-06-11"
   },
   {
     "id": 167,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-White",
     "teacher": "Jerry Wilson",
     "date": "2025-03-13"
   },
   {
     "id": 168,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-White",
     "teacher": "Jerry Wilson",
     "date": "2025-06-12"
@@ -10898,28 +10898,28 @@ export const examsData = [
   },
   {
     "id": 181,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-Gray",
     "teacher": "Sarah Jackson",
     "date": "2025-03-12"
   },
   {
     "id": 182,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-Gray",
     "teacher": "Sarah Jackson",
     "date": "2025-06-11"
   },
   {
     "id": 183,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-Gray",
     "teacher": "Brian Thompson",
     "date": "2025-03-13"
   },
   {
     "id": 184,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-Gray",
     "teacher": "Brian Thompson",
     "date": "2025-06-12"
@@ -11010,28 +11010,28 @@ export const examsData = [
   },
   {
     "id": 197,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-Blue",
     "teacher": "Kimberly Cox",
     "date": "2025-03-12"
   },
   {
     "id": 198,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-Blue",
     "teacher": "Kimberly Cox",
     "date": "2025-06-11"
   },
   {
     "id": 199,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-Blue",
     "teacher": "Daniel Hill",
     "date": "2025-03-13"
   },
   {
     "id": 200,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-Blue",
     "teacher": "Daniel Hill",
     "date": "2025-06-12"
@@ -11122,28 +11122,28 @@ export const examsData = [
   },
   {
     "id": 213,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-White",
     "teacher": "Sarah Jackson",
     "date": "2025-03-12"
   },
   {
     "id": 214,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-White",
     "teacher": "Sarah Jackson",
     "date": "2025-06-11"
   },
   {
     "id": 215,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-White",
     "teacher": "Jerry Wilson",
     "date": "2025-03-13"
   },
   {
     "id": 216,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-White",
     "teacher": "Jerry Wilson",
     "date": "2025-06-12"
@@ -11234,28 +11234,28 @@ export const examsData = [
   },
   {
     "id": 229,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-Gray",
     "teacher": "Jack Young",
     "date": "2025-03-12"
   },
   {
     "id": 230,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-Gray",
     "teacher": "Jack Young",
     "date": "2025-06-11"
   },
   {
     "id": 231,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-Gray",
     "teacher": "Daniel Hill",
     "date": "2025-03-13"
   },
   {
     "id": 232,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-Gray",
     "teacher": "Daniel Hill",
     "date": "2025-06-12"
@@ -11346,28 +11346,28 @@ export const examsData = [
   },
   {
     "id": 245,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "6-Blue",
     "teacher": "Matthew Henderson",
     "date": "2025-03-12"
   },
   {
     "id": 246,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "6-Blue",
     "teacher": "Matthew Henderson",
     "date": "2025-06-11"
   },
   {
     "id": 247,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "6-Blue",
     "teacher": "George Rogers",
     "date": "2025-03-13"
   },
   {
     "id": 248,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "6-Blue",
     "teacher": "George Rogers",
     "date": "2025-06-12"
@@ -11430,14 +11430,14 @@ export const examsData = [
   },
   {
     "id": 257,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "6-Blue",
     "teacher": "Kimberly Cox",
     "date": "2025-03-13"
   },
   {
     "id": 258,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "6-Blue",
     "teacher": "Kimberly Cox",
     "date": "2025-06-12"
@@ -11486,28 +11486,28 @@ export const examsData = [
   },
   {
     "id": 265,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "6-White",
     "teacher": "Kimberly Cox",
     "date": "2025-03-12"
   },
   {
     "id": 266,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "6-White",
     "teacher": "Kimberly Cox",
     "date": "2025-06-11"
   },
   {
     "id": 267,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "6-White",
     "teacher": "Brian Thompson",
     "date": "2025-03-13"
   },
   {
     "id": 268,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "6-White",
     "teacher": "Brian Thompson",
     "date": "2025-06-12"
@@ -11570,14 +11570,14 @@ export const examsData = [
   },
   {
     "id": 277,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "6-White",
     "teacher": "Kimberly Cox",
     "date": "2025-03-13"
   },
   {
     "id": 278,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "6-White",
     "teacher": "Kimberly Cox",
     "date": "2025-06-12"
@@ -11626,28 +11626,28 @@ export const examsData = [
   },
   {
     "id": 285,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "7-Blue",
     "teacher": "Rachel Hill",
     "date": "2025-03-12"
   },
   {
     "id": 286,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "7-Blue",
     "teacher": "Rachel Hill",
     "date": "2025-06-11"
   },
   {
     "id": 287,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "7-Blue",
     "teacher": "Emily Sullivan",
     "date": "2025-03-13"
   },
   {
     "id": 288,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "7-Blue",
     "teacher": "Emily Sullivan",
     "date": "2025-06-12"
@@ -11710,14 +11710,14 @@ export const examsData = [
   },
   {
     "id": 297,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "7-Blue",
     "teacher": "Andrew Flores",
     "date": "2025-03-13"
   },
   {
     "id": 298,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "7-Blue",
     "teacher": "Andrew Flores",
     "date": "2025-06-12"
@@ -11766,28 +11766,28 @@ export const examsData = [
   },
   {
     "id": 305,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "7-White",
     "teacher": "Jack Young",
     "date": "2025-03-12"
   },
   {
     "id": 306,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "7-White",
     "teacher": "Jack Young",
     "date": "2025-06-11"
   },
   {
     "id": 307,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "7-White",
     "teacher": "Daniel Hill",
     "date": "2025-03-13"
   },
   {
     "id": 308,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "7-White",
     "teacher": "Daniel Hill",
     "date": "2025-06-12"
@@ -11850,14 +11850,14 @@ export const examsData = [
   },
   {
     "id": 317,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "7-White",
     "teacher": "Kimberly Cox",
     "date": "2025-03-13"
   },
   {
     "id": 318,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "7-White",
     "teacher": "Kimberly Cox",
     "date": "2025-06-12"
@@ -11906,28 +11906,28 @@ export const examsData = [
   },
   {
     "id": 325,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "8-Blue",
     "teacher": "Matthew Henderson",
     "date": "2025-03-12"
   },
   {
     "id": 326,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "8-Blue",
     "teacher": "Matthew Henderson",
     "date": "2025-06-11"
   },
   {
     "id": 327,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "8-Blue",
     "teacher": "Jerry Wilson",
     "date": "2025-03-13"
   },
   {
     "id": 328,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "8-Blue",
     "teacher": "Jerry Wilson",
     "date": "2025-06-12"
@@ -11990,14 +11990,14 @@ export const examsData = [
   },
   {
     "id": 337,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "8-Blue",
     "teacher": "Brian Thompson",
     "date": "2025-03-13"
   },
   {
     "id": 338,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "8-Blue",
     "teacher": "Brian Thompson",
     "date": "2025-06-12"
@@ -12046,28 +12046,28 @@ export const examsData = [
   },
   {
     "id": 345,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "8-White",
     "teacher": "Jack Young",
     "date": "2025-03-12"
   },
   {
     "id": 346,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "8-White",
     "teacher": "Jack Young",
     "date": "2025-06-11"
   },
   {
     "id": 347,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "8-White",
     "teacher": "Raymond King",
     "date": "2025-03-13"
   },
   {
     "id": 348,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "8-White",
     "teacher": "Raymond King",
     "date": "2025-06-12"
@@ -12130,14 +12130,14 @@ export const examsData = [
   },
   {
     "id": 357,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "8-White",
     "teacher": "Kimberly Cox",
     "date": "2025-03-13"
   },
   {
     "id": 358,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "8-White",
     "teacher": "Kimberly Cox",
     "date": "2025-06-12"
@@ -12186,28 +12186,28 @@ export const examsData = [
   },
   {
     "id": 365,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "9-Blue",
     "teacher": "Matthew Henderson",
     "date": "2025-03-12"
   },
   {
     "id": 366,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "9-Blue",
     "teacher": "Matthew Henderson",
     "date": "2025-06-11"
   },
   {
     "id": 367,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "9-Blue",
     "teacher": "Daniel Hill",
     "date": "2025-03-13"
   },
   {
     "id": 368,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "9-Blue",
     "teacher": "Daniel Hill",
     "date": "2025-06-12"
@@ -12270,14 +12270,14 @@ export const examsData = [
   },
   {
     "id": 377,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "9-Blue",
     "teacher": "Jack Young",
     "date": "2025-03-13"
   },
   {
     "id": 378,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "9-Blue",
     "teacher": "Jack Young",
     "date": "2025-06-12"
@@ -12326,28 +12326,28 @@ export const examsData = [
   },
   {
     "id": 385,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "9-White",
     "teacher": "Matthew Henderson",
     "date": "2025-03-12"
   },
   {
     "id": 386,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "9-White",
     "teacher": "Matthew Henderson",
     "date": "2025-06-11"
   },
   {
     "id": 387,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "9-White",
     "teacher": "Brian Thompson",
     "date": "2025-03-13"
   },
   {
     "id": 388,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "9-White",
     "teacher": "Brian Thompson",
     "date": "2025-06-12"
@@ -12410,14 +12410,14 @@ export const examsData = [
   },
   {
     "id": 397,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "9-White",
     "teacher": "Jack Young",
     "date": "2025-03-13"
   },
   {
     "id": 398,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "9-White",
     "teacher": "Jack Young",
     "date": "2025-06-12"
@@ -12466,28 +12466,28 @@ export const examsData = [
   },
   {
     "id": 405,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "10-Blue",
     "teacher": "Matthew Henderson",
     "date": "2025-03-12"
   },
   {
     "id": 406,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "10-Blue",
     "teacher": "Matthew Henderson",
     "date": "2025-06-11"
   },
   {
     "id": 407,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "10-Blue",
     "teacher": "George Rogers",
     "date": "2025-03-13"
   },
   {
     "id": 408,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "10-Blue",
     "teacher": "George Rogers",
     "date": "2025-06-12"
@@ -12550,14 +12550,14 @@ export const examsData = [
   },
   {
     "id": 417,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "10-Blue",
     "teacher": "Andrew Flores",
     "date": "2025-03-13"
   },
   {
     "id": 418,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "10-Blue",
     "teacher": "Andrew Flores",
     "date": "2025-06-12"
@@ -12606,28 +12606,28 @@ export const examsData = [
   },
   {
     "id": 425,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "10-White",
     "teacher": "Matthew Henderson",
     "date": "2025-03-12"
   },
   {
     "id": 426,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "10-White",
     "teacher": "Matthew Henderson",
     "date": "2025-06-11"
   },
   {
     "id": 427,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "10-White",
     "teacher": "Emily Sullivan",
     "date": "2025-03-13"
   },
   {
     "id": 428,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "10-White",
     "teacher": "Emily Sullivan",
     "date": "2025-06-12"
@@ -12690,14 +12690,14 @@ export const examsData = [
   },
   {
     "id": 437,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "10-White",
     "teacher": "Andrew Flores",
     "date": "2025-03-13"
   },
   {
     "id": 438,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "10-White",
     "teacher": "Andrew Flores",
     "date": "2025-06-12"
@@ -12749,28 +12749,28 @@ export const assignmentsData = [
   },
   {
     "id": 5,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-Blue",
     "teacher": "Sarah Jackson",
     "dueDate": "2025-05-08"
   },
   {
     "id": 6,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-Blue",
     "teacher": "Sarah Jackson",
     "dueDate": "2025-03-18"
   },
   {
     "id": 7,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-Blue",
     "teacher": "Daniel Hill",
     "dueDate": "2025-03-25"
   },
   {
     "id": 8,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-Blue",
     "teacher": "Daniel Hill",
     "dueDate": "2025-05-20"
@@ -12861,28 +12861,28 @@ export const assignmentsData = [
   },
   {
     "id": 21,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-White",
     "teacher": "Carolyn Lee",
     "dueDate": "2025-01-27"
   },
   {
     "id": 22,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-White",
     "teacher": "Carolyn Lee",
     "dueDate": "2025-03-31"
   },
   {
     "id": 23,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-White",
     "teacher": "Brian Thompson",
     "dueDate": "2025-01-31"
   },
   {
     "id": 24,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-White",
     "teacher": "Brian Thompson",
     "dueDate": "2025-03-07"
@@ -12973,28 +12973,28 @@ export const assignmentsData = [
   },
   {
     "id": 37,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-Gray",
     "teacher": "Sarah Jackson",
     "dueDate": "2025-05-05"
   },
   {
     "id": 38,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-Gray",
     "teacher": "Sarah Jackson",
     "dueDate": "2025-05-17"
   },
   {
     "id": 39,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-Gray",
     "teacher": "George Rogers",
     "dueDate": "2025-03-07"
   },
   {
     "id": 40,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-Gray",
     "teacher": "George Rogers",
     "dueDate": "2025-05-27"
@@ -13085,28 +13085,28 @@ export const assignmentsData = [
   },
   {
     "id": 53,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-Blue",
     "teacher": "Sarah Jackson",
     "dueDate": "2025-02-23"
   },
   {
     "id": 54,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-Blue",
     "teacher": "Sarah Jackson",
     "dueDate": "2025-04-17"
   },
   {
     "id": 55,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-Blue",
     "teacher": "Emily Sullivan",
     "dueDate": "2025-03-22"
   },
   {
     "id": 56,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-Blue",
     "teacher": "Emily Sullivan",
     "dueDate": "2025-03-30"
@@ -13197,28 +13197,28 @@ export const assignmentsData = [
   },
   {
     "id": 69,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-White",
     "teacher": "Kimberly Cox",
     "dueDate": "2025-03-12"
   },
   {
     "id": 70,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-White",
     "teacher": "Kimberly Cox",
     "dueDate": "2025-04-04"
   },
   {
     "id": 71,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-White",
     "teacher": "Brian Thompson",
     "dueDate": "2025-04-06"
   },
   {
     "id": 72,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-White",
     "teacher": "Brian Thompson",
     "dueDate": "2025-03-12"
@@ -13309,28 +13309,28 @@ export const assignmentsData = [
   },
   {
     "id": 85,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-Gray",
     "teacher": "Sarah Jackson",
     "dueDate": "2025-05-14"
   },
   {
     "id": 86,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-Gray",
     "teacher": "Sarah Jackson",
     "dueDate": "2025-05-23"
   },
   {
     "id": 87,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-Gray",
     "teacher": "Daniel Hill",
     "dueDate": "2025-03-26"
   },
   {
     "id": 88,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-Gray",
     "teacher": "Daniel Hill",
     "dueDate": "2025-02-14"
@@ -13421,28 +13421,28 @@ export const assignmentsData = [
   },
   {
     "id": 101,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-Blue",
     "teacher": "Rachel Hill",
     "dueDate": "2025-05-08"
   },
   {
     "id": 102,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-Blue",
     "teacher": "Rachel Hill",
     "dueDate": "2025-05-19"
   },
   {
     "id": 103,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-Blue",
     "teacher": "Raymond King",
     "dueDate": "2025-03-18"
   },
   {
     "id": 104,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-Blue",
     "teacher": "Raymond King",
     "dueDate": "2025-04-22"
@@ -13533,28 +13533,28 @@ export const assignmentsData = [
   },
   {
     "id": 117,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-White",
     "teacher": "Carolyn Lee",
     "dueDate": "2025-03-16"
   },
   {
     "id": 118,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-White",
     "teacher": "Carolyn Lee",
     "dueDate": "2025-03-22"
   },
   {
     "id": 119,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-White",
     "teacher": "Raymond King",
     "dueDate": "2025-03-13"
   },
   {
     "id": 120,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-White",
     "teacher": "Raymond King",
     "dueDate": "2025-02-19"
@@ -13645,28 +13645,28 @@ export const assignmentsData = [
   },
   {
     "id": 133,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-Gray",
     "teacher": "Carolyn Lee",
     "dueDate": "2025-01-28"
   },
   {
     "id": 134,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-Gray",
     "teacher": "Carolyn Lee",
     "dueDate": "2025-02-06"
   },
   {
     "id": 135,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-Gray",
     "teacher": "Jerry Wilson",
     "dueDate": "2025-02-10"
   },
   {
     "id": 136,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-Gray",
     "teacher": "Jerry Wilson",
     "dueDate": "2025-03-05"
@@ -13757,28 +13757,28 @@ export const assignmentsData = [
   },
   {
     "id": 149,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-Blue",
     "teacher": "Sarah Jackson",
     "dueDate": "2025-01-27"
   },
   {
     "id": 150,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-Blue",
     "teacher": "Sarah Jackson",
     "dueDate": "2025-01-23"
   },
   {
     "id": 151,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-Blue",
     "teacher": "Emily Sullivan",
     "dueDate": "2025-05-20"
   },
   {
     "id": 152,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-Blue",
     "teacher": "Emily Sullivan",
     "dueDate": "2025-04-20"
@@ -13869,28 +13869,28 @@ export const assignmentsData = [
   },
   {
     "id": 165,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-White",
     "teacher": "Matthew Henderson",
     "dueDate": "2025-03-10"
   },
   {
     "id": 166,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-White",
     "teacher": "Matthew Henderson",
     "dueDate": "2025-02-07"
   },
   {
     "id": 167,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-White",
     "teacher": "Jerry Wilson",
     "dueDate": "2025-02-13"
   },
   {
     "id": 168,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-White",
     "teacher": "Jerry Wilson",
     "dueDate": "2025-01-22"
@@ -13981,28 +13981,28 @@ export const assignmentsData = [
   },
   {
     "id": 181,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-Gray",
     "teacher": "Sarah Jackson",
     "dueDate": "2025-05-29"
   },
   {
     "id": 182,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-Gray",
     "teacher": "Sarah Jackson",
     "dueDate": "2025-04-10"
   },
   {
     "id": 183,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-Gray",
     "teacher": "Brian Thompson",
     "dueDate": "2025-03-17"
   },
   {
     "id": 184,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-Gray",
     "teacher": "Brian Thompson",
     "dueDate": "2025-05-17"
@@ -14093,28 +14093,28 @@ export const assignmentsData = [
   },
   {
     "id": 197,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-Blue",
     "teacher": "Kimberly Cox",
     "dueDate": "2025-03-06"
   },
   {
     "id": 198,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-Blue",
     "teacher": "Kimberly Cox",
     "dueDate": "2025-01-20"
   },
   {
     "id": 199,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-Blue",
     "teacher": "Daniel Hill",
     "dueDate": "2025-03-26"
   },
   {
     "id": 200,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-Blue",
     "teacher": "Daniel Hill",
     "dueDate": "2025-04-15"
@@ -14205,28 +14205,28 @@ export const assignmentsData = [
   },
   {
     "id": 213,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-White",
     "teacher": "Sarah Jackson",
     "dueDate": "2025-03-26"
   },
   {
     "id": 214,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-White",
     "teacher": "Sarah Jackson",
     "dueDate": "2025-02-10"
   },
   {
     "id": 215,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-White",
     "teacher": "Jerry Wilson",
     "dueDate": "2025-02-24"
   },
   {
     "id": 216,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-White",
     "teacher": "Jerry Wilson",
     "dueDate": "2025-02-27"
@@ -14317,28 +14317,28 @@ export const assignmentsData = [
   },
   {
     "id": 229,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-Gray",
     "teacher": "Jack Young",
     "dueDate": "2025-02-12"
   },
   {
     "id": 230,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-Gray",
     "teacher": "Jack Young",
     "dueDate": "2025-05-05"
   },
   {
     "id": 231,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-Gray",
     "teacher": "Daniel Hill",
     "dueDate": "2025-05-29"
   },
   {
     "id": 232,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-Gray",
     "teacher": "Daniel Hill",
     "dueDate": "2025-02-22"
@@ -14429,28 +14429,28 @@ export const assignmentsData = [
   },
   {
     "id": 245,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "6-Blue",
     "teacher": "Matthew Henderson",
     "dueDate": "2025-05-06"
   },
   {
     "id": 246,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "6-Blue",
     "teacher": "Matthew Henderson",
     "dueDate": "2025-03-29"
   },
   {
     "id": 247,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "6-Blue",
     "teacher": "George Rogers",
     "dueDate": "2025-04-15"
   },
   {
     "id": 248,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "6-Blue",
     "teacher": "George Rogers",
     "dueDate": "2025-03-03"
@@ -14513,14 +14513,14 @@ export const assignmentsData = [
   },
   {
     "id": 257,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "6-Blue",
     "teacher": "Kimberly Cox",
     "dueDate": "2025-04-20"
   },
   {
     "id": 258,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "6-Blue",
     "teacher": "Kimberly Cox",
     "dueDate": "2025-04-24"
@@ -14569,28 +14569,28 @@ export const assignmentsData = [
   },
   {
     "id": 265,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "6-White",
     "teacher": "Kimberly Cox",
     "dueDate": "2025-02-18"
   },
   {
     "id": 266,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "6-White",
     "teacher": "Kimberly Cox",
     "dueDate": "2025-01-22"
   },
   {
     "id": 267,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "6-White",
     "teacher": "Brian Thompson",
     "dueDate": "2025-02-05"
   },
   {
     "id": 268,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "6-White",
     "teacher": "Brian Thompson",
     "dueDate": "2025-04-24"
@@ -14653,14 +14653,14 @@ export const assignmentsData = [
   },
   {
     "id": 277,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "6-White",
     "teacher": "Kimberly Cox",
     "dueDate": "2025-03-20"
   },
   {
     "id": 278,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "6-White",
     "teacher": "Kimberly Cox",
     "dueDate": "2025-03-02"
@@ -14709,28 +14709,28 @@ export const assignmentsData = [
   },
   {
     "id": 285,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "7-Blue",
     "teacher": "Rachel Hill",
     "dueDate": "2025-04-25"
   },
   {
     "id": 286,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "7-Blue",
     "teacher": "Rachel Hill",
     "dueDate": "2025-05-09"
   },
   {
     "id": 287,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "7-Blue",
     "teacher": "Emily Sullivan",
     "dueDate": "2025-05-20"
   },
   {
     "id": 288,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "7-Blue",
     "teacher": "Emily Sullivan",
     "dueDate": "2025-05-16"
@@ -14793,14 +14793,14 @@ export const assignmentsData = [
   },
   {
     "id": 297,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "7-Blue",
     "teacher": "Andrew Flores",
     "dueDate": "2025-04-06"
   },
   {
     "id": 298,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "7-Blue",
     "teacher": "Andrew Flores",
     "dueDate": "2025-04-16"
@@ -14849,28 +14849,28 @@ export const assignmentsData = [
   },
   {
     "id": 305,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "7-White",
     "teacher": "Jack Young",
     "dueDate": "2025-02-02"
   },
   {
     "id": 306,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "7-White",
     "teacher": "Jack Young",
     "dueDate": "2025-04-26"
   },
   {
     "id": 307,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "7-White",
     "teacher": "Daniel Hill",
     "dueDate": "2025-02-27"
   },
   {
     "id": 308,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "7-White",
     "teacher": "Daniel Hill",
     "dueDate": "2025-05-04"
@@ -14933,14 +14933,14 @@ export const assignmentsData = [
   },
   {
     "id": 317,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "7-White",
     "teacher": "Kimberly Cox",
     "dueDate": "2025-04-16"
   },
   {
     "id": 318,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "7-White",
     "teacher": "Kimberly Cox",
     "dueDate": "2025-03-02"
@@ -14989,28 +14989,28 @@ export const assignmentsData = [
   },
   {
     "id": 325,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "8-Blue",
     "teacher": "Matthew Henderson",
     "dueDate": "2025-02-13"
   },
   {
     "id": 326,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "8-Blue",
     "teacher": "Matthew Henderson",
     "dueDate": "2025-04-23"
   },
   {
     "id": 327,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "8-Blue",
     "teacher": "Jerry Wilson",
     "dueDate": "2025-01-20"
   },
   {
     "id": 328,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "8-Blue",
     "teacher": "Jerry Wilson",
     "dueDate": "2025-04-27"
@@ -15073,14 +15073,14 @@ export const assignmentsData = [
   },
   {
     "id": 337,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "8-Blue",
     "teacher": "Brian Thompson",
     "dueDate": "2025-02-16"
   },
   {
     "id": 338,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "8-Blue",
     "teacher": "Brian Thompson",
     "dueDate": "2025-04-13"
@@ -15129,28 +15129,28 @@ export const assignmentsData = [
   },
   {
     "id": 345,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "8-White",
     "teacher": "Jack Young",
     "dueDate": "2025-01-30"
   },
   {
     "id": 346,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "8-White",
     "teacher": "Jack Young",
     "dueDate": "2025-03-15"
   },
   {
     "id": 347,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "8-White",
     "teacher": "Raymond King",
     "dueDate": "2025-05-07"
   },
   {
     "id": 348,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "8-White",
     "teacher": "Raymond King",
     "dueDate": "2025-03-05"
@@ -15213,14 +15213,14 @@ export const assignmentsData = [
   },
   {
     "id": 357,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "8-White",
     "teacher": "Kimberly Cox",
     "dueDate": "2025-04-21"
   },
   {
     "id": 358,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "8-White",
     "teacher": "Kimberly Cox",
     "dueDate": "2025-04-12"
@@ -15269,28 +15269,28 @@ export const assignmentsData = [
   },
   {
     "id": 365,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "9-Blue",
     "teacher": "Matthew Henderson",
     "dueDate": "2025-02-11"
   },
   {
     "id": 366,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "9-Blue",
     "teacher": "Matthew Henderson",
     "dueDate": "2025-01-26"
   },
   {
     "id": 367,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "9-Blue",
     "teacher": "Daniel Hill",
     "dueDate": "2025-02-16"
   },
   {
     "id": 368,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "9-Blue",
     "teacher": "Daniel Hill",
     "dueDate": "2025-04-03"
@@ -15353,14 +15353,14 @@ export const assignmentsData = [
   },
   {
     "id": 377,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "9-Blue",
     "teacher": "Jack Young",
     "dueDate": "2025-04-13"
   },
   {
     "id": 378,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "9-Blue",
     "teacher": "Jack Young",
     "dueDate": "2025-03-02"
@@ -15409,28 +15409,28 @@ export const assignmentsData = [
   },
   {
     "id": 385,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "9-White",
     "teacher": "Matthew Henderson",
     "dueDate": "2025-02-17"
   },
   {
     "id": 386,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "9-White",
     "teacher": "Matthew Henderson",
     "dueDate": "2025-03-03"
   },
   {
     "id": 387,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "9-White",
     "teacher": "Brian Thompson",
     "dueDate": "2025-03-10"
   },
   {
     "id": 388,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "9-White",
     "teacher": "Brian Thompson",
     "dueDate": "2025-03-18"
@@ -15493,14 +15493,14 @@ export const assignmentsData = [
   },
   {
     "id": 397,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "9-White",
     "teacher": "Jack Young",
     "dueDate": "2025-04-27"
   },
   {
     "id": 398,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "9-White",
     "teacher": "Jack Young",
     "dueDate": "2025-02-27"
@@ -15549,28 +15549,28 @@ export const assignmentsData = [
   },
   {
     "id": 405,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "10-Blue",
     "teacher": "Matthew Henderson",
     "dueDate": "2025-03-04"
   },
   {
     "id": 406,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "10-Blue",
     "teacher": "Matthew Henderson",
     "dueDate": "2025-02-25"
   },
   {
     "id": 407,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "10-Blue",
     "teacher": "George Rogers",
     "dueDate": "2025-04-11"
   },
   {
     "id": 408,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "10-Blue",
     "teacher": "George Rogers",
     "dueDate": "2025-04-15"
@@ -15633,14 +15633,14 @@ export const assignmentsData = [
   },
   {
     "id": 417,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "10-Blue",
     "teacher": "Andrew Flores",
     "dueDate": "2025-05-16"
   },
   {
     "id": 418,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "10-Blue",
     "teacher": "Andrew Flores",
     "dueDate": "2025-02-13"
@@ -15689,28 +15689,28 @@ export const assignmentsData = [
   },
   {
     "id": 425,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "10-White",
     "teacher": "Matthew Henderson",
     "dueDate": "2025-03-22"
   },
   {
     "id": 426,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "10-White",
     "teacher": "Matthew Henderson",
     "dueDate": "2025-01-23"
   },
   {
     "id": 427,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "10-White",
     "teacher": "Emily Sullivan",
     "dueDate": "2025-03-21"
   },
   {
     "id": 428,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "10-White",
     "teacher": "Emily Sullivan",
     "dueDate": "2025-05-19"
@@ -15773,14 +15773,14 @@ export const assignmentsData = [
   },
   {
     "id": 437,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "10-White",
     "teacher": "Andrew Flores",
     "dueDate": "2025-02-12"
   },
   {
     "id": 438,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "10-White",
     "teacher": "Andrew Flores",
     "dueDate": "2025-01-28"
@@ -15844,7 +15844,7 @@ export const resultsData = [
   },
   {
     "id": 5,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-Blue",
     "teacher": "Sarah Jackson",
     "student": "David Hill",
@@ -15854,7 +15854,7 @@ export const resultsData = [
   },
   {
     "id": 6,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-Blue",
     "teacher": "Sarah Jackson",
     "student": "David Hill",
@@ -15864,7 +15864,7 @@ export const resultsData = [
   },
   {
     "id": 7,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-Blue",
     "teacher": "Daniel Hill",
     "student": "David Hill",
@@ -15874,7 +15874,7 @@ export const resultsData = [
   },
   {
     "id": 8,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-Blue",
     "teacher": "Daniel Hill",
     "student": "David Hill",
@@ -16004,7 +16004,7 @@ export const resultsData = [
   },
   {
     "id": 21,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-Blue",
     "teacher": "Sarah Jackson",
     "student": "David Hill",
@@ -16014,7 +16014,7 @@ export const resultsData = [
   },
   {
     "id": 22,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-Blue",
     "teacher": "Sarah Jackson",
     "student": "David Hill",
@@ -16024,7 +16024,7 @@ export const resultsData = [
   },
   {
     "id": 23,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-Blue",
     "teacher": "Daniel Hill",
     "student": "David Hill",
@@ -16034,7 +16034,7 @@ export const resultsData = [
   },
   {
     "id": 24,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-Blue",
     "teacher": "Daniel Hill",
     "student": "David Hill",
@@ -16164,7 +16164,7 @@ export const resultsData = [
   },
   {
     "id": 37,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-White",
     "teacher": "Carolyn Lee",
     "student": "Barbara Cox",
@@ -16174,7 +16174,7 @@ export const resultsData = [
   },
   {
     "id": 38,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-White",
     "teacher": "Carolyn Lee",
     "student": "Barbara Cox",
@@ -16184,7 +16184,7 @@ export const resultsData = [
   },
   {
     "id": 39,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-White",
     "teacher": "Brian Thompson",
     "student": "Barbara Cox",
@@ -16194,7 +16194,7 @@ export const resultsData = [
   },
   {
     "id": 40,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-White",
     "teacher": "Brian Thompson",
     "student": "Barbara Cox",
@@ -16324,7 +16324,7 @@ export const resultsData = [
   },
   {
     "id": 53,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-White",
     "teacher": "Carolyn Lee",
     "student": "Barbara Cox",
@@ -16334,7 +16334,7 @@ export const resultsData = [
   },
   {
     "id": 54,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-White",
     "teacher": "Carolyn Lee",
     "student": "Barbara Cox",
@@ -16344,7 +16344,7 @@ export const resultsData = [
   },
   {
     "id": 55,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-White",
     "teacher": "Brian Thompson",
     "student": "Barbara Cox",
@@ -16354,7 +16354,7 @@ export const resultsData = [
   },
   {
     "id": 56,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-White",
     "teacher": "Brian Thompson",
     "student": "Barbara Cox",
@@ -16484,7 +16484,7 @@ export const resultsData = [
   },
   {
     "id": 69,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-Gray",
     "teacher": "Sarah Jackson",
     "student": "Angela James",
@@ -16494,7 +16494,7 @@ export const resultsData = [
   },
   {
     "id": 70,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-Gray",
     "teacher": "Sarah Jackson",
     "student": "Angela James",
@@ -16504,7 +16504,7 @@ export const resultsData = [
   },
   {
     "id": 71,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-Gray",
     "teacher": "George Rogers",
     "student": "Angela James",
@@ -16514,7 +16514,7 @@ export const resultsData = [
   },
   {
     "id": 72,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-Gray",
     "teacher": "George Rogers",
     "student": "Angela James",
@@ -16644,7 +16644,7 @@ export const resultsData = [
   },
   {
     "id": 85,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-Gray",
     "teacher": "Sarah Jackson",
     "student": "Angela James",
@@ -16654,7 +16654,7 @@ export const resultsData = [
   },
   {
     "id": 86,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "1-Gray",
     "teacher": "Sarah Jackson",
     "student": "Angela James",
@@ -16664,7 +16664,7 @@ export const resultsData = [
   },
   {
     "id": 87,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-Gray",
     "teacher": "George Rogers",
     "student": "Angela James",
@@ -16674,7 +16674,7 @@ export const resultsData = [
   },
   {
     "id": 88,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "1-Gray",
     "teacher": "George Rogers",
     "student": "Angela James",
@@ -16804,7 +16804,7 @@ export const resultsData = [
   },
   {
     "id": 101,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-Blue",
     "teacher": "Sarah Jackson",
     "student": "Tyler Carter",
@@ -16814,7 +16814,7 @@ export const resultsData = [
   },
   {
     "id": 102,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-Blue",
     "teacher": "Sarah Jackson",
     "student": "Tyler Carter",
@@ -16824,7 +16824,7 @@ export const resultsData = [
   },
   {
     "id": 103,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-Blue",
     "teacher": "Emily Sullivan",
     "student": "Tyler Carter",
@@ -16834,7 +16834,7 @@ export const resultsData = [
   },
   {
     "id": 104,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-Blue",
     "teacher": "Emily Sullivan",
     "student": "Tyler Carter",
@@ -16964,7 +16964,7 @@ export const resultsData = [
   },
   {
     "id": 117,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-Blue",
     "teacher": "Sarah Jackson",
     "student": "Tyler Carter",
@@ -16974,7 +16974,7 @@ export const resultsData = [
   },
   {
     "id": 118,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-Blue",
     "teacher": "Sarah Jackson",
     "student": "Tyler Carter",
@@ -16984,7 +16984,7 @@ export const resultsData = [
   },
   {
     "id": 119,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-Blue",
     "teacher": "Emily Sullivan",
     "student": "Tyler Carter",
@@ -16994,7 +16994,7 @@ export const resultsData = [
   },
   {
     "id": 120,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-Blue",
     "teacher": "Emily Sullivan",
     "student": "Tyler Carter",
@@ -17124,7 +17124,7 @@ export const resultsData = [
   },
   {
     "id": 133,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-White",
     "teacher": "Kimberly Cox",
     "student": "Catherine Cook",
@@ -17134,7 +17134,7 @@ export const resultsData = [
   },
   {
     "id": 134,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-White",
     "teacher": "Kimberly Cox",
     "student": "Catherine Cook",
@@ -17144,7 +17144,7 @@ export const resultsData = [
   },
   {
     "id": 135,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-White",
     "teacher": "Brian Thompson",
     "student": "Catherine Cook",
@@ -17154,7 +17154,7 @@ export const resultsData = [
   },
   {
     "id": 136,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-White",
     "teacher": "Brian Thompson",
     "student": "Catherine Cook",
@@ -17284,7 +17284,7 @@ export const resultsData = [
   },
   {
     "id": 149,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-White",
     "teacher": "Kimberly Cox",
     "student": "Catherine Cook",
@@ -17294,7 +17294,7 @@ export const resultsData = [
   },
   {
     "id": 150,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-White",
     "teacher": "Kimberly Cox",
     "student": "Catherine Cook",
@@ -17304,7 +17304,7 @@ export const resultsData = [
   },
   {
     "id": 151,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-White",
     "teacher": "Brian Thompson",
     "student": "Catherine Cook",
@@ -17314,7 +17314,7 @@ export const resultsData = [
   },
   {
     "id": 152,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-White",
     "teacher": "Brian Thompson",
     "student": "Catherine Cook",
@@ -17444,7 +17444,7 @@ export const resultsData = [
   },
   {
     "id": 165,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-Gray",
     "teacher": "Sarah Jackson",
     "student": "Barbara Flores",
@@ -17454,7 +17454,7 @@ export const resultsData = [
   },
   {
     "id": 166,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-Gray",
     "teacher": "Sarah Jackson",
     "student": "Barbara Flores",
@@ -17464,7 +17464,7 @@ export const resultsData = [
   },
   {
     "id": 167,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-Gray",
     "teacher": "Daniel Hill",
     "student": "Barbara Flores",
@@ -17474,7 +17474,7 @@ export const resultsData = [
   },
   {
     "id": 168,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-Gray",
     "teacher": "Daniel Hill",
     "student": "Barbara Flores",
@@ -17604,7 +17604,7 @@ export const resultsData = [
   },
   {
     "id": 181,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-Gray",
     "teacher": "Sarah Jackson",
     "student": "Barbara Flores",
@@ -17614,7 +17614,7 @@ export const resultsData = [
   },
   {
     "id": 182,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "2-Gray",
     "teacher": "Sarah Jackson",
     "student": "Barbara Flores",
@@ -17624,7 +17624,7 @@ export const resultsData = [
   },
   {
     "id": 183,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-Gray",
     "teacher": "Daniel Hill",
     "student": "Barbara Flores",
@@ -17634,7 +17634,7 @@ export const resultsData = [
   },
   {
     "id": 184,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "2-Gray",
     "teacher": "Daniel Hill",
     "student": "Barbara Flores",
@@ -17764,7 +17764,7 @@ export const resultsData = [
   },
   {
     "id": 197,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-Blue",
     "teacher": "Rachel Hill",
     "student": "Jack Cox",
@@ -17774,7 +17774,7 @@ export const resultsData = [
   },
   {
     "id": 198,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-Blue",
     "teacher": "Rachel Hill",
     "student": "Jack Cox",
@@ -17784,7 +17784,7 @@ export const resultsData = [
   },
   {
     "id": 199,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-Blue",
     "teacher": "Raymond King",
     "student": "Jack Cox",
@@ -17794,7 +17794,7 @@ export const resultsData = [
   },
   {
     "id": 200,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-Blue",
     "teacher": "Raymond King",
     "student": "Jack Cox",
@@ -17924,7 +17924,7 @@ export const resultsData = [
   },
   {
     "id": 213,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-Blue",
     "teacher": "Rachel Hill",
     "student": "Jack Cox",
@@ -17934,7 +17934,7 @@ export const resultsData = [
   },
   {
     "id": 214,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-Blue",
     "teacher": "Rachel Hill",
     "student": "Jack Cox",
@@ -17944,7 +17944,7 @@ export const resultsData = [
   },
   {
     "id": 215,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-Blue",
     "teacher": "Raymond King",
     "student": "Jack Cox",
@@ -17954,7 +17954,7 @@ export const resultsData = [
   },
   {
     "id": 216,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-Blue",
     "teacher": "Raymond King",
     "student": "Jack Cox",
@@ -18084,7 +18084,7 @@ export const resultsData = [
   },
   {
     "id": 229,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-White",
     "teacher": "Carolyn Lee",
     "student": "Amy Powell",
@@ -18094,7 +18094,7 @@ export const resultsData = [
   },
   {
     "id": 230,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-White",
     "teacher": "Carolyn Lee",
     "student": "Amy Powell",
@@ -18104,7 +18104,7 @@ export const resultsData = [
   },
   {
     "id": 231,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-White",
     "teacher": "Raymond King",
     "student": "Amy Powell",
@@ -18114,7 +18114,7 @@ export const resultsData = [
   },
   {
     "id": 232,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-White",
     "teacher": "Raymond King",
     "student": "Amy Powell",
@@ -18244,7 +18244,7 @@ export const resultsData = [
   },
   {
     "id": 245,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-White",
     "teacher": "Carolyn Lee",
     "student": "Amy Powell",
@@ -18254,7 +18254,7 @@ export const resultsData = [
   },
   {
     "id": 246,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-White",
     "teacher": "Carolyn Lee",
     "student": "Amy Powell",
@@ -18264,7 +18264,7 @@ export const resultsData = [
   },
   {
     "id": 247,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-White",
     "teacher": "Raymond King",
     "student": "Amy Powell",
@@ -18274,7 +18274,7 @@ export const resultsData = [
   },
   {
     "id": 248,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-White",
     "teacher": "Raymond King",
     "student": "Amy Powell",
@@ -18404,7 +18404,7 @@ export const resultsData = [
   },
   {
     "id": 261,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-Gray",
     "teacher": "Carolyn Lee",
     "student": "Andrew Flores Jr",
@@ -18414,7 +18414,7 @@ export const resultsData = [
   },
   {
     "id": 262,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-Gray",
     "teacher": "Carolyn Lee",
     "student": "Andrew Flores Jr",
@@ -18424,7 +18424,7 @@ export const resultsData = [
   },
   {
     "id": 263,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-Gray",
     "teacher": "Jerry Wilson",
     "student": "Andrew Flores Jr",
@@ -18434,7 +18434,7 @@ export const resultsData = [
   },
   {
     "id": 264,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-Gray",
     "teacher": "Jerry Wilson",
     "student": "Andrew Flores Jr",
@@ -18564,7 +18564,7 @@ export const resultsData = [
   },
   {
     "id": 277,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-Gray",
     "teacher": "Carolyn Lee",
     "student": "Andrew Flores Jr",
@@ -18574,7 +18574,7 @@ export const resultsData = [
   },
   {
     "id": 278,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "3-Gray",
     "teacher": "Carolyn Lee",
     "student": "Andrew Flores Jr",
@@ -18584,7 +18584,7 @@ export const resultsData = [
   },
   {
     "id": 279,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-Gray",
     "teacher": "Jerry Wilson",
     "student": "Andrew Flores Jr",
@@ -18594,7 +18594,7 @@ export const resultsData = [
   },
   {
     "id": 280,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "3-Gray",
     "teacher": "Jerry Wilson",
     "student": "Andrew Flores Jr",
@@ -18724,7 +18724,7 @@ export const resultsData = [
   },
   {
     "id": 293,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-Blue",
     "teacher": "Sarah Jackson",
     "student": "Charles Bell",
@@ -18734,7 +18734,7 @@ export const resultsData = [
   },
   {
     "id": 294,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-Blue",
     "teacher": "Sarah Jackson",
     "student": "Charles Bell",
@@ -18744,7 +18744,7 @@ export const resultsData = [
   },
   {
     "id": 295,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-Blue",
     "teacher": "Emily Sullivan",
     "student": "Charles Bell",
@@ -18754,7 +18754,7 @@ export const resultsData = [
   },
   {
     "id": 296,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-Blue",
     "teacher": "Emily Sullivan",
     "student": "Charles Bell",
@@ -18884,7 +18884,7 @@ export const resultsData = [
   },
   {
     "id": 309,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-Blue",
     "teacher": "Sarah Jackson",
     "student": "Charles Bell",
@@ -18894,7 +18894,7 @@ export const resultsData = [
   },
   {
     "id": 310,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-Blue",
     "teacher": "Sarah Jackson",
     "student": "Charles Bell",
@@ -18904,7 +18904,7 @@ export const resultsData = [
   },
   {
     "id": 311,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-Blue",
     "teacher": "Emily Sullivan",
     "student": "Charles Bell",
@@ -18914,7 +18914,7 @@ export const resultsData = [
   },
   {
     "id": 312,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-Blue",
     "teacher": "Emily Sullivan",
     "student": "Charles Bell",
@@ -19044,7 +19044,7 @@ export const resultsData = [
   },
   {
     "id": 325,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-White",
     "teacher": "Matthew Henderson",
     "student": "Pamela Jenkins",
@@ -19054,7 +19054,7 @@ export const resultsData = [
   },
   {
     "id": 326,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-White",
     "teacher": "Matthew Henderson",
     "student": "Pamela Jenkins",
@@ -19064,7 +19064,7 @@ export const resultsData = [
   },
   {
     "id": 327,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-White",
     "teacher": "Jerry Wilson",
     "student": "Pamela Jenkins",
@@ -19074,7 +19074,7 @@ export const resultsData = [
   },
   {
     "id": 328,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-White",
     "teacher": "Jerry Wilson",
     "student": "Pamela Jenkins",
@@ -19204,7 +19204,7 @@ export const resultsData = [
   },
   {
     "id": 341,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-White",
     "teacher": "Matthew Henderson",
     "student": "Pamela Jenkins",
@@ -19214,7 +19214,7 @@ export const resultsData = [
   },
   {
     "id": 342,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-White",
     "teacher": "Matthew Henderson",
     "student": "Pamela Jenkins",
@@ -19224,7 +19224,7 @@ export const resultsData = [
   },
   {
     "id": 343,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-White",
     "teacher": "Jerry Wilson",
     "student": "Pamela Jenkins",
@@ -19234,7 +19234,7 @@ export const resultsData = [
   },
   {
     "id": 344,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-White",
     "teacher": "Jerry Wilson",
     "student": "Pamela Jenkins",
@@ -19364,7 +19364,7 @@ export const resultsData = [
   },
   {
     "id": 357,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-Gray",
     "teacher": "Sarah Jackson",
     "student": "Paul Butler",
@@ -19374,7 +19374,7 @@ export const resultsData = [
   },
   {
     "id": 358,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-Gray",
     "teacher": "Sarah Jackson",
     "student": "Paul Butler",
@@ -19384,7 +19384,7 @@ export const resultsData = [
   },
   {
     "id": 359,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-Gray",
     "teacher": "Brian Thompson",
     "student": "Paul Butler",
@@ -19394,7 +19394,7 @@ export const resultsData = [
   },
   {
     "id": 360,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-Gray",
     "teacher": "Brian Thompson",
     "student": "Paul Butler",
@@ -19524,7 +19524,7 @@ export const resultsData = [
   },
   {
     "id": 373,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-Gray",
     "teacher": "Sarah Jackson",
     "student": "Paul Butler",
@@ -19534,7 +19534,7 @@ export const resultsData = [
   },
   {
     "id": 374,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "4-Gray",
     "teacher": "Sarah Jackson",
     "student": "Paul Butler",
@@ -19544,7 +19544,7 @@ export const resultsData = [
   },
   {
     "id": 375,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-Gray",
     "teacher": "Brian Thompson",
     "student": "Paul Butler",
@@ -19554,7 +19554,7 @@ export const resultsData = [
   },
   {
     "id": 376,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "4-Gray",
     "teacher": "Brian Thompson",
     "student": "Paul Butler",
@@ -19684,7 +19684,7 @@ export const resultsData = [
   },
   {
     "id": 389,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-Blue",
     "teacher": "Kimberly Cox",
     "student": "Steven Griffin",
@@ -19694,7 +19694,7 @@ export const resultsData = [
   },
   {
     "id": 390,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-Blue",
     "teacher": "Kimberly Cox",
     "student": "Steven Griffin",
@@ -19704,7 +19704,7 @@ export const resultsData = [
   },
   {
     "id": 391,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-Blue",
     "teacher": "Daniel Hill",
     "student": "Steven Griffin",
@@ -19714,7 +19714,7 @@ export const resultsData = [
   },
   {
     "id": 392,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-Blue",
     "teacher": "Daniel Hill",
     "student": "Steven Griffin",
@@ -19844,7 +19844,7 @@ export const resultsData = [
   },
   {
     "id": 405,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-Blue",
     "teacher": "Kimberly Cox",
     "student": "Steven Griffin",
@@ -19854,7 +19854,7 @@ export const resultsData = [
   },
   {
     "id": 406,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-Blue",
     "teacher": "Kimberly Cox",
     "student": "Steven Griffin",
@@ -19864,7 +19864,7 @@ export const resultsData = [
   },
   {
     "id": 407,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-Blue",
     "teacher": "Daniel Hill",
     "student": "Steven Griffin",
@@ -19874,7 +19874,7 @@ export const resultsData = [
   },
   {
     "id": 408,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-Blue",
     "teacher": "Daniel Hill",
     "student": "Steven Griffin",
@@ -20004,7 +20004,7 @@ export const resultsData = [
   },
   {
     "id": 421,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-White",
     "teacher": "Sarah Jackson",
     "student": "Jennifer Myers",
@@ -20014,7 +20014,7 @@ export const resultsData = [
   },
   {
     "id": 422,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-White",
     "teacher": "Sarah Jackson",
     "student": "Jennifer Myers",
@@ -20024,7 +20024,7 @@ export const resultsData = [
   },
   {
     "id": 423,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-White",
     "teacher": "Jerry Wilson",
     "student": "Jennifer Myers",
@@ -20034,7 +20034,7 @@ export const resultsData = [
   },
   {
     "id": 424,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-White",
     "teacher": "Jerry Wilson",
     "student": "Jennifer Myers",
@@ -20164,7 +20164,7 @@ export const resultsData = [
   },
   {
     "id": 437,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-White",
     "teacher": "Sarah Jackson",
     "student": "Jennifer Myers",
@@ -20174,7 +20174,7 @@ export const resultsData = [
   },
   {
     "id": 438,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-White",
     "teacher": "Sarah Jackson",
     "student": "Jennifer Myers",
@@ -20184,7 +20184,7 @@ export const resultsData = [
   },
   {
     "id": 439,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-White",
     "teacher": "Jerry Wilson",
     "student": "Jennifer Myers",
@@ -20194,7 +20194,7 @@ export const resultsData = [
   },
   {
     "id": 440,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-White",
     "teacher": "Jerry Wilson",
     "student": "Jennifer Myers",
@@ -20324,7 +20324,7 @@ export const resultsData = [
   },
   {
     "id": 453,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-Gray",
     "teacher": "Jack Young",
     "student": "Gary Jackson",
@@ -20334,7 +20334,7 @@ export const resultsData = [
   },
   {
     "id": 454,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-Gray",
     "teacher": "Jack Young",
     "student": "Gary Jackson",
@@ -20344,7 +20344,7 @@ export const resultsData = [
   },
   {
     "id": 455,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-Gray",
     "teacher": "Daniel Hill",
     "student": "Gary Jackson",
@@ -20354,7 +20354,7 @@ export const resultsData = [
   },
   {
     "id": 456,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-Gray",
     "teacher": "Daniel Hill",
     "student": "Gary Jackson",
@@ -20484,7 +20484,7 @@ export const resultsData = [
   },
   {
     "id": 469,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-Gray",
     "teacher": "Jack Young",
     "student": "Gary Jackson",
@@ -20494,7 +20494,7 @@ export const resultsData = [
   },
   {
     "id": 470,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "5-Gray",
     "teacher": "Jack Young",
     "student": "Gary Jackson",
@@ -20504,7 +20504,7 @@ export const resultsData = [
   },
   {
     "id": 471,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-Gray",
     "teacher": "Daniel Hill",
     "student": "Gary Jackson",
@@ -20514,7 +20514,7 @@ export const resultsData = [
   },
   {
     "id": 472,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "5-Gray",
     "teacher": "Daniel Hill",
     "student": "Gary Jackson",
@@ -20644,7 +20644,7 @@ export const resultsData = [
   },
   {
     "id": 485,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "6-Blue",
     "teacher": "Matthew Henderson",
     "student": "Raymond Rogers",
@@ -20654,7 +20654,7 @@ export const resultsData = [
   },
   {
     "id": 486,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "6-Blue",
     "teacher": "Matthew Henderson",
     "student": "Raymond Rogers",
@@ -20664,7 +20664,7 @@ export const resultsData = [
   },
   {
     "id": 487,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "6-Blue",
     "teacher": "George Rogers",
     "student": "Raymond Rogers",
@@ -20674,7 +20674,7 @@ export const resultsData = [
   },
   {
     "id": 488,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "6-Blue",
     "teacher": "George Rogers",
     "student": "Raymond Rogers",
@@ -20764,7 +20764,7 @@ export const resultsData = [
   },
   {
     "id": 497,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "6-Blue",
     "teacher": "Kimberly Cox",
     "student": "Raymond Rogers",
@@ -20774,7 +20774,7 @@ export const resultsData = [
   },
   {
     "id": 498,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "6-Blue",
     "teacher": "Kimberly Cox",
     "student": "Raymond Rogers",
@@ -20844,7 +20844,7 @@ export const resultsData = [
   },
   {
     "id": 505,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "6-Blue",
     "teacher": "Matthew Henderson",
     "student": "Raymond Rogers",
@@ -20854,7 +20854,7 @@ export const resultsData = [
   },
   {
     "id": 506,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "6-Blue",
     "teacher": "Matthew Henderson",
     "student": "Raymond Rogers",
@@ -20864,7 +20864,7 @@ export const resultsData = [
   },
   {
     "id": 507,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "6-Blue",
     "teacher": "George Rogers",
     "student": "Raymond Rogers",
@@ -20874,7 +20874,7 @@ export const resultsData = [
   },
   {
     "id": 508,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "6-Blue",
     "teacher": "George Rogers",
     "student": "Raymond Rogers",
@@ -20964,7 +20964,7 @@ export const resultsData = [
   },
   {
     "id": 517,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "6-Blue",
     "teacher": "Kimberly Cox",
     "student": "Raymond Rogers",
@@ -20974,7 +20974,7 @@ export const resultsData = [
   },
   {
     "id": 518,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "6-Blue",
     "teacher": "Kimberly Cox",
     "student": "Raymond Rogers",
@@ -21044,7 +21044,7 @@ export const resultsData = [
   },
   {
     "id": 525,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "6-White",
     "teacher": "Kimberly Cox",
     "student": "Emma Jackson",
@@ -21054,7 +21054,7 @@ export const resultsData = [
   },
   {
     "id": 526,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "6-White",
     "teacher": "Kimberly Cox",
     "student": "Emma Jackson",
@@ -21064,7 +21064,7 @@ export const resultsData = [
   },
   {
     "id": 527,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "6-White",
     "teacher": "Brian Thompson",
     "student": "Emma Jackson",
@@ -21074,7 +21074,7 @@ export const resultsData = [
   },
   {
     "id": 528,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "6-White",
     "teacher": "Brian Thompson",
     "student": "Emma Jackson",
@@ -21164,7 +21164,7 @@ export const resultsData = [
   },
   {
     "id": 537,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "6-White",
     "teacher": "Kimberly Cox",
     "student": "Emma Jackson",
@@ -21174,7 +21174,7 @@ export const resultsData = [
   },
   {
     "id": 538,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "6-White",
     "teacher": "Kimberly Cox",
     "student": "Emma Jackson",
@@ -21244,7 +21244,7 @@ export const resultsData = [
   },
   {
     "id": 545,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "6-White",
     "teacher": "Kimberly Cox",
     "student": "Emma Jackson",
@@ -21254,7 +21254,7 @@ export const resultsData = [
   },
   {
     "id": 546,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "6-White",
     "teacher": "Kimberly Cox",
     "student": "Emma Jackson",
@@ -21264,7 +21264,7 @@ export const resultsData = [
   },
   {
     "id": 547,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "6-White",
     "teacher": "Brian Thompson",
     "student": "Emma Jackson",
@@ -21274,7 +21274,7 @@ export const resultsData = [
   },
   {
     "id": 548,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "6-White",
     "teacher": "Brian Thompson",
     "student": "Emma Jackson",
@@ -21364,7 +21364,7 @@ export const resultsData = [
   },
   {
     "id": 557,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "6-White",
     "teacher": "Kimberly Cox",
     "student": "Emma Jackson",
@@ -21374,7 +21374,7 @@ export const resultsData = [
   },
   {
     "id": 558,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "6-White",
     "teacher": "Kimberly Cox",
     "student": "Emma Jackson",
@@ -21444,7 +21444,7 @@ export const resultsData = [
   },
   {
     "id": 565,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "7-Blue",
     "teacher": "Rachel Hill",
     "student": "Larry Cook",
@@ -21454,7 +21454,7 @@ export const resultsData = [
   },
   {
     "id": 566,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "7-Blue",
     "teacher": "Rachel Hill",
     "student": "Larry Cook",
@@ -21464,7 +21464,7 @@ export const resultsData = [
   },
   {
     "id": 567,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "7-Blue",
     "teacher": "Emily Sullivan",
     "student": "Larry Cook",
@@ -21474,7 +21474,7 @@ export const resultsData = [
   },
   {
     "id": 568,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "7-Blue",
     "teacher": "Emily Sullivan",
     "student": "Larry Cook",
@@ -21564,7 +21564,7 @@ export const resultsData = [
   },
   {
     "id": 577,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "7-Blue",
     "teacher": "Andrew Flores",
     "student": "Larry Cook",
@@ -21574,7 +21574,7 @@ export const resultsData = [
   },
   {
     "id": 578,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "7-Blue",
     "teacher": "Andrew Flores",
     "student": "Larry Cook",
@@ -21644,7 +21644,7 @@ export const resultsData = [
   },
   {
     "id": 585,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "7-Blue",
     "teacher": "Rachel Hill",
     "student": "Larry Cook",
@@ -21654,7 +21654,7 @@ export const resultsData = [
   },
   {
     "id": 586,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "7-Blue",
     "teacher": "Rachel Hill",
     "student": "Larry Cook",
@@ -21664,7 +21664,7 @@ export const resultsData = [
   },
   {
     "id": 587,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "7-Blue",
     "teacher": "Emily Sullivan",
     "student": "Larry Cook",
@@ -21674,7 +21674,7 @@ export const resultsData = [
   },
   {
     "id": 588,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "7-Blue",
     "teacher": "Emily Sullivan",
     "student": "Larry Cook",
@@ -21764,7 +21764,7 @@ export const resultsData = [
   },
   {
     "id": 597,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "7-Blue",
     "teacher": "Andrew Flores",
     "student": "Larry Cook",
@@ -21774,7 +21774,7 @@ export const resultsData = [
   },
   {
     "id": 598,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "7-Blue",
     "teacher": "Andrew Flores",
     "student": "Larry Cook",
@@ -21844,7 +21844,7 @@ export const resultsData = [
   },
   {
     "id": 605,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "7-White",
     "teacher": "Jack Young",
     "student": "Sharon Gomez",
@@ -21854,7 +21854,7 @@ export const resultsData = [
   },
   {
     "id": 606,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "7-White",
     "teacher": "Jack Young",
     "student": "Sharon Gomez",
@@ -21864,7 +21864,7 @@ export const resultsData = [
   },
   {
     "id": 607,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "7-White",
     "teacher": "Daniel Hill",
     "student": "Sharon Gomez",
@@ -21874,7 +21874,7 @@ export const resultsData = [
   },
   {
     "id": 608,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "7-White",
     "teacher": "Daniel Hill",
     "student": "Sharon Gomez",
@@ -21964,7 +21964,7 @@ export const resultsData = [
   },
   {
     "id": 617,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "7-White",
     "teacher": "Kimberly Cox",
     "student": "Sharon Gomez",
@@ -21974,7 +21974,7 @@ export const resultsData = [
   },
   {
     "id": 618,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "7-White",
     "teacher": "Kimberly Cox",
     "student": "Sharon Gomez",
@@ -22044,7 +22044,7 @@ export const resultsData = [
   },
   {
     "id": 625,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "7-White",
     "teacher": "Jack Young",
     "student": "Sharon Gomez",
@@ -22054,7 +22054,7 @@ export const resultsData = [
   },
   {
     "id": 626,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "7-White",
     "teacher": "Jack Young",
     "student": "Sharon Gomez",
@@ -22064,7 +22064,7 @@ export const resultsData = [
   },
   {
     "id": 627,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "7-White",
     "teacher": "Daniel Hill",
     "student": "Sharon Gomez",
@@ -22074,7 +22074,7 @@ export const resultsData = [
   },
   {
     "id": 628,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "7-White",
     "teacher": "Daniel Hill",
     "student": "Sharon Gomez",
@@ -22164,7 +22164,7 @@ export const resultsData = [
   },
   {
     "id": 637,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "7-White",
     "teacher": "Kimberly Cox",
     "student": "Sharon Gomez",
@@ -22174,7 +22174,7 @@ export const resultsData = [
   },
   {
     "id": 638,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "7-White",
     "teacher": "Kimberly Cox",
     "student": "Sharon Gomez",
@@ -22244,7 +22244,7 @@ export const resultsData = [
   },
   {
     "id": 645,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "8-Blue",
     "teacher": "Matthew Henderson",
     "student": "Brandon Collins",
@@ -22254,7 +22254,7 @@ export const resultsData = [
   },
   {
     "id": 646,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "8-Blue",
     "teacher": "Matthew Henderson",
     "student": "Brandon Collins",
@@ -22264,7 +22264,7 @@ export const resultsData = [
   },
   {
     "id": 647,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "8-Blue",
     "teacher": "Jerry Wilson",
     "student": "Brandon Collins",
@@ -22274,7 +22274,7 @@ export const resultsData = [
   },
   {
     "id": 648,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "8-Blue",
     "teacher": "Jerry Wilson",
     "student": "Brandon Collins",
@@ -22364,7 +22364,7 @@ export const resultsData = [
   },
   {
     "id": 657,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "8-Blue",
     "teacher": "Brian Thompson",
     "student": "Brandon Collins",
@@ -22374,7 +22374,7 @@ export const resultsData = [
   },
   {
     "id": 658,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "8-Blue",
     "teacher": "Brian Thompson",
     "student": "Brandon Collins",
@@ -22444,7 +22444,7 @@ export const resultsData = [
   },
   {
     "id": 665,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "8-Blue",
     "teacher": "Matthew Henderson",
     "student": "Brandon Collins",
@@ -22454,7 +22454,7 @@ export const resultsData = [
   },
   {
     "id": 666,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "8-Blue",
     "teacher": "Matthew Henderson",
     "student": "Brandon Collins",
@@ -22464,7 +22464,7 @@ export const resultsData = [
   },
   {
     "id": 667,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "8-Blue",
     "teacher": "Jerry Wilson",
     "student": "Brandon Collins",
@@ -22474,7 +22474,7 @@ export const resultsData = [
   },
   {
     "id": 668,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "8-Blue",
     "teacher": "Jerry Wilson",
     "student": "Brandon Collins",
@@ -22564,7 +22564,7 @@ export const resultsData = [
   },
   {
     "id": 677,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "8-Blue",
     "teacher": "Brian Thompson",
     "student": "Brandon Collins",
@@ -22574,7 +22574,7 @@ export const resultsData = [
   },
   {
     "id": 678,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "8-Blue",
     "teacher": "Brian Thompson",
     "student": "Brandon Collins",
@@ -22644,7 +22644,7 @@ export const resultsData = [
   },
   {
     "id": 685,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "8-White",
     "teacher": "Jack Young",
     "student": "Jessica Turner",
@@ -22654,7 +22654,7 @@ export const resultsData = [
   },
   {
     "id": 686,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "8-White",
     "teacher": "Jack Young",
     "student": "Jessica Turner",
@@ -22664,7 +22664,7 @@ export const resultsData = [
   },
   {
     "id": 687,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "8-White",
     "teacher": "Raymond King",
     "student": "Jessica Turner",
@@ -22674,7 +22674,7 @@ export const resultsData = [
   },
   {
     "id": 688,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "8-White",
     "teacher": "Raymond King",
     "student": "Jessica Turner",
@@ -22764,7 +22764,7 @@ export const resultsData = [
   },
   {
     "id": 697,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "8-White",
     "teacher": "Kimberly Cox",
     "student": "Jessica Turner",
@@ -22774,7 +22774,7 @@ export const resultsData = [
   },
   {
     "id": 698,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "8-White",
     "teacher": "Kimberly Cox",
     "student": "Jessica Turner",
@@ -22844,7 +22844,7 @@ export const resultsData = [
   },
   {
     "id": 705,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "8-White",
     "teacher": "Jack Young",
     "student": "Jessica Turner",
@@ -22854,7 +22854,7 @@ export const resultsData = [
   },
   {
     "id": 706,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "8-White",
     "teacher": "Jack Young",
     "student": "Jessica Turner",
@@ -22864,7 +22864,7 @@ export const resultsData = [
   },
   {
     "id": 707,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "8-White",
     "teacher": "Raymond King",
     "student": "Jessica Turner",
@@ -22874,7 +22874,7 @@ export const resultsData = [
   },
   {
     "id": 708,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "8-White",
     "teacher": "Raymond King",
     "student": "Jessica Turner",
@@ -22964,7 +22964,7 @@ export const resultsData = [
   },
   {
     "id": 717,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "8-White",
     "teacher": "Kimberly Cox",
     "student": "Jessica Turner",
@@ -22974,7 +22974,7 @@ export const resultsData = [
   },
   {
     "id": 718,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "8-White",
     "teacher": "Kimberly Cox",
     "student": "Jessica Turner",
@@ -23044,7 +23044,7 @@ export const resultsData = [
   },
   {
     "id": 725,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "9-Blue",
     "teacher": "Matthew Henderson",
     "student": "Mark Jenkins",
@@ -23054,7 +23054,7 @@ export const resultsData = [
   },
   {
     "id": 726,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "9-Blue",
     "teacher": "Matthew Henderson",
     "student": "Mark Jenkins",
@@ -23064,7 +23064,7 @@ export const resultsData = [
   },
   {
     "id": 727,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "9-Blue",
     "teacher": "Daniel Hill",
     "student": "Mark Jenkins",
@@ -23074,7 +23074,7 @@ export const resultsData = [
   },
   {
     "id": 728,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "9-Blue",
     "teacher": "Daniel Hill",
     "student": "Mark Jenkins",
@@ -23164,7 +23164,7 @@ export const resultsData = [
   },
   {
     "id": 737,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "9-Blue",
     "teacher": "Jack Young",
     "student": "Mark Jenkins",
@@ -23174,7 +23174,7 @@ export const resultsData = [
   },
   {
     "id": 738,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "9-Blue",
     "teacher": "Jack Young",
     "student": "Mark Jenkins",
@@ -23244,7 +23244,7 @@ export const resultsData = [
   },
   {
     "id": 745,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "9-Blue",
     "teacher": "Matthew Henderson",
     "student": "Mark Jenkins",
@@ -23254,7 +23254,7 @@ export const resultsData = [
   },
   {
     "id": 746,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "9-Blue",
     "teacher": "Matthew Henderson",
     "student": "Mark Jenkins",
@@ -23264,7 +23264,7 @@ export const resultsData = [
   },
   {
     "id": 747,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "9-Blue",
     "teacher": "Daniel Hill",
     "student": "Mark Jenkins",
@@ -23274,7 +23274,7 @@ export const resultsData = [
   },
   {
     "id": 748,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "9-Blue",
     "teacher": "Daniel Hill",
     "student": "Mark Jenkins",
@@ -23364,7 +23364,7 @@ export const resultsData = [
   },
   {
     "id": 757,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "9-Blue",
     "teacher": "Jack Young",
     "student": "Mark Jenkins",
@@ -23374,7 +23374,7 @@ export const resultsData = [
   },
   {
     "id": 758,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "9-Blue",
     "teacher": "Jack Young",
     "student": "Mark Jenkins",
@@ -23444,7 +23444,7 @@ export const resultsData = [
   },
   {
     "id": 765,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "9-White",
     "teacher": "Matthew Henderson",
     "student": "Anna Wright",
@@ -23454,7 +23454,7 @@ export const resultsData = [
   },
   {
     "id": 766,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "9-White",
     "teacher": "Matthew Henderson",
     "student": "Anna Wright",
@@ -23464,7 +23464,7 @@ export const resultsData = [
   },
   {
     "id": 767,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "9-White",
     "teacher": "Brian Thompson",
     "student": "Anna Wright",
@@ -23474,7 +23474,7 @@ export const resultsData = [
   },
   {
     "id": 768,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "9-White",
     "teacher": "Brian Thompson",
     "student": "Anna Wright",
@@ -23564,7 +23564,7 @@ export const resultsData = [
   },
   {
     "id": 777,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "9-White",
     "teacher": "Jack Young",
     "student": "Anna Wright",
@@ -23574,7 +23574,7 @@ export const resultsData = [
   },
   {
     "id": 778,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "9-White",
     "teacher": "Jack Young",
     "student": "Anna Wright",
@@ -23644,7 +23644,7 @@ export const resultsData = [
   },
   {
     "id": 785,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "9-White",
     "teacher": "Matthew Henderson",
     "student": "Anna Wright",
@@ -23654,7 +23654,7 @@ export const resultsData = [
   },
   {
     "id": 786,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "9-White",
     "teacher": "Matthew Henderson",
     "student": "Anna Wright",
@@ -23664,7 +23664,7 @@ export const resultsData = [
   },
   {
     "id": 787,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "9-White",
     "teacher": "Brian Thompson",
     "student": "Anna Wright",
@@ -23674,7 +23674,7 @@ export const resultsData = [
   },
   {
     "id": 788,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "9-White",
     "teacher": "Brian Thompson",
     "student": "Anna Wright",
@@ -23764,7 +23764,7 @@ export const resultsData = [
   },
   {
     "id": 797,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "9-White",
     "teacher": "Jack Young",
     "student": "Anna Wright",
@@ -23774,7 +23774,7 @@ export const resultsData = [
   },
   {
     "id": 798,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "9-White",
     "teacher": "Jack Young",
     "student": "Anna Wright",
@@ -23844,7 +23844,7 @@ export const resultsData = [
   },
   {
     "id": 805,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "10-Blue",
     "teacher": "Matthew Henderson",
     "student": "David Fisher",
@@ -23854,7 +23854,7 @@ export const resultsData = [
   },
   {
     "id": 806,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "10-Blue",
     "teacher": "Matthew Henderson",
     "student": "David Fisher",
@@ -23864,7 +23864,7 @@ export const resultsData = [
   },
   {
     "id": 807,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "10-Blue",
     "teacher": "George Rogers",
     "student": "David Fisher",
@@ -23874,7 +23874,7 @@ export const resultsData = [
   },
   {
     "id": 808,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "10-Blue",
     "teacher": "George Rogers",
     "student": "David Fisher",
@@ -23964,7 +23964,7 @@ export const resultsData = [
   },
   {
     "id": 817,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "10-Blue",
     "teacher": "Andrew Flores",
     "student": "David Fisher",
@@ -23974,7 +23974,7 @@ export const resultsData = [
   },
   {
     "id": 818,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "10-Blue",
     "teacher": "Andrew Flores",
     "student": "David Fisher",
@@ -24044,7 +24044,7 @@ export const resultsData = [
   },
   {
     "id": 825,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "10-Blue",
     "teacher": "Matthew Henderson",
     "student": "David Fisher",
@@ -24054,7 +24054,7 @@ export const resultsData = [
   },
   {
     "id": 826,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "10-Blue",
     "teacher": "Matthew Henderson",
     "student": "David Fisher",
@@ -24064,7 +24064,7 @@ export const resultsData = [
   },
   {
     "id": 827,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "10-Blue",
     "teacher": "George Rogers",
     "student": "David Fisher",
@@ -24074,7 +24074,7 @@ export const resultsData = [
   },
   {
     "id": 828,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "10-Blue",
     "teacher": "George Rogers",
     "student": "David Fisher",
@@ -24164,7 +24164,7 @@ export const resultsData = [
   },
   {
     "id": 837,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "10-Blue",
     "teacher": "Andrew Flores",
     "student": "David Fisher",
@@ -24174,7 +24174,7 @@ export const resultsData = [
   },
   {
     "id": 838,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "10-Blue",
     "teacher": "Andrew Flores",
     "student": "David Fisher",
@@ -24244,7 +24244,7 @@ export const resultsData = [
   },
   {
     "id": 845,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "10-White",
     "teacher": "Matthew Henderson",
     "student": "Anna Barnes",
@@ -24254,7 +24254,7 @@ export const resultsData = [
   },
   {
     "id": 846,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "10-White",
     "teacher": "Matthew Henderson",
     "student": "Anna Barnes",
@@ -24264,7 +24264,7 @@ export const resultsData = [
   },
   {
     "id": 847,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "10-White",
     "teacher": "Emily Sullivan",
     "student": "Anna Barnes",
@@ -24274,7 +24274,7 @@ export const resultsData = [
   },
   {
     "id": 848,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "10-White",
     "teacher": "Emily Sullivan",
     "student": "Anna Barnes",
@@ -24364,7 +24364,7 @@ export const resultsData = [
   },
   {
     "id": 857,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "10-White",
     "teacher": "Andrew Flores",
     "student": "Anna Barnes",
@@ -24374,7 +24374,7 @@ export const resultsData = [
   },
   {
     "id": 858,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "10-White",
     "teacher": "Andrew Flores",
     "student": "Anna Barnes",
@@ -24444,7 +24444,7 @@ export const resultsData = [
   },
   {
     "id": 865,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "10-White",
     "teacher": "Matthew Henderson",
     "student": "Anna Barnes",
@@ -24454,7 +24454,7 @@ export const resultsData = [
   },
   {
     "id": 866,
-    "subject": "Urdu Language",
+    "subject": "French Language",
     "class": "10-White",
     "teacher": "Matthew Henderson",
     "student": "Anna Barnes",
@@ -24464,7 +24464,7 @@ export const resultsData = [
   },
   {
     "id": 867,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "10-White",
     "teacher": "Emily Sullivan",
     "student": "Anna Barnes",
@@ -24474,7 +24474,7 @@ export const resultsData = [
   },
   {
     "id": 868,
-    "subject": "Islamic Studies",
+    "subject": "Religious Education",
     "class": "10-White",
     "teacher": "Emily Sullivan",
     "student": "Anna Barnes",
@@ -24564,7 +24564,7 @@ export const resultsData = [
   },
   {
     "id": 877,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "10-White",
     "teacher": "Andrew Flores",
     "student": "Anna Barnes",
@@ -24574,7 +24574,7 @@ export const resultsData = [
   },
   {
     "id": 878,
-    "subject": "Pakistan Studies",
+    "subject": "History",
     "class": "10-White",
     "teacher": "Andrew Flores",
     "student": "Anna Barnes",

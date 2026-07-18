@@ -1,37 +1,19 @@
-import { SignUp } from "@clerk/nextjs";
+import Link from "next/link";
 
 export default function SignUpPage() {
   return (
     <div className="h-screen w-screen flex items-center justify-center bg-[#f7f8fa]">
-      <SignUp
-        appearance={{
-          layout: {
-            logoPlacement: "none",
-            helpPageUrl: undefined,
-            privacyPageUrl: undefined,
-            termsPageUrl: undefined,
-          },
-          variables: {
-            colorPrimary: "#CFCEFF", // hsPurple Accent Color
-            colorBackground: "#ffffff",
-            colorText: "#000000",
-            colorTextSecondary: "#4b5563",
-            borderRadius: "0.5rem",
-          },
-          elements: {
-            card: "shadow-2xl border border-gray-100",
-            formButtonPrimary: "bg-hsPurple text-black hover:bg-[#b5b4f8] border-none transition-all font-bold text-sm",
-            footer: "hidden", // Hide footer references to Clerk
-            socialButtonsBlockButton: "hidden", // Hide social login buttons
-            socialButtonsBlock: "hidden",
-            socialButtons: "hidden",
-            socialButtonsIconButton: "hidden",
-            socialButtonsDivider: "hidden", // Hide "or" divider
-            dividerRow: "hidden", // Hide divider line
-            dividerText: "hidden", // Hide "or" text
-          }
-        }}
-      />
+      <div className="bg-white p-10 rounded-lg shadow-2xl border border-gray-100 w-full max-w-md text-center">
+        <h1 className="text-2xl font-bold text-gray-800 mb-4">Registration Disabled</h1>
+        <p className="text-sm text-gray-500 mb-6">
+          Self-registration is disabled for security reasons. Please contact the school administration department to request an account.
+        </p>
+        <Link href="/sign-in">
+          <span className="inline-block px-6 py-2 bg-hsPurple hover:bg-[#b5b4f8] text-black font-semibold rounded-md transition-all text-sm shadow-md cursor-pointer">
+            Back to Login
+          </span>
+        </Link>
+      </div>
     </div>
   );
 }

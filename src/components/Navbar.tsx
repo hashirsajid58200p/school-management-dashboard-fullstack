@@ -1,9 +1,9 @@
-import { UserButton } from "@clerk/nextjs";
-import { currentUser } from "@clerk/nextjs/server";
+import { currentUser } from "@/lib/auth";
 import Image from "next/image";
 
 const Navbar = async () => {
   const user = await currentUser();
+  
   return (
     <div className="flex items-center justify-between p-4">
       {/* SEARCH BAR */}
@@ -27,13 +27,29 @@ const Navbar = async () => {
           </div>
         </div>
         <div className="flex flex-col">
-          <span className="text-xs leading-3 font-medium">John Doe</span>
-          <span className="text-[10px] text-gray-500 text-right">
-            {user?.publicMetadata?.role as string}
+          <span className="text-xs leading-3 font-medium">
+            {user ? `${user.firstName} ${user.lastName}` : "Guest User"}
+          </span>
+          <span className="text-[10px] text-gray-500 text-right capitalize">
+            {user?.publicMetadata?.role as string || "Guest"}
           </span>
         </div>
-        {/* <Image src="/avatar.png" alt="" width={36} height={36} className="rounded-full"/> */}
-        <UserButton />
+        <div className="flex items-center gap-3">
+          <Image
+            src="/noAvatar.png"
+            alt="Avatar"
+            width={36}
+            height={36}
+            className="rounded-full object-cover border border-gray-200"
+          />
+          <a
+            href="/logout"
+            className="p-1.5 hover:bg-gray-100 rounded-full transition-all flex items-center justify-center"
+            title="Log Out"
+          >
+            <Image src="/logout.png" alt="Logout" width={18} height={18} />
+          </a>
+        </div>
       </div>
     </div>
   );

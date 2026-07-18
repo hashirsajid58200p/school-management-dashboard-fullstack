@@ -10,7 +10,7 @@ import {
   TeacherSchema,
 } from "./formValidationSchemas";
 import prisma from "./prisma";
-import { clerkClient } from "@clerk/nextjs/server";
+import { clerkClient } from "@/lib/auth";
 
 type CurrentState = { success: boolean; error: boolean };
 
@@ -164,6 +164,7 @@ export const createTeacher = async (
         bloodType: data.bloodType,
         sex: data.sex,
         birthday: data.birthday,
+        password: data.password || "123456",
         subjects: {
           connect: data.subjects?.map((subjectId: string) => ({
             id: parseInt(subjectId),
@@ -287,6 +288,7 @@ export const createStudent = async (
         gradeId: data.gradeId,
         classId: data.classId,
         parentId: data.parentId,
+        password: data.password || "123456",
       },
     });
 
@@ -490,6 +492,7 @@ export const createParent = async (
         email: data.email || null,
         phone: data.phone,
         address: data.address,
+        password: data.password || "123456",
       },
     });
 
@@ -520,6 +523,7 @@ export const updateParent = async (
         id: data.id,
       },
       data: {
+        ...(data.password !== "" && { password: data.password }),
         username: data.username,
         name: data.name,
         surname: data.surname,

@@ -8,8 +8,10 @@ datasource db {
 }
 
 model Admin {
-  id       String @id
-  username String @unique
+  id       String  @id
+  username String  @unique
+  email    String? @unique
+  password String? @default("123456")
 }
 
 model Student {
@@ -33,6 +35,7 @@ model Student {
   attendances Attendance[]
   results     Result[]
   birthday    DateTime
+  password    String?      @default("123456")
 }
 
 model Teacher {
@@ -51,6 +54,7 @@ model Teacher {
   lessons   Lesson[]
   classes   Class[]
   birthday  DateTime
+  password  String?   @default("123456")
 }
 
 model Parent {
@@ -63,6 +67,7 @@ model Parent {
   address   String
   createdAt DateTime  @default(now())
   students  Student[]
+  password  String?   @default("123456")
 }
 
 model Grade {
