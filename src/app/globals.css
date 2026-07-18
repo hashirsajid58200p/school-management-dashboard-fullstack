@@ -106,3 +106,12 @@
   color: gray !important;
   margin-bottom: 5px;
 }
+
+/* Hide scrollbar globally but keep scroll functionality */
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
