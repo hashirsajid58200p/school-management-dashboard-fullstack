@@ -27,6 +27,8 @@ export default function SignInPage() {
             socialButtons: "hidden",
             socialButtonsIconButton: "hidden",
             socialButtonsDivider: "hidden", // Hide "or" divider
+            dividerRow: "hidden", // Hide divider line
+            dividerText: "hidden", // Hide "or" text
           }
         }}
       />
