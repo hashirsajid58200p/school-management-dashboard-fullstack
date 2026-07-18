@@ -100,14 +100,47 @@ export const clerkClient = {
   }
 };
 
-export const clerkMiddleware = (handler: any) => {
+export const clerkMiddleware = (handler: (auth: () => any, req: any) => Promise<any> | any) => {
   return async (req: any, event: any) => {
-    return;
+    // Mock auth function that reads cookies from the request object in middleware
+    const mockAuth = () => {
+      const match = req.cookies.get("mock_user")?.value;
+      if (match) {
+        try {
+          const mockUser = JSON.parse(decodeURIComponent(match));
+          return {
+            userId: mockUser.id,
+            sessionClaims: {
+              metadata: {
+                role: mockUser.role
+              }
+            }
+          };
+        } catch (e) {}
+      }
+      return {
+        userId: "admin1",
+        sessionClaims: {
+          metadata: {
+            role: "admin"
+          }
+        }
+      };
+    };
+
+    return await handler(mockAuth, req);
   };
 };
 
 export const createRouteMatcher = (routes: string[]) => {
   return (req: any) => {
-    return false;
+    const url = new URL(req.url);
+    const path = url.pathname;
+    return routes.some((route) => {
+      // Convert standard clerk route matchers like '/student(.*)' into regular expressions
+      const regexStr = route.replace(/\(\.\*\)/g, ".*");
+      const regex = new RegExp(`^${regexStr}$`);
+      return regex.test(path);
+    });
   };
 };
