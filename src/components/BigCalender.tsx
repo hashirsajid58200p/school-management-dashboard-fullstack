@@ -30,16 +30,6 @@ const BigCalendar = ({
       onView={handleOnChangeView}
       min={new Date(2025, 1, 0, 8, 0, 0)}
       max={new Date(2025, 1, 0, 17, 0, 0)}
-      components={{
-        event: ({ event }) => (
-          <div className="flex flex-col text-left gap-0.5 leading-tight p-0.5">
-            <span className="font-bold text-[11px] truncate">{event.title}</span>
-            <span className="text-[9px] opacity-80">
-              {moment(event.start).format("h:mm")} - {moment(event.end).format("h:mm A")}
-            </span>
-          </div>
-        )
-      }}
     />
   );
 };

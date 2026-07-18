@@ -256,8 +256,17 @@ async function main() {
     // Distribute hours: start between 8am and 2pm, days between Monday and Friday
     const day = dayKeys[i % dayKeys.length];
     const startHour = 8 + (i % 6);
-    const startTimeStr = `2025-01-01T${String(startHour).padStart(2, '0')}:00:00Z`;
-    const endTimeStr = `2025-01-01T${String(startHour + 1).padStart(2, '0')}:00:00Z`;
+
+    // Map the database Day enum to correct weekdays in January 2025 (Monday = 6th, Friday = 10th)
+    let dateStr = "2025-01-06"; // default Monday
+    if (day === Day.MONDAY) dateStr = "2025-01-06";
+    else if (day === Day.TUESDAY) dateStr = "2025-01-07";
+    else if (day === Day.WEDNESDAY) dateStr = "2025-01-08";
+    else if (day === Day.THURSDAY) dateStr = "2025-01-09";
+    else if (day === Day.FRIDAY) dateStr = "2025-01-10";
+
+    const startTimeStr = `${dateStr}T${String(startHour).padStart(2, '0')}:00:00`;
+    const endTimeStr = `${dateStr}T${String(startHour + 1).padStart(2, '0')}:00:00`;
 
     await prisma.lesson.create({
       data: {
