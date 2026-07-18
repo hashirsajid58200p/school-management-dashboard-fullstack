@@ -150,31 +150,7 @@ async function main() {
     throw new Error("Failed to seed Classes.");
   }
 
-  // 6. Connect Teacher-Class relations
-  for (const teacher of teachersData) {
-    const classConnects = [];
-    for (const className of teacher.classes) {
-      const dbClass = await prisma.class.findUnique({
-        where: { name: className }
-      });
-      if (dbClass) {
-        classConnects.push({ id: dbClass.id });
-      }
-    }
-    if (classConnects.length > 0) {
-      await prisma.teacher.update({
-        where: { id: `teacher${teacher.id}` },
-        data: {
-          classes: {
-            connect: classConnects
-          }
-        }
-      });
-    }
-  }
-  console.log("Teacher-Class associations updated.");
-
-  // 7. Seeding Parents
+  // 6. Seeding Parents
   for (const parent of parentsData) {
     const parts = parent.name.split(" ");
     const firstName = parts[0];
@@ -204,7 +180,7 @@ async function main() {
     throw new Error("Failed to seed Parents.");
   }
 
-  // 8. Seeding Students
+  // 7. Seeding Students
   for (const student of studentsData) {
     const parts = student.name.split(" ");
     const firstName = parts[0];
@@ -249,8 +225,10 @@ async function main() {
   }
   console.log("Students seeded.");
 
-  // 9. Seeding Lessons (auto-generate Lesson IDs)
-  for (const lesson of lessonsData) {
+  // 8. Seeding Lessons (distribute times and days)
+  const dayKeys = Object.values(Day);
+  for (let i = 0; i < lessonsData.length; i++) {
+    const lesson = lessonsData[i];
     const dbSub = await prisma.subject.findFirst({
       where: { name: { equals: lesson.subject, mode: "insensitive" } }
     });
@@ -275,12 +253,18 @@ async function main() {
       }
     }
 
+    // Distribute hours: start between 8am and 2pm, days between Monday and Friday
+    const day = dayKeys[i % dayKeys.length];
+    const startHour = 8 + (i % 6);
+    const startTimeStr = `2025-01-01T${String(startHour).padStart(2, '0')}:00:00Z`;
+    const endTimeStr = `2025-01-01T${String(startHour + 1).padStart(2, '0')}:00:00Z`;
+
     await prisma.lesson.create({
       data: {
         name: lesson.subject,
-        day: Day.MONDAY,
-        startTime: new Date("2025-01-01T08:00:00Z"),
-        endTime: new Date("2025-01-01T09:00:00Z"),
+        day: day,
+        startTime: new Date(startTimeStr),
+        endTime: new Date(endTimeStr),
         subjectId: dbSub ? dbSub.id : fallbackSubject.id,
         classId: dbClass ? dbClass.id : fallbackClass.id,
         teacherId: teacherId
@@ -295,8 +279,9 @@ async function main() {
     throw new Error("Failed to seed Lessons.");
   }
 
-  // 10. Seeding Exams (auto-generate Exam IDs)
-  for (const exam of examsData) {
+  // 9. Seeding Exams (distribute hours)
+  for (let i = 0; i < examsData.length; i++) {
+    const exam = examsData[i];
     const dbClass = await prisma.class.findUnique({
       where: { name: exam.class }
     });
@@ -304,18 +289,22 @@ async function main() {
       where: { classId: dbClass ? dbClass.id : undefined }
     });
 
+    const examHour = 9 + (i % 5); // Distribute 9am to 1pm
+    const startTimeStr = `${exam.date}T${String(examHour).padStart(2, '0')}:00:00Z`;
+    const endTimeStr = `${exam.date}T${String(examHour + 1).padStart(2, '0')}:00:00Z`;
+
     await prisma.exam.create({
       data: {
         title: `${exam.subject} Exam`,
-        startTime: new Date(`${exam.date}T09:00:00Z`),
-        endTime: new Date(`${exam.date}T10:00:00Z`),
+        startTime: new Date(startTimeStr),
+        endTime: new Date(endTimeStr),
         lessonId: dbLesson ? dbLesson.id : fallbackLesson.id
       }
     });
   }
   console.log("Exams seeded.");
 
-  // 11. Seeding Assignments (auto-generate Assignment IDs)
+  // 10. Seeding Assignments
   for (const assign of assignmentsData) {
     const dbClass = await prisma.class.findUnique({
       where: { name: assign.class }
@@ -339,7 +328,7 @@ async function main() {
   const dbExams = await prisma.exam.findMany();
   const dbAssignments = await prisma.assignment.findMany();
 
-  // 12. Seeding Results (auto-generate Result IDs)
+  // 11. Seeding Results (auto-generate Result IDs)
   for (let i = 0; i < resultsData.length; i++) {
     const result = resultsData[i];
     let studentId = "student1";
@@ -372,7 +361,7 @@ async function main() {
   }
   console.log("Results seeded.");
 
-  // 13. Seeding Events (auto-generate Event IDs)
+  // 12. Seeding Events (distribute times)
   for (const event of eventsData) {
     const dbClass = await prisma.class.findUnique({
       where: { name: event.class }
@@ -390,7 +379,7 @@ async function main() {
   }
   console.log("Events seeded.");
 
-  // 14. Seeding Announcements (auto-generate Announcement IDs)
+  // 13. Seeding Announcements (auto-generate Announcement IDs)
   for (const ann of announcementsData) {
     const dbClass = await prisma.class.findUnique({
       where: { name: ann.class }

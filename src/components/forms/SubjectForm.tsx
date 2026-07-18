@@ -82,20 +82,22 @@ const SubjectForm = ({
         )}
         <div className="flex flex-col gap-2 w-full md:w-1/4">
           <label className="text-xs text-gray-500">Teachers</label>
-          <select
-            multiple
-            className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full"
-            {...register("teachers")}
-            defaultValue={data?.teachers}
-          >
+          <div className="flex flex-col gap-1 max-h-[120px] overflow-y-auto ring-[1.5px] ring-gray-300 p-2 rounded-md bg-white">
             {teachers.map(
               (teacher: { id: string; name: string; surname: string }) => (
-                <option value={teacher.id} key={teacher.id}>
+                <label key={teacher.id} className="flex items-center gap-2 text-xs cursor-pointer hover:bg-gray-50 p-1 rounded">
+                  <input
+                    type="checkbox"
+                    value={teacher.id}
+                    className="accent-hsYellow"
+                    {...register("teachers")}
+                    defaultChecked={data?.teachers?.some((t: any) => (typeof t === 'object' ? t.id === teacher.id : t === teacher.id))}
+                  />
                   {teacher.name + " " + teacher.surname}
-                </option>
+                </label>
               )
             )}
-          </select>
+          </div>
           {errors.teachers?.message && (
             <p className="text-xs text-red-400">
               {errors.teachers.message.toString()}
