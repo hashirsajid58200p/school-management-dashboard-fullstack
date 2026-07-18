@@ -266,7 +266,7 @@ async function main() {
     else if (day === Day.FRIDAY) dateStr = "2025-01-10";
 
     const startTimeStr = `${dateStr}T${String(startHour).padStart(2, '0')}:00:00`;
-    const endTimeStr = `${dateStr}T${String(startHour + 1).padStart(2, '0')}:00:00`;
+    const endTimeStr = `${dateStr}T${String(startHour).padStart(2, '0')}:45:00`;
 
     await prisma.lesson.create({
       data: {
