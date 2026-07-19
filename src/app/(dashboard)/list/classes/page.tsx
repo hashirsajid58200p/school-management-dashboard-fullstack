@@ -145,7 +145,7 @@ const renderRow = (item: ClassList) => (
       <div className="flex items-center justify-between">
         <h1 className="hidden md:block text-lg font-semibold">All Classes</h1>
         <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
-          <TableSearch />
+          {role !== "parent" && <TableSearch />}
           <div className="flex items-center gap-4 self-end">
             <button className="w-8 h-8 flex items-center justify-center rounded-full bg-hsYellow">
               <Image src="/filter.png" alt="" width={14} height={14} />
