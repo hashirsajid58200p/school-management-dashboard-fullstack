@@ -20,9 +20,12 @@ const StudentPage = async () => {
       {/* LEFT */}
       <div className="w-full xl:w-2/3">
         <div className="h-full bg-white p-4 rounded-md">
-          <h1 className="text-xl font-semibold">Schedule {classItem[0] ? `(${classItem[0].name})` : ""}</h1>
           {classItem[0] ? (
-            <BigCalendarContainer type="classId" id={classItem[0].id} />
+            <BigCalendarContainer
+              type="classId"
+              id={classItem[0].id}
+              title={`Schedule (${classItem[0].name})`}
+            />
           ) : (
             <p className="text-sm text-gray-500 font-medium py-8 text-center">No enrolled class schedule found.</p>
           )}

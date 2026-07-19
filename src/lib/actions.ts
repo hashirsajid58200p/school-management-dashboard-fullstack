@@ -9,6 +9,7 @@ import {
   SubjectSchema,
   TeacherSchema,
   LessonSchema,
+  EventSchema,
 } from "./formValidationSchemas";
 import prisma from "./prisma";
 import { clerkClient, auth } from "@/lib/auth";
@@ -1086,6 +1087,389 @@ export const updateProfile = async (
       });
     }
 
+    return { success: true, error: false };
+  } catch (err) {
+    console.error(err);
+    return { success: false, error: true };
+  }
+};
+
+export const generateAttendanceSimulation = async (
+  currentState: CurrentState,
+  days: number = 30
+) => {
+  const { userId, sessionClaims } = auth();
+  const role = (sessionClaims?.metadata as { role?: string })?.role;
+  if (!userId || role !== "admin") {
+    return { success: false, error: true, message: "Unauthorized" };
+  }
+
+  try {
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    const currentMonth = today.getMonth(); // 0-indexed (Jan = 0)
+
+    // 1. Fetch all students with their classId
+    const students = await prisma.student.findMany({
+      select: { id: true, classId: true },
+    });
+
+    const attendanceRecords = [];
+
+    // 2. Clear all daily attendance logs for the current month
+    const startOfCurrentMonth = new Date(Date.UTC(currentYear, currentMonth, 1));
+    await prisma.attendance.deleteMany({
+      where: {
+        date: {
+          gte: startOfCurrentMonth,
+        },
+      },
+    });
+
+    // 3. Generate daily logs for the current month (from 1st of this month to today)
+    for (let day = 1; day <= today.getDate(); day++) {
+      const currentDate = new Date(Date.UTC(currentYear, currentMonth, day));
+      const dayOfWeek = currentDate.getUTCDay();
+      
+      // Skip weekends
+      if (dayOfWeek === 0 || dayOfWeek === 6) continue;
+
+      for (const student of students) {
+        // 97% present rate, 3% absent rate
+        const isPresent = Math.random() > 0.03;
+
+        attendanceRecords.push({
+          date: currentDate,
+          present: isPresent,
+          studentId: student.id,
+          classId: student.classId,
+        });
+      }
+    }
+
+    // Insert daily attendance records for the current month
+    if (attendanceRecords.length > 0) {
+      await prisma.attendance.createMany({
+        data: attendanceRecords,
+      });
+    }
+
+    // 4. Seed MonthlyAttendanceSummary for the previous two months
+    // We will clear existing summaries first
+    await prisma.monthlyAttendanceSummary.deleteMany({});
+
+    const summaries = [];
+    const prevMonths = [
+      { month: currentMonth === 0 ? 12 : currentMonth, year: currentMonth === 0 ? currentYear - 1 : currentYear }, // Last Month
+      { month: currentMonth <= 1 ? 11 + currentMonth : currentMonth - 1, year: currentMonth <= 1 ? currentYear - 1 : currentYear } // Two Months Ago
+    ];
+
+    for (const pm of prevMonths) {
+      for (const student of students) {
+        // Random overall attendance percentage between 86% and 98%
+        const percentage = parseFloat((86 + Math.random() * 12).toFixed(1));
+
+        summaries.push({
+          studentId: student.id,
+          month: pm.month, // 1-12 value (Jan = 0 is stored as 1, etc.)
+          year: pm.year,
+          percentage: percentage,
+        });
+      }
+    }
+
+    if (summaries.length > 0) {
+      await prisma.monthlyAttendanceSummary.createMany({
+        data: summaries,
+      });
+    }
+
+    return { success: true, error: false };
+  } catch (err) {
+    console.error(err);
+    return { success: false, error: true };
+  }
+};
+
+export const submitAttendance = async (
+  currentState: CurrentState,
+  data: {
+    classId: number;
+    date: string;
+    attendance: { studentId: string; present: boolean }[];
+  }
+) => {
+  const { userId, sessionClaims } = auth();
+  const role = (sessionClaims?.metadata as { role?: string })?.role;
+  if (!userId || (role !== "teacher" && role !== "admin")) {
+    return { success: false, error: true, message: "Unauthorized" };
+  }
+
+  try {
+    // If user is a teacher, verify that they supervise the class
+    if (role === "teacher") {
+      const supervisedClass = await prisma.class.findFirst({
+        where: { id: data.classId, supervisorId: userId },
+      });
+      if (!supervisedClass) {
+        return {
+          success: false,
+          error: true,
+          message: "Access Denied: Only the class supervisor can record attendance.",
+        };
+      }
+    }
+
+    const recordDate = new Date(data.date);
+
+    for (const item of data.attendance) {
+      const existing = await prisma.attendance.findFirst({
+        where: {
+          studentId: item.studentId,
+          classId: data.classId,
+          date: recordDate,
+        },
+      });
+
+      if (existing) {
+        await prisma.attendance.update({
+          where: { id: existing.id },
+          data: { present: item.present },
+        });
+      } else {
+        await prisma.attendance.create({
+          data: {
+            studentId: item.studentId,
+            classId: data.classId,
+            date: recordDate,
+            present: item.present,
+          },
+        });
+      }
+    }
+
+    return { success: true, error: false };
+  } catch (err) {
+    console.error(err);
+    return { success: false, error: true };
+  }
+};
+
+export const getStudentsByClass = async (classId: number) => {
+  const { userId } = auth();
+  if (!userId) return [];
+  try {
+    return await prisma.student.findMany({
+      where: { classId },
+      select: { id: true, name: true, surname: true },
+      orderBy: { name: "asc" },
+    });
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
+};
+
+export const getAttendanceRecord = async (classId: number, date: string) => {
+  const { userId } = auth();
+  if (!userId) return [];
+  try {
+    const searchDate = new Date(date);
+
+    return await prisma.attendance.findMany({
+      where: {
+        classId,
+        date: searchDate,
+      },
+      select: { studentId: true, present: true },
+    });
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
+};
+
+export const archiveMonthlyAttendanceLogs = async (currentState: CurrentState) => {
+  const { userId, sessionClaims } = auth();
+  const role = (sessionClaims?.metadata as { role?: string })?.role;
+  if (!userId || role !== "admin") {
+    return { success: false, error: true, message: "Unauthorized" };
+  }
+
+  try {
+    const today = new Date();
+    // Start of the current month in UTC
+    const startOfCurrentMonth = new Date(Date.UTC(today.getFullYear(), today.getMonth(), 1));
+
+    // 1. Fetch daily logs from past months (any record before the 1st of the current month)
+    const pastLogs = await prisma.attendance.findMany({
+      where: {
+        date: {
+          lt: startOfCurrentMonth,
+        },
+      },
+    });
+
+    if (pastLogs.length === 0) {
+      return { success: true, error: false, message: "No past months daily logs found to archive." };
+    }
+
+    // 2. Group records by studentId, month, and year
+    // Key: studentId_year_month (month is 1-indexed for summaries: 1-12)
+    const groupings: {
+      [key: string]: {
+        studentId: string;
+        year: number;
+        month: number;
+        present: number;
+        total: number;
+      };
+    } = {};
+
+    for (const log of pastLogs) {
+      const logDate = new Date(log.date);
+      const year = logDate.getFullYear();
+      const month = logDate.getMonth() + 1; // 1-12
+      const key = `${log.studentId}_${year}_${month}`;
+
+      if (!groupings[key]) {
+        groupings[key] = {
+          studentId: log.studentId,
+          year,
+          month,
+          present: 0,
+          total: 0,
+        };
+      }
+
+      groupings[key].total += 1;
+      if (log.present) {
+        groupings[key].present += 1;
+      }
+    }
+
+    // 3. Upsert MonthlyAttendanceSummary records
+    for (const group of Object.values(groupings)) {
+      const percentage = parseFloat(((group.present / group.total) * 100).toFixed(1));
+
+      // Find if summary already exists
+      const existing = await prisma.monthlyAttendanceSummary.findFirst({
+        where: {
+          studentId: group.studentId,
+          month: group.month,
+          year: group.year,
+        },
+      });
+
+      if (existing) {
+        await prisma.monthlyAttendanceSummary.update({
+          where: { id: existing.id },
+          data: { percentage },
+        });
+      } else {
+        await prisma.monthlyAttendanceSummary.create({
+          data: {
+            studentId: group.studentId,
+            month: group.month,
+            year: group.year,
+            percentage,
+          },
+        });
+      }
+    }
+
+    // 4. Delete past daily logs that we just archived
+    await prisma.attendance.deleteMany({
+      where: {
+        date: {
+          lt: startOfCurrentMonth,
+        },
+      },
+    });
+
+    return { success: true, error: false, message: "Past months daily logs archived successfully!" };
+  } catch (err) {
+    console.error(err);
+    return { success: false, error: true };
+  }
+};
+
+export const createEvent = async (
+  currentState: CurrentState,
+  data: EventSchema
+) => {
+  const { userId, sessionClaims } = auth();
+  const role = (sessionClaims?.metadata as { role?: string })?.role;
+  if (!userId || role !== "admin") {
+    return { success: false, error: true, message: "Unauthorized" };
+  }
+
+  try {
+    await prisma.event.create({
+      data: {
+        title: data.title,
+        description: data.description,
+        startTime: data.startTime,
+        endTime: data.endTime,
+        classId: data.classId ? Number(data.classId) : null,
+      },
+    });
+
+    revalidatePath("/list/events");
+    return { success: true, error: false };
+  } catch (err) {
+    console.error(err);
+    return { success: false, error: true };
+  }
+};
+
+export const updateEvent = async (
+  currentState: CurrentState,
+  data: EventSchema
+) => {
+  const { userId, sessionClaims } = auth();
+  const role = (sessionClaims?.metadata as { role?: string })?.role;
+  if (!userId || role !== "admin") {
+    return { success: false, error: true, message: "Unauthorized" };
+  }
+
+  try {
+    await prisma.event.update({
+      where: { id: data.id },
+      data: {
+        title: data.title,
+        description: data.description,
+        startTime: data.startTime,
+        endTime: data.endTime,
+        classId: data.classId ? Number(data.classId) : null,
+      },
+    });
+
+    revalidatePath("/list/events");
+    return { success: true, error: false };
+  } catch (err) {
+    console.error(err);
+    return { success: false, error: true };
+  }
+};
+
+export const deleteEvent = async (
+  currentState: CurrentState,
+  data: FormData
+) => {
+  const { userId, sessionClaims } = auth();
+  const role = (sessionClaims?.metadata as { role?: string })?.role;
+  if (!userId || role !== "admin") {
+    return { success: false, error: true, message: "Unauthorized" };
+  }
+
+  try {
+    const id = data.get("id") as string;
+    await prisma.event.delete({
+      where: { id: Number(id) },
+    });
+
+    revalidatePath("/list/events");
     return { success: true, error: false };
   } catch (err) {
     console.error(err);
