@@ -99,25 +99,25 @@ const SingleTeacherPage = async ({
               <p className="text-xs text-slate-500 italic leading-relaxed">
                 Senior educator committed to fostering a supportive, high-engagement classroom environment.
               </p>
-              <div className="grid grid-cols-1 min-[450px]:grid-cols-2 gap-x-4 gap-y-2.5 text-xs font-semibold text-slate-700 w-full mt-1">
+              <div className="flex flex-col gap-2.5 text-xs font-semibold text-slate-700 w-full mt-1.5">
                 <div className="flex items-center gap-2">
-                  <Image src="/blood.png" alt="" width={14} height={14} />
+                  <Image src="/blood.png" alt="" width={14} height={14} className="w-3.5 h-3.5 object-contain shrink-0" />
                   <span>{teacher.bloodType || "-"}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Image src="/date.png" alt="" width={14} height={14} />
+                  <Image src="/date.png" alt="" width={14} height={14} className="w-3.5 h-3.5 object-contain shrink-0" />
                   <span>
                     {new Intl.DateTimeFormat("en-GB").format(teacher.birthday)}
                   </span>
                 </div>
-                <div className="flex items-center gap-2 col-span-1 min-[450px]:col-span-2">
-                  <Image src="/mail.png" alt="" width={14} height={14} className="shrink-0" />
+                <div className="flex items-center gap-2">
+                  <Image src="/mail.png" alt="" width={14} height={14} className="w-3.5 h-3.5 object-contain shrink-0" />
                   <span className="break-all select-all hover:text-indigo-600 transition-colors" title={teacher.email || ""}>
                     {teacher.email || "-"}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Image src="/phone.png" alt="" width={14} height={14} />
+                  <Image src="/phone.png" alt="" width={14} height={14} className="w-3.5 h-3.5 object-contain shrink-0" />
                   <span>{teacher.phone || "-"}</span>
                 </div>
               </div>
@@ -196,41 +196,6 @@ const SingleTeacherPage = async ({
       </div>
       {/* RIGHT */}
       <div className="w-full xl:w-1/3 flex flex-col gap-4">
-        <div className="bg-white p-4 rounded-md">
-          <h1 className="text-xl font-semibold">Shortcuts</h1>
-          <div className="mt-4 flex gap-4 flex-wrap text-xs text-gray-500">
-           <Link
-              className="p-3 rounded-md bg-hsSkyLight"
-              href={`/list/classes?supervisorId=${teacher.id}`}
-            >
-              Teacher&apos;s Classes
-            </Link>
-            <Link
-              className="p-3 rounded-md bg-hsPurpleLight"
-              href={`/list/students?teacherId=${teacher.id}`}
-            >
-              Teacher&apos;s Students
-            </Link>
-            <Link
-              className="p-3 rounded-md bg-hsYellowLight"
-              href={`/list/lessons?teacherId=${teacher.id}`}
-            >
-              Teacher&apos;s Lessons
-            </Link>
-            <Link
-              className="p-3 rounded-md bg-pink-50"
-              href={`/list/exams?teacherId=${teacher.id}`}
-            >
-              Teacher&apos;s Exams
-            </Link>
-            <Link
-              className="p-3 rounded-md bg-hsSkyLight"
-              href={`/list/assignments?teacherId=${teacher.id}`}
-            >
-              Teacher&apos;s Assignments
-            </Link>
-          </div>
-        </div>
         <Performance />
         <Announcements />
       </div>
