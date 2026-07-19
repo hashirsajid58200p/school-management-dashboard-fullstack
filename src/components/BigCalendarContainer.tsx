@@ -199,12 +199,19 @@ const BigCalendarContainer = async ({
   const eventItems = schedule.filter((item) => item.isSchoolEvent || item.isPtm);
   const regularItems = schedule.filter((item) => !item.isSchoolEvent && !item.isPtm);
 
+  const getLocalDateString = (date: Date): string => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
   const eventDates = new Set(
-    eventItems.map((item) => item.start.toISOString().split("T")[0])
+    eventItems.map((item) => getLocalDateString(item.start))
   );
 
   const nonOverlappingRegularItems = regularItems.filter((regular) => {
-    const regularDateStr = regular.start.toISOString().split("T")[0];
+    const regularDateStr = getLocalDateString(regular.start);
     return !eventDates.has(regularDateStr);
   });
 
