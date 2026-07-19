@@ -7,6 +7,7 @@ import { ITEM_PER_PAGE } from "@/lib/settings";
 import { Class, Prisma, Teacher } from "@prisma/client";
 import Image from "next/image";
 import { auth } from "@/lib/auth";
+import { SortButton, FilterButton } from "@/components/TableActions";
 
 type ClassList = Class & { supervisor: Teacher };
 
@@ -57,9 +58,9 @@ const renderRow = (item: ClassList) => (
   >
     <td className="flex items-center gap-4 p-4">{item.name}</td>
     <td className="hidden md:table-cell">{item.capacity}</td>
-    <td className="hidden md:table-cell">{item.name[0]}</td>
+    <td className="hidden md:table-cell">{item.name.charAt(0)}</td>
     <td className="hidden md:table-cell">
-      {item.supervisor.name + " " + item.supervisor.surname}
+      {item.supervisor ? `${item.supervisor.name} ${item.supervisor.surname}` : "-"}
     </td>
     <td>
       <div className="flex items-center gap-2">
@@ -75,21 +76,21 @@ const renderRow = (item: ClassList) => (
 );
 
   const { page, ...queryParams } = searchParams;
-
   const p = page ? parseInt(page) : 1;
+  const sort = searchParams?.sort === "desc" ? "desc" : "asc";
 
-  // URL PARAMS CONDITION
-
+  // URL Queries
   const query: Prisma.ClassWhereInput = {};
 
   // ROLE CONDITIONS
   switch (role) {
     case "teacher":
-      query.teachers = {
-        some: {
-          id: userId!
-        }
-      };
+      const teacher = await prisma.teacher.findUnique({
+        where: { id: userId! },
+        select: { classes: { select: { id: true } } }
+      });
+      const teacherClassIds = teacher?.classes.map(c => c.id) || [];
+      query.id = { in: teacherClassIds };
       break;
     case "student":
       const student = await prisma.student.findUnique({
@@ -117,6 +118,9 @@ const renderRow = (item: ClassList) => (
           case "supervisorId":
             query.supervisorId = value;
             break;
+          case "gradeId":
+            query.gradeId = parseInt(value);
+            break;
           case "search":
             query.name = { contains: value };
             break;
@@ -133,11 +137,22 @@ const renderRow = (item: ClassList) => (
       include: {
         supervisor: true,
       },
+      orderBy: { name: sort },
       take: ITEM_PER_PAGE,
       skip: ITEM_PER_PAGE * (p - 1),
     }),
     prisma.class.count({ where: query }),
   ]);
+
+  // Query grades for filtering
+  const filterGrades = await prisma.grade.findMany({
+    select: { id: true, level: true }
+  });
+  const filterOptions = filterGrades.map(g => ({
+    label: `Grade ${g.level}`,
+    value: String(g.id),
+    paramName: "gradeId"
+  }));
 
   return (
     <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
@@ -147,12 +162,12 @@ const renderRow = (item: ClassList) => (
         <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
           {role !== "parent" && <TableSearch />}
           <div className="flex items-center gap-4 self-end">
-            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-hsYellow">
-              <Image src="/filter.png" alt="" width={14} height={14} />
-            </button>
-            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-hsYellow">
-              <Image src="/sort.png" alt="" width={14} height={14} />
-            </button>
+            {count > 1 && (
+              <>
+                <FilterButton options={filterOptions} />
+                <SortButton />
+              </>
+            )}
             {role === "admin" && <FormContainer table="class" type="create" />}
           </div>
         </div>

@@ -77,7 +77,7 @@ const GlobalSearch = () => {
   return (
     <div
       ref={containerRef}
-      className="relative max-w-md w-full md:w-[250px] lg:w-[320px] z-50"
+      className="relative w-[130px] md:w-[160px] lg:w-[200px] z-50"
     >
       {/* SEARCH INPUT BAR */}
       <div className="flex items-center gap-2 text-xs rounded-full ring-[1.5px] ring-gray-300 px-3 py-1.5 bg-white focus-within:ring-2 focus-within:ring-hsYellow focus-within:border-transparent transition-all shadow-sm">

@@ -10,6 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { auth } from "@/lib/auth";
+import { SortButton, FilterButton } from "@/components/TableActions";
 
 type StudentList = Student & { class: Class };
 
@@ -18,7 +19,7 @@ const StudentListPage = async ({
 }: {
   searchParams: { [key: string]: string | undefined };
 }) => {
-  const { sessionClaims, userId } = auth();
+  const { userId, sessionClaims } = auth();
   const role = (sessionClaims?.metadata as { role?: string })?.role;
 
   const columns = [
@@ -62,15 +63,22 @@ const StudentListPage = async ({
       className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-hsPurpleLight"
     >
       <td className="flex items-center gap-4 p-4">
+        <Image
+          src={item.img || "/noAvatar.png"}
+          alt=""
+          width={40}
+          height={40}
+          className="md:hidden xl:block w-10 h-10 rounded-full object-cover"
+        />
         <div className="flex flex-col">
-          <h3 className="font-semibold">{item.name} {item.surname}</h3>
-          <p className="text-xs text-gray-500">{item.class.name}</p>
+          <h3 className="font-semibold">{item.name}</h3>
+          <span className="text-xs text-gray-500">{item.class.name}</span>
         </div>
       </td>
-      <td className="hidden md:table-cell">{item.id}</td>
-      <td className="hidden md:table-cell">{item.class.name[0]}</td>
-      <td className="hidden md:table-cell">{item.phone}</td>
-      <td className="hidden md:table-cell">{item.address}</td>
+      <td className="hidden md:table-cell">{item.username}</td>
+      <td className="hidden md:table-cell">{item.class.name.charAt(0)}</td>
+      <td className="hidden lg:table-cell">{item.phone}</td>
+      <td className="hidden lg:table-cell">{item.address}</td>
       <td>
         <div className="flex items-center gap-2">
           <Link href={`/list/students/${item.id}`}>
@@ -87,11 +95,10 @@ const StudentListPage = async ({
   );
 
   const { page, ...queryParams } = searchParams;
-
   const p = page ? parseInt(page) : 1;
+  const sort = searchParams?.sort === "desc" ? "desc" : "asc";
 
-  // URL PARAMS CONDITION
-
+  // URL Queries
   const query: Prisma.StudentWhereInput = {};
 
   // ROLE CONDITIONS
@@ -131,6 +138,9 @@ const StudentListPage = async ({
               },
             };
             break;
+          case "classId":
+            query.classId = parseInt(value);
+            break;
           case "search":
             query.name = { contains: value };
             break;
@@ -147,11 +157,22 @@ const StudentListPage = async ({
       include: {
         class: true,
       },
+      orderBy: { name: sort },
       take: ITEM_PER_PAGE,
       skip: ITEM_PER_PAGE * (p - 1),
     }),
     prisma.student.count({ where: query }),
   ]);
+
+  // Query classes for filtering (not needed for parent because parent is locked to their own children)
+  const filterClasses = await prisma.class.findMany({
+    select: { id: true, name: true }
+  });
+  const filterOptions = filterClasses.map(c => ({
+    label: `Class ${c.name}`,
+    value: String(c.id),
+    paramName: "classId"
+  }));
 
   return (
     <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
@@ -161,12 +182,12 @@ const StudentListPage = async ({
         <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
           {role !== "parent" && <TableSearch />}
           <div className="flex items-center gap-4 self-end">
-            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-hsYellow">
-              <Image src="/filter.png" alt="" width={14} height={14} />
-            </button>
-            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-hsYellow">
-              <Image src="/sort.png" alt="" width={14} height={14} />
-            </button>
+            {count > 1 && (
+              <>
+                <FilterButton options={filterOptions} />
+                <SortButton />
+              </>
+            )}
             {role === "admin" && (
               <FormContainer table="student" type="create" />
             )}
