@@ -42,24 +42,18 @@ const BigCalendar = ({
     
     const isBreak = event.isBreak;
     const isSchoolEvent = event.isSchoolEvent;
-    
-    if (isSchoolEvent) {
-      return {
-        ...event,
-        displayStart,
-        displayEnd,
-        start: event.start,
-        end: event.end,
-      };
-    }
-    
+    const isPtm = event.isPtm;
     const startOffset = 5 * 60 * 1000;
     
     const centeredStart = new Date(event.start.getTime() + startOffset);
-    // For breaks, set end to 12:55 to align perfectly with the height of standard lessons (50m)
-    const centeredEnd = isBreak
-      ? new Date(event.start.getTime() + 55 * 60 * 1000)
-      : new Date(event.end.getTime() + startOffset);
+    let centeredEnd = new Date(event.end.getTime() + startOffset);
+
+    if (isBreak) {
+      centeredEnd = new Date(event.start.getTime() + 55 * 60 * 1000);
+    } else if (isSchoolEvent || isPtm) {
+      // Shrink by 5 minutes at the end to create a bottom gap
+      centeredEnd = new Date(event.end.getTime() - startOffset);
+    }
 
     return {
       ...event,
@@ -94,9 +88,9 @@ const BigCalendar = ({
         if (event.isPtm) {
           return {
             style: {
-              backgroundColor: "#ffdce0",
-              border: "1.5px dashed #fca5a5",
-              color: "#991b1b",
+              backgroundColor: "#ffe4e6",
+              border: "1.5px dashed #f43f5e",
+              color: "#9f1239",
               borderRadius: "6px",
             }
           };
@@ -104,9 +98,9 @@ const BigCalendar = ({
         if (event.isSchoolEvent) {
           return {
             style: {
-              backgroundColor: "#fef9c3",
-              border: "1.5px solid #fde047",
-              color: "#854d0e",
+              backgroundColor: "#d1fae5",
+              border: "1.5px solid #10b981",
+              color: "#065f46",
               borderRadius: "6px",
             }
           };
