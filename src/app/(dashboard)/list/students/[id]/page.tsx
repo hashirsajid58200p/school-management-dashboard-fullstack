@@ -88,12 +88,12 @@ const SingleStudentPage = async ({
               <div className="grid grid-cols-1 min-[450px]:grid-cols-2 gap-x-4 gap-y-2.5 text-xs font-semibold text-slate-700 w-full mt-1">
                 <div className="flex items-center gap-2">
                   <Image src="/blood.png" alt="" width={14} height={14} />
-                  <span>Blood Type: {student.bloodType || "-"}</span>
+                  <span>{student.bloodType || "-"}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Image src="/date.png" alt="" width={14} height={14} />
                   <span>
-                    DOB: {new Intl.DateTimeFormat("en-GB").format(student.birthday)}
+                    {new Intl.DateTimeFormat("en-GB").format(student.birthday)}
                   </span>
                 </div>
                 <div className="flex items-center gap-2 col-span-1 min-[450px]:col-span-2">
@@ -104,7 +104,7 @@ const SingleStudentPage = async ({
                 </div>
                 <div className="flex items-center gap-2">
                   <Image src="/phone.png" alt="" width={14} height={14} />
-                  <span>Phone: {student.phone || "-"}</span>
+                  <span>{student.phone || "-"}</span>
                 </div>
               </div>
             </div>
@@ -112,7 +112,7 @@ const SingleStudentPage = async ({
           {/* SMALL CARDS */}
           <div className="w-full lg:w-[calc(42%-8px)] flex gap-4 justify-between flex-wrap content-stretch">
             {/* CARD */}
-            <div className="bg-white p-4 rounded-2xl flex gap-4 w-[calc(50%-8px)] shadow-sm border border-slate-100 items-center">
+            <div className="bg-white p-3 md:p-4 rounded-2xl flex gap-2 md:gap-3 w-[calc(50%-8px)] shadow-sm border border-slate-100 items-center">
               <Image
                 src="/singleAttendance.png"
                 alt=""
@@ -125,7 +125,7 @@ const SingleStudentPage = async ({
               </Suspense>
             </div>
             {/* CARD */}
-            <div className="bg-white p-4 rounded-2xl flex gap-4 w-[calc(50%-8px)] shadow-sm border border-slate-100 items-center">
+            <div className="bg-white p-3 md:p-4 rounded-2xl flex gap-2 md:gap-3 w-[calc(50%-8px)] shadow-sm border border-slate-100 items-center">
               <Image
                 src="/singleBranch.png"
                 alt=""
@@ -134,14 +134,14 @@ const SingleStudentPage = async ({
                 className="w-6 h-6 shrink-0"
               />
               <div className="overflow-hidden">
-                <h1 className="text-md font-bold text-slate-800 leading-tight">
+                <h1 className="text-sm md:text-base font-bold text-slate-800 leading-tight">
                   {student.class.name.charAt(0)}th
                 </h1>
                 <span className="text-[11px] text-slate-400 font-medium block truncate">Grade</span>
               </div>
             </div>
             {/* CARD */}
-            <div className="bg-white p-4 rounded-2xl flex gap-4 w-[calc(50%-8px)] shadow-sm border border-slate-100 items-center">
+            <div className="bg-white p-3 md:p-4 rounded-2xl flex gap-2 md:gap-3 w-[calc(50%-8px)] shadow-sm border border-slate-100 items-center">
               <Image
                 src="/singleLesson.png"
                 alt=""
@@ -150,14 +150,14 @@ const SingleStudentPage = async ({
                 className="w-6 h-6 shrink-0"
               />
               <div className="overflow-hidden">
-                <h1 className="text-md font-bold text-slate-800 leading-tight">
+                <h1 className="text-sm md:text-base font-bold text-slate-800 leading-tight">
                   {student.class._count.lessons}
                 </h1>
                 <span className="text-[11px] text-slate-400 font-medium block truncate">Lessons</span>
               </div>
             </div>
             {/* CARD */}
-            <div className="bg-white p-4 rounded-2xl flex gap-4 w-[calc(50%-8px)] shadow-sm border border-slate-100 items-center">
+            <div className="bg-white p-3 md:p-4 rounded-2xl flex gap-2 md:gap-3 w-[calc(50%-8px)] shadow-sm border border-slate-100 items-center">
               <Image
                 src="/singleClass.png"
                 alt=""
@@ -166,7 +166,7 @@ const SingleStudentPage = async ({
                 className="w-6 h-6 shrink-0"
               />
               <div className="overflow-hidden">
-                <h1 className="text-md font-bold text-slate-800 leading-tight truncate">{student.class.name}</h1>
+                <h1 className="text-sm md:text-base font-bold text-slate-800 leading-tight">{student.class.name}</h1>
                 <span className="text-[11px] text-slate-400 font-medium block truncate">Class</span>
               </div>
             </div>
