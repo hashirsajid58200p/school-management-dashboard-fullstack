@@ -124,7 +124,7 @@ const SingleTeacherPage = async ({
             </div>
           </div>
           {/* SMALL CARDS */}
-          <div className="flex-1 flex gap-4 justify-between flex-wrap">
+          <div className="w-full flex-1 flex gap-4 justify-between flex-wrap">
             {/* CARD */}
             <div className="bg-white p-4 rounded-md flex gap-4 w-full md:w-[48%] xl:w-[45%] 2xl:w-[48%]">
               <Image
