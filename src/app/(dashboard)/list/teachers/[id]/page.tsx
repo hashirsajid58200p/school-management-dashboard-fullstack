@@ -75,19 +75,19 @@ const SingleTeacherPage = async ({
       {/* LEFT */}
       <div className="w-full xl:w-2/3">
         {/* TOP */}
-        <div className="flex flex-col lg:flex-row gap-4 items-start w-full">
+        <div className="flex flex-col lg:flex-row gap-4 w-full">
           {/* USER INFO CARD */}
-          <div className="bg-hsSky py-6 px-6 rounded-2xl w-full lg:w-[calc(50%-8px)] flex gap-6 items-start">
-            <div className="w-36 h-36 flex-shrink-0">
+          <div className="bg-hsSky py-6 px-6 rounded-2xl w-full lg:w-[calc(58%-8px)] flex gap-6 items-center shadow-sm">
+            <div className="w-32 h-32 md:w-36 md:h-36 flex-shrink-0">
               <Image
                 src={teacher.img || "/noAvatar.png"}
                 alt=""
                 width={144}
                 height={144}
-                className="w-36 h-36 rounded-full object-cover shadow-sm border-2 border-white"
+                className="w-32 h-32 md:w-36 md:h-36 rounded-full object-cover shadow-sm border-2 border-white"
               />
             </div>
-            <div className="flex-1 flex flex-col justify-between gap-3 w-full">
+            <div className="flex-grow flex flex-col justify-center gap-2.5 w-full">
               <div className="flex items-center justify-between gap-4">
                 <h1 className="text-xl font-bold text-slate-800">
                   {teacher.name + " " + teacher.surname}
@@ -99,7 +99,7 @@ const SingleTeacherPage = async ({
               <p className="text-xs text-slate-500 italic leading-relaxed">
                 Senior educator committed to fostering a supportive, high-engagement classroom environment.
               </p>
-              <div className="grid grid-cols-1 min-[450px]:grid-cols-2 gap-x-4 gap-y-2.5 text-xs font-semibold text-slate-700 w-full mt-2">
+              <div className="grid grid-cols-1 min-[450px]:grid-cols-2 gap-x-4 gap-y-2.5 text-xs font-semibold text-slate-700 w-full mt-1">
                 <div className="flex items-center gap-2">
                   <Image src="/blood.png" alt="" width={14} height={14} />
                   <span>Blood Type: {teacher.bloodType || "-"}</span>
@@ -124,67 +124,67 @@ const SingleTeacherPage = async ({
             </div>
           </div>
           {/* SMALL CARDS */}
-          <div className="w-full lg:w-[calc(50%-8px)] flex gap-4 justify-between flex-wrap">
+          <div className="w-full lg:w-[calc(42%-8px)] flex gap-4 justify-between flex-wrap content-stretch">
             {/* CARD */}
-            <div className="bg-white p-4 rounded-md flex gap-4 w-full md:w-[48%] xl:w-[45%] 2xl:w-[48%]">
+            <div className="bg-white p-4 rounded-2xl flex gap-4 w-[calc(50%-8px)] shadow-sm border border-slate-100 items-center">
               <Image
                 src="/singleAttendance.png"
                 alt=""
                 width={24}
                 height={24}
-                className="w-6 h-6"
+                className="w-6 h-6 shrink-0"
               />
-              <div className="">
-                <h1 className="text-xl font-semibold">90%</h1>
-                <span className="text-sm text-gray-400">Attendance</span>
+              <div className="overflow-hidden">
+                <h1 className="text-md font-bold text-slate-800 leading-tight">90%</h1>
+                <span className="text-[11px] text-slate-400 font-medium block truncate">Attendance</span>
               </div>
             </div>
             {/* CARD */}
-            <div className="bg-white p-4 rounded-md flex gap-4 w-full md:w-[48%] xl:w-[45%] 2xl:w-[48%]">
+            <div className="bg-white p-4 rounded-2xl flex gap-4 w-[calc(50%-8px)] shadow-sm border border-slate-100 items-center">
               <Image
                 src="/singleBranch.png"
                 alt=""
                 width={24}
                 height={24}
-                className="w-6 h-6"
+                className="w-6 h-6 shrink-0"
               />
-              <div className="">
-                <h1 className="text-xl font-semibold">
+              <div className="overflow-hidden">
+                <h1 className="text-md font-bold text-slate-800 leading-tight truncate">
                   {teacher.subject?.name || "-"}
                 </h1>
-                <span className="text-sm text-gray-400">Subject</span>
+                <span className="text-[11px] text-slate-400 font-medium block truncate">Subject</span>
               </div>
             </div>
             {/* CARD */}
-            <div className="bg-white p-4 rounded-md flex gap-4 w-full md:w-[48%] xl:w-[45%] 2xl:w-[48%]">
+            <div className="bg-white p-4 rounded-2xl flex gap-4 w-[calc(50%-8px)] shadow-sm border border-slate-100 items-center">
               <Image
                 src="/singleLesson.png"
                 alt=""
                 width={24}
                 height={24}
-                className="w-6 h-6"
+                className="w-6 h-6 shrink-0"
               />
-              <div className="">
-                <h1 className="text-xl font-semibold">
+              <div className="overflow-hidden">
+                <h1 className="text-md font-bold text-slate-800 leading-tight">
                   {teacher._count.lessons}
                 </h1>
-                <span className="text-sm text-gray-400">Lessons</span>
+                <span className="text-[11px] text-slate-400 font-medium block truncate">Lessons</span>
               </div>
             </div>
             {/* CARD */}
-            <div className="bg-white p-4 rounded-md flex gap-4 w-full md:w-[48%] xl:w-[45%] 2xl:w-[48%]">
+            <div className="bg-white p-4 rounded-2xl flex gap-4 w-[calc(50%-8px)] shadow-sm border border-slate-100 items-center">
               <Image
                 src="/singleClass.png"
                 alt=""
                 width={24}
                 height={24}
-                className="w-6 h-6"
+                className="w-6 h-6 shrink-0"
               />
-              <div className="">
-                <h1 className="text-xl font-semibold">
+              <div className="overflow-hidden">
+                <h1 className="text-md font-bold text-slate-800 leading-tight">
                   {teacher._count.classes}
                 </h1>
-                <span className="text-sm text-gray-400">Classes</span>
+                <span className="text-[11px] text-slate-400 font-medium block truncate">Classes</span>
               </div>
             </div>
           </div>
