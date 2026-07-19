@@ -61,9 +61,9 @@ const SingleStudentPage = async ({
       {/* LEFT */}
       <div className="w-full xl:w-2/3">
         {/* TOP */}
-        <div className="flex flex-col lg:flex-row gap-4 items-start">
+        <div className="flex flex-col lg:flex-row gap-4 items-start w-full">
           {/* USER INFO CARD */}
-          <div className="bg-hsSky py-6 px-6 rounded-2xl flex-1 flex gap-6 items-start w-full">
+          <div className="bg-hsSky py-6 px-6 rounded-2xl w-full lg:w-[calc(50%-8px)] flex gap-6 items-start">
             <div className="w-36 h-36 flex-shrink-0">
               <Image
                 src={student.img || "/noAvatar.png"}
@@ -110,7 +110,7 @@ const SingleStudentPage = async ({
             </div>
           </div>
           {/* SMALL CARDS */}
-          <div className="w-full flex-1 flex gap-4 justify-between flex-wrap">
+          <div className="w-full lg:w-[calc(50%-8px)] flex gap-4 justify-between flex-wrap">
             {/* CARD */}
             <div className="bg-white p-4 rounded-md flex gap-4 w-full md:w-[48%] xl:w-[45%] 2xl:w-[48%]">
               <Image
