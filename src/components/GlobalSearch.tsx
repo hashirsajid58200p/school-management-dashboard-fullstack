@@ -84,7 +84,7 @@ const GlobalSearch = () => {
         <Image src="/search.png" alt="Search icon" width={14} height={14} />
         <input
           type="text"
-          placeholder="Search global directory..."
+          placeholder="Search..."
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);
