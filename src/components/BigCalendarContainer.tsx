@@ -31,14 +31,7 @@ const BigCalendarContainer = async ({
       },
     });
 
-    eventsRes = await prisma.event.findMany({
-      where: {
-        OR: [
-          { classId: null },
-          { classId: { in: teacherClassIds } }
-        ]
-      }
-    });
+    eventsRes = [];
   } else {
     dataRes = await prisma.lesson.findMany({
       where: {
