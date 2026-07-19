@@ -92,7 +92,7 @@ export const subjectsData = [
   },
   {
     "id": 9,
-    "name": "Islamic Studies",
+    "name": "History",
     "teachers": [
       "Anthony Ross",
       "Catherine Hall",
@@ -172,7 +172,7 @@ export const subjectsData = [
   },
   {
     "id": 15,
-    "name": "Urdu Language",
+    "name": "Spanish Language",
     "teachers": [
       "Charles Barnes",
       "Cynthia Barnes",
@@ -250,7 +250,7 @@ export const teachersData = [
     "email": "janet.henderson@school.com",
     "phone": "+92-300-326-1005",
     "photo": "https://i.pravatar.cc/300?img=6",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "level": "Junior",
     "classes": [
       "1B",
@@ -264,7 +264,7 @@ export const teachersData = [
     "email": "jerry.bailey@school.com",
     "phone": "+92-300-220-1006",
     "photo": "https://i.pravatar.cc/300?img=7",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "level": "Junior",
     "classes": [
       "1G",
@@ -279,7 +279,7 @@ export const teachersData = [
     "email": "catherine.hall@school.com",
     "phone": "+92-300-695-1007",
     "photo": "https://i.pravatar.cc/300?img=8",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "level": "Junior",
     "classes": [
       "1B",
@@ -294,7 +294,7 @@ export const teachersData = [
     "email": "raymond.cruz@school.com",
     "phone": "+92-300-161-1008",
     "photo": "https://i.pravatar.cc/300?img=9",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "level": "Junior",
     "classes": [
       "1G",
@@ -538,7 +538,7 @@ export const teachersData = [
     "email": "shirley.butler@school.com",
     "phone": "+92-300-507-1025",
     "photo": "https://i.pravatar.cc/300?img=26",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "level": "Mid",
     "classes": [
       "4B",
@@ -552,7 +552,7 @@ export const teachersData = [
     "email": "joseph.henderson@school.com",
     "phone": "+92-300-295-1026",
     "photo": "https://i.pravatar.cc/300?img=27",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "level": "Mid",
     "classes": [
       "4G",
@@ -567,7 +567,7 @@ export const teachersData = [
     "email": "charles.barnes@school.com",
     "phone": "+92-300-153-1027",
     "photo": "https://i.pravatar.cc/300?img=28",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "level": "Mid",
     "classes": [
       "5B",
@@ -582,7 +582,7 @@ export const teachersData = [
     "email": "scott.evans@school.com",
     "phone": "+92-300-728-1028",
     "photo": "https://i.pravatar.cc/300?img=29",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "level": "Mid",
     "classes": [
       "4B",
@@ -596,7 +596,7 @@ export const teachersData = [
     "email": "linda.moore@school.com",
     "phone": "+92-300-455-1029",
     "photo": "https://i.pravatar.cc/300?img=30",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "level": "Mid",
     "classes": [
       "4G",
@@ -611,7 +611,7 @@ export const teachersData = [
     "email": "anthony.ross@school.com",
     "phone": "+92-300-591-1030",
     "photo": "https://i.pravatar.cc/300?img=31",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "level": "Mid",
     "classes": [
       "5B",
@@ -942,7 +942,7 @@ export const teachersData = [
     "email": "shirley.hill@school.com",
     "phone": "+92-300-878-1053",
     "photo": "https://i.pravatar.cc/300?img=54",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "level": "Senior",
     "classes": [
       "8B",
@@ -957,7 +957,7 @@ export const teachersData = [
     "email": "cynthia.barnes@school.com",
     "phone": "+92-300-624-1054",
     "photo": "https://i.pravatar.cc/300?img=55",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "level": "Senior",
     "classes": [
       "8G",
@@ -972,7 +972,7 @@ export const teachersData = [
     "email": "heather.morgan@school.com",
     "phone": "+92-300-353-1055",
     "photo": "https://i.pravatar.cc/300?img=56",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "level": "Senior",
     "classes": [
       "8B",
@@ -987,7 +987,7 @@ export const teachersData = [
     "email": "nancy.baker@school.com",
     "phone": "+92-300-240-1056",
     "photo": "https://i.pravatar.cc/300?img=57",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "level": "Senior",
     "classes": [
       "8G",
@@ -1273,7 +1273,7 @@ export const teachersData = [
     "email": "mary.butler@school.com",
     "phone": "+92-300-630-1076",
     "photo": "https://i.pravatar.cc/300?img=7",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "level": "Junior",
     "classes": [
       "3G"
@@ -1447,7 +1447,7 @@ export const teachersData = [
     "email": "gary.thompson@school.com",
     "phone": "+92-300-748-1089",
     "photo": "https://i.pravatar.cc/300?img=20",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "level": "Senior",
     "classes": [
       "10G"
@@ -3868,7 +3868,7 @@ export const lessonsData = [
     "slot": 1,
     "startTime": "08:00",
     "endTime": "08:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1B",
     "teacher": "Janet Henderson"
   },
@@ -3958,7 +3958,7 @@ export const lessonsData = [
     "slot": 5,
     "startTime": "13:00",
     "endTime": "13:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1B",
     "teacher": "Janet Henderson"
   },
@@ -4028,7 +4028,7 @@ export const lessonsData = [
     "slot": 2,
     "startTime": "09:00",
     "endTime": "09:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1B",
     "teacher": "Catherine Hall"
   },
@@ -4078,7 +4078,7 @@ export const lessonsData = [
     "slot": 2,
     "startTime": "09:00",
     "endTime": "09:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1B",
     "teacher": "Janet Henderson"
   },
@@ -4108,7 +4108,7 @@ export const lessonsData = [
     "slot": 5,
     "startTime": "13:00",
     "endTime": "13:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1B",
     "teacher": "Catherine Hall"
   },
@@ -4128,7 +4128,7 @@ export const lessonsData = [
     "slot": 2,
     "startTime": "09:00",
     "endTime": "09:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1G",
     "teacher": "Jerry Bailey"
   },
@@ -4178,7 +4178,7 @@ export const lessonsData = [
     "slot": 2,
     "startTime": "09:00",
     "endTime": "09:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1G",
     "teacher": "Raymond Cruz"
   },
@@ -4198,7 +4198,7 @@ export const lessonsData = [
     "slot": 4,
     "startTime": "11:00",
     "endTime": "11:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1G",
     "teacher": "Raymond Cruz"
   },
@@ -4248,7 +4248,7 @@ export const lessonsData = [
     "slot": 4,
     "startTime": "11:00",
     "endTime": "11:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1G",
     "teacher": "Jerry Bailey"
   },
@@ -4338,7 +4338,7 @@ export const lessonsData = [
     "slot": 3,
     "startTime": "10:00",
     "endTime": "10:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1G",
     "teacher": "Jerry Bailey"
   },
@@ -4378,7 +4378,7 @@ export const lessonsData = [
     "slot": 2,
     "startTime": "09:00",
     "endTime": "09:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2B",
     "teacher": "Janet Henderson"
   },
@@ -4418,7 +4418,7 @@ export const lessonsData = [
     "slot": 1,
     "startTime": "08:00",
     "endTime": "08:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2B",
     "teacher": "Raymond Cruz"
   },
@@ -4428,7 +4428,7 @@ export const lessonsData = [
     "slot": 2,
     "startTime": "09:00",
     "endTime": "09:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2B",
     "teacher": "Janet Henderson"
   },
@@ -4508,7 +4508,7 @@ export const lessonsData = [
     "slot": 5,
     "startTime": "13:00",
     "endTime": "13:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2B",
     "teacher": "Raymond Cruz"
   },
@@ -4568,7 +4568,7 @@ export const lessonsData = [
     "slot": 1,
     "startTime": "08:00",
     "endTime": "08:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2B",
     "teacher": "Janet Henderson"
   },
@@ -4618,7 +4618,7 @@ export const lessonsData = [
     "slot": 1,
     "startTime": "08:00",
     "endTime": "08:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2G",
     "teacher": "Jerry Bailey"
   },
@@ -4658,7 +4658,7 @@ export const lessonsData = [
     "slot": 5,
     "startTime": "13:00",
     "endTime": "13:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2G",
     "teacher": "Catherine Hall"
   },
@@ -4708,7 +4708,7 @@ export const lessonsData = [
     "slot": 5,
     "startTime": "13:00",
     "endTime": "13:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2G",
     "teacher": "Jerry Bailey"
   },
@@ -4738,7 +4738,7 @@ export const lessonsData = [
     "slot": 3,
     "startTime": "10:00",
     "endTime": "10:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2G",
     "teacher": "Catherine Hall"
   },
@@ -4858,7 +4858,7 @@ export const lessonsData = [
     "slot": 5,
     "startTime": "13:00",
     "endTime": "13:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2G",
     "teacher": "Jerry Bailey"
   },
@@ -4898,7 +4898,7 @@ export const lessonsData = [
     "slot": 4,
     "startTime": "11:00",
     "endTime": "11:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3B",
     "teacher": "Jerry Bailey"
   },
@@ -4918,7 +4918,7 @@ export const lessonsData = [
     "slot": 1,
     "startTime": "08:00",
     "endTime": "08:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3B",
     "teacher": "Catherine Hall"
   },
@@ -4978,7 +4978,7 @@ export const lessonsData = [
     "slot": 2,
     "startTime": "09:00",
     "endTime": "09:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3B",
     "teacher": "Jerry Bailey"
   },
@@ -5068,7 +5068,7 @@ export const lessonsData = [
     "slot": 1,
     "startTime": "08:00",
     "endTime": "08:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3B",
     "teacher": "Jerry Bailey"
   },
@@ -5088,7 +5088,7 @@ export const lessonsData = [
     "slot": 3,
     "startTime": "10:00",
     "endTime": "10:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3B",
     "teacher": "Catherine Hall"
   },
@@ -5128,7 +5128,7 @@ export const lessonsData = [
     "slot": 2,
     "startTime": "09:00",
     "endTime": "09:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3G",
     "teacher": "Mary Butler"
   },
@@ -5208,7 +5208,7 @@ export const lessonsData = [
     "slot": 5,
     "startTime": "13:00",
     "endTime": "13:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3G",
     "teacher": "Mary Butler"
   },
@@ -5218,7 +5218,7 @@ export const lessonsData = [
     "slot": 1,
     "startTime": "08:00",
     "endTime": "08:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3G",
     "teacher": "Raymond Cruz"
   },
@@ -5288,7 +5288,7 @@ export const lessonsData = [
     "slot": 3,
     "startTime": "10:00",
     "endTime": "10:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3G",
     "teacher": "Mary Butler"
   },
@@ -5348,7 +5348,7 @@ export const lessonsData = [
     "slot": 4,
     "startTime": "11:00",
     "endTime": "11:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3G",
     "teacher": "Raymond Cruz"
   },
@@ -5378,7 +5378,7 @@ export const lessonsData = [
     "slot": 2,
     "startTime": "09:00",
     "endTime": "09:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4B",
     "teacher": "Scott Evans"
   },
@@ -5408,7 +5408,7 @@ export const lessonsData = [
     "slot": 5,
     "startTime": "13:00",
     "endTime": "13:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4B",
     "teacher": "Shirley Butler"
   },
@@ -5468,7 +5468,7 @@ export const lessonsData = [
     "slot": 1,
     "startTime": "08:00",
     "endTime": "08:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4B",
     "teacher": "Scott Evans"
   },
@@ -5488,7 +5488,7 @@ export const lessonsData = [
     "slot": 3,
     "startTime": "10:00",
     "endTime": "10:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4B",
     "teacher": "Shirley Butler"
   },
@@ -5678,7 +5678,7 @@ export const lessonsData = [
     "slot": 2,
     "startTime": "09:00",
     "endTime": "09:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4G",
     "teacher": "Joseph Henderson"
   },
@@ -5708,7 +5708,7 @@ export const lessonsData = [
     "slot": 5,
     "startTime": "13:00",
     "endTime": "13:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4G",
     "teacher": "Linda Moore"
   },
@@ -5748,7 +5748,7 @@ export const lessonsData = [
     "slot": 4,
     "startTime": "11:00",
     "endTime": "11:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4G",
     "teacher": "Linda Moore"
   },
@@ -5848,7 +5848,7 @@ export const lessonsData = [
     "slot": 4,
     "startTime": "11:00",
     "endTime": "11:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4G",
     "teacher": "Joseph Henderson"
   },
@@ -5898,7 +5898,7 @@ export const lessonsData = [
     "slot": 4,
     "startTime": "11:00",
     "endTime": "11:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5B",
     "teacher": "Charles Barnes"
   },
@@ -5998,7 +5998,7 @@ export const lessonsData = [
     "slot": 4,
     "startTime": "11:00",
     "endTime": "11:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5B",
     "teacher": "Charles Barnes"
   },
@@ -6058,7 +6058,7 @@ export const lessonsData = [
     "slot": 5,
     "startTime": "13:00",
     "endTime": "13:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5B",
     "teacher": "Anthony Ross"
   },
@@ -6078,7 +6078,7 @@ export const lessonsData = [
     "slot": 2,
     "startTime": "09:00",
     "endTime": "09:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5B",
     "teacher": "Anthony Ross"
   },
@@ -6148,7 +6148,7 @@ export const lessonsData = [
     "slot": 4,
     "startTime": "11:00",
     "endTime": "11:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5G",
     "teacher": "Joseph Henderson"
   },
@@ -6158,7 +6158,7 @@ export const lessonsData = [
     "slot": 5,
     "startTime": "13:00",
     "endTime": "13:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5G",
     "teacher": "Anthony Ross"
   },
@@ -6298,7 +6298,7 @@ export const lessonsData = [
     "slot": 4,
     "startTime": "11:00",
     "endTime": "11:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5G",
     "teacher": "Anthony Ross"
   },
@@ -6308,7 +6308,7 @@ export const lessonsData = [
     "slot": 5,
     "startTime": "13:00",
     "endTime": "13:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5G",
     "teacher": "Joseph Henderson"
   },
@@ -6398,7 +6398,7 @@ export const lessonsData = [
     "slot": 4,
     "startTime": "11:00",
     "endTime": "11:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6B",
     "teacher": "Linda Moore"
   },
@@ -6498,7 +6498,7 @@ export const lessonsData = [
     "slot": 4,
     "startTime": "11:00",
     "endTime": "11:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6B",
     "teacher": "Shirley Butler"
   },
@@ -6568,7 +6568,7 @@ export const lessonsData = [
     "slot": 1,
     "startTime": "08:00",
     "endTime": "08:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6B",
     "teacher": "Linda Moore"
   },
@@ -6608,7 +6608,7 @@ export const lessonsData = [
     "slot": 5,
     "startTime": "13:00",
     "endTime": "13:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6B",
     "teacher": "Shirley Butler"
   },
@@ -6628,7 +6628,7 @@ export const lessonsData = [
     "slot": 2,
     "startTime": "09:00",
     "endTime": "09:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6G",
     "teacher": "Linda Moore"
   },
@@ -6738,7 +6738,7 @@ export const lessonsData = [
     "slot": 3,
     "startTime": "10:00",
     "endTime": "10:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6G",
     "teacher": "Charles Barnes"
   },
@@ -6778,7 +6778,7 @@ export const lessonsData = [
     "slot": 2,
     "startTime": "09:00",
     "endTime": "09:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6G",
     "teacher": "Charles Barnes"
   },
@@ -6798,7 +6798,7 @@ export const lessonsData = [
     "slot": 4,
     "startTime": "11:00",
     "endTime": "11:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6G",
     "teacher": "Linda Moore"
   },
@@ -6868,7 +6868,7 @@ export const lessonsData = [
     "slot": 1,
     "startTime": "08:00",
     "endTime": "08:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7B",
     "teacher": "Charles Barnes"
   },
@@ -6918,7 +6918,7 @@ export const lessonsData = [
     "slot": 1,
     "startTime": "08:00",
     "endTime": "08:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7B",
     "teacher": "Anthony Ross"
   },
@@ -6928,7 +6928,7 @@ export const lessonsData = [
     "slot": 2,
     "startTime": "09:00",
     "endTime": "09:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7B",
     "teacher": "Charles Barnes"
   },
@@ -6968,7 +6968,7 @@ export const lessonsData = [
     "slot": 1,
     "startTime": "08:00",
     "endTime": "08:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7B",
     "teacher": "Anthony Ross"
   },
@@ -7238,7 +7238,7 @@ export const lessonsData = [
     "slot": 3,
     "startTime": "10:00",
     "endTime": "10:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7G",
     "teacher": "Joseph Henderson"
   },
@@ -7298,7 +7298,7 @@ export const lessonsData = [
     "slot": 4,
     "startTime": "11:00",
     "endTime": "11:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7G",
     "teacher": "Scott Evans"
   },
@@ -7338,7 +7338,7 @@ export const lessonsData = [
     "slot": 3,
     "startTime": "10:00",
     "endTime": "10:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7G",
     "teacher": "Joseph Henderson"
   },
@@ -7358,7 +7358,7 @@ export const lessonsData = [
     "slot": 5,
     "startTime": "13:00",
     "endTime": "13:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7G",
     "teacher": "Scott Evans"
   },
@@ -7368,7 +7368,7 @@ export const lessonsData = [
     "slot": 1,
     "startTime": "08:00",
     "endTime": "08:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8B",
     "teacher": "Shirley Hill"
   },
@@ -7408,7 +7408,7 @@ export const lessonsData = [
     "slot": 5,
     "startTime": "13:00",
     "endTime": "13:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8B",
     "teacher": "Heather Morgan"
   },
@@ -7428,7 +7428,7 @@ export const lessonsData = [
     "slot": 2,
     "startTime": "09:00",
     "endTime": "09:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8B",
     "teacher": "Shirley Hill"
   },
@@ -7598,7 +7598,7 @@ export const lessonsData = [
     "slot": 4,
     "startTime": "11:00",
     "endTime": "11:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8B",
     "teacher": "Heather Morgan"
   },
@@ -7628,7 +7628,7 @@ export const lessonsData = [
     "slot": 2,
     "startTime": "09:00",
     "endTime": "09:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8G",
     "teacher": "Nancy Baker"
   },
@@ -7678,7 +7678,7 @@ export const lessonsData = [
     "slot": 2,
     "startTime": "09:00",
     "endTime": "09:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8G",
     "teacher": "Nancy Baker"
   },
@@ -7808,7 +7808,7 @@ export const lessonsData = [
     "slot": 5,
     "startTime": "13:00",
     "endTime": "13:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8G",
     "teacher": "Cynthia Barnes"
   },
@@ -7848,7 +7848,7 @@ export const lessonsData = [
     "slot": 4,
     "startTime": "11:00",
     "endTime": "11:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8G",
     "teacher": "Cynthia Barnes"
   },
@@ -7868,7 +7868,7 @@ export const lessonsData = [
     "slot": 1,
     "startTime": "08:00",
     "endTime": "08:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9B",
     "teacher": "Nancy Baker"
   },
@@ -8008,7 +8008,7 @@ export const lessonsData = [
     "slot": 5,
     "startTime": "13:00",
     "endTime": "13:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9B",
     "teacher": "Cynthia Barnes"
   },
@@ -8068,7 +8068,7 @@ export const lessonsData = [
     "slot": 1,
     "startTime": "08:00",
     "endTime": "08:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9B",
     "teacher": "Cynthia Barnes"
   },
@@ -8088,7 +8088,7 @@ export const lessonsData = [
     "slot": 3,
     "startTime": "10:00",
     "endTime": "10:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9B",
     "teacher": "Nancy Baker"
   },
@@ -8148,7 +8148,7 @@ export const lessonsData = [
     "slot": 4,
     "startTime": "11:00",
     "endTime": "11:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9G",
     "teacher": "Heather Morgan"
   },
@@ -8238,7 +8238,7 @@ export const lessonsData = [
     "slot": 3,
     "startTime": "10:00",
     "endTime": "10:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9G",
     "teacher": "Shirley Hill"
   },
@@ -8318,7 +8318,7 @@ export const lessonsData = [
     "slot": 1,
     "startTime": "08:00",
     "endTime": "08:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9G",
     "teacher": "Shirley Hill"
   },
@@ -8338,7 +8338,7 @@ export const lessonsData = [
     "slot": 3,
     "startTime": "10:00",
     "endTime": "10:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9G",
     "teacher": "Heather Morgan"
   },
@@ -8418,7 +8418,7 @@ export const lessonsData = [
     "slot": 1,
     "startTime": "08:00",
     "endTime": "08:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10B",
     "teacher": "Heather Morgan"
   },
@@ -8438,7 +8438,7 @@ export const lessonsData = [
     "slot": 3,
     "startTime": "10:00",
     "endTime": "10:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10B",
     "teacher": "Shirley Hill"
   },
@@ -8498,7 +8498,7 @@ export const lessonsData = [
     "slot": 4,
     "startTime": "11:00",
     "endTime": "11:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10B",
     "teacher": "Shirley Hill"
   },
@@ -8608,7 +8608,7 @@ export const lessonsData = [
     "slot": 5,
     "startTime": "13:00",
     "endTime": "13:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10B",
     "teacher": "Heather Morgan"
   },
@@ -8628,7 +8628,7 @@ export const lessonsData = [
     "slot": 2,
     "startTime": "09:00",
     "endTime": "09:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10G",
     "teacher": "Gary Thompson"
   },
@@ -8648,7 +8648,7 @@ export const lessonsData = [
     "slot": 4,
     "startTime": "11:00",
     "endTime": "11:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10G",
     "teacher": "Cynthia Barnes"
   },
@@ -8718,7 +8718,7 @@ export const lessonsData = [
     "slot": 1,
     "startTime": "08:00",
     "endTime": "08:50",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10G",
     "teacher": "Gary Thompson"
   },
@@ -8838,7 +8838,7 @@ export const lessonsData = [
     "slot": 3,
     "startTime": "10:00",
     "endTime": "10:50",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10G",
     "teacher": "Cynthia Barnes"
   },
@@ -8902,7 +8902,7 @@ export const examsData = [
   },
   {
     "id": 6,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10B",
     "teacher": "Heather Morgan",
     "date": "2026-03-30"
@@ -8937,7 +8937,7 @@ export const examsData = [
   },
   {
     "id": 11,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10B",
     "teacher": "Shirley Hill",
     "date": "2026-03-08"
@@ -8979,7 +8979,7 @@ export const examsData = [
   },
   {
     "id": 17,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10G",
     "teacher": "Gary Thompson",
     "date": "2026-03-07"
@@ -9014,7 +9014,7 @@ export const examsData = [
   },
   {
     "id": 22,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10G",
     "teacher": "Cynthia Barnes",
     "date": "2026-04-06"
@@ -9049,7 +9049,7 @@ export const examsData = [
   },
   {
     "id": 27,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1B",
     "teacher": "Catherine Hall",
     "date": "2026-04-13"
@@ -9077,7 +9077,7 @@ export const examsData = [
   },
   {
     "id": 31,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1B",
     "teacher": "Janet Henderson",
     "date": "2026-03-27"
@@ -9112,7 +9112,7 @@ export const examsData = [
   },
   {
     "id": 36,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1G",
     "teacher": "Raymond Cruz",
     "date": "2026-03-04"
@@ -9140,7 +9140,7 @@ export const examsData = [
   },
   {
     "id": 40,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1G",
     "teacher": "Jerry Bailey",
     "date": "2026-03-04"
@@ -9175,7 +9175,7 @@ export const examsData = [
   },
   {
     "id": 45,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2B",
     "teacher": "Raymond Cruz",
     "date": "2026-03-20"
@@ -9203,7 +9203,7 @@ export const examsData = [
   },
   {
     "id": 49,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2B",
     "teacher": "Janet Henderson",
     "date": "2026-03-29"
@@ -9238,7 +9238,7 @@ export const examsData = [
   },
   {
     "id": 54,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2G",
     "teacher": "Catherine Hall",
     "date": "2026-03-16"
@@ -9266,7 +9266,7 @@ export const examsData = [
   },
   {
     "id": 58,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2G",
     "teacher": "Jerry Bailey",
     "date": "2026-03-23"
@@ -9301,7 +9301,7 @@ export const examsData = [
   },
   {
     "id": 63,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3B",
     "teacher": "Catherine Hall",
     "date": "2026-03-11"
@@ -9329,7 +9329,7 @@ export const examsData = [
   },
   {
     "id": 67,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3B",
     "teacher": "Jerry Bailey",
     "date": "2026-03-24"
@@ -9364,7 +9364,7 @@ export const examsData = [
   },
   {
     "id": 72,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3G",
     "teacher": "Raymond Cruz",
     "date": "2026-04-12"
@@ -9392,7 +9392,7 @@ export const examsData = [
   },
   {
     "id": 76,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3G",
     "teacher": "Mary Butler",
     "date": "2026-04-10"
@@ -9427,7 +9427,7 @@ export const examsData = [
   },
   {
     "id": 81,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4B",
     "teacher": "Scott Evans",
     "date": "2026-04-15"
@@ -9462,7 +9462,7 @@ export const examsData = [
   },
   {
     "id": 86,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4B",
     "teacher": "Shirley Butler",
     "date": "2026-03-19"
@@ -9497,7 +9497,7 @@ export const examsData = [
   },
   {
     "id": 91,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4G",
     "teacher": "Linda Moore",
     "date": "2026-03-14"
@@ -9532,7 +9532,7 @@ export const examsData = [
   },
   {
     "id": 96,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4G",
     "teacher": "Joseph Henderson",
     "date": "2026-04-08"
@@ -9567,7 +9567,7 @@ export const examsData = [
   },
   {
     "id": 101,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5B",
     "teacher": "Anthony Ross",
     "date": "2026-03-01"
@@ -9602,7 +9602,7 @@ export const examsData = [
   },
   {
     "id": 106,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5B",
     "teacher": "Charles Barnes",
     "date": "2026-04-02"
@@ -9637,7 +9637,7 @@ export const examsData = [
   },
   {
     "id": 111,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5G",
     "teacher": "Anthony Ross",
     "date": "2026-03-27"
@@ -9672,7 +9672,7 @@ export const examsData = [
   },
   {
     "id": 116,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5G",
     "teacher": "Joseph Henderson",
     "date": "2026-03-21"
@@ -9707,7 +9707,7 @@ export const examsData = [
   },
   {
     "id": 121,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6B",
     "teacher": "Linda Moore",
     "date": "2026-03-23"
@@ -9742,7 +9742,7 @@ export const examsData = [
   },
   {
     "id": 126,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6B",
     "teacher": "Shirley Butler",
     "date": "2026-04-12"
@@ -9777,7 +9777,7 @@ export const examsData = [
   },
   {
     "id": 131,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6G",
     "teacher": "Linda Moore",
     "date": "2026-03-07"
@@ -9812,7 +9812,7 @@ export const examsData = [
   },
   {
     "id": 136,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6G",
     "teacher": "Charles Barnes",
     "date": "2026-03-04"
@@ -9847,7 +9847,7 @@ export const examsData = [
   },
   {
     "id": 141,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7B",
     "teacher": "Anthony Ross",
     "date": "2026-04-04"
@@ -9882,7 +9882,7 @@ export const examsData = [
   },
   {
     "id": 146,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7B",
     "teacher": "Charles Barnes",
     "date": "2026-04-03"
@@ -9917,7 +9917,7 @@ export const examsData = [
   },
   {
     "id": 151,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7G",
     "teacher": "Scott Evans",
     "date": "2026-03-02"
@@ -9952,7 +9952,7 @@ export const examsData = [
   },
   {
     "id": 156,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7G",
     "teacher": "Joseph Henderson",
     "date": "2026-04-11"
@@ -9994,7 +9994,7 @@ export const examsData = [
   },
   {
     "id": 162,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8B",
     "teacher": "Heather Morgan",
     "date": "2026-03-19"
@@ -10029,7 +10029,7 @@ export const examsData = [
   },
   {
     "id": 167,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8B",
     "teacher": "Shirley Hill",
     "date": "2026-04-01"
@@ -10071,7 +10071,7 @@ export const examsData = [
   },
   {
     "id": 173,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8G",
     "teacher": "Nancy Baker",
     "date": "2026-03-08"
@@ -10106,7 +10106,7 @@ export const examsData = [
   },
   {
     "id": 178,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8G",
     "teacher": "Cynthia Barnes",
     "date": "2026-03-04"
@@ -10148,7 +10148,7 @@ export const examsData = [
   },
   {
     "id": 184,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9B",
     "teacher": "Nancy Baker",
     "date": "2026-03-04"
@@ -10183,7 +10183,7 @@ export const examsData = [
   },
   {
     "id": 189,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9B",
     "teacher": "Cynthia Barnes",
     "date": "2026-03-21"
@@ -10225,7 +10225,7 @@ export const examsData = [
   },
   {
     "id": 195,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9G",
     "teacher": "Heather Morgan",
     "date": "2026-03-29"
@@ -10260,7 +10260,7 @@ export const examsData = [
   },
   {
     "id": 200,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9G",
     "teacher": "Shirley Hill",
     "date": "2026-03-08"
@@ -10305,7 +10305,7 @@ export const assignmentsData = [
   },
   {
     "id": 6,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10B",
     "teacher": "Heather Morgan",
     "dueDate": "2026-02-15"
@@ -10340,7 +10340,7 @@ export const assignmentsData = [
   },
   {
     "id": 11,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10B",
     "teacher": "Shirley Hill",
     "dueDate": "2026-04-08"
@@ -10382,7 +10382,7 @@ export const assignmentsData = [
   },
   {
     "id": 17,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10G",
     "teacher": "Gary Thompson",
     "dueDate": "2026-01-31"
@@ -10417,7 +10417,7 @@ export const assignmentsData = [
   },
   {
     "id": 22,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10G",
     "teacher": "Cynthia Barnes",
     "dueDate": "2026-05-25"
@@ -10452,7 +10452,7 @@ export const assignmentsData = [
   },
   {
     "id": 27,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1B",
     "teacher": "Catherine Hall",
     "dueDate": "2026-04-18"
@@ -10480,7 +10480,7 @@ export const assignmentsData = [
   },
   {
     "id": 31,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1B",
     "teacher": "Janet Henderson",
     "dueDate": "2026-05-18"
@@ -10515,7 +10515,7 @@ export const assignmentsData = [
   },
   {
     "id": 36,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1G",
     "teacher": "Raymond Cruz",
     "dueDate": "2026-04-21"
@@ -10543,7 +10543,7 @@ export const assignmentsData = [
   },
   {
     "id": 40,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1G",
     "teacher": "Jerry Bailey",
     "dueDate": "2026-02-12"
@@ -10578,7 +10578,7 @@ export const assignmentsData = [
   },
   {
     "id": 45,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2B",
     "teacher": "Raymond Cruz",
     "dueDate": "2026-05-08"
@@ -10606,7 +10606,7 @@ export const assignmentsData = [
   },
   {
     "id": 49,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2B",
     "teacher": "Janet Henderson",
     "dueDate": "2026-02-09"
@@ -10641,7 +10641,7 @@ export const assignmentsData = [
   },
   {
     "id": 54,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2G",
     "teacher": "Catherine Hall",
     "dueDate": "2026-01-21"
@@ -10669,7 +10669,7 @@ export const assignmentsData = [
   },
   {
     "id": 58,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2G",
     "teacher": "Jerry Bailey",
     "dueDate": "2026-05-17"
@@ -10704,7 +10704,7 @@ export const assignmentsData = [
   },
   {
     "id": 63,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3B",
     "teacher": "Catherine Hall",
     "dueDate": "2026-02-02"
@@ -10732,7 +10732,7 @@ export const assignmentsData = [
   },
   {
     "id": 67,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3B",
     "teacher": "Jerry Bailey",
     "dueDate": "2026-01-28"
@@ -10767,7 +10767,7 @@ export const assignmentsData = [
   },
   {
     "id": 72,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3G",
     "teacher": "Raymond Cruz",
     "dueDate": "2026-03-29"
@@ -10795,7 +10795,7 @@ export const assignmentsData = [
   },
   {
     "id": 76,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3G",
     "teacher": "Mary Butler",
     "dueDate": "2026-01-31"
@@ -10830,7 +10830,7 @@ export const assignmentsData = [
   },
   {
     "id": 81,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4B",
     "teacher": "Scott Evans",
     "dueDate": "2026-02-04"
@@ -10865,7 +10865,7 @@ export const assignmentsData = [
   },
   {
     "id": 86,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4B",
     "teacher": "Shirley Butler",
     "dueDate": "2026-04-26"
@@ -10900,7 +10900,7 @@ export const assignmentsData = [
   },
   {
     "id": 91,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4G",
     "teacher": "Linda Moore",
     "dueDate": "2026-04-12"
@@ -10935,7 +10935,7 @@ export const assignmentsData = [
   },
   {
     "id": 96,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4G",
     "teacher": "Joseph Henderson",
     "dueDate": "2026-01-28"
@@ -10970,7 +10970,7 @@ export const assignmentsData = [
   },
   {
     "id": 101,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5B",
     "teacher": "Anthony Ross",
     "dueDate": "2026-01-29"
@@ -11005,7 +11005,7 @@ export const assignmentsData = [
   },
   {
     "id": 106,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5B",
     "teacher": "Charles Barnes",
     "dueDate": "2026-04-18"
@@ -11040,7 +11040,7 @@ export const assignmentsData = [
   },
   {
     "id": 111,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5G",
     "teacher": "Anthony Ross",
     "dueDate": "2026-04-19"
@@ -11075,7 +11075,7 @@ export const assignmentsData = [
   },
   {
     "id": 116,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5G",
     "teacher": "Joseph Henderson",
     "dueDate": "2026-05-06"
@@ -11110,7 +11110,7 @@ export const assignmentsData = [
   },
   {
     "id": 121,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6B",
     "teacher": "Linda Moore",
     "dueDate": "2026-04-15"
@@ -11145,7 +11145,7 @@ export const assignmentsData = [
   },
   {
     "id": 126,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6B",
     "teacher": "Shirley Butler",
     "dueDate": "2026-04-14"
@@ -11180,7 +11180,7 @@ export const assignmentsData = [
   },
   {
     "id": 131,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6G",
     "teacher": "Linda Moore",
     "dueDate": "2026-05-07"
@@ -11215,7 +11215,7 @@ export const assignmentsData = [
   },
   {
     "id": 136,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6G",
     "teacher": "Charles Barnes",
     "dueDate": "2026-01-28"
@@ -11250,7 +11250,7 @@ export const assignmentsData = [
   },
   {
     "id": 141,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7B",
     "teacher": "Anthony Ross",
     "dueDate": "2026-04-22"
@@ -11285,7 +11285,7 @@ export const assignmentsData = [
   },
   {
     "id": 146,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7B",
     "teacher": "Charles Barnes",
     "dueDate": "2026-04-14"
@@ -11320,7 +11320,7 @@ export const assignmentsData = [
   },
   {
     "id": 151,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7G",
     "teacher": "Scott Evans",
     "dueDate": "2026-02-17"
@@ -11355,7 +11355,7 @@ export const assignmentsData = [
   },
   {
     "id": 156,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7G",
     "teacher": "Joseph Henderson",
     "dueDate": "2026-05-14"
@@ -11397,7 +11397,7 @@ export const assignmentsData = [
   },
   {
     "id": 162,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8B",
     "teacher": "Heather Morgan",
     "dueDate": "2026-01-23"
@@ -11432,7 +11432,7 @@ export const assignmentsData = [
   },
   {
     "id": 167,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8B",
     "teacher": "Shirley Hill",
     "dueDate": "2026-01-31"
@@ -11474,7 +11474,7 @@ export const assignmentsData = [
   },
   {
     "id": 173,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8G",
     "teacher": "Nancy Baker",
     "dueDate": "2026-02-13"
@@ -11509,7 +11509,7 @@ export const assignmentsData = [
   },
   {
     "id": 178,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8G",
     "teacher": "Cynthia Barnes",
     "dueDate": "2026-01-29"
@@ -11551,7 +11551,7 @@ export const assignmentsData = [
   },
   {
     "id": 184,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9B",
     "teacher": "Nancy Baker",
     "dueDate": "2026-05-20"
@@ -11586,7 +11586,7 @@ export const assignmentsData = [
   },
   {
     "id": 189,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9B",
     "teacher": "Cynthia Barnes",
     "dueDate": "2026-02-16"
@@ -11628,7 +11628,7 @@ export const assignmentsData = [
   },
   {
     "id": 195,
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9G",
     "teacher": "Heather Morgan",
     "dueDate": "2026-04-10"
@@ -11663,7 +11663,7 @@ export const assignmentsData = [
   },
   {
     "id": 200,
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9G",
     "teacher": "Shirley Hill",
     "dueDate": "2026-04-20"
@@ -12474,7 +12474,7 @@ export const resultsData = [
   {
     "id": 81,
     "student": "Gregory King",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10B",
     "teacher": "Heather Morgan",
     "date": "2026-03-30",
@@ -12484,7 +12484,7 @@ export const resultsData = [
   {
     "id": 82,
     "student": "Gregory King",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10B",
     "teacher": "Heather Morgan",
     "date": "2026-02-15",
@@ -12494,7 +12494,7 @@ export const resultsData = [
   {
     "id": 83,
     "student": "David Bailey",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10B",
     "teacher": "Heather Morgan",
     "date": "2026-03-30",
@@ -12504,7 +12504,7 @@ export const resultsData = [
   {
     "id": 84,
     "student": "David Bailey",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10B",
     "teacher": "Heather Morgan",
     "date": "2026-02-15",
@@ -12514,7 +12514,7 @@ export const resultsData = [
   {
     "id": 85,
     "student": "David Moore",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10B",
     "teacher": "Heather Morgan",
     "date": "2026-03-30",
@@ -12524,7 +12524,7 @@ export const resultsData = [
   {
     "id": 86,
     "student": "David Moore",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10B",
     "teacher": "Heather Morgan",
     "date": "2026-02-15",
@@ -12534,7 +12534,7 @@ export const resultsData = [
   {
     "id": 87,
     "student": "Ryan Jackson 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10B",
     "teacher": "Heather Morgan",
     "date": "2026-03-30",
@@ -12544,7 +12544,7 @@ export const resultsData = [
   {
     "id": 88,
     "student": "Ryan Jackson 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10B",
     "teacher": "Heather Morgan",
     "date": "2026-02-15",
@@ -12554,7 +12554,7 @@ export const resultsData = [
   {
     "id": 89,
     "student": "Anthony Fisher 3",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10B",
     "teacher": "Heather Morgan",
     "date": "2026-03-30",
@@ -12564,7 +12564,7 @@ export const resultsData = [
   {
     "id": 90,
     "student": "Anthony Fisher 3",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10B",
     "teacher": "Heather Morgan",
     "date": "2026-02-15",
@@ -12574,7 +12574,7 @@ export const resultsData = [
   {
     "id": 91,
     "student": "Andrew Griffin",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10B",
     "teacher": "Heather Morgan",
     "date": "2026-03-30",
@@ -12584,7 +12584,7 @@ export const resultsData = [
   {
     "id": 92,
     "student": "Andrew Griffin",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10B",
     "teacher": "Heather Morgan",
     "date": "2026-02-15",
@@ -12594,7 +12594,7 @@ export const resultsData = [
   {
     "id": 93,
     "student": "Benjamin Hill",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10B",
     "teacher": "Heather Morgan",
     "date": "2026-03-30",
@@ -12604,7 +12604,7 @@ export const resultsData = [
   {
     "id": 94,
     "student": "Benjamin Hill",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10B",
     "teacher": "Heather Morgan",
     "date": "2026-02-15",
@@ -12614,7 +12614,7 @@ export const resultsData = [
   {
     "id": 95,
     "student": "Steven Griffin",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10B",
     "teacher": "Heather Morgan",
     "date": "2026-03-30",
@@ -12624,7 +12624,7 @@ export const resultsData = [
   {
     "id": 96,
     "student": "Steven Griffin",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10B",
     "teacher": "Heather Morgan",
     "date": "2026-02-15",
@@ -13274,7 +13274,7 @@ export const resultsData = [
   {
     "id": 161,
     "student": "Gregory King",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10B",
     "teacher": "Shirley Hill",
     "date": "2026-03-08",
@@ -13284,7 +13284,7 @@ export const resultsData = [
   {
     "id": 162,
     "student": "Gregory King",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10B",
     "teacher": "Shirley Hill",
     "date": "2026-04-08",
@@ -13294,7 +13294,7 @@ export const resultsData = [
   {
     "id": 163,
     "student": "David Bailey",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10B",
     "teacher": "Shirley Hill",
     "date": "2026-03-08",
@@ -13304,7 +13304,7 @@ export const resultsData = [
   {
     "id": 164,
     "student": "David Bailey",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10B",
     "teacher": "Shirley Hill",
     "date": "2026-04-08",
@@ -13314,7 +13314,7 @@ export const resultsData = [
   {
     "id": 165,
     "student": "David Moore",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10B",
     "teacher": "Shirley Hill",
     "date": "2026-03-08",
@@ -13324,7 +13324,7 @@ export const resultsData = [
   {
     "id": 166,
     "student": "David Moore",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10B",
     "teacher": "Shirley Hill",
     "date": "2026-04-08",
@@ -13334,7 +13334,7 @@ export const resultsData = [
   {
     "id": 167,
     "student": "Ryan Jackson 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10B",
     "teacher": "Shirley Hill",
     "date": "2026-03-08",
@@ -13344,7 +13344,7 @@ export const resultsData = [
   {
     "id": 168,
     "student": "Ryan Jackson 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10B",
     "teacher": "Shirley Hill",
     "date": "2026-04-08",
@@ -13354,7 +13354,7 @@ export const resultsData = [
   {
     "id": 169,
     "student": "Anthony Fisher 3",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10B",
     "teacher": "Shirley Hill",
     "date": "2026-03-08",
@@ -13364,7 +13364,7 @@ export const resultsData = [
   {
     "id": 170,
     "student": "Anthony Fisher 3",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10B",
     "teacher": "Shirley Hill",
     "date": "2026-04-08",
@@ -13374,7 +13374,7 @@ export const resultsData = [
   {
     "id": 171,
     "student": "Andrew Griffin",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10B",
     "teacher": "Shirley Hill",
     "date": "2026-03-08",
@@ -13384,7 +13384,7 @@ export const resultsData = [
   {
     "id": 172,
     "student": "Andrew Griffin",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10B",
     "teacher": "Shirley Hill",
     "date": "2026-04-08",
@@ -13394,7 +13394,7 @@ export const resultsData = [
   {
     "id": 173,
     "student": "Benjamin Hill",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10B",
     "teacher": "Shirley Hill",
     "date": "2026-03-08",
@@ -13404,7 +13404,7 @@ export const resultsData = [
   {
     "id": 174,
     "student": "Benjamin Hill",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10B",
     "teacher": "Shirley Hill",
     "date": "2026-04-08",
@@ -13414,7 +13414,7 @@ export const resultsData = [
   {
     "id": 175,
     "student": "Steven Griffin",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10B",
     "teacher": "Shirley Hill",
     "date": "2026-03-08",
@@ -13424,7 +13424,7 @@ export const resultsData = [
   {
     "id": 176,
     "student": "Steven Griffin",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10B",
     "teacher": "Shirley Hill",
     "date": "2026-04-08",
@@ -14034,7 +14034,7 @@ export const resultsData = [
   {
     "id": 237,
     "student": "Jessica Henderson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10G",
     "teacher": "Gary Thompson",
     "date": "2026-03-07",
@@ -14044,7 +14044,7 @@ export const resultsData = [
   {
     "id": 238,
     "student": "Jessica Henderson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10G",
     "teacher": "Gary Thompson",
     "date": "2026-01-31",
@@ -14054,7 +14054,7 @@ export const resultsData = [
   {
     "id": 239,
     "student": "Barbara Gray",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10G",
     "teacher": "Gary Thompson",
     "date": "2026-03-07",
@@ -14064,7 +14064,7 @@ export const resultsData = [
   {
     "id": 240,
     "student": "Barbara Gray",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10G",
     "teacher": "Gary Thompson",
     "date": "2026-01-31",
@@ -14074,7 +14074,7 @@ export const resultsData = [
   {
     "id": 241,
     "student": "Donna Cox",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10G",
     "teacher": "Gary Thompson",
     "date": "2026-03-07",
@@ -14084,7 +14084,7 @@ export const resultsData = [
   {
     "id": 242,
     "student": "Donna Cox",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10G",
     "teacher": "Gary Thompson",
     "date": "2026-01-31",
@@ -14094,7 +14094,7 @@ export const resultsData = [
   {
     "id": 243,
     "student": "Christine Lee 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10G",
     "teacher": "Gary Thompson",
     "date": "2026-03-07",
@@ -14104,7 +14104,7 @@ export const resultsData = [
   {
     "id": 244,
     "student": "Christine Lee 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10G",
     "teacher": "Gary Thompson",
     "date": "2026-01-31",
@@ -14114,7 +14114,7 @@ export const resultsData = [
   {
     "id": 245,
     "student": "Patricia Reed",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10G",
     "teacher": "Gary Thompson",
     "date": "2026-03-07",
@@ -14124,7 +14124,7 @@ export const resultsData = [
   {
     "id": 246,
     "student": "Patricia Reed",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10G",
     "teacher": "Gary Thompson",
     "date": "2026-01-31",
@@ -14134,7 +14134,7 @@ export const resultsData = [
   {
     "id": 247,
     "student": "Heather Bailey",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10G",
     "teacher": "Gary Thompson",
     "date": "2026-03-07",
@@ -14144,7 +14144,7 @@ export const resultsData = [
   {
     "id": 248,
     "student": "Heather Bailey",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "10G",
     "teacher": "Gary Thompson",
     "date": "2026-01-31",
@@ -14634,7 +14634,7 @@ export const resultsData = [
   {
     "id": 297,
     "student": "Jessica Henderson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10G",
     "teacher": "Cynthia Barnes",
     "date": "2026-04-06",
@@ -14644,7 +14644,7 @@ export const resultsData = [
   {
     "id": 298,
     "student": "Jessica Henderson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10G",
     "teacher": "Cynthia Barnes",
     "date": "2026-05-25",
@@ -14654,7 +14654,7 @@ export const resultsData = [
   {
     "id": 299,
     "student": "Barbara Gray",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10G",
     "teacher": "Cynthia Barnes",
     "date": "2026-04-06",
@@ -14664,7 +14664,7 @@ export const resultsData = [
   {
     "id": 300,
     "student": "Barbara Gray",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10G",
     "teacher": "Cynthia Barnes",
     "date": "2026-05-25",
@@ -14674,7 +14674,7 @@ export const resultsData = [
   {
     "id": 301,
     "student": "Donna Cox",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10G",
     "teacher": "Cynthia Barnes",
     "date": "2026-04-06",
@@ -14684,7 +14684,7 @@ export const resultsData = [
   {
     "id": 302,
     "student": "Donna Cox",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10G",
     "teacher": "Cynthia Barnes",
     "date": "2026-05-25",
@@ -14694,7 +14694,7 @@ export const resultsData = [
   {
     "id": 303,
     "student": "Christine Lee 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10G",
     "teacher": "Cynthia Barnes",
     "date": "2026-04-06",
@@ -14704,7 +14704,7 @@ export const resultsData = [
   {
     "id": 304,
     "student": "Christine Lee 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10G",
     "teacher": "Cynthia Barnes",
     "date": "2026-05-25",
@@ -14714,7 +14714,7 @@ export const resultsData = [
   {
     "id": 305,
     "student": "Patricia Reed",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10G",
     "teacher": "Cynthia Barnes",
     "date": "2026-04-06",
@@ -14724,7 +14724,7 @@ export const resultsData = [
   {
     "id": 306,
     "student": "Patricia Reed",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10G",
     "teacher": "Cynthia Barnes",
     "date": "2026-05-25",
@@ -14734,7 +14734,7 @@ export const resultsData = [
   {
     "id": 307,
     "student": "Heather Bailey",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10G",
     "teacher": "Cynthia Barnes",
     "date": "2026-04-06",
@@ -14744,7 +14744,7 @@ export const resultsData = [
   {
     "id": 308,
     "student": "Heather Bailey",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "10G",
     "teacher": "Cynthia Barnes",
     "date": "2026-05-25",
@@ -15394,7 +15394,7 @@ export const resultsData = [
   {
     "id": 373,
     "student": "Paul Reed",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1B",
     "teacher": "Catherine Hall",
     "date": "2026-04-13",
@@ -15404,7 +15404,7 @@ export const resultsData = [
   {
     "id": 374,
     "student": "Paul Reed",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1B",
     "teacher": "Catherine Hall",
     "date": "2026-04-18",
@@ -15414,7 +15414,7 @@ export const resultsData = [
   {
     "id": 375,
     "student": "David Gray",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1B",
     "teacher": "Catherine Hall",
     "date": "2026-04-13",
@@ -15424,7 +15424,7 @@ export const resultsData = [
   {
     "id": 376,
     "student": "David Gray",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1B",
     "teacher": "Catherine Hall",
     "date": "2026-04-18",
@@ -15434,7 +15434,7 @@ export const resultsData = [
   {
     "id": 377,
     "student": "Gregory Powell",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1B",
     "teacher": "Catherine Hall",
     "date": "2026-04-13",
@@ -15444,7 +15444,7 @@ export const resultsData = [
   {
     "id": 378,
     "student": "Gregory Powell",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1B",
     "teacher": "Catherine Hall",
     "date": "2026-04-18",
@@ -15454,7 +15454,7 @@ export const resultsData = [
   {
     "id": 379,
     "student": "Gary Collins",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1B",
     "teacher": "Catherine Hall",
     "date": "2026-04-13",
@@ -15464,7 +15464,7 @@ export const resultsData = [
   {
     "id": 380,
     "student": "Gary Collins",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1B",
     "teacher": "Catherine Hall",
     "date": "2026-04-18",
@@ -15474,7 +15474,7 @@ export const resultsData = [
   {
     "id": 381,
     "student": "Paul Cox",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1B",
     "teacher": "Catherine Hall",
     "date": "2026-04-13",
@@ -15484,7 +15484,7 @@ export const resultsData = [
   {
     "id": 382,
     "student": "Paul Cox",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1B",
     "teacher": "Catherine Hall",
     "date": "2026-04-18",
@@ -15494,7 +15494,7 @@ export const resultsData = [
   {
     "id": 383,
     "student": "Ryan King",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1B",
     "teacher": "Catherine Hall",
     "date": "2026-04-13",
@@ -15504,7 +15504,7 @@ export const resultsData = [
   {
     "id": 384,
     "student": "Ryan King",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1B",
     "teacher": "Catherine Hall",
     "date": "2026-04-18",
@@ -15514,7 +15514,7 @@ export const resultsData = [
   {
     "id": 385,
     "student": "Ryan Diaz 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1B",
     "teacher": "Catherine Hall",
     "date": "2026-04-13",
@@ -15524,7 +15524,7 @@ export const resultsData = [
   {
     "id": 386,
     "student": "Ryan Diaz 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1B",
     "teacher": "Catherine Hall",
     "date": "2026-04-18",
@@ -15534,7 +15534,7 @@ export const resultsData = [
   {
     "id": 387,
     "student": "Robert Powell",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1B",
     "teacher": "Catherine Hall",
     "date": "2026-04-13",
@@ -15544,7 +15544,7 @@ export const resultsData = [
   {
     "id": 388,
     "student": "Robert Powell",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1B",
     "teacher": "Catherine Hall",
     "date": "2026-04-18",
@@ -16034,7 +16034,7 @@ export const resultsData = [
   {
     "id": 437,
     "student": "Paul Reed",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1B",
     "teacher": "Janet Henderson",
     "date": "2026-03-27",
@@ -16044,7 +16044,7 @@ export const resultsData = [
   {
     "id": 438,
     "student": "Paul Reed",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1B",
     "teacher": "Janet Henderson",
     "date": "2026-05-18",
@@ -16054,7 +16054,7 @@ export const resultsData = [
   {
     "id": 439,
     "student": "David Gray",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1B",
     "teacher": "Janet Henderson",
     "date": "2026-03-27",
@@ -16064,7 +16064,7 @@ export const resultsData = [
   {
     "id": 440,
     "student": "David Gray",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1B",
     "teacher": "Janet Henderson",
     "date": "2026-05-18",
@@ -16074,7 +16074,7 @@ export const resultsData = [
   {
     "id": 441,
     "student": "Gregory Powell",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1B",
     "teacher": "Janet Henderson",
     "date": "2026-03-27",
@@ -16084,7 +16084,7 @@ export const resultsData = [
   {
     "id": 442,
     "student": "Gregory Powell",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1B",
     "teacher": "Janet Henderson",
     "date": "2026-05-18",
@@ -16094,7 +16094,7 @@ export const resultsData = [
   {
     "id": 443,
     "student": "Gary Collins",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1B",
     "teacher": "Janet Henderson",
     "date": "2026-03-27",
@@ -16104,7 +16104,7 @@ export const resultsData = [
   {
     "id": 444,
     "student": "Gary Collins",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1B",
     "teacher": "Janet Henderson",
     "date": "2026-05-18",
@@ -16114,7 +16114,7 @@ export const resultsData = [
   {
     "id": 445,
     "student": "Paul Cox",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1B",
     "teacher": "Janet Henderson",
     "date": "2026-03-27",
@@ -16124,7 +16124,7 @@ export const resultsData = [
   {
     "id": 446,
     "student": "Paul Cox",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1B",
     "teacher": "Janet Henderson",
     "date": "2026-05-18",
@@ -16134,7 +16134,7 @@ export const resultsData = [
   {
     "id": 447,
     "student": "Ryan King",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1B",
     "teacher": "Janet Henderson",
     "date": "2026-03-27",
@@ -16144,7 +16144,7 @@ export const resultsData = [
   {
     "id": 448,
     "student": "Ryan King",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1B",
     "teacher": "Janet Henderson",
     "date": "2026-05-18",
@@ -16154,7 +16154,7 @@ export const resultsData = [
   {
     "id": 449,
     "student": "Ryan Diaz 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1B",
     "teacher": "Janet Henderson",
     "date": "2026-03-27",
@@ -16164,7 +16164,7 @@ export const resultsData = [
   {
     "id": 450,
     "student": "Ryan Diaz 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1B",
     "teacher": "Janet Henderson",
     "date": "2026-05-18",
@@ -16174,7 +16174,7 @@ export const resultsData = [
   {
     "id": 451,
     "student": "Robert Powell",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1B",
     "teacher": "Janet Henderson",
     "date": "2026-03-27",
@@ -16184,7 +16184,7 @@ export const resultsData = [
   {
     "id": 452,
     "student": "Robert Powell",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1B",
     "teacher": "Janet Henderson",
     "date": "2026-05-18",
@@ -16754,7 +16754,7 @@ export const resultsData = [
   {
     "id": 509,
     "student": "Nancy Nelson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1G",
     "teacher": "Raymond Cruz",
     "date": "2026-03-04",
@@ -16764,7 +16764,7 @@ export const resultsData = [
   {
     "id": 510,
     "student": "Nancy Nelson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1G",
     "teacher": "Raymond Cruz",
     "date": "2026-04-21",
@@ -16774,7 +16774,7 @@ export const resultsData = [
   {
     "id": 511,
     "student": "Rachel Henderson 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1G",
     "teacher": "Raymond Cruz",
     "date": "2026-03-04",
@@ -16784,7 +16784,7 @@ export const resultsData = [
   {
     "id": 512,
     "student": "Rachel Henderson 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1G",
     "teacher": "Raymond Cruz",
     "date": "2026-04-21",
@@ -16794,7 +16794,7 @@ export const resultsData = [
   {
     "id": 513,
     "student": "Laura Rogers",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1G",
     "teacher": "Raymond Cruz",
     "date": "2026-03-04",
@@ -16804,7 +16804,7 @@ export const resultsData = [
   {
     "id": 514,
     "student": "Laura Rogers",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1G",
     "teacher": "Raymond Cruz",
     "date": "2026-04-21",
@@ -16814,7 +16814,7 @@ export const resultsData = [
   {
     "id": 515,
     "student": "Janet Butler",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1G",
     "teacher": "Raymond Cruz",
     "date": "2026-03-04",
@@ -16824,7 +16824,7 @@ export const resultsData = [
   {
     "id": 516,
     "student": "Janet Butler",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1G",
     "teacher": "Raymond Cruz",
     "date": "2026-04-21",
@@ -16834,7 +16834,7 @@ export const resultsData = [
   {
     "id": 517,
     "student": "Betty Rogers",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1G",
     "teacher": "Raymond Cruz",
     "date": "2026-03-04",
@@ -16844,7 +16844,7 @@ export const resultsData = [
   {
     "id": 518,
     "student": "Betty Rogers",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1G",
     "teacher": "Raymond Cruz",
     "date": "2026-04-21",
@@ -16854,7 +16854,7 @@ export const resultsData = [
   {
     "id": 519,
     "student": "Betty Griffin",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1G",
     "teacher": "Raymond Cruz",
     "date": "2026-03-04",
@@ -16864,7 +16864,7 @@ export const resultsData = [
   {
     "id": 520,
     "student": "Betty Griffin",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1G",
     "teacher": "Raymond Cruz",
     "date": "2026-04-21",
@@ -16874,7 +16874,7 @@ export const resultsData = [
   {
     "id": 521,
     "student": "Elizabeth Henderson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1G",
     "teacher": "Raymond Cruz",
     "date": "2026-03-04",
@@ -16884,7 +16884,7 @@ export const resultsData = [
   {
     "id": 522,
     "student": "Elizabeth Henderson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "1G",
     "teacher": "Raymond Cruz",
     "date": "2026-04-21",
@@ -17314,7 +17314,7 @@ export const resultsData = [
   {
     "id": 565,
     "student": "Nancy Nelson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1G",
     "teacher": "Jerry Bailey",
     "date": "2026-03-04",
@@ -17324,7 +17324,7 @@ export const resultsData = [
   {
     "id": 566,
     "student": "Nancy Nelson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1G",
     "teacher": "Jerry Bailey",
     "date": "2026-02-12",
@@ -17334,7 +17334,7 @@ export const resultsData = [
   {
     "id": 567,
     "student": "Rachel Henderson 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1G",
     "teacher": "Jerry Bailey",
     "date": "2026-03-04",
@@ -17344,7 +17344,7 @@ export const resultsData = [
   {
     "id": 568,
     "student": "Rachel Henderson 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1G",
     "teacher": "Jerry Bailey",
     "date": "2026-02-12",
@@ -17354,7 +17354,7 @@ export const resultsData = [
   {
     "id": 569,
     "student": "Laura Rogers",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1G",
     "teacher": "Jerry Bailey",
     "date": "2026-03-04",
@@ -17364,7 +17364,7 @@ export const resultsData = [
   {
     "id": 570,
     "student": "Laura Rogers",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1G",
     "teacher": "Jerry Bailey",
     "date": "2026-02-12",
@@ -17374,7 +17374,7 @@ export const resultsData = [
   {
     "id": 571,
     "student": "Janet Butler",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1G",
     "teacher": "Jerry Bailey",
     "date": "2026-03-04",
@@ -17384,7 +17384,7 @@ export const resultsData = [
   {
     "id": 572,
     "student": "Janet Butler",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1G",
     "teacher": "Jerry Bailey",
     "date": "2026-02-12",
@@ -17394,7 +17394,7 @@ export const resultsData = [
   {
     "id": 573,
     "student": "Betty Rogers",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1G",
     "teacher": "Jerry Bailey",
     "date": "2026-03-04",
@@ -17404,7 +17404,7 @@ export const resultsData = [
   {
     "id": 574,
     "student": "Betty Rogers",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1G",
     "teacher": "Jerry Bailey",
     "date": "2026-02-12",
@@ -17414,7 +17414,7 @@ export const resultsData = [
   {
     "id": 575,
     "student": "Betty Griffin",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1G",
     "teacher": "Jerry Bailey",
     "date": "2026-03-04",
@@ -17424,7 +17424,7 @@ export const resultsData = [
   {
     "id": 576,
     "student": "Betty Griffin",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1G",
     "teacher": "Jerry Bailey",
     "date": "2026-02-12",
@@ -17434,7 +17434,7 @@ export const resultsData = [
   {
     "id": 577,
     "student": "Elizabeth Henderson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1G",
     "teacher": "Jerry Bailey",
     "date": "2026-03-04",
@@ -17444,7 +17444,7 @@ export const resultsData = [
   {
     "id": 578,
     "student": "Elizabeth Henderson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "1G",
     "teacher": "Jerry Bailey",
     "date": "2026-02-12",
@@ -18014,7 +18014,7 @@ export const resultsData = [
   {
     "id": 635,
     "student": "Benjamin Cox",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2B",
     "teacher": "Raymond Cruz",
     "date": "2026-03-20",
@@ -18024,7 +18024,7 @@ export const resultsData = [
   {
     "id": 636,
     "student": "Benjamin Cox",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2B",
     "teacher": "Raymond Cruz",
     "date": "2026-05-08",
@@ -18034,7 +18034,7 @@ export const resultsData = [
   {
     "id": 637,
     "student": "Samuel Butler",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2B",
     "teacher": "Raymond Cruz",
     "date": "2026-03-20",
@@ -18044,7 +18044,7 @@ export const resultsData = [
   {
     "id": 638,
     "student": "Samuel Butler",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2B",
     "teacher": "Raymond Cruz",
     "date": "2026-05-08",
@@ -18054,7 +18054,7 @@ export const resultsData = [
   {
     "id": 639,
     "student": "Anthony Fisher 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2B",
     "teacher": "Raymond Cruz",
     "date": "2026-03-20",
@@ -18064,7 +18064,7 @@ export const resultsData = [
   {
     "id": 640,
     "student": "Anthony Fisher 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2B",
     "teacher": "Raymond Cruz",
     "date": "2026-05-08",
@@ -18074,7 +18074,7 @@ export const resultsData = [
   {
     "id": 641,
     "student": "Gregory Bennett",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2B",
     "teacher": "Raymond Cruz",
     "date": "2026-03-20",
@@ -18084,7 +18084,7 @@ export const resultsData = [
   {
     "id": 642,
     "student": "Gregory Bennett",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2B",
     "teacher": "Raymond Cruz",
     "date": "2026-05-08",
@@ -18094,7 +18094,7 @@ export const resultsData = [
   {
     "id": 643,
     "student": "Frank Lee",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2B",
     "teacher": "Raymond Cruz",
     "date": "2026-03-20",
@@ -18104,7 +18104,7 @@ export const resultsData = [
   {
     "id": 644,
     "student": "Frank Lee",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2B",
     "teacher": "Raymond Cruz",
     "date": "2026-05-08",
@@ -18114,7 +18114,7 @@ export const resultsData = [
   {
     "id": 645,
     "student": "Jacob Thompson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2B",
     "teacher": "Raymond Cruz",
     "date": "2026-03-20",
@@ -18124,7 +18124,7 @@ export const resultsData = [
   {
     "id": 646,
     "student": "Jacob Thompson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2B",
     "teacher": "Raymond Cruz",
     "date": "2026-05-08",
@@ -18134,7 +18134,7 @@ export const resultsData = [
   {
     "id": 647,
     "student": "Gregory Reed",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2B",
     "teacher": "Raymond Cruz",
     "date": "2026-03-20",
@@ -18144,7 +18144,7 @@ export const resultsData = [
   {
     "id": 648,
     "student": "Gregory Reed",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2B",
     "teacher": "Raymond Cruz",
     "date": "2026-05-08",
@@ -18574,7 +18574,7 @@ export const resultsData = [
   {
     "id": 691,
     "student": "Benjamin Cox",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2B",
     "teacher": "Janet Henderson",
     "date": "2026-03-29",
@@ -18584,7 +18584,7 @@ export const resultsData = [
   {
     "id": 692,
     "student": "Benjamin Cox",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2B",
     "teacher": "Janet Henderson",
     "date": "2026-02-09",
@@ -18594,7 +18594,7 @@ export const resultsData = [
   {
     "id": 693,
     "student": "Samuel Butler",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2B",
     "teacher": "Janet Henderson",
     "date": "2026-03-29",
@@ -18604,7 +18604,7 @@ export const resultsData = [
   {
     "id": 694,
     "student": "Samuel Butler",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2B",
     "teacher": "Janet Henderson",
     "date": "2026-02-09",
@@ -18614,7 +18614,7 @@ export const resultsData = [
   {
     "id": 695,
     "student": "Anthony Fisher 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2B",
     "teacher": "Janet Henderson",
     "date": "2026-03-29",
@@ -18624,7 +18624,7 @@ export const resultsData = [
   {
     "id": 696,
     "student": "Anthony Fisher 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2B",
     "teacher": "Janet Henderson",
     "date": "2026-02-09",
@@ -18634,7 +18634,7 @@ export const resultsData = [
   {
     "id": 697,
     "student": "Gregory Bennett",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2B",
     "teacher": "Janet Henderson",
     "date": "2026-03-29",
@@ -18644,7 +18644,7 @@ export const resultsData = [
   {
     "id": 698,
     "student": "Gregory Bennett",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2B",
     "teacher": "Janet Henderson",
     "date": "2026-02-09",
@@ -18654,7 +18654,7 @@ export const resultsData = [
   {
     "id": 699,
     "student": "Frank Lee",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2B",
     "teacher": "Janet Henderson",
     "date": "2026-03-29",
@@ -18664,7 +18664,7 @@ export const resultsData = [
   {
     "id": 700,
     "student": "Frank Lee",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2B",
     "teacher": "Janet Henderson",
     "date": "2026-02-09",
@@ -18674,7 +18674,7 @@ export const resultsData = [
   {
     "id": 701,
     "student": "Jacob Thompson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2B",
     "teacher": "Janet Henderson",
     "date": "2026-03-29",
@@ -18684,7 +18684,7 @@ export const resultsData = [
   {
     "id": 702,
     "student": "Jacob Thompson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2B",
     "teacher": "Janet Henderson",
     "date": "2026-02-09",
@@ -18694,7 +18694,7 @@ export const resultsData = [
   {
     "id": 703,
     "student": "Gregory Reed",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2B",
     "teacher": "Janet Henderson",
     "date": "2026-03-29",
@@ -18704,7 +18704,7 @@ export const resultsData = [
   {
     "id": 704,
     "student": "Gregory Reed",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2B",
     "teacher": "Janet Henderson",
     "date": "2026-02-09",
@@ -19354,7 +19354,7 @@ export const resultsData = [
   {
     "id": 769,
     "student": "Sandra Hill",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2G",
     "teacher": "Catherine Hall",
     "date": "2026-03-16",
@@ -19364,7 +19364,7 @@ export const resultsData = [
   {
     "id": 770,
     "student": "Sandra Hill",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2G",
     "teacher": "Catherine Hall",
     "date": "2026-01-21",
@@ -19374,7 +19374,7 @@ export const resultsData = [
   {
     "id": 771,
     "student": "Emily Gray",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2G",
     "teacher": "Catherine Hall",
     "date": "2026-03-16",
@@ -19384,7 +19384,7 @@ export const resultsData = [
   {
     "id": 772,
     "student": "Emily Gray",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2G",
     "teacher": "Catherine Hall",
     "date": "2026-01-21",
@@ -19394,7 +19394,7 @@ export const resultsData = [
   {
     "id": 773,
     "student": "Anna Foster",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2G",
     "teacher": "Catherine Hall",
     "date": "2026-03-16",
@@ -19404,7 +19404,7 @@ export const resultsData = [
   {
     "id": 774,
     "student": "Anna Foster",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2G",
     "teacher": "Catherine Hall",
     "date": "2026-01-21",
@@ -19414,7 +19414,7 @@ export const resultsData = [
   {
     "id": 775,
     "student": "Margaret Lee",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2G",
     "teacher": "Catherine Hall",
     "date": "2026-03-16",
@@ -19424,7 +19424,7 @@ export const resultsData = [
   {
     "id": 776,
     "student": "Margaret Lee",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2G",
     "teacher": "Catherine Hall",
     "date": "2026-01-21",
@@ -19434,7 +19434,7 @@ export const resultsData = [
   {
     "id": 777,
     "student": "Ruth Carter",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2G",
     "teacher": "Catherine Hall",
     "date": "2026-03-16",
@@ -19444,7 +19444,7 @@ export const resultsData = [
   {
     "id": 778,
     "student": "Ruth Carter",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2G",
     "teacher": "Catherine Hall",
     "date": "2026-01-21",
@@ -19454,7 +19454,7 @@ export const resultsData = [
   {
     "id": 779,
     "student": "Rachel Foster",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2G",
     "teacher": "Catherine Hall",
     "date": "2026-03-16",
@@ -19464,7 +19464,7 @@ export const resultsData = [
   {
     "id": 780,
     "student": "Rachel Foster",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2G",
     "teacher": "Catherine Hall",
     "date": "2026-01-21",
@@ -19474,7 +19474,7 @@ export const resultsData = [
   {
     "id": 781,
     "student": "Elizabeth Gray",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2G",
     "teacher": "Catherine Hall",
     "date": "2026-03-16",
@@ -19484,7 +19484,7 @@ export const resultsData = [
   {
     "id": 782,
     "student": "Elizabeth Gray",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2G",
     "teacher": "Catherine Hall",
     "date": "2026-01-21",
@@ -19494,7 +19494,7 @@ export const resultsData = [
   {
     "id": 783,
     "student": "Kimberly Rogers",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2G",
     "teacher": "Catherine Hall",
     "date": "2026-03-16",
@@ -19504,7 +19504,7 @@ export const resultsData = [
   {
     "id": 784,
     "student": "Kimberly Rogers",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "2G",
     "teacher": "Catherine Hall",
     "date": "2026-01-21",
@@ -19994,7 +19994,7 @@ export const resultsData = [
   {
     "id": 833,
     "student": "Sandra Hill",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2G",
     "teacher": "Jerry Bailey",
     "date": "2026-03-23",
@@ -20004,7 +20004,7 @@ export const resultsData = [
   {
     "id": 834,
     "student": "Sandra Hill",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2G",
     "teacher": "Jerry Bailey",
     "date": "2026-05-17",
@@ -20014,7 +20014,7 @@ export const resultsData = [
   {
     "id": 835,
     "student": "Emily Gray",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2G",
     "teacher": "Jerry Bailey",
     "date": "2026-03-23",
@@ -20024,7 +20024,7 @@ export const resultsData = [
   {
     "id": 836,
     "student": "Emily Gray",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2G",
     "teacher": "Jerry Bailey",
     "date": "2026-05-17",
@@ -20034,7 +20034,7 @@ export const resultsData = [
   {
     "id": 837,
     "student": "Anna Foster",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2G",
     "teacher": "Jerry Bailey",
     "date": "2026-03-23",
@@ -20044,7 +20044,7 @@ export const resultsData = [
   {
     "id": 838,
     "student": "Anna Foster",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2G",
     "teacher": "Jerry Bailey",
     "date": "2026-05-17",
@@ -20054,7 +20054,7 @@ export const resultsData = [
   {
     "id": 839,
     "student": "Margaret Lee",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2G",
     "teacher": "Jerry Bailey",
     "date": "2026-03-23",
@@ -20064,7 +20064,7 @@ export const resultsData = [
   {
     "id": 840,
     "student": "Margaret Lee",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2G",
     "teacher": "Jerry Bailey",
     "date": "2026-05-17",
@@ -20074,7 +20074,7 @@ export const resultsData = [
   {
     "id": 841,
     "student": "Ruth Carter",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2G",
     "teacher": "Jerry Bailey",
     "date": "2026-03-23",
@@ -20084,7 +20084,7 @@ export const resultsData = [
   {
     "id": 842,
     "student": "Ruth Carter",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2G",
     "teacher": "Jerry Bailey",
     "date": "2026-05-17",
@@ -20094,7 +20094,7 @@ export const resultsData = [
   {
     "id": 843,
     "student": "Rachel Foster",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2G",
     "teacher": "Jerry Bailey",
     "date": "2026-03-23",
@@ -20104,7 +20104,7 @@ export const resultsData = [
   {
     "id": 844,
     "student": "Rachel Foster",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2G",
     "teacher": "Jerry Bailey",
     "date": "2026-05-17",
@@ -20114,7 +20114,7 @@ export const resultsData = [
   {
     "id": 845,
     "student": "Elizabeth Gray",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2G",
     "teacher": "Jerry Bailey",
     "date": "2026-03-23",
@@ -20124,7 +20124,7 @@ export const resultsData = [
   {
     "id": 846,
     "student": "Elizabeth Gray",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2G",
     "teacher": "Jerry Bailey",
     "date": "2026-05-17",
@@ -20134,7 +20134,7 @@ export const resultsData = [
   {
     "id": 847,
     "student": "Kimberly Rogers",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2G",
     "teacher": "Jerry Bailey",
     "date": "2026-03-23",
@@ -20144,7 +20144,7 @@ export const resultsData = [
   {
     "id": 848,
     "student": "Kimberly Rogers",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "2G",
     "teacher": "Jerry Bailey",
     "date": "2026-05-17",
@@ -20714,7 +20714,7 @@ export const resultsData = [
   {
     "id": 905,
     "student": "Alexander Evans",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3B",
     "teacher": "Catherine Hall",
     "date": "2026-03-11",
@@ -20724,7 +20724,7 @@ export const resultsData = [
   {
     "id": 906,
     "student": "Alexander Evans",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3B",
     "teacher": "Catherine Hall",
     "date": "2026-02-02",
@@ -20734,7 +20734,7 @@ export const resultsData = [
   {
     "id": 907,
     "student": "Matthew Henderson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3B",
     "teacher": "Catherine Hall",
     "date": "2026-03-11",
@@ -20744,7 +20744,7 @@ export const resultsData = [
   {
     "id": 908,
     "student": "Matthew Henderson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3B",
     "teacher": "Catherine Hall",
     "date": "2026-02-02",
@@ -20754,7 +20754,7 @@ export const resultsData = [
   {
     "id": 909,
     "student": "Mark Wilson 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3B",
     "teacher": "Catherine Hall",
     "date": "2026-03-11",
@@ -20764,7 +20764,7 @@ export const resultsData = [
   {
     "id": 910,
     "student": "Mark Wilson 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3B",
     "teacher": "Catherine Hall",
     "date": "2026-02-02",
@@ -20774,7 +20774,7 @@ export const resultsData = [
   {
     "id": 911,
     "student": "Anthony Collins",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3B",
     "teacher": "Catherine Hall",
     "date": "2026-03-11",
@@ -20784,7 +20784,7 @@ export const resultsData = [
   {
     "id": 912,
     "student": "Anthony Collins",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3B",
     "teacher": "Catherine Hall",
     "date": "2026-02-02",
@@ -20794,7 +20794,7 @@ export const resultsData = [
   {
     "id": 913,
     "student": "Samuel Evans",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3B",
     "teacher": "Catherine Hall",
     "date": "2026-03-11",
@@ -20804,7 +20804,7 @@ export const resultsData = [
   {
     "id": 914,
     "student": "Samuel Evans",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3B",
     "teacher": "Catherine Hall",
     "date": "2026-02-02",
@@ -20814,7 +20814,7 @@ export const resultsData = [
   {
     "id": 915,
     "student": "Joseph Butler",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3B",
     "teacher": "Catherine Hall",
     "date": "2026-03-11",
@@ -20824,7 +20824,7 @@ export const resultsData = [
   {
     "id": 916,
     "student": "Joseph Butler",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3B",
     "teacher": "Catherine Hall",
     "date": "2026-02-02",
@@ -20834,7 +20834,7 @@ export const resultsData = [
   {
     "id": 917,
     "student": "Tyler Rogers",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3B",
     "teacher": "Catherine Hall",
     "date": "2026-03-11",
@@ -20844,7 +20844,7 @@ export const resultsData = [
   {
     "id": 918,
     "student": "Tyler Rogers",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3B",
     "teacher": "Catherine Hall",
     "date": "2026-02-02",
@@ -21274,7 +21274,7 @@ export const resultsData = [
   {
     "id": 961,
     "student": "Alexander Evans",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3B",
     "teacher": "Jerry Bailey",
     "date": "2026-03-24",
@@ -21284,7 +21284,7 @@ export const resultsData = [
   {
     "id": 962,
     "student": "Alexander Evans",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3B",
     "teacher": "Jerry Bailey",
     "date": "2026-01-28",
@@ -21294,7 +21294,7 @@ export const resultsData = [
   {
     "id": 963,
     "student": "Matthew Henderson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3B",
     "teacher": "Jerry Bailey",
     "date": "2026-03-24",
@@ -21304,7 +21304,7 @@ export const resultsData = [
   {
     "id": 964,
     "student": "Matthew Henderson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3B",
     "teacher": "Jerry Bailey",
     "date": "2026-01-28",
@@ -21314,7 +21314,7 @@ export const resultsData = [
   {
     "id": 965,
     "student": "Mark Wilson 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3B",
     "teacher": "Jerry Bailey",
     "date": "2026-03-24",
@@ -21324,7 +21324,7 @@ export const resultsData = [
   {
     "id": 966,
     "student": "Mark Wilson 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3B",
     "teacher": "Jerry Bailey",
     "date": "2026-01-28",
@@ -21334,7 +21334,7 @@ export const resultsData = [
   {
     "id": 967,
     "student": "Anthony Collins",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3B",
     "teacher": "Jerry Bailey",
     "date": "2026-03-24",
@@ -21344,7 +21344,7 @@ export const resultsData = [
   {
     "id": 968,
     "student": "Anthony Collins",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3B",
     "teacher": "Jerry Bailey",
     "date": "2026-01-28",
@@ -21354,7 +21354,7 @@ export const resultsData = [
   {
     "id": 969,
     "student": "Samuel Evans",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3B",
     "teacher": "Jerry Bailey",
     "date": "2026-03-24",
@@ -21364,7 +21364,7 @@ export const resultsData = [
   {
     "id": 970,
     "student": "Samuel Evans",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3B",
     "teacher": "Jerry Bailey",
     "date": "2026-01-28",
@@ -21374,7 +21374,7 @@ export const resultsData = [
   {
     "id": 971,
     "student": "Joseph Butler",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3B",
     "teacher": "Jerry Bailey",
     "date": "2026-03-24",
@@ -21384,7 +21384,7 @@ export const resultsData = [
   {
     "id": 972,
     "student": "Joseph Butler",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3B",
     "teacher": "Jerry Bailey",
     "date": "2026-01-28",
@@ -21394,7 +21394,7 @@ export const resultsData = [
   {
     "id": 973,
     "student": "Tyler Rogers",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3B",
     "teacher": "Jerry Bailey",
     "date": "2026-03-24",
@@ -21404,7 +21404,7 @@ export const resultsData = [
   {
     "id": 974,
     "student": "Tyler Rogers",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3B",
     "teacher": "Jerry Bailey",
     "date": "2026-01-28",
@@ -22054,7 +22054,7 @@ export const resultsData = [
   {
     "id": 1039,
     "student": "Patricia Collins",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3G",
     "teacher": "Raymond Cruz",
     "date": "2026-04-12",
@@ -22064,7 +22064,7 @@ export const resultsData = [
   {
     "id": 1040,
     "student": "Patricia Collins",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3G",
     "teacher": "Raymond Cruz",
     "date": "2026-03-29",
@@ -22074,7 +22074,7 @@ export const resultsData = [
   {
     "id": 1041,
     "student": "Catherine Watson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3G",
     "teacher": "Raymond Cruz",
     "date": "2026-04-12",
@@ -22084,7 +22084,7 @@ export const resultsData = [
   {
     "id": 1042,
     "student": "Catherine Watson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3G",
     "teacher": "Raymond Cruz",
     "date": "2026-03-29",
@@ -22094,7 +22094,7 @@ export const resultsData = [
   {
     "id": 1043,
     "student": "Kimberly Perry",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3G",
     "teacher": "Raymond Cruz",
     "date": "2026-04-12",
@@ -22104,7 +22104,7 @@ export const resultsData = [
   {
     "id": 1044,
     "student": "Kimberly Perry",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3G",
     "teacher": "Raymond Cruz",
     "date": "2026-03-29",
@@ -22114,7 +22114,7 @@ export const resultsData = [
   {
     "id": 1045,
     "student": "Jessica Anderson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3G",
     "teacher": "Raymond Cruz",
     "date": "2026-04-12",
@@ -22124,7 +22124,7 @@ export const resultsData = [
   {
     "id": 1046,
     "student": "Jessica Anderson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3G",
     "teacher": "Raymond Cruz",
     "date": "2026-03-29",
@@ -22134,7 +22134,7 @@ export const resultsData = [
   {
     "id": 1047,
     "student": "Cynthia Nelson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3G",
     "teacher": "Raymond Cruz",
     "date": "2026-04-12",
@@ -22144,7 +22144,7 @@ export const resultsData = [
   {
     "id": 1048,
     "student": "Cynthia Nelson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3G",
     "teacher": "Raymond Cruz",
     "date": "2026-03-29",
@@ -22154,7 +22154,7 @@ export const resultsData = [
   {
     "id": 1049,
     "student": "Nancy Moore",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3G",
     "teacher": "Raymond Cruz",
     "date": "2026-04-12",
@@ -22164,7 +22164,7 @@ export const resultsData = [
   {
     "id": 1050,
     "student": "Nancy Moore",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3G",
     "teacher": "Raymond Cruz",
     "date": "2026-03-29",
@@ -22174,7 +22174,7 @@ export const resultsData = [
   {
     "id": 1051,
     "student": "Betty Anderson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3G",
     "teacher": "Raymond Cruz",
     "date": "2026-04-12",
@@ -22184,7 +22184,7 @@ export const resultsData = [
   {
     "id": 1052,
     "student": "Betty Anderson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3G",
     "teacher": "Raymond Cruz",
     "date": "2026-03-29",
@@ -22194,7 +22194,7 @@ export const resultsData = [
   {
     "id": 1053,
     "student": "Stephanie Anderson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3G",
     "teacher": "Raymond Cruz",
     "date": "2026-04-12",
@@ -22204,7 +22204,7 @@ export const resultsData = [
   {
     "id": 1054,
     "student": "Stephanie Anderson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "3G",
     "teacher": "Raymond Cruz",
     "date": "2026-03-29",
@@ -22694,7 +22694,7 @@ export const resultsData = [
   {
     "id": 1103,
     "student": "Patricia Collins",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3G",
     "teacher": "Mary Butler",
     "date": "2026-04-10",
@@ -22704,7 +22704,7 @@ export const resultsData = [
   {
     "id": 1104,
     "student": "Patricia Collins",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3G",
     "teacher": "Mary Butler",
     "date": "2026-01-31",
@@ -22714,7 +22714,7 @@ export const resultsData = [
   {
     "id": 1105,
     "student": "Catherine Watson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3G",
     "teacher": "Mary Butler",
     "date": "2026-04-10",
@@ -22724,7 +22724,7 @@ export const resultsData = [
   {
     "id": 1106,
     "student": "Catherine Watson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3G",
     "teacher": "Mary Butler",
     "date": "2026-01-31",
@@ -22734,7 +22734,7 @@ export const resultsData = [
   {
     "id": 1107,
     "student": "Kimberly Perry",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3G",
     "teacher": "Mary Butler",
     "date": "2026-04-10",
@@ -22744,7 +22744,7 @@ export const resultsData = [
   {
     "id": 1108,
     "student": "Kimberly Perry",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3G",
     "teacher": "Mary Butler",
     "date": "2026-01-31",
@@ -22754,7 +22754,7 @@ export const resultsData = [
   {
     "id": 1109,
     "student": "Jessica Anderson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3G",
     "teacher": "Mary Butler",
     "date": "2026-04-10",
@@ -22764,7 +22764,7 @@ export const resultsData = [
   {
     "id": 1110,
     "student": "Jessica Anderson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3G",
     "teacher": "Mary Butler",
     "date": "2026-01-31",
@@ -22774,7 +22774,7 @@ export const resultsData = [
   {
     "id": 1111,
     "student": "Cynthia Nelson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3G",
     "teacher": "Mary Butler",
     "date": "2026-04-10",
@@ -22784,7 +22784,7 @@ export const resultsData = [
   {
     "id": 1112,
     "student": "Cynthia Nelson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3G",
     "teacher": "Mary Butler",
     "date": "2026-01-31",
@@ -22794,7 +22794,7 @@ export const resultsData = [
   {
     "id": 1113,
     "student": "Nancy Moore",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3G",
     "teacher": "Mary Butler",
     "date": "2026-04-10",
@@ -22804,7 +22804,7 @@ export const resultsData = [
   {
     "id": 1114,
     "student": "Nancy Moore",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3G",
     "teacher": "Mary Butler",
     "date": "2026-01-31",
@@ -22814,7 +22814,7 @@ export const resultsData = [
   {
     "id": 1115,
     "student": "Betty Anderson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3G",
     "teacher": "Mary Butler",
     "date": "2026-04-10",
@@ -22824,7 +22824,7 @@ export const resultsData = [
   {
     "id": 1116,
     "student": "Betty Anderson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3G",
     "teacher": "Mary Butler",
     "date": "2026-01-31",
@@ -22834,7 +22834,7 @@ export const resultsData = [
   {
     "id": 1117,
     "student": "Stephanie Anderson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3G",
     "teacher": "Mary Butler",
     "date": "2026-04-10",
@@ -22844,7 +22844,7 @@ export const resultsData = [
   {
     "id": 1118,
     "student": "Stephanie Anderson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "3G",
     "teacher": "Mary Butler",
     "date": "2026-01-31",
@@ -23494,7 +23494,7 @@ export const resultsData = [
   {
     "id": 1183,
     "student": "Benjamin Hall",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4B",
     "teacher": "Scott Evans",
     "date": "2026-04-15",
@@ -23504,7 +23504,7 @@ export const resultsData = [
   {
     "id": 1184,
     "student": "Benjamin Hall",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4B",
     "teacher": "Scott Evans",
     "date": "2026-02-04",
@@ -23514,7 +23514,7 @@ export const resultsData = [
   {
     "id": 1185,
     "student": "Jason Cox",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4B",
     "teacher": "Scott Evans",
     "date": "2026-04-15",
@@ -23524,7 +23524,7 @@ export const resultsData = [
   {
     "id": 1186,
     "student": "Jason Cox",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4B",
     "teacher": "Scott Evans",
     "date": "2026-02-04",
@@ -23534,7 +23534,7 @@ export const resultsData = [
   {
     "id": 1187,
     "student": "Mark Wilson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4B",
     "teacher": "Scott Evans",
     "date": "2026-04-15",
@@ -23544,7 +23544,7 @@ export const resultsData = [
   {
     "id": 1188,
     "student": "Mark Wilson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4B",
     "teacher": "Scott Evans",
     "date": "2026-02-04",
@@ -23554,7 +23554,7 @@ export const resultsData = [
   {
     "id": 1189,
     "student": "Gary Sullivan",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4B",
     "teacher": "Scott Evans",
     "date": "2026-04-15",
@@ -23564,7 +23564,7 @@ export const resultsData = [
   {
     "id": 1190,
     "student": "Gary Sullivan",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4B",
     "teacher": "Scott Evans",
     "date": "2026-02-04",
@@ -23574,7 +23574,7 @@ export const resultsData = [
   {
     "id": 1191,
     "student": "Andrew Evans",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4B",
     "teacher": "Scott Evans",
     "date": "2026-04-15",
@@ -23584,7 +23584,7 @@ export const resultsData = [
   {
     "id": 1192,
     "student": "Andrew Evans",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4B",
     "teacher": "Scott Evans",
     "date": "2026-02-04",
@@ -23594,7 +23594,7 @@ export const resultsData = [
   {
     "id": 1193,
     "student": "Samuel Wright",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4B",
     "teacher": "Scott Evans",
     "date": "2026-04-15",
@@ -23604,7 +23604,7 @@ export const resultsData = [
   {
     "id": 1194,
     "student": "Samuel Wright",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4B",
     "teacher": "Scott Evans",
     "date": "2026-02-04",
@@ -23614,7 +23614,7 @@ export const resultsData = [
   {
     "id": 1195,
     "student": "Andrew Wright",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4B",
     "teacher": "Scott Evans",
     "date": "2026-04-15",
@@ -23624,7 +23624,7 @@ export const resultsData = [
   {
     "id": 1196,
     "student": "Andrew Wright",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4B",
     "teacher": "Scott Evans",
     "date": "2026-02-04",
@@ -23634,7 +23634,7 @@ export const resultsData = [
   {
     "id": 1197,
     "student": "William Jackson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4B",
     "teacher": "Scott Evans",
     "date": "2026-04-15",
@@ -23644,7 +23644,7 @@ export const resultsData = [
   {
     "id": 1198,
     "student": "William Jackson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4B",
     "teacher": "Scott Evans",
     "date": "2026-02-04",
@@ -24294,7 +24294,7 @@ export const resultsData = [
   {
     "id": 1263,
     "student": "Benjamin Hall",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4B",
     "teacher": "Shirley Butler",
     "date": "2026-03-19",
@@ -24304,7 +24304,7 @@ export const resultsData = [
   {
     "id": 1264,
     "student": "Benjamin Hall",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4B",
     "teacher": "Shirley Butler",
     "date": "2026-04-26",
@@ -24314,7 +24314,7 @@ export const resultsData = [
   {
     "id": 1265,
     "student": "Jason Cox",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4B",
     "teacher": "Shirley Butler",
     "date": "2026-03-19",
@@ -24324,7 +24324,7 @@ export const resultsData = [
   {
     "id": 1266,
     "student": "Jason Cox",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4B",
     "teacher": "Shirley Butler",
     "date": "2026-04-26",
@@ -24334,7 +24334,7 @@ export const resultsData = [
   {
     "id": 1267,
     "student": "Mark Wilson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4B",
     "teacher": "Shirley Butler",
     "date": "2026-03-19",
@@ -24344,7 +24344,7 @@ export const resultsData = [
   {
     "id": 1268,
     "student": "Mark Wilson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4B",
     "teacher": "Shirley Butler",
     "date": "2026-04-26",
@@ -24354,7 +24354,7 @@ export const resultsData = [
   {
     "id": 1269,
     "student": "Gary Sullivan",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4B",
     "teacher": "Shirley Butler",
     "date": "2026-03-19",
@@ -24364,7 +24364,7 @@ export const resultsData = [
   {
     "id": 1270,
     "student": "Gary Sullivan",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4B",
     "teacher": "Shirley Butler",
     "date": "2026-04-26",
@@ -24374,7 +24374,7 @@ export const resultsData = [
   {
     "id": 1271,
     "student": "Andrew Evans",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4B",
     "teacher": "Shirley Butler",
     "date": "2026-03-19",
@@ -24384,7 +24384,7 @@ export const resultsData = [
   {
     "id": 1272,
     "student": "Andrew Evans",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4B",
     "teacher": "Shirley Butler",
     "date": "2026-04-26",
@@ -24394,7 +24394,7 @@ export const resultsData = [
   {
     "id": 1273,
     "student": "Samuel Wright",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4B",
     "teacher": "Shirley Butler",
     "date": "2026-03-19",
@@ -24404,7 +24404,7 @@ export const resultsData = [
   {
     "id": 1274,
     "student": "Samuel Wright",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4B",
     "teacher": "Shirley Butler",
     "date": "2026-04-26",
@@ -24414,7 +24414,7 @@ export const resultsData = [
   {
     "id": 1275,
     "student": "Andrew Wright",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4B",
     "teacher": "Shirley Butler",
     "date": "2026-03-19",
@@ -24424,7 +24424,7 @@ export const resultsData = [
   {
     "id": 1276,
     "student": "Andrew Wright",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4B",
     "teacher": "Shirley Butler",
     "date": "2026-04-26",
@@ -24434,7 +24434,7 @@ export const resultsData = [
   {
     "id": 1277,
     "student": "William Jackson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4B",
     "teacher": "Shirley Butler",
     "date": "2026-03-19",
@@ -24444,7 +24444,7 @@ export const resultsData = [
   {
     "id": 1278,
     "student": "William Jackson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4B",
     "teacher": "Shirley Butler",
     "date": "2026-04-26",
@@ -25014,7 +25014,7 @@ export const resultsData = [
   {
     "id": 1335,
     "student": "Angela Collins",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4G",
     "teacher": "Linda Moore",
     "date": "2026-03-14",
@@ -25024,7 +25024,7 @@ export const resultsData = [
   {
     "id": 1336,
     "student": "Angela Collins",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4G",
     "teacher": "Linda Moore",
     "date": "2026-04-12",
@@ -25034,7 +25034,7 @@ export const resultsData = [
   {
     "id": 1337,
     "student": "Margaret Collins",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4G",
     "teacher": "Linda Moore",
     "date": "2026-03-14",
@@ -25044,7 +25044,7 @@ export const resultsData = [
   {
     "id": 1338,
     "student": "Margaret Collins",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4G",
     "teacher": "Linda Moore",
     "date": "2026-04-12",
@@ -25054,7 +25054,7 @@ export const resultsData = [
   {
     "id": 1339,
     "student": "Samantha Baker 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4G",
     "teacher": "Linda Moore",
     "date": "2026-03-14",
@@ -25064,7 +25064,7 @@ export const resultsData = [
   {
     "id": 1340,
     "student": "Samantha Baker 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4G",
     "teacher": "Linda Moore",
     "date": "2026-04-12",
@@ -25074,7 +25074,7 @@ export const resultsData = [
   {
     "id": 1341,
     "student": "Shirley Thompson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4G",
     "teacher": "Linda Moore",
     "date": "2026-03-14",
@@ -25084,7 +25084,7 @@ export const resultsData = [
   {
     "id": 1342,
     "student": "Shirley Thompson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4G",
     "teacher": "Linda Moore",
     "date": "2026-04-12",
@@ -25094,7 +25094,7 @@ export const resultsData = [
   {
     "id": 1343,
     "student": "Samantha Nelson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4G",
     "teacher": "Linda Moore",
     "date": "2026-03-14",
@@ -25104,7 +25104,7 @@ export const resultsData = [
   {
     "id": 1344,
     "student": "Samantha Nelson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4G",
     "teacher": "Linda Moore",
     "date": "2026-04-12",
@@ -25114,7 +25114,7 @@ export const resultsData = [
   {
     "id": 1345,
     "student": "Christine Jackson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4G",
     "teacher": "Linda Moore",
     "date": "2026-03-14",
@@ -25124,7 +25124,7 @@ export const resultsData = [
   {
     "id": 1346,
     "student": "Christine Jackson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4G",
     "teacher": "Linda Moore",
     "date": "2026-04-12",
@@ -25134,7 +25134,7 @@ export const resultsData = [
   {
     "id": 1347,
     "student": "Amy Hall",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4G",
     "teacher": "Linda Moore",
     "date": "2026-03-14",
@@ -25144,7 +25144,7 @@ export const resultsData = [
   {
     "id": 1348,
     "student": "Amy Hall",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "4G",
     "teacher": "Linda Moore",
     "date": "2026-04-12",
@@ -25714,7 +25714,7 @@ export const resultsData = [
   {
     "id": 1405,
     "student": "Angela Collins",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4G",
     "teacher": "Joseph Henderson",
     "date": "2026-04-08",
@@ -25724,7 +25724,7 @@ export const resultsData = [
   {
     "id": 1406,
     "student": "Angela Collins",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4G",
     "teacher": "Joseph Henderson",
     "date": "2026-01-28",
@@ -25734,7 +25734,7 @@ export const resultsData = [
   {
     "id": 1407,
     "student": "Margaret Collins",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4G",
     "teacher": "Joseph Henderson",
     "date": "2026-04-08",
@@ -25744,7 +25744,7 @@ export const resultsData = [
   {
     "id": 1408,
     "student": "Margaret Collins",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4G",
     "teacher": "Joseph Henderson",
     "date": "2026-01-28",
@@ -25754,7 +25754,7 @@ export const resultsData = [
   {
     "id": 1409,
     "student": "Samantha Baker 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4G",
     "teacher": "Joseph Henderson",
     "date": "2026-04-08",
@@ -25764,7 +25764,7 @@ export const resultsData = [
   {
     "id": 1410,
     "student": "Samantha Baker 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4G",
     "teacher": "Joseph Henderson",
     "date": "2026-01-28",
@@ -25774,7 +25774,7 @@ export const resultsData = [
   {
     "id": 1411,
     "student": "Shirley Thompson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4G",
     "teacher": "Joseph Henderson",
     "date": "2026-04-08",
@@ -25784,7 +25784,7 @@ export const resultsData = [
   {
     "id": 1412,
     "student": "Shirley Thompson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4G",
     "teacher": "Joseph Henderson",
     "date": "2026-01-28",
@@ -25794,7 +25794,7 @@ export const resultsData = [
   {
     "id": 1413,
     "student": "Samantha Nelson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4G",
     "teacher": "Joseph Henderson",
     "date": "2026-04-08",
@@ -25804,7 +25804,7 @@ export const resultsData = [
   {
     "id": 1414,
     "student": "Samantha Nelson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4G",
     "teacher": "Joseph Henderson",
     "date": "2026-01-28",
@@ -25814,7 +25814,7 @@ export const resultsData = [
   {
     "id": 1415,
     "student": "Christine Jackson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4G",
     "teacher": "Joseph Henderson",
     "date": "2026-04-08",
@@ -25824,7 +25824,7 @@ export const resultsData = [
   {
     "id": 1416,
     "student": "Christine Jackson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4G",
     "teacher": "Joseph Henderson",
     "date": "2026-01-28",
@@ -25834,7 +25834,7 @@ export const resultsData = [
   {
     "id": 1417,
     "student": "Amy Hall",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4G",
     "teacher": "Joseph Henderson",
     "date": "2026-04-08",
@@ -25844,7 +25844,7 @@ export const resultsData = [
   {
     "id": 1418,
     "student": "Amy Hall",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "4G",
     "teacher": "Joseph Henderson",
     "date": "2026-01-28",
@@ -26494,7 +26494,7 @@ export const resultsData = [
   {
     "id": 1483,
     "student": "Aaron Collins",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5B",
     "teacher": "Anthony Ross",
     "date": "2026-03-01",
@@ -26504,7 +26504,7 @@ export const resultsData = [
   {
     "id": 1484,
     "student": "Aaron Collins",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5B",
     "teacher": "Anthony Ross",
     "date": "2026-01-29",
@@ -26514,7 +26514,7 @@ export const resultsData = [
   {
     "id": 1485,
     "student": "Jacob Hill",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5B",
     "teacher": "Anthony Ross",
     "date": "2026-03-01",
@@ -26524,7 +26524,7 @@ export const resultsData = [
   {
     "id": 1486,
     "student": "Jacob Hill",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5B",
     "teacher": "Anthony Ross",
     "date": "2026-01-29",
@@ -26534,7 +26534,7 @@ export const resultsData = [
   {
     "id": 1487,
     "student": "Christopher Watson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5B",
     "teacher": "Anthony Ross",
     "date": "2026-03-01",
@@ -26544,7 +26544,7 @@ export const resultsData = [
   {
     "id": 1488,
     "student": "Christopher Watson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5B",
     "teacher": "Anthony Ross",
     "date": "2026-01-29",
@@ -26554,7 +26554,7 @@ export const resultsData = [
   {
     "id": 1489,
     "student": "Kevin Barnes",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5B",
     "teacher": "Anthony Ross",
     "date": "2026-03-01",
@@ -26564,7 +26564,7 @@ export const resultsData = [
   {
     "id": 1490,
     "student": "Kevin Barnes",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5B",
     "teacher": "Anthony Ross",
     "date": "2026-01-29",
@@ -26574,7 +26574,7 @@ export const resultsData = [
   {
     "id": 1491,
     "student": "William Wright",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5B",
     "teacher": "Anthony Ross",
     "date": "2026-03-01",
@@ -26584,7 +26584,7 @@ export const resultsData = [
   {
     "id": 1492,
     "student": "William Wright",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5B",
     "teacher": "Anthony Ross",
     "date": "2026-01-29",
@@ -26594,7 +26594,7 @@ export const resultsData = [
   {
     "id": 1493,
     "student": "Mark Anderson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5B",
     "teacher": "Anthony Ross",
     "date": "2026-03-01",
@@ -26604,7 +26604,7 @@ export const resultsData = [
   {
     "id": 1494,
     "student": "Mark Anderson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5B",
     "teacher": "Anthony Ross",
     "date": "2026-01-29",
@@ -26614,7 +26614,7 @@ export const resultsData = [
   {
     "id": 1495,
     "student": "Raymond Morgan",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5B",
     "teacher": "Anthony Ross",
     "date": "2026-03-01",
@@ -26624,7 +26624,7 @@ export const resultsData = [
   {
     "id": 1496,
     "student": "Raymond Morgan",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5B",
     "teacher": "Anthony Ross",
     "date": "2026-01-29",
@@ -26634,7 +26634,7 @@ export const resultsData = [
   {
     "id": 1497,
     "student": "Ryan Fisher",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5B",
     "teacher": "Anthony Ross",
     "date": "2026-03-01",
@@ -26644,7 +26644,7 @@ export const resultsData = [
   {
     "id": 1498,
     "student": "Ryan Fisher",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5B",
     "teacher": "Anthony Ross",
     "date": "2026-01-29",
@@ -27294,7 +27294,7 @@ export const resultsData = [
   {
     "id": 1563,
     "student": "Aaron Collins",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5B",
     "teacher": "Charles Barnes",
     "date": "2026-04-02",
@@ -27304,7 +27304,7 @@ export const resultsData = [
   {
     "id": 1564,
     "student": "Aaron Collins",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5B",
     "teacher": "Charles Barnes",
     "date": "2026-04-18",
@@ -27314,7 +27314,7 @@ export const resultsData = [
   {
     "id": 1565,
     "student": "Jacob Hill",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5B",
     "teacher": "Charles Barnes",
     "date": "2026-04-02",
@@ -27324,7 +27324,7 @@ export const resultsData = [
   {
     "id": 1566,
     "student": "Jacob Hill",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5B",
     "teacher": "Charles Barnes",
     "date": "2026-04-18",
@@ -27334,7 +27334,7 @@ export const resultsData = [
   {
     "id": 1567,
     "student": "Christopher Watson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5B",
     "teacher": "Charles Barnes",
     "date": "2026-04-02",
@@ -27344,7 +27344,7 @@ export const resultsData = [
   {
     "id": 1568,
     "student": "Christopher Watson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5B",
     "teacher": "Charles Barnes",
     "date": "2026-04-18",
@@ -27354,7 +27354,7 @@ export const resultsData = [
   {
     "id": 1569,
     "student": "Kevin Barnes",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5B",
     "teacher": "Charles Barnes",
     "date": "2026-04-02",
@@ -27364,7 +27364,7 @@ export const resultsData = [
   {
     "id": 1570,
     "student": "Kevin Barnes",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5B",
     "teacher": "Charles Barnes",
     "date": "2026-04-18",
@@ -27374,7 +27374,7 @@ export const resultsData = [
   {
     "id": 1571,
     "student": "William Wright",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5B",
     "teacher": "Charles Barnes",
     "date": "2026-04-02",
@@ -27384,7 +27384,7 @@ export const resultsData = [
   {
     "id": 1572,
     "student": "William Wright",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5B",
     "teacher": "Charles Barnes",
     "date": "2026-04-18",
@@ -27394,7 +27394,7 @@ export const resultsData = [
   {
     "id": 1573,
     "student": "Mark Anderson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5B",
     "teacher": "Charles Barnes",
     "date": "2026-04-02",
@@ -27404,7 +27404,7 @@ export const resultsData = [
   {
     "id": 1574,
     "student": "Mark Anderson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5B",
     "teacher": "Charles Barnes",
     "date": "2026-04-18",
@@ -27414,7 +27414,7 @@ export const resultsData = [
   {
     "id": 1575,
     "student": "Raymond Morgan",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5B",
     "teacher": "Charles Barnes",
     "date": "2026-04-02",
@@ -27424,7 +27424,7 @@ export const resultsData = [
   {
     "id": 1576,
     "student": "Raymond Morgan",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5B",
     "teacher": "Charles Barnes",
     "date": "2026-04-18",
@@ -27434,7 +27434,7 @@ export const resultsData = [
   {
     "id": 1577,
     "student": "Ryan Fisher",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5B",
     "teacher": "Charles Barnes",
     "date": "2026-04-02",
@@ -27444,7 +27444,7 @@ export const resultsData = [
   {
     "id": 1578,
     "student": "Ryan Fisher",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5B",
     "teacher": "Charles Barnes",
     "date": "2026-04-18",
@@ -28094,7 +28094,7 @@ export const resultsData = [
   {
     "id": 1643,
     "student": "Samantha Collins",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5G",
     "teacher": "Anthony Ross",
     "date": "2026-03-27",
@@ -28104,7 +28104,7 @@ export const resultsData = [
   {
     "id": 1644,
     "student": "Samantha Collins",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5G",
     "teacher": "Anthony Ross",
     "date": "2026-04-19",
@@ -28114,7 +28114,7 @@ export const resultsData = [
   {
     "id": 1645,
     "student": "Debra Collins",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5G",
     "teacher": "Anthony Ross",
     "date": "2026-03-27",
@@ -28124,7 +28124,7 @@ export const resultsData = [
   {
     "id": 1646,
     "student": "Debra Collins",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5G",
     "teacher": "Anthony Ross",
     "date": "2026-04-19",
@@ -28134,7 +28134,7 @@ export const resultsData = [
   {
     "id": 1647,
     "student": "Rachel Evans",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5G",
     "teacher": "Anthony Ross",
     "date": "2026-03-27",
@@ -28144,7 +28144,7 @@ export const resultsData = [
   {
     "id": 1648,
     "student": "Rachel Evans",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5G",
     "teacher": "Anthony Ross",
     "date": "2026-04-19",
@@ -28154,7 +28154,7 @@ export const resultsData = [
   {
     "id": 1649,
     "student": "Melissa Hall",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5G",
     "teacher": "Anthony Ross",
     "date": "2026-03-27",
@@ -28164,7 +28164,7 @@ export const resultsData = [
   {
     "id": 1650,
     "student": "Melissa Hall",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5G",
     "teacher": "Anthony Ross",
     "date": "2026-04-19",
@@ -28174,7 +28174,7 @@ export const resultsData = [
   {
     "id": 1651,
     "student": "Elizabeth Moore",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5G",
     "teacher": "Anthony Ross",
     "date": "2026-03-27",
@@ -28184,7 +28184,7 @@ export const resultsData = [
   {
     "id": 1652,
     "student": "Elizabeth Moore",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5G",
     "teacher": "Anthony Ross",
     "date": "2026-04-19",
@@ -28194,7 +28194,7 @@ export const resultsData = [
   {
     "id": 1653,
     "student": "Dorothy Baker",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5G",
     "teacher": "Anthony Ross",
     "date": "2026-03-27",
@@ -28204,7 +28204,7 @@ export const resultsData = [
   {
     "id": 1654,
     "student": "Dorothy Baker",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5G",
     "teacher": "Anthony Ross",
     "date": "2026-04-19",
@@ -28214,7 +28214,7 @@ export const resultsData = [
   {
     "id": 1655,
     "student": "Rachel Bailey",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5G",
     "teacher": "Anthony Ross",
     "date": "2026-03-27",
@@ -28224,7 +28224,7 @@ export const resultsData = [
   {
     "id": 1656,
     "student": "Rachel Bailey",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5G",
     "teacher": "Anthony Ross",
     "date": "2026-04-19",
@@ -28234,7 +28234,7 @@ export const resultsData = [
   {
     "id": 1657,
     "student": "Susan Jackson 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5G",
     "teacher": "Anthony Ross",
     "date": "2026-03-27",
@@ -28244,7 +28244,7 @@ export const resultsData = [
   {
     "id": 1658,
     "student": "Susan Jackson 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "5G",
     "teacher": "Anthony Ross",
     "date": "2026-04-19",
@@ -28894,7 +28894,7 @@ export const resultsData = [
   {
     "id": 1723,
     "student": "Samantha Collins",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5G",
     "teacher": "Joseph Henderson",
     "date": "2026-03-21",
@@ -28904,7 +28904,7 @@ export const resultsData = [
   {
     "id": 1724,
     "student": "Samantha Collins",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5G",
     "teacher": "Joseph Henderson",
     "date": "2026-05-06",
@@ -28914,7 +28914,7 @@ export const resultsData = [
   {
     "id": 1725,
     "student": "Debra Collins",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5G",
     "teacher": "Joseph Henderson",
     "date": "2026-03-21",
@@ -28924,7 +28924,7 @@ export const resultsData = [
   {
     "id": 1726,
     "student": "Debra Collins",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5G",
     "teacher": "Joseph Henderson",
     "date": "2026-05-06",
@@ -28934,7 +28934,7 @@ export const resultsData = [
   {
     "id": 1727,
     "student": "Rachel Evans",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5G",
     "teacher": "Joseph Henderson",
     "date": "2026-03-21",
@@ -28944,7 +28944,7 @@ export const resultsData = [
   {
     "id": 1728,
     "student": "Rachel Evans",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5G",
     "teacher": "Joseph Henderson",
     "date": "2026-05-06",
@@ -28954,7 +28954,7 @@ export const resultsData = [
   {
     "id": 1729,
     "student": "Melissa Hall",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5G",
     "teacher": "Joseph Henderson",
     "date": "2026-03-21",
@@ -28964,7 +28964,7 @@ export const resultsData = [
   {
     "id": 1730,
     "student": "Melissa Hall",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5G",
     "teacher": "Joseph Henderson",
     "date": "2026-05-06",
@@ -28974,7 +28974,7 @@ export const resultsData = [
   {
     "id": 1731,
     "student": "Elizabeth Moore",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5G",
     "teacher": "Joseph Henderson",
     "date": "2026-03-21",
@@ -28984,7 +28984,7 @@ export const resultsData = [
   {
     "id": 1732,
     "student": "Elizabeth Moore",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5G",
     "teacher": "Joseph Henderson",
     "date": "2026-05-06",
@@ -28994,7 +28994,7 @@ export const resultsData = [
   {
     "id": 1733,
     "student": "Dorothy Baker",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5G",
     "teacher": "Joseph Henderson",
     "date": "2026-03-21",
@@ -29004,7 +29004,7 @@ export const resultsData = [
   {
     "id": 1734,
     "student": "Dorothy Baker",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5G",
     "teacher": "Joseph Henderson",
     "date": "2026-05-06",
@@ -29014,7 +29014,7 @@ export const resultsData = [
   {
     "id": 1735,
     "student": "Rachel Bailey",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5G",
     "teacher": "Joseph Henderson",
     "date": "2026-03-21",
@@ -29024,7 +29024,7 @@ export const resultsData = [
   {
     "id": 1736,
     "student": "Rachel Bailey",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5G",
     "teacher": "Joseph Henderson",
     "date": "2026-05-06",
@@ -29034,7 +29034,7 @@ export const resultsData = [
   {
     "id": 1737,
     "student": "Susan Jackson 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5G",
     "teacher": "Joseph Henderson",
     "date": "2026-03-21",
@@ -29044,7 +29044,7 @@ export const resultsData = [
   {
     "id": 1738,
     "student": "Susan Jackson 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "5G",
     "teacher": "Joseph Henderson",
     "date": "2026-05-06",
@@ -29534,7 +29534,7 @@ export const resultsData = [
   {
     "id": 1787,
     "student": "Kevin Thompson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6B",
     "teacher": "Linda Moore",
     "date": "2026-03-23",
@@ -29544,7 +29544,7 @@ export const resultsData = [
   {
     "id": 1788,
     "student": "Kevin Thompson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6B",
     "teacher": "Linda Moore",
     "date": "2026-04-15",
@@ -29554,7 +29554,7 @@ export const resultsData = [
   {
     "id": 1789,
     "student": "Jason King",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6B",
     "teacher": "Linda Moore",
     "date": "2026-03-23",
@@ -29564,7 +29564,7 @@ export const resultsData = [
   {
     "id": 1790,
     "student": "Jason King",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6B",
     "teacher": "Linda Moore",
     "date": "2026-04-15",
@@ -29574,7 +29574,7 @@ export const resultsData = [
   {
     "id": 1791,
     "student": "Steven Fisher",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6B",
     "teacher": "Linda Moore",
     "date": "2026-03-23",
@@ -29584,7 +29584,7 @@ export const resultsData = [
   {
     "id": 1792,
     "student": "Steven Fisher",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6B",
     "teacher": "Linda Moore",
     "date": "2026-04-15",
@@ -29594,7 +29594,7 @@ export const resultsData = [
   {
     "id": 1793,
     "student": "Timothy Diaz 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6B",
     "teacher": "Linda Moore",
     "date": "2026-03-23",
@@ -29604,7 +29604,7 @@ export const resultsData = [
   {
     "id": 1794,
     "student": "Timothy Diaz 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6B",
     "teacher": "Linda Moore",
     "date": "2026-04-15",
@@ -29614,7 +29614,7 @@ export const resultsData = [
   {
     "id": 1795,
     "student": "Richard Rogers",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6B",
     "teacher": "Linda Moore",
     "date": "2026-03-23",
@@ -29624,7 +29624,7 @@ export const resultsData = [
   {
     "id": 1796,
     "student": "Richard Rogers",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6B",
     "teacher": "Linda Moore",
     "date": "2026-04-15",
@@ -29634,7 +29634,7 @@ export const resultsData = [
   {
     "id": 1797,
     "student": "Mark Bailey",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6B",
     "teacher": "Linda Moore",
     "date": "2026-03-23",
@@ -29644,7 +29644,7 @@ export const resultsData = [
   {
     "id": 1798,
     "student": "Mark Bailey",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6B",
     "teacher": "Linda Moore",
     "date": "2026-04-15",
@@ -30134,7 +30134,7 @@ export const resultsData = [
   {
     "id": 1847,
     "student": "Kevin Thompson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6B",
     "teacher": "Shirley Butler",
     "date": "2026-04-12",
@@ -30144,7 +30144,7 @@ export const resultsData = [
   {
     "id": 1848,
     "student": "Kevin Thompson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6B",
     "teacher": "Shirley Butler",
     "date": "2026-04-14",
@@ -30154,7 +30154,7 @@ export const resultsData = [
   {
     "id": 1849,
     "student": "Jason King",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6B",
     "teacher": "Shirley Butler",
     "date": "2026-04-12",
@@ -30164,7 +30164,7 @@ export const resultsData = [
   {
     "id": 1850,
     "student": "Jason King",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6B",
     "teacher": "Shirley Butler",
     "date": "2026-04-14",
@@ -30174,7 +30174,7 @@ export const resultsData = [
   {
     "id": 1851,
     "student": "Steven Fisher",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6B",
     "teacher": "Shirley Butler",
     "date": "2026-04-12",
@@ -30184,7 +30184,7 @@ export const resultsData = [
   {
     "id": 1852,
     "student": "Steven Fisher",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6B",
     "teacher": "Shirley Butler",
     "date": "2026-04-14",
@@ -30194,7 +30194,7 @@ export const resultsData = [
   {
     "id": 1853,
     "student": "Timothy Diaz 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6B",
     "teacher": "Shirley Butler",
     "date": "2026-04-12",
@@ -30204,7 +30204,7 @@ export const resultsData = [
   {
     "id": 1854,
     "student": "Timothy Diaz 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6B",
     "teacher": "Shirley Butler",
     "date": "2026-04-14",
@@ -30214,7 +30214,7 @@ export const resultsData = [
   {
     "id": 1855,
     "student": "Richard Rogers",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6B",
     "teacher": "Shirley Butler",
     "date": "2026-04-12",
@@ -30224,7 +30224,7 @@ export const resultsData = [
   {
     "id": 1856,
     "student": "Richard Rogers",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6B",
     "teacher": "Shirley Butler",
     "date": "2026-04-14",
@@ -30234,7 +30234,7 @@ export const resultsData = [
   {
     "id": 1857,
     "student": "Mark Bailey",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6B",
     "teacher": "Shirley Butler",
     "date": "2026-04-12",
@@ -30244,7 +30244,7 @@ export const resultsData = [
   {
     "id": 1858,
     "student": "Mark Bailey",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6B",
     "teacher": "Shirley Butler",
     "date": "2026-04-14",
@@ -30894,7 +30894,7 @@ export const resultsData = [
   {
     "id": 1923,
     "student": "Patricia Anderson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6G",
     "teacher": "Linda Moore",
     "date": "2026-03-07",
@@ -30904,7 +30904,7 @@ export const resultsData = [
   {
     "id": 1924,
     "student": "Patricia Anderson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6G",
     "teacher": "Linda Moore",
     "date": "2026-05-07",
@@ -30914,7 +30914,7 @@ export const resultsData = [
   {
     "id": 1925,
     "student": "Mary Thompson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6G",
     "teacher": "Linda Moore",
     "date": "2026-03-07",
@@ -30924,7 +30924,7 @@ export const resultsData = [
   {
     "id": 1926,
     "student": "Mary Thompson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6G",
     "teacher": "Linda Moore",
     "date": "2026-05-07",
@@ -30934,7 +30934,7 @@ export const resultsData = [
   {
     "id": 1927,
     "student": "Ruth Carter 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6G",
     "teacher": "Linda Moore",
     "date": "2026-03-07",
@@ -30944,7 +30944,7 @@ export const resultsData = [
   {
     "id": 1928,
     "student": "Ruth Carter 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6G",
     "teacher": "Linda Moore",
     "date": "2026-05-07",
@@ -30954,7 +30954,7 @@ export const resultsData = [
   {
     "id": 1929,
     "student": "Karen Jackson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6G",
     "teacher": "Linda Moore",
     "date": "2026-03-07",
@@ -30964,7 +30964,7 @@ export const resultsData = [
   {
     "id": 1930,
     "student": "Karen Jackson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6G",
     "teacher": "Linda Moore",
     "date": "2026-05-07",
@@ -30974,7 +30974,7 @@ export const resultsData = [
   {
     "id": 1931,
     "student": "Stephanie Barnes",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6G",
     "teacher": "Linda Moore",
     "date": "2026-03-07",
@@ -30984,7 +30984,7 @@ export const resultsData = [
   {
     "id": 1932,
     "student": "Stephanie Barnes",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6G",
     "teacher": "Linda Moore",
     "date": "2026-05-07",
@@ -30994,7 +30994,7 @@ export const resultsData = [
   {
     "id": 1933,
     "student": "Heather Barnes",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6G",
     "teacher": "Linda Moore",
     "date": "2026-03-07",
@@ -31004,7 +31004,7 @@ export const resultsData = [
   {
     "id": 1934,
     "student": "Heather Barnes",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6G",
     "teacher": "Linda Moore",
     "date": "2026-05-07",
@@ -31014,7 +31014,7 @@ export const resultsData = [
   {
     "id": 1935,
     "student": "Melissa Hall 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6G",
     "teacher": "Linda Moore",
     "date": "2026-03-07",
@@ -31024,7 +31024,7 @@ export const resultsData = [
   {
     "id": 1936,
     "student": "Melissa Hall 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6G",
     "teacher": "Linda Moore",
     "date": "2026-05-07",
@@ -31034,7 +31034,7 @@ export const resultsData = [
   {
     "id": 1937,
     "student": "Karen Lee",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6G",
     "teacher": "Linda Moore",
     "date": "2026-03-07",
@@ -31044,7 +31044,7 @@ export const resultsData = [
   {
     "id": 1938,
     "student": "Karen Lee",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "6G",
     "teacher": "Linda Moore",
     "date": "2026-05-07",
@@ -31694,7 +31694,7 @@ export const resultsData = [
   {
     "id": 2003,
     "student": "Patricia Anderson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6G",
     "teacher": "Charles Barnes",
     "date": "2026-03-04",
@@ -31704,7 +31704,7 @@ export const resultsData = [
   {
     "id": 2004,
     "student": "Patricia Anderson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6G",
     "teacher": "Charles Barnes",
     "date": "2026-01-28",
@@ -31714,7 +31714,7 @@ export const resultsData = [
   {
     "id": 2005,
     "student": "Mary Thompson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6G",
     "teacher": "Charles Barnes",
     "date": "2026-03-04",
@@ -31724,7 +31724,7 @@ export const resultsData = [
   {
     "id": 2006,
     "student": "Mary Thompson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6G",
     "teacher": "Charles Barnes",
     "date": "2026-01-28",
@@ -31734,7 +31734,7 @@ export const resultsData = [
   {
     "id": 2007,
     "student": "Ruth Carter 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6G",
     "teacher": "Charles Barnes",
     "date": "2026-03-04",
@@ -31744,7 +31744,7 @@ export const resultsData = [
   {
     "id": 2008,
     "student": "Ruth Carter 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6G",
     "teacher": "Charles Barnes",
     "date": "2026-01-28",
@@ -31754,7 +31754,7 @@ export const resultsData = [
   {
     "id": 2009,
     "student": "Karen Jackson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6G",
     "teacher": "Charles Barnes",
     "date": "2026-03-04",
@@ -31764,7 +31764,7 @@ export const resultsData = [
   {
     "id": 2010,
     "student": "Karen Jackson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6G",
     "teacher": "Charles Barnes",
     "date": "2026-01-28",
@@ -31774,7 +31774,7 @@ export const resultsData = [
   {
     "id": 2011,
     "student": "Stephanie Barnes",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6G",
     "teacher": "Charles Barnes",
     "date": "2026-03-04",
@@ -31784,7 +31784,7 @@ export const resultsData = [
   {
     "id": 2012,
     "student": "Stephanie Barnes",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6G",
     "teacher": "Charles Barnes",
     "date": "2026-01-28",
@@ -31794,7 +31794,7 @@ export const resultsData = [
   {
     "id": 2013,
     "student": "Heather Barnes",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6G",
     "teacher": "Charles Barnes",
     "date": "2026-03-04",
@@ -31804,7 +31804,7 @@ export const resultsData = [
   {
     "id": 2014,
     "student": "Heather Barnes",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6G",
     "teacher": "Charles Barnes",
     "date": "2026-01-28",
@@ -31814,7 +31814,7 @@ export const resultsData = [
   {
     "id": 2015,
     "student": "Melissa Hall 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6G",
     "teacher": "Charles Barnes",
     "date": "2026-03-04",
@@ -31824,7 +31824,7 @@ export const resultsData = [
   {
     "id": 2016,
     "student": "Melissa Hall 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6G",
     "teacher": "Charles Barnes",
     "date": "2026-01-28",
@@ -31834,7 +31834,7 @@ export const resultsData = [
   {
     "id": 2017,
     "student": "Karen Lee",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6G",
     "teacher": "Charles Barnes",
     "date": "2026-03-04",
@@ -31844,7 +31844,7 @@ export const resultsData = [
   {
     "id": 2018,
     "student": "Karen Lee",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "6G",
     "teacher": "Charles Barnes",
     "date": "2026-01-28",
@@ -32494,7 +32494,7 @@ export const resultsData = [
   {
     "id": 2083,
     "student": "Benjamin Sullivan",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7B",
     "teacher": "Anthony Ross",
     "date": "2026-04-04",
@@ -32504,7 +32504,7 @@ export const resultsData = [
   {
     "id": 2084,
     "student": "Benjamin Sullivan",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7B",
     "teacher": "Anthony Ross",
     "date": "2026-04-22",
@@ -32514,7 +32514,7 @@ export const resultsData = [
   {
     "id": 2085,
     "student": "Mark Collins",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7B",
     "teacher": "Anthony Ross",
     "date": "2026-04-04",
@@ -32524,7 +32524,7 @@ export const resultsData = [
   {
     "id": 2086,
     "student": "Mark Collins",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7B",
     "teacher": "Anthony Ross",
     "date": "2026-04-22",
@@ -32534,7 +32534,7 @@ export const resultsData = [
   {
     "id": 2087,
     "student": "Andrew Foster",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7B",
     "teacher": "Anthony Ross",
     "date": "2026-04-04",
@@ -32544,7 +32544,7 @@ export const resultsData = [
   {
     "id": 2088,
     "student": "Andrew Foster",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7B",
     "teacher": "Anthony Ross",
     "date": "2026-04-22",
@@ -32554,7 +32554,7 @@ export const resultsData = [
   {
     "id": 2089,
     "student": "Robert Rogers",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7B",
     "teacher": "Anthony Ross",
     "date": "2026-04-04",
@@ -32564,7 +32564,7 @@ export const resultsData = [
   {
     "id": 2090,
     "student": "Robert Rogers",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7B",
     "teacher": "Anthony Ross",
     "date": "2026-04-22",
@@ -32574,7 +32574,7 @@ export const resultsData = [
   {
     "id": 2091,
     "student": "Benjamin Young",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7B",
     "teacher": "Anthony Ross",
     "date": "2026-04-04",
@@ -32584,7 +32584,7 @@ export const resultsData = [
   {
     "id": 2092,
     "student": "Benjamin Young",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7B",
     "teacher": "Anthony Ross",
     "date": "2026-04-22",
@@ -32594,7 +32594,7 @@ export const resultsData = [
   {
     "id": 2093,
     "student": "Thomas Wright",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7B",
     "teacher": "Anthony Ross",
     "date": "2026-04-04",
@@ -32604,7 +32604,7 @@ export const resultsData = [
   {
     "id": 2094,
     "student": "Thomas Wright",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7B",
     "teacher": "Anthony Ross",
     "date": "2026-04-22",
@@ -32614,7 +32614,7 @@ export const resultsData = [
   {
     "id": 2095,
     "student": "Dennis Hill",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7B",
     "teacher": "Anthony Ross",
     "date": "2026-04-04",
@@ -32624,7 +32624,7 @@ export const resultsData = [
   {
     "id": 2096,
     "student": "Dennis Hill",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7B",
     "teacher": "Anthony Ross",
     "date": "2026-04-22",
@@ -32634,7 +32634,7 @@ export const resultsData = [
   {
     "id": 2097,
     "student": "Larry Fisher",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7B",
     "teacher": "Anthony Ross",
     "date": "2026-04-04",
@@ -32644,7 +32644,7 @@ export const resultsData = [
   {
     "id": 2098,
     "student": "Larry Fisher",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7B",
     "teacher": "Anthony Ross",
     "date": "2026-04-22",
@@ -33294,7 +33294,7 @@ export const resultsData = [
   {
     "id": 2163,
     "student": "Benjamin Sullivan",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7B",
     "teacher": "Charles Barnes",
     "date": "2026-04-03",
@@ -33304,7 +33304,7 @@ export const resultsData = [
   {
     "id": 2164,
     "student": "Benjamin Sullivan",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7B",
     "teacher": "Charles Barnes",
     "date": "2026-04-14",
@@ -33314,7 +33314,7 @@ export const resultsData = [
   {
     "id": 2165,
     "student": "Mark Collins",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7B",
     "teacher": "Charles Barnes",
     "date": "2026-04-03",
@@ -33324,7 +33324,7 @@ export const resultsData = [
   {
     "id": 2166,
     "student": "Mark Collins",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7B",
     "teacher": "Charles Barnes",
     "date": "2026-04-14",
@@ -33334,7 +33334,7 @@ export const resultsData = [
   {
     "id": 2167,
     "student": "Andrew Foster",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7B",
     "teacher": "Charles Barnes",
     "date": "2026-04-03",
@@ -33344,7 +33344,7 @@ export const resultsData = [
   {
     "id": 2168,
     "student": "Andrew Foster",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7B",
     "teacher": "Charles Barnes",
     "date": "2026-04-14",
@@ -33354,7 +33354,7 @@ export const resultsData = [
   {
     "id": 2169,
     "student": "Robert Rogers",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7B",
     "teacher": "Charles Barnes",
     "date": "2026-04-03",
@@ -33364,7 +33364,7 @@ export const resultsData = [
   {
     "id": 2170,
     "student": "Robert Rogers",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7B",
     "teacher": "Charles Barnes",
     "date": "2026-04-14",
@@ -33374,7 +33374,7 @@ export const resultsData = [
   {
     "id": 2171,
     "student": "Benjamin Young",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7B",
     "teacher": "Charles Barnes",
     "date": "2026-04-03",
@@ -33384,7 +33384,7 @@ export const resultsData = [
   {
     "id": 2172,
     "student": "Benjamin Young",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7B",
     "teacher": "Charles Barnes",
     "date": "2026-04-14",
@@ -33394,7 +33394,7 @@ export const resultsData = [
   {
     "id": 2173,
     "student": "Thomas Wright",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7B",
     "teacher": "Charles Barnes",
     "date": "2026-04-03",
@@ -33404,7 +33404,7 @@ export const resultsData = [
   {
     "id": 2174,
     "student": "Thomas Wright",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7B",
     "teacher": "Charles Barnes",
     "date": "2026-04-14",
@@ -33414,7 +33414,7 @@ export const resultsData = [
   {
     "id": 2175,
     "student": "Dennis Hill",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7B",
     "teacher": "Charles Barnes",
     "date": "2026-04-03",
@@ -33424,7 +33424,7 @@ export const resultsData = [
   {
     "id": 2176,
     "student": "Dennis Hill",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7B",
     "teacher": "Charles Barnes",
     "date": "2026-04-14",
@@ -33434,7 +33434,7 @@ export const resultsData = [
   {
     "id": 2177,
     "student": "Larry Fisher",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7B",
     "teacher": "Charles Barnes",
     "date": "2026-04-03",
@@ -33444,7 +33444,7 @@ export const resultsData = [
   {
     "id": 2178,
     "student": "Larry Fisher",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7B",
     "teacher": "Charles Barnes",
     "date": "2026-04-14",
@@ -34094,7 +34094,7 @@ export const resultsData = [
   {
     "id": 2243,
     "student": "Donna Gray",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7G",
     "teacher": "Scott Evans",
     "date": "2026-03-02",
@@ -34104,7 +34104,7 @@ export const resultsData = [
   {
     "id": 2244,
     "student": "Donna Gray",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7G",
     "teacher": "Scott Evans",
     "date": "2026-02-17",
@@ -34114,7 +34114,7 @@ export const resultsData = [
   {
     "id": 2245,
     "student": "Amy Evans",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7G",
     "teacher": "Scott Evans",
     "date": "2026-03-02",
@@ -34124,7 +34124,7 @@ export const resultsData = [
   {
     "id": 2246,
     "student": "Amy Evans",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7G",
     "teacher": "Scott Evans",
     "date": "2026-02-17",
@@ -34134,7 +34134,7 @@ export const resultsData = [
   {
     "id": 2247,
     "student": "Sarah Rogers",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7G",
     "teacher": "Scott Evans",
     "date": "2026-03-02",
@@ -34144,7 +34144,7 @@ export const resultsData = [
   {
     "id": 2248,
     "student": "Sarah Rogers",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7G",
     "teacher": "Scott Evans",
     "date": "2026-02-17",
@@ -34154,7 +34154,7 @@ export const resultsData = [
   {
     "id": 2249,
     "student": "Anna Baker",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7G",
     "teacher": "Scott Evans",
     "date": "2026-03-02",
@@ -34164,7 +34164,7 @@ export const resultsData = [
   {
     "id": 2250,
     "student": "Anna Baker",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7G",
     "teacher": "Scott Evans",
     "date": "2026-02-17",
@@ -34174,7 +34174,7 @@ export const resultsData = [
   {
     "id": 2251,
     "student": "Mary Jackson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7G",
     "teacher": "Scott Evans",
     "date": "2026-03-02",
@@ -34184,7 +34184,7 @@ export const resultsData = [
   {
     "id": 2252,
     "student": "Mary Jackson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7G",
     "teacher": "Scott Evans",
     "date": "2026-02-17",
@@ -34194,7 +34194,7 @@ export const resultsData = [
   {
     "id": 2253,
     "student": "Deborah Hill",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7G",
     "teacher": "Scott Evans",
     "date": "2026-03-02",
@@ -34204,7 +34204,7 @@ export const resultsData = [
   {
     "id": 2254,
     "student": "Deborah Hill",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7G",
     "teacher": "Scott Evans",
     "date": "2026-02-17",
@@ -34214,7 +34214,7 @@ export const resultsData = [
   {
     "id": 2255,
     "student": "Donna Hill",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7G",
     "teacher": "Scott Evans",
     "date": "2026-03-02",
@@ -34224,7 +34224,7 @@ export const resultsData = [
   {
     "id": 2256,
     "student": "Donna Hill",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7G",
     "teacher": "Scott Evans",
     "date": "2026-02-17",
@@ -34234,7 +34234,7 @@ export const resultsData = [
   {
     "id": 2257,
     "student": "Elizabeth Lee",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7G",
     "teacher": "Scott Evans",
     "date": "2026-03-02",
@@ -34244,7 +34244,7 @@ export const resultsData = [
   {
     "id": 2258,
     "student": "Elizabeth Lee",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "7G",
     "teacher": "Scott Evans",
     "date": "2026-02-17",
@@ -34894,7 +34894,7 @@ export const resultsData = [
   {
     "id": 2323,
     "student": "Donna Gray",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7G",
     "teacher": "Joseph Henderson",
     "date": "2026-04-11",
@@ -34904,7 +34904,7 @@ export const resultsData = [
   {
     "id": 2324,
     "student": "Donna Gray",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7G",
     "teacher": "Joseph Henderson",
     "date": "2026-05-14",
@@ -34914,7 +34914,7 @@ export const resultsData = [
   {
     "id": 2325,
     "student": "Amy Evans",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7G",
     "teacher": "Joseph Henderson",
     "date": "2026-04-11",
@@ -34924,7 +34924,7 @@ export const resultsData = [
   {
     "id": 2326,
     "student": "Amy Evans",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7G",
     "teacher": "Joseph Henderson",
     "date": "2026-05-14",
@@ -34934,7 +34934,7 @@ export const resultsData = [
   {
     "id": 2327,
     "student": "Sarah Rogers",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7G",
     "teacher": "Joseph Henderson",
     "date": "2026-04-11",
@@ -34944,7 +34944,7 @@ export const resultsData = [
   {
     "id": 2328,
     "student": "Sarah Rogers",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7G",
     "teacher": "Joseph Henderson",
     "date": "2026-05-14",
@@ -34954,7 +34954,7 @@ export const resultsData = [
   {
     "id": 2329,
     "student": "Anna Baker",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7G",
     "teacher": "Joseph Henderson",
     "date": "2026-04-11",
@@ -34964,7 +34964,7 @@ export const resultsData = [
   {
     "id": 2330,
     "student": "Anna Baker",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7G",
     "teacher": "Joseph Henderson",
     "date": "2026-05-14",
@@ -34974,7 +34974,7 @@ export const resultsData = [
   {
     "id": 2331,
     "student": "Mary Jackson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7G",
     "teacher": "Joseph Henderson",
     "date": "2026-04-11",
@@ -34984,7 +34984,7 @@ export const resultsData = [
   {
     "id": 2332,
     "student": "Mary Jackson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7G",
     "teacher": "Joseph Henderson",
     "date": "2026-05-14",
@@ -34994,7 +34994,7 @@ export const resultsData = [
   {
     "id": 2333,
     "student": "Deborah Hill",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7G",
     "teacher": "Joseph Henderson",
     "date": "2026-04-11",
@@ -35004,7 +35004,7 @@ export const resultsData = [
   {
     "id": 2334,
     "student": "Deborah Hill",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7G",
     "teacher": "Joseph Henderson",
     "date": "2026-05-14",
@@ -35014,7 +35014,7 @@ export const resultsData = [
   {
     "id": 2335,
     "student": "Donna Hill",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7G",
     "teacher": "Joseph Henderson",
     "date": "2026-04-11",
@@ -35024,7 +35024,7 @@ export const resultsData = [
   {
     "id": 2336,
     "student": "Donna Hill",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7G",
     "teacher": "Joseph Henderson",
     "date": "2026-05-14",
@@ -35034,7 +35034,7 @@ export const resultsData = [
   {
     "id": 2337,
     "student": "Elizabeth Lee",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7G",
     "teacher": "Joseph Henderson",
     "date": "2026-04-11",
@@ -35044,7 +35044,7 @@ export const resultsData = [
   {
     "id": 2338,
     "student": "Elizabeth Lee",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "7G",
     "teacher": "Joseph Henderson",
     "date": "2026-05-14",
@@ -35654,7 +35654,7 @@ export const resultsData = [
   {
     "id": 2399,
     "student": "David Hill",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8B",
     "teacher": "Heather Morgan",
     "date": "2026-03-19",
@@ -35664,7 +35664,7 @@ export const resultsData = [
   {
     "id": 2400,
     "student": "David Hill",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8B",
     "teacher": "Heather Morgan",
     "date": "2026-01-23",
@@ -35674,7 +35674,7 @@ export const resultsData = [
   {
     "id": 2401,
     "student": "Dennis Evans",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8B",
     "teacher": "Heather Morgan",
     "date": "2026-03-19",
@@ -35684,7 +35684,7 @@ export const resultsData = [
   {
     "id": 2402,
     "student": "Dennis Evans",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8B",
     "teacher": "Heather Morgan",
     "date": "2026-01-23",
@@ -35694,7 +35694,7 @@ export const resultsData = [
   {
     "id": 2403,
     "student": "Andrew King",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8B",
     "teacher": "Heather Morgan",
     "date": "2026-03-19",
@@ -35704,7 +35704,7 @@ export const resultsData = [
   {
     "id": 2404,
     "student": "Andrew King",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8B",
     "teacher": "Heather Morgan",
     "date": "2026-01-23",
@@ -35714,7 +35714,7 @@ export const resultsData = [
   {
     "id": 2405,
     "student": "Daniel Collins",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8B",
     "teacher": "Heather Morgan",
     "date": "2026-03-19",
@@ -35724,7 +35724,7 @@ export const resultsData = [
   {
     "id": 2406,
     "student": "Daniel Collins",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8B",
     "teacher": "Heather Morgan",
     "date": "2026-01-23",
@@ -35734,7 +35734,7 @@ export const resultsData = [
   {
     "id": 2407,
     "student": "Jack Diaz",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8B",
     "teacher": "Heather Morgan",
     "date": "2026-03-19",
@@ -35744,7 +35744,7 @@ export const resultsData = [
   {
     "id": 2408,
     "student": "Jack Diaz",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8B",
     "teacher": "Heather Morgan",
     "date": "2026-01-23",
@@ -35754,7 +35754,7 @@ export const resultsData = [
   {
     "id": 2409,
     "student": "Steven Hill",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8B",
     "teacher": "Heather Morgan",
     "date": "2026-03-19",
@@ -35764,7 +35764,7 @@ export const resultsData = [
   {
     "id": 2410,
     "student": "Steven Hill",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8B",
     "teacher": "Heather Morgan",
     "date": "2026-01-23",
@@ -36254,7 +36254,7 @@ export const resultsData = [
   {
     "id": 2459,
     "student": "David Hill",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8B",
     "teacher": "Shirley Hill",
     "date": "2026-04-01",
@@ -36264,7 +36264,7 @@ export const resultsData = [
   {
     "id": 2460,
     "student": "David Hill",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8B",
     "teacher": "Shirley Hill",
     "date": "2026-01-31",
@@ -36274,7 +36274,7 @@ export const resultsData = [
   {
     "id": 2461,
     "student": "Dennis Evans",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8B",
     "teacher": "Shirley Hill",
     "date": "2026-04-01",
@@ -36284,7 +36284,7 @@ export const resultsData = [
   {
     "id": 2462,
     "student": "Dennis Evans",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8B",
     "teacher": "Shirley Hill",
     "date": "2026-01-31",
@@ -36294,7 +36294,7 @@ export const resultsData = [
   {
     "id": 2463,
     "student": "Andrew King",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8B",
     "teacher": "Shirley Hill",
     "date": "2026-04-01",
@@ -36304,7 +36304,7 @@ export const resultsData = [
   {
     "id": 2464,
     "student": "Andrew King",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8B",
     "teacher": "Shirley Hill",
     "date": "2026-01-31",
@@ -36314,7 +36314,7 @@ export const resultsData = [
   {
     "id": 2465,
     "student": "Daniel Collins",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8B",
     "teacher": "Shirley Hill",
     "date": "2026-04-01",
@@ -36324,7 +36324,7 @@ export const resultsData = [
   {
     "id": 2466,
     "student": "Daniel Collins",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8B",
     "teacher": "Shirley Hill",
     "date": "2026-01-31",
@@ -36334,7 +36334,7 @@ export const resultsData = [
   {
     "id": 2467,
     "student": "Jack Diaz",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8B",
     "teacher": "Shirley Hill",
     "date": "2026-04-01",
@@ -36344,7 +36344,7 @@ export const resultsData = [
   {
     "id": 2468,
     "student": "Jack Diaz",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8B",
     "teacher": "Shirley Hill",
     "date": "2026-01-31",
@@ -36354,7 +36354,7 @@ export const resultsData = [
   {
     "id": 2469,
     "student": "Steven Hill",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8B",
     "teacher": "Shirley Hill",
     "date": "2026-04-01",
@@ -36364,7 +36364,7 @@ export const resultsData = [
   {
     "id": 2470,
     "student": "Steven Hill",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8B",
     "teacher": "Shirley Hill",
     "date": "2026-01-31",
@@ -36874,7 +36874,7 @@ export const resultsData = [
   {
     "id": 2521,
     "student": "Nancy Morgan",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8G",
     "teacher": "Nancy Baker",
     "date": "2026-03-08",
@@ -36884,7 +36884,7 @@ export const resultsData = [
   {
     "id": 2522,
     "student": "Nancy Morgan",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8G",
     "teacher": "Nancy Baker",
     "date": "2026-02-13",
@@ -36894,7 +36894,7 @@ export const resultsData = [
   {
     "id": 2523,
     "student": "Amy Henderson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8G",
     "teacher": "Nancy Baker",
     "date": "2026-03-08",
@@ -36904,7 +36904,7 @@ export const resultsData = [
   {
     "id": 2524,
     "student": "Amy Henderson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8G",
     "teacher": "Nancy Baker",
     "date": "2026-02-13",
@@ -36914,7 +36914,7 @@ export const resultsData = [
   {
     "id": 2525,
     "student": "Karen Foster",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8G",
     "teacher": "Nancy Baker",
     "date": "2026-03-08",
@@ -36924,7 +36924,7 @@ export const resultsData = [
   {
     "id": 2526,
     "student": "Karen Foster",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8G",
     "teacher": "Nancy Baker",
     "date": "2026-02-13",
@@ -36934,7 +36934,7 @@ export const resultsData = [
   {
     "id": 2527,
     "student": "Emily Bailey",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8G",
     "teacher": "Nancy Baker",
     "date": "2026-03-08",
@@ -36944,7 +36944,7 @@ export const resultsData = [
   {
     "id": 2528,
     "student": "Emily Bailey",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8G",
     "teacher": "Nancy Baker",
     "date": "2026-02-13",
@@ -36954,7 +36954,7 @@ export const resultsData = [
   {
     "id": 2529,
     "student": "Melissa Lee",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8G",
     "teacher": "Nancy Baker",
     "date": "2026-03-08",
@@ -36964,7 +36964,7 @@ export const resultsData = [
   {
     "id": 2530,
     "student": "Melissa Lee",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "8G",
     "teacher": "Nancy Baker",
     "date": "2026-02-13",
@@ -37374,7 +37374,7 @@ export const resultsData = [
   {
     "id": 2571,
     "student": "Nancy Morgan",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8G",
     "teacher": "Cynthia Barnes",
     "date": "2026-03-04",
@@ -37384,7 +37384,7 @@ export const resultsData = [
   {
     "id": 2572,
     "student": "Nancy Morgan",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8G",
     "teacher": "Cynthia Barnes",
     "date": "2026-01-29",
@@ -37394,7 +37394,7 @@ export const resultsData = [
   {
     "id": 2573,
     "student": "Amy Henderson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8G",
     "teacher": "Cynthia Barnes",
     "date": "2026-03-04",
@@ -37404,7 +37404,7 @@ export const resultsData = [
   {
     "id": 2574,
     "student": "Amy Henderson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8G",
     "teacher": "Cynthia Barnes",
     "date": "2026-01-29",
@@ -37414,7 +37414,7 @@ export const resultsData = [
   {
     "id": 2575,
     "student": "Karen Foster",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8G",
     "teacher": "Cynthia Barnes",
     "date": "2026-03-04",
@@ -37424,7 +37424,7 @@ export const resultsData = [
   {
     "id": 2576,
     "student": "Karen Foster",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8G",
     "teacher": "Cynthia Barnes",
     "date": "2026-01-29",
@@ -37434,7 +37434,7 @@ export const resultsData = [
   {
     "id": 2577,
     "student": "Emily Bailey",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8G",
     "teacher": "Cynthia Barnes",
     "date": "2026-03-04",
@@ -37444,7 +37444,7 @@ export const resultsData = [
   {
     "id": 2578,
     "student": "Emily Bailey",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8G",
     "teacher": "Cynthia Barnes",
     "date": "2026-01-29",
@@ -37454,7 +37454,7 @@ export const resultsData = [
   {
     "id": 2579,
     "student": "Melissa Lee",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8G",
     "teacher": "Cynthia Barnes",
     "date": "2026-03-04",
@@ -37464,7 +37464,7 @@ export const resultsData = [
   {
     "id": 2580,
     "student": "Melissa Lee",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "8G",
     "teacher": "Cynthia Barnes",
     "date": "2026-01-29",
@@ -38074,7 +38074,7 @@ export const resultsData = [
   {
     "id": 2641,
     "student": "Raymond Evans",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9B",
     "teacher": "Nancy Baker",
     "date": "2026-03-04",
@@ -38084,7 +38084,7 @@ export const resultsData = [
   {
     "id": 2642,
     "student": "Raymond Evans",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9B",
     "teacher": "Nancy Baker",
     "date": "2026-05-20",
@@ -38094,7 +38094,7 @@ export const resultsData = [
   {
     "id": 2643,
     "student": "George Collins",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9B",
     "teacher": "Nancy Baker",
     "date": "2026-03-04",
@@ -38104,7 +38104,7 @@ export const resultsData = [
   {
     "id": 2644,
     "student": "George Collins",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9B",
     "teacher": "Nancy Baker",
     "date": "2026-05-20",
@@ -38114,7 +38114,7 @@ export const resultsData = [
   {
     "id": 2645,
     "student": "George Lee",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9B",
     "teacher": "Nancy Baker",
     "date": "2026-03-04",
@@ -38124,7 +38124,7 @@ export const resultsData = [
   {
     "id": 2646,
     "student": "George Lee",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9B",
     "teacher": "Nancy Baker",
     "date": "2026-05-20",
@@ -38134,7 +38134,7 @@ export const resultsData = [
   {
     "id": 2647,
     "student": "Justin Griffin",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9B",
     "teacher": "Nancy Baker",
     "date": "2026-03-04",
@@ -38144,7 +38144,7 @@ export const resultsData = [
   {
     "id": 2648,
     "student": "Justin Griffin",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9B",
     "teacher": "Nancy Baker",
     "date": "2026-05-20",
@@ -38154,7 +38154,7 @@ export const resultsData = [
   {
     "id": 2649,
     "student": "Aaron Griffin",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9B",
     "teacher": "Nancy Baker",
     "date": "2026-03-04",
@@ -38164,7 +38164,7 @@ export const resultsData = [
   {
     "id": 2650,
     "student": "Aaron Griffin",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9B",
     "teacher": "Nancy Baker",
     "date": "2026-05-20",
@@ -38174,7 +38174,7 @@ export const resultsData = [
   {
     "id": 2651,
     "student": "Larry Griffin",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9B",
     "teacher": "Nancy Baker",
     "date": "2026-03-04",
@@ -38184,7 +38184,7 @@ export const resultsData = [
   {
     "id": 2652,
     "student": "Larry Griffin",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9B",
     "teacher": "Nancy Baker",
     "date": "2026-05-20",
@@ -38674,7 +38674,7 @@ export const resultsData = [
   {
     "id": 2701,
     "student": "Raymond Evans",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9B",
     "teacher": "Cynthia Barnes",
     "date": "2026-03-21",
@@ -38684,7 +38684,7 @@ export const resultsData = [
   {
     "id": 2702,
     "student": "Raymond Evans",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9B",
     "teacher": "Cynthia Barnes",
     "date": "2026-02-16",
@@ -38694,7 +38694,7 @@ export const resultsData = [
   {
     "id": 2703,
     "student": "George Collins",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9B",
     "teacher": "Cynthia Barnes",
     "date": "2026-03-21",
@@ -38704,7 +38704,7 @@ export const resultsData = [
   {
     "id": 2704,
     "student": "George Collins",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9B",
     "teacher": "Cynthia Barnes",
     "date": "2026-02-16",
@@ -38714,7 +38714,7 @@ export const resultsData = [
   {
     "id": 2705,
     "student": "George Lee",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9B",
     "teacher": "Cynthia Barnes",
     "date": "2026-03-21",
@@ -38724,7 +38724,7 @@ export const resultsData = [
   {
     "id": 2706,
     "student": "George Lee",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9B",
     "teacher": "Cynthia Barnes",
     "date": "2026-02-16",
@@ -38734,7 +38734,7 @@ export const resultsData = [
   {
     "id": 2707,
     "student": "Justin Griffin",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9B",
     "teacher": "Cynthia Barnes",
     "date": "2026-03-21",
@@ -38744,7 +38744,7 @@ export const resultsData = [
   {
     "id": 2708,
     "student": "Justin Griffin",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9B",
     "teacher": "Cynthia Barnes",
     "date": "2026-02-16",
@@ -38754,7 +38754,7 @@ export const resultsData = [
   {
     "id": 2709,
     "student": "Aaron Griffin",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9B",
     "teacher": "Cynthia Barnes",
     "date": "2026-03-21",
@@ -38764,7 +38764,7 @@ export const resultsData = [
   {
     "id": 2710,
     "student": "Aaron Griffin",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9B",
     "teacher": "Cynthia Barnes",
     "date": "2026-02-16",
@@ -38774,7 +38774,7 @@ export const resultsData = [
   {
     "id": 2711,
     "student": "Larry Griffin",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9B",
     "teacher": "Cynthia Barnes",
     "date": "2026-03-21",
@@ -38784,7 +38784,7 @@ export const resultsData = [
   {
     "id": 2712,
     "student": "Larry Griffin",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9B",
     "teacher": "Cynthia Barnes",
     "date": "2026-02-16",
@@ -39494,7 +39494,7 @@ export const resultsData = [
   {
     "id": 2783,
     "student": "Patricia Butler",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9G",
     "teacher": "Heather Morgan",
     "date": "2026-03-29",
@@ -39504,7 +39504,7 @@ export const resultsData = [
   {
     "id": 2784,
     "student": "Patricia Butler",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9G",
     "teacher": "Heather Morgan",
     "date": "2026-04-10",
@@ -39514,7 +39514,7 @@ export const resultsData = [
   {
     "id": 2785,
     "student": "Catherine Cruz",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9G",
     "teacher": "Heather Morgan",
     "date": "2026-03-29",
@@ -39524,7 +39524,7 @@ export const resultsData = [
   {
     "id": 2786,
     "student": "Catherine Cruz",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9G",
     "teacher": "Heather Morgan",
     "date": "2026-04-10",
@@ -39534,7 +39534,7 @@ export const resultsData = [
   {
     "id": 2787,
     "student": "Carolyn Young",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9G",
     "teacher": "Heather Morgan",
     "date": "2026-03-29",
@@ -39544,7 +39544,7 @@ export const resultsData = [
   {
     "id": 2788,
     "student": "Carolyn Young",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9G",
     "teacher": "Heather Morgan",
     "date": "2026-04-10",
@@ -39554,7 +39554,7 @@ export const resultsData = [
   {
     "id": 2789,
     "student": "Barbara Young",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9G",
     "teacher": "Heather Morgan",
     "date": "2026-03-29",
@@ -39564,7 +39564,7 @@ export const resultsData = [
   {
     "id": 2790,
     "student": "Barbara Young",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9G",
     "teacher": "Heather Morgan",
     "date": "2026-04-10",
@@ -39574,7 +39574,7 @@ export const resultsData = [
   {
     "id": 2791,
     "student": "Michelle Butler 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9G",
     "teacher": "Heather Morgan",
     "date": "2026-03-29",
@@ -39584,7 +39584,7 @@ export const resultsData = [
   {
     "id": 2792,
     "student": "Michelle Butler 2",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9G",
     "teacher": "Heather Morgan",
     "date": "2026-04-10",
@@ -39594,7 +39594,7 @@ export const resultsData = [
   {
     "id": 2793,
     "student": "Jessica Reed",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9G",
     "teacher": "Heather Morgan",
     "date": "2026-03-29",
@@ -39604,7 +39604,7 @@ export const resultsData = [
   {
     "id": 2794,
     "student": "Jessica Reed",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9G",
     "teacher": "Heather Morgan",
     "date": "2026-04-10",
@@ -39614,7 +39614,7 @@ export const resultsData = [
   {
     "id": 2795,
     "student": "Amy Anderson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9G",
     "teacher": "Heather Morgan",
     "date": "2026-03-29",
@@ -39624,7 +39624,7 @@ export const resultsData = [
   {
     "id": 2796,
     "student": "Amy Anderson",
-    "subject": "Islamic Studies",
+    "subject": "History",
     "class": "9G",
     "teacher": "Heather Morgan",
     "date": "2026-04-10",
@@ -40194,7 +40194,7 @@ export const resultsData = [
   {
     "id": 2853,
     "student": "Patricia Butler",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9G",
     "teacher": "Shirley Hill",
     "date": "2026-03-08",
@@ -40204,7 +40204,7 @@ export const resultsData = [
   {
     "id": 2854,
     "student": "Patricia Butler",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9G",
     "teacher": "Shirley Hill",
     "date": "2026-04-20",
@@ -40214,7 +40214,7 @@ export const resultsData = [
   {
     "id": 2855,
     "student": "Catherine Cruz",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9G",
     "teacher": "Shirley Hill",
     "date": "2026-03-08",
@@ -40224,7 +40224,7 @@ export const resultsData = [
   {
     "id": 2856,
     "student": "Catherine Cruz",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9G",
     "teacher": "Shirley Hill",
     "date": "2026-04-20",
@@ -40234,7 +40234,7 @@ export const resultsData = [
   {
     "id": 2857,
     "student": "Carolyn Young",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9G",
     "teacher": "Shirley Hill",
     "date": "2026-03-08",
@@ -40244,7 +40244,7 @@ export const resultsData = [
   {
     "id": 2858,
     "student": "Carolyn Young",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9G",
     "teacher": "Shirley Hill",
     "date": "2026-04-20",
@@ -40254,7 +40254,7 @@ export const resultsData = [
   {
     "id": 2859,
     "student": "Barbara Young",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9G",
     "teacher": "Shirley Hill",
     "date": "2026-03-08",
@@ -40264,7 +40264,7 @@ export const resultsData = [
   {
     "id": 2860,
     "student": "Barbara Young",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9G",
     "teacher": "Shirley Hill",
     "date": "2026-04-20",
@@ -40274,7 +40274,7 @@ export const resultsData = [
   {
     "id": 2861,
     "student": "Michelle Butler 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9G",
     "teacher": "Shirley Hill",
     "date": "2026-03-08",
@@ -40284,7 +40284,7 @@ export const resultsData = [
   {
     "id": 2862,
     "student": "Michelle Butler 2",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9G",
     "teacher": "Shirley Hill",
     "date": "2026-04-20",
@@ -40294,7 +40294,7 @@ export const resultsData = [
   {
     "id": 2863,
     "student": "Jessica Reed",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9G",
     "teacher": "Shirley Hill",
     "date": "2026-03-08",
@@ -40304,7 +40304,7 @@ export const resultsData = [
   {
     "id": 2864,
     "student": "Jessica Reed",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9G",
     "teacher": "Shirley Hill",
     "date": "2026-04-20",
@@ -40314,7 +40314,7 @@ export const resultsData = [
   {
     "id": 2865,
     "student": "Amy Anderson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9G",
     "teacher": "Shirley Hill",
     "date": "2026-03-08",
@@ -40324,7 +40324,7 @@ export const resultsData = [
   {
     "id": 2866,
     "student": "Amy Anderson",
-    "subject": "Urdu Language",
+    "subject": "Spanish Language",
     "class": "9G",
     "teacher": "Shirley Hill",
     "date": "2026-04-20",

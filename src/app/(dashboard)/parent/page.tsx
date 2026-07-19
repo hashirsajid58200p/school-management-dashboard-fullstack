@@ -1,10 +1,15 @@
 import Announcements from "@/components/Announcements";
 import BigCalendarContainer from "@/components/BigCalendarContainer";
+import EventCalendarContainer from "@/components/EventCalendarContainer";
 import prisma from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 
 
-const ParentPage = async () => {
+const ParentPage = async ({
+  searchParams,
+}: {
+  searchParams: { [keys: string]: string | undefined };
+}) => {
   const { userId } = auth();
   const currentUserId = userId;
   
@@ -21,10 +26,11 @@ const ParentPage = async () => {
         {students.length > 0 ? (
           students.map((student) => (
             <div className="bg-white p-4 rounded-md" key={student.id}>
-              <h1 className="text-xl font-semibold mb-4">
-                Schedule ({student.name + " " + student.surname})
-              </h1>
-              <BigCalendarContainer type="classId" id={student.classId} />
+              <BigCalendarContainer
+                type="classId"
+                id={student.classId}
+                title={`Schedule (${student.name} ${student.surname})`}
+              />
             </div>
           ))
         ) : (
@@ -35,6 +41,7 @@ const ParentPage = async () => {
       </div>
       {/* RIGHT */}
       <div className="w-full xl:w-1/3 flex flex-col gap-8">
+        <EventCalendarContainer searchParams={searchParams} />
         <Announcements />
       </div>
     </div>
