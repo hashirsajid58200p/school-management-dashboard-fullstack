@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { getStudentsByClass, getAttendanceRecord, submitAttendance } from "@/lib/actions";
 import { toast } from "react-toastify";
+import { CustomSelect } from "./CustomSelect";
 
 interface AttendanceClientProps {
   role: string;
@@ -197,18 +198,12 @@ const AttendanceClient = ({
         {/* SELECT FILTERS */}
         <div className="flex flex-col md:flex-row gap-4 items-center bg-slate-50 p-4 rounded-xl border border-slate-100">
           <div className="flex flex-wrap gap-4 items-center w-full">
-            <select
+            <CustomSelect
               value={selectedClassId}
-              onChange={(e) => setSelectedClassId(e.target.value)}
-              className="ring-[1.5px] ring-slate-200 px-3 py-1.5 rounded-lg text-xs bg-white focus:outline-none focus:ring-2 focus:ring-hsYellow shadow-sm"
-            >
-              <option value="">Select Class...</option>
-              {classes.map((cls) => (
-                <option key={cls.id} value={cls.id}>
-                  {cls.name}
-                </option>
-              ))}
-            </select>
+              onChange={(val) => setSelectedClassId(val)}
+              options={classes.map((cls) => ({ value: String(cls.id), label: cls.name }))}
+              placeholder="Select Class..."
+            />
 
             <input
               type="date"
@@ -342,18 +337,15 @@ const AttendanceClient = ({
       {/* PARENT DROPDOWN FOR SELECTING CHILD */}
       {role === "parent" && parentChildren.length > 0 && (
         <div className="flex flex-col gap-2 max-w-xs bg-slate-50 p-4 rounded-xl border border-slate-100">
-          <label className="text-xs font-bold text-slate-500 uppercase tracking-wide">Select Student</label>
-          <select
+          <CustomSelect
             value={activeStudentId}
-            onChange={(e) => handleParentChildChange(e.target.value)}
-            className="ring-[1.5px] ring-slate-200 p-2 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-hsYellow"
-          >
-            {parentChildren.map((child) => (
-              <option key={child.id} value={child.id}>
-                {child.name} {child.surname}
-              </option>
-            ))}
-          </select>
+            onChange={(val) => handleParentChildChange(val)}
+            options={parentChildren.map((child) => ({
+              value: child.id,
+              label: `${child.name} ${child.surname}`,
+            }))}
+            label="Select Child"
+          />
         </div>
       )}
 
