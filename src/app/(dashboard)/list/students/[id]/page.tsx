@@ -85,26 +85,26 @@ const SingleStudentPage = async ({
               <p className="text-xs text-slate-500 italic leading-relaxed">
                 Student enrolled and actively participating in academic curriculum activities.
               </p>
-              <div className="flex flex-col gap-2.5 text-xs font-semibold text-slate-700 w-full mt-1.5">
-                <div className="flex items-center gap-2">
-                  <Image src="/blood.png" alt="" width={14} height={14} className="w-3.5 h-3.5 object-contain shrink-0" />
-                  <span>{student.bloodType || "-"}</span>
+              <div className="flex flex-col gap-2 w-full mt-2 text-xs font-semibold text-slate-700">
+                <div className="flex items-center gap-x-4 gap-y-1.5 flex-wrap">
+                  <div className="flex items-center gap-1.5">
+                    <Image src="/blood.png" alt="" width={14} height={14} className="w-3.5 h-3.5 object-contain shrink-0" />
+                    <span>{student.bloodType || "-"}</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Image src="/date.png" alt="" width={14} height={14} className="w-3.5 h-3.5 object-contain shrink-0" />
+                    <span>{new Intl.DateTimeFormat("en-GB").format(student.birthday)}</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Image src="/phone.png" alt="" width={14} height={14} className="w-3.5 h-3.5 object-contain shrink-0" />
+                    <span>{student.phone || "-"}</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Image src="/date.png" alt="" width={14} height={14} className="w-3.5 h-3.5 object-contain shrink-0" />
-                  <span>
-                    {new Intl.DateTimeFormat("en-GB").format(student.birthday)}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5">
                   <Image src="/mail.png" alt="" width={14} height={14} className="w-3.5 h-3.5 object-contain shrink-0" />
                   <span className="break-all select-all hover:text-indigo-600 transition-colors" title={student.email || ""}>
                     {student.email || "-"}
                   </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Image src="/phone.png" alt="" width={14} height={14} className="w-3.5 h-3.5 object-contain shrink-0" />
-                  <span>{student.phone || "-"}</span>
                 </div>
               </div>
             </div>
