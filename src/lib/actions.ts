@@ -1477,3 +1477,321 @@ export const deleteEvent = async (
   }
 };
 
+export type GlobalSearchResult = {
+  id: string | number;
+  title: string;
+  subtitle?: string;
+  category: "Teacher" | "Student" | "Class" | "Lesson" | "Event";
+  url: string;
+};
+
+export const searchGlobal = async (query: string): Promise<GlobalSearchResult[]> => {
+  const { userId, sessionClaims } = auth();
+  const role = (sessionClaims?.metadata as { role?: string })?.role;
+  if (!userId || !role || !query || query.trim().length < 2) {
+    return [];
+  }
+
+  const cleanQuery = query.trim();
+
+  try {
+    let teacherClassIds: number[] = [];
+    let studentClassId: number | null = null;
+    let parentChildrenClassIds: number[] = [];
+
+    if (role === "teacher") {
+      const teacher = await prisma.teacher.findUnique({
+        where: { id: userId },
+        select: { classes: { select: { id: true } } },
+      });
+      teacherClassIds = teacher?.classes.map((c) => c.id) || [];
+    } else if (role === "student") {
+      const student = await prisma.student.findUnique({
+        where: { id: userId },
+        select: { classId: true },
+      });
+      studentClassId = student?.classId || null;
+    } else if (role === "parent") {
+      const children = await prisma.student.findMany({
+        where: { parentId: userId },
+        select: { classId: true },
+      });
+      parentChildrenClassIds = children.map((c) => c.classId).filter(Boolean) as number[];
+    }
+
+    const results: GlobalSearchResult[] = [];
+
+    // 1. Query Teachers
+    let teacherWhere: any = {};
+    if (role === "admin") {
+      teacherWhere = {
+        OR: [
+          { name: { contains: cleanQuery } },
+          { surname: { contains: cleanQuery } },
+        ],
+      };
+    } else if (role === "teacher") {
+      teacherWhere = {
+        id: userId,
+        OR: [
+          { name: { contains: cleanQuery } },
+          { surname: { contains: cleanQuery } },
+        ],
+      };
+    } else if (role === "student") {
+      if (studentClassId !== null) {
+        teacherWhere = {
+          classes: { some: { id: studentClassId } },
+          OR: [
+            { name: { contains: cleanQuery } },
+            { surname: { contains: cleanQuery } },
+          ],
+        };
+      } else {
+        teacherWhere = null;
+      }
+    } else if (role === "parent") {
+      if (parentChildrenClassIds.length > 0) {
+        teacherWhere = {
+          classes: { some: { id: { in: parentChildrenClassIds } } },
+          OR: [
+            { name: { contains: cleanQuery } },
+            { surname: { contains: cleanQuery } },
+          ],
+        };
+      } else {
+        teacherWhere = null;
+      }
+    }
+
+    if (teacherWhere) {
+      const teachers = await prisma.teacher.findMany({
+        where: teacherWhere,
+        take: 3,
+        select: { id: true, name: true, surname: true },
+      });
+      teachers.forEach((t) => {
+        results.push({
+          id: t.id,
+          title: `${t.name} ${t.surname}`,
+          category: "Teacher",
+          url: `/list/teachers/${t.id}`,
+        });
+      });
+    }
+
+    // 2. Query Students
+    let studentWhere: any = {};
+    if (role === "admin") {
+      studentWhere = {
+        OR: [
+          { name: { contains: cleanQuery } },
+          { surname: { contains: cleanQuery } },
+        ],
+      };
+    } else if (role === "teacher") {
+      if (teacherClassIds.length > 0) {
+        studentWhere = {
+          classId: { in: teacherClassIds },
+          OR: [
+            { name: { contains: cleanQuery } },
+            { surname: { contains: cleanQuery } },
+          ],
+        };
+      } else {
+        studentWhere = null;
+      }
+    } else if (role === "student") {
+      if (studentClassId !== null) {
+        studentWhere = {
+          classId: studentClassId,
+          OR: [
+            { name: { contains: cleanQuery } },
+            { surname: { contains: cleanQuery } },
+          ],
+        };
+      } else {
+        studentWhere = null;
+      }
+    } else if (role === "parent") {
+      studentWhere = {
+        parentId: userId,
+        OR: [
+          { name: { contains: cleanQuery } },
+          { surname: { contains: cleanQuery } },
+        ],
+      };
+    }
+
+    if (studentWhere) {
+      const students = await prisma.student.findMany({
+        where: studentWhere,
+        take: 3,
+        select: { id: true, name: true, surname: true },
+      });
+      students.forEach((s) => {
+        results.push({
+          id: s.id,
+          title: `${s.name} ${s.surname}`,
+          category: "Student",
+          url: `/list/students/${s.id}`,
+        });
+      });
+    }
+
+    // 3. Query Classes
+    let classWhere: any = {};
+    if (role === "admin") {
+      classWhere = { name: { contains: cleanQuery } };
+    } else if (role === "teacher") {
+      if (teacherClassIds.length > 0) {
+        classWhere = { id: { in: teacherClassIds }, name: { contains: cleanQuery } };
+      } else {
+        classWhere = null;
+      }
+    } else if (role === "student") {
+      if (studentClassId !== null) {
+        classWhere = { id: studentClassId, name: { contains: cleanQuery } };
+      } else {
+        classWhere = null;
+      }
+    } else if (role === "parent") {
+      if (parentChildrenClassIds.length > 0) {
+        classWhere = { id: { in: parentChildrenClassIds }, name: { contains: cleanQuery } };
+      } else {
+        classWhere = null;
+      }
+    }
+
+    if (classWhere) {
+      const classes = await prisma.class.findMany({
+        where: classWhere,
+        take: 3,
+        select: { id: true, name: true },
+      });
+      classes.forEach((c) => {
+        results.push({
+          id: c.id,
+          title: c.name,
+          category: "Class",
+          url: `/list/classes?search=${c.name}`,
+        });
+      });
+    }
+
+    // 4. Query Lessons
+    let lessonWhere: any = {};
+    if (role === "admin") {
+      lessonWhere = { name: { contains: cleanQuery } };
+    } else if (role === "teacher") {
+      if (teacherClassIds.length > 0) {
+        lessonWhere = { classId: { in: teacherClassIds }, name: { contains: cleanQuery } };
+      } else {
+        lessonWhere = null;
+      }
+    } else if (role === "student") {
+      if (studentClassId !== null) {
+        lessonWhere = { classId: studentClassId, name: { contains: cleanQuery } };
+      } else {
+        lessonWhere = null;
+      }
+    } else if (role === "parent") {
+      if (parentChildrenClassIds.length > 0) {
+        lessonWhere = { classId: { in: parentChildrenClassIds }, name: { contains: cleanQuery } };
+      } else {
+        lessonWhere = null;
+      }
+    }
+
+    if (lessonWhere) {
+      const lessons = await prisma.lesson.findMany({
+        where: lessonWhere,
+        take: 3,
+        select: { id: true, name: true },
+      });
+      lessons.forEach((l) => {
+        results.push({
+          id: l.id,
+          title: l.name,
+          category: "Lesson",
+          url: `/list/lessons?search=${l.name}`,
+        });
+      });
+    }
+
+    // 5. Query Events
+    let eventWhere: any = {};
+    if (role === "admin") {
+      eventWhere = {
+        OR: [
+          { title: { contains: cleanQuery } },
+          { description: { contains: cleanQuery } },
+        ],
+      };
+    } else if (role === "teacher") {
+      eventWhere = {
+        AND: [
+          { OR: [ { classId: null }, { classId: { in: teacherClassIds } } ] },
+          { OR: [ { title: { contains: cleanQuery } }, { description: { contains: cleanQuery } } ] },
+        ],
+      };
+    } else if (role === "student") {
+      if (studentClassId !== null) {
+        eventWhere = {
+          AND: [
+            { OR: [ { classId: null }, { classId: studentClassId } ] },
+            { OR: [ { title: { contains: cleanQuery } }, { description: { contains: cleanQuery } } ] },
+          ],
+        };
+      } else {
+        eventWhere = {
+          classId: null,
+          OR: [
+            { title: { contains: cleanQuery } },
+            { description: { contains: cleanQuery } },
+          ],
+        };
+      }
+    } else if (role === "parent") {
+      if (parentChildrenClassIds.length > 0) {
+        eventWhere = {
+          AND: [
+            { OR: [ { classId: null }, { classId: { in: parentChildrenClassIds } } ] },
+            { OR: [ { title: { contains: cleanQuery } }, { description: { contains: cleanQuery } } ] },
+          ],
+        };
+      } else {
+        eventWhere = {
+          classId: null,
+          OR: [
+            { title: { contains: cleanQuery } },
+            { description: { contains: cleanQuery } },
+          ],
+        };
+      }
+    }
+
+    if (eventWhere) {
+      const events = await prisma.event.findMany({
+        where: eventWhere,
+        take: 3,
+        select: { id: true, title: true, description: true },
+      });
+      events.forEach((e) => {
+        results.push({
+          id: e.id,
+          title: e.title,
+          subtitle: e.description,
+          category: "Event",
+          url: `/list/events?search=${e.title}`,
+        });
+      });
+    }
+
+    return results;
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
+};
+
