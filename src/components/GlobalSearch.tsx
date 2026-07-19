@@ -80,7 +80,7 @@ const GlobalSearch = () => {
       className="relative w-[130px] md:w-[160px] lg:w-[200px] z-50"
     >
       {/* SEARCH INPUT BAR */}
-      <div className="flex items-center gap-2 text-xs rounded-full ring-[1.5px] ring-gray-300 px-3 py-1.5 bg-white focus-within:ring-2 focus-within:ring-hsYellow focus-within:border-transparent transition-all shadow-sm">
+      <div className="flex items-center gap-2 text-xs rounded-full ring-[1.5px] ring-gray-300 px-3 py-2.5 bg-white focus-within:ring-2 focus-within:ring-hsYellow focus-within:border-transparent transition-all shadow-sm">
         <Image src="/search.png" alt="Search icon" width={14} height={14} />
         <input
           type="text"
