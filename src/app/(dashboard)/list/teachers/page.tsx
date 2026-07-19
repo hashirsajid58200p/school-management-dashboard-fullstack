@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ITEM_PER_PAGE } from "@/lib/settings";
 import { auth } from "@/lib/auth";
+import { SortButton, FilterButton } from "@/components/TableActions";
 
 type TeacherList = Teacher & { subject: Subject | null } & { classes: Class[] };
 
@@ -31,8 +32,8 @@ const TeacherListPage = async ({
       className: "hidden md:table-cell",
     },
     {
-      header: "Subject",
-      accessor: "subject",
+      header: "Subjects",
+      accessor: "subjects",
       className: "hidden md:table-cell",
     },
     {
@@ -74,19 +75,17 @@ const TeacherListPage = async ({
           className="md:hidden xl:block w-10 h-10 rounded-full object-cover"
         />
         <div className="flex flex-col">
-          <h3 className="font-semibold">{item.name} {item.surname}</h3>
-          <p className="text-xs text-gray-500">{item?.email}</p>
+          <h3 className="font-semibold">{item.name}</h3>
+          <span className="text-xs text-gray-500">{item?.email}</span>
         </div>
       </td>
-      <td className="hidden md:table-cell">{item.id}</td>
+      <td className="hidden md:table-cell">{item.username}</td>
+      <td className="hidden md:table-cell">{item.subject?.name || "-"}</td>
       <td className="hidden md:table-cell">
-        {item.subject?.name || "-"}
+        {item.classes.map((c) => c.name).join(",")}
       </td>
-      <td className="hidden md:table-cell">
-        {item.classes.map((classItem) => classItem.name).join(",")}
-      </td>
-      <td className="hidden md:table-cell">{item.phone}</td>
-      <td className="hidden md:table-cell">{item.address}</td>
+      <td className="hidden lg:table-cell">{item.phone}</td>
+      <td className="hidden lg:table-cell">{item.address}</td>
       <td>
         <div className="flex items-center gap-2">
           <Link href={`/list/teachers/${item.id}`}>
@@ -101,12 +100,12 @@ const TeacherListPage = async ({
       </td>
     </tr>
   );
+
   const { page, ...queryParams } = searchParams;
-
   const p = page ? parseInt(page) : 1;
+  const sort = searchParams?.sort === "desc" ? "desc" : "asc";
 
-  // URL PARAMS CONDITION
-
+  // URL Queries
   const query: Prisma.TeacherWhereInput = {};
 
   if (queryParams) {
@@ -169,11 +168,22 @@ const TeacherListPage = async ({
         subject: true,
         classes: true,
       },
+      orderBy: { name: sort },
       take: ITEM_PER_PAGE,
       skip: ITEM_PER_PAGE * (p - 1),
     }),
     prisma.teacher.count({ where: query }),
   ]);
+
+  // Query classes for filtering
+  const filterClasses = await prisma.class.findMany({
+    select: { id: true, name: true }
+  });
+  const filterOptions = filterClasses.map(c => ({
+    label: `Class ${c.name}`,
+    value: String(c.id),
+    paramName: "classId"
+  }));
 
   return (
     <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
@@ -183,12 +193,12 @@ const TeacherListPage = async ({
         <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
           {role !== "parent" && <TableSearch />}
           <div className="flex items-center gap-4 self-end">
-            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-hsYellow">
-              <Image src="/filter.png" alt="" width={14} height={14} />
-            </button>
-            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-hsYellow">
-              <Image src="/sort.png" alt="" width={14} height={14} />
-            </button>
+            {count > 1 && (
+              <>
+                <FilterButton options={filterOptions} />
+                <SortButton />
+              </>
+            )}
             {role === "admin" && (
               <FormContainer table="teacher" type="create" />
             )}
