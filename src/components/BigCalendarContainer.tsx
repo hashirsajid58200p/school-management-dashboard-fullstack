@@ -195,15 +195,17 @@ const BigCalendarContainer = async ({
     });
   }
 
-  // --- OVERLAP FILTER: Hide lessons and breaks that overlap with events ---
+  // --- ENTIRE DAY HOLIDAY FILTER: If a day has any event, hide all lessons and breaks on that day ---
   const eventItems = schedule.filter((item) => item.isSchoolEvent || item.isPtm);
   const regularItems = schedule.filter((item) => !item.isSchoolEvent && !item.isPtm);
 
+  const eventDates = new Set(
+    eventItems.map((item) => item.start.toISOString().split("T")[0])
+  );
+
   const nonOverlappingRegularItems = regularItems.filter((regular) => {
-    const hasOverlap = eventItems.some((event) => {
-      return regular.start < event.end && regular.end > event.start;
-    });
-    return !hasOverlap;
+    const regularDateStr = regular.start.toISOString().split("T")[0];
+    return !eventDates.has(regularDateStr);
   });
 
   const finalSchedule = [...nonOverlappingRegularItems, ...eventItems];
