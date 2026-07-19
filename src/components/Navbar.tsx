@@ -22,8 +22,8 @@ const Navbar = async () => {
             1
           </div>
         </div>
-        <div className="flex flex-col">
-          <span className="text-xs leading-3 font-medium">
+        <div className="flex flex-col gap-0.5">
+          <span className="text-xs font-semibold text-slate-800">
             {user ? `${user.firstName} ${user.lastName}` : "Guest User"}
           </span>
           <span className="text-[10px] text-gray-500 text-right capitalize">

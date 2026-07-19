@@ -63,46 +63,48 @@ const SingleStudentPage = async ({
         {/* TOP */}
         <div className="flex flex-col lg:flex-row gap-4">
           {/* USER INFO CARD */}
-          <div className="bg-hsSky py-6 px-4 rounded-md flex-1 flex gap-4">
+          <div className="bg-hsSky py-6 px-6 rounded-2xl flex-1 flex flex-col sm:flex-row gap-6 items-center sm:items-start">
             <div className="w-36 h-36 flex-shrink-0">
               <Image
                 src={student.img || "/noAvatar.png"}
                 alt=""
                 width={144}
                 height={144}
-                className="w-36 h-36 rounded-full object-cover"
+                className="w-36 h-36 rounded-full object-cover shadow-sm border-2 border-white"
               />
             </div>
-            <div className="w-2/3 flex flex-col justify-between gap-4">
-              <div className="flex items-center gap-4">
-                <h1 className="text-xl font-semibold">
+            <div className="flex-1 flex flex-col justify-between gap-3 w-full">
+              <div className="flex items-center justify-between gap-4">
+                <h1 className="text-xl font-bold text-slate-800">
                   {student.name + " " + student.surname}
                 </h1>
                 {role === "admin" && (
                   <FormContainer table="student" type="update" data={student} />
                 )}
               </div>
-              <p className="text-sm text-gray-500">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              <p className="text-xs text-slate-500 italic leading-relaxed">
+                Student enrolled and actively participating in academic curriculum activities.
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs font-medium w-full">
+              <div className="grid grid-cols-1 min-[450px]:grid-cols-2 gap-x-4 gap-y-2.5 text-xs font-semibold text-slate-700 w-full mt-2">
                 <div className="flex items-center gap-2">
                   <Image src="/blood.png" alt="" width={14} height={14} />
-                  <span>{student.bloodType}</span>
+                  <span>Blood Type: {student.bloodType || "-"}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Image src="/date.png" alt="" width={14} height={14} />
                   <span>
-                    {new Intl.DateTimeFormat("en-GB").format(student.birthday)}
+                    DOB: {new Intl.DateTimeFormat("en-GB").format(student.birthday)}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 col-span-1 min-[450px]:col-span-2">
+                  <Image src="/mail.png" alt="" width={14} height={14} className="shrink-0" />
+                  <span className="break-all select-all hover:text-indigo-600 transition-colors" title={student.email || ""}>
+                    {student.email || "-"}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Image src="/mail.png" alt="" width={14} height={14} />
-                  <span className="truncate">{student.email || "-"}</span>
-                </div>
-                <div className="flex items-center gap-2">
                   <Image src="/phone.png" alt="" width={14} height={14} />
-                  <span>{student.phone || "-"}</span>
+                  <span>Phone: {student.phone || "-"}</span>
                 </div>
               </div>
             </div>
