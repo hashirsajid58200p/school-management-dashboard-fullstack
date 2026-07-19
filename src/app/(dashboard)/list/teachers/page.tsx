@@ -9,15 +9,17 @@ import Link from "next/link";
 import { ITEM_PER_PAGE } from "@/lib/settings";
 import { auth } from "@/lib/auth";
 
-type TeacherList = Teacher & { subjects: Subject[] } & { classes: Class[] };
+type TeacherList = Teacher & { subject: Subject | null } & { classes: Class[] };
 
 const TeacherListPage = async ({
   searchParams,
 }: {
   searchParams: { [key: string]: string | undefined };
 }) => {
-  const { sessionClaims } = auth();
+  const { userId, sessionClaims } = auth();
   const role = (sessionClaims?.metadata as { role?: string })?.role;
+  const currentUserId = userId;
+
   const columns = [
     {
       header: "Info",
@@ -29,8 +31,8 @@ const TeacherListPage = async ({
       className: "hidden md:table-cell",
     },
     {
-      header: "Subjects",
-      accessor: "subjects",
+      header: "Subject",
+      accessor: "subject",
       className: "hidden md:table-cell",
     },
     {
@@ -72,13 +74,13 @@ const TeacherListPage = async ({
           className="md:hidden xl:block w-10 h-10 rounded-full object-cover"
         />
         <div className="flex flex-col">
-          <h3 className="font-semibold">{item.name}</h3>
+          <h3 className="font-semibold">{item.name} {item.surname}</h3>
           <p className="text-xs text-gray-500">{item?.email}</p>
         </div>
       </td>
       <td className="hidden md:table-cell">{item.id}</td>
       <td className="hidden md:table-cell">
-        {item.subjects.map((subject) => subject.name).join(",")}
+        {item.subject?.name || "-"}
       </td>
       <td className="hidden md:table-cell">
         {item.classes.map((classItem) => classItem.name).join(",")}
@@ -93,9 +95,6 @@ const TeacherListPage = async ({
             </button>
           </Link>
           {role === "admin" && (
-            // <button className="w-7 h-7 flex items-center justify-center rounded-full bg-hsPurple">
-            //   <Image src="/delete.png" alt="" width={16} height={16} />
-            // </button>
             <FormContainer table="teacher" type="delete" id={item.id} />
           )}
         </div>
@@ -122,7 +121,7 @@ const TeacherListPage = async ({
             };
             break;
           case "search":
-            query.name = { contains: value, mode: "insensitive" };
+            query.name = { contains: value };
             break;
           default:
             break;
@@ -131,11 +130,43 @@ const TeacherListPage = async ({
     }
   }
 
+  // ROLE CONDITIONS
+  switch (role) {
+    case "teacher":
+      query.id = currentUserId!;
+      break;
+    case "student":
+      const student = await prisma.student.findUnique({
+        where: { id: currentUserId! },
+        select: { classId: true }
+      });
+      query.lessons = {
+        some: {
+          classId: student?.classId || 0
+        }
+      };
+      break;
+    case "parent":
+      const parent = await prisma.parent.findUnique({
+        where: { id: currentUserId! },
+        select: { students: { select: { classId: true } } }
+      });
+      const childrenClassIds = parent?.students.map(s => s.classId) || [];
+      query.lessons = {
+        some: {
+          classId: { in: childrenClassIds }
+        }
+      };
+      break;
+    default:
+      break;
+  }
+
   const [data, count] = await prisma.$transaction([
     prisma.teacher.findMany({
       where: query,
       include: {
-        subjects: true,
+        subject: true,
         classes: true,
       },
       take: ITEM_PER_PAGE,

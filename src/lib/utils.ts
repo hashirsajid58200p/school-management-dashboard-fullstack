@@ -5,15 +5,22 @@
 const getLatestMonday = (): Date => {
   const today = new Date();
   const dayOfWeek = today.getDay();
-  const daysSinceMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
-  const latestMonday = today;
-  latestMonday.setDate(today.getDate() - daysSinceMonday);
+  const latestMonday = new Date(today);
+  if (dayOfWeek === 0) {
+    // Sunday: calendar shows next week, so set reference Monday to tomorrow
+    latestMonday.setDate(today.getDate() + 1);
+  } else {
+    // Mon-Sat: set reference Monday to current week's Monday
+    const daysSinceMonday = dayOfWeek - 1;
+    latestMonday.setDate(today.getDate() - daysSinceMonday);
+  }
+  latestMonday.setHours(0, 0, 0, 0);
   return latestMonday;
 };
 
-export const adjustScheduleToCurrentWeek = (
-  lessons: { title: string; start: Date; end: Date }[]
-): { title: string; start: Date; end: Date }[] => {
+export const adjustScheduleToCurrentWeek = <T extends { title: string; start: Date; end: Date }>(
+  lessons: T[]
+): T[] => {
   const latestMonday = getLatestMonday();
 
   return lessons.map((lesson) => {
@@ -37,7 +44,7 @@ export const adjustScheduleToCurrentWeek = (
     );
 
     return {
-      title: lesson.title,
+      ...lesson,
       start: adjustedStartDate,
       end: adjustedEndDate,
     };

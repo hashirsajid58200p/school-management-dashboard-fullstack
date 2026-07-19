@@ -18,7 +18,7 @@ const StudentListPage = async ({
 }: {
   searchParams: { [key: string]: string | undefined };
 }) => {
-  const { sessionClaims } = auth();
+  const { sessionClaims, userId } = auth();
   const role = (sessionClaims?.metadata as { role?: string })?.role;
 
   const columns = [
@@ -63,7 +63,7 @@ const StudentListPage = async ({
     >
       <td className="flex items-center gap-4 p-4">
         <div className="flex flex-col">
-          <h3 className="font-semibold">{item.name}</h3>
+          <h3 className="font-semibold">{item.name} {item.surname}</h3>
           <p className="text-xs text-gray-500">{item.class.name}</p>
         </div>
       </td>
@@ -79,9 +79,6 @@ const StudentListPage = async ({
             </button>
           </Link>
           {role === "admin" && (
-            // <button className="w-7 h-7 flex items-center justify-center rounded-full bg-hsPurple">
-            //   <Image src="/delete.png" alt="" width={16} height={16} />
-            // </button>
             <FormContainer table="student" type="delete" id={item.id} />
           )}
         </div>
@@ -97,6 +94,30 @@ const StudentListPage = async ({
 
   const query: Prisma.StudentWhereInput = {};
 
+  // ROLE CONDITIONS
+  switch (role) {
+    case "teacher":
+      const teacher = await prisma.teacher.findUnique({
+        where: { id: userId! },
+        select: { classes: { select: { id: true } } }
+      });
+      const teacherClassIds = teacher?.classes.map(c => c.id) || [];
+      query.classId = { in: teacherClassIds };
+      break;
+    case "student":
+      const student = await prisma.student.findUnique({
+        where: { id: userId! },
+        select: { classId: true }
+      });
+      query.classId = student?.classId || 0;
+      break;
+    case "parent":
+      query.parentId = userId!;
+      break;
+    default:
+      break;
+  }
+
   if (queryParams) {
     for (const [key, value] of Object.entries(queryParams)) {
       if (value !== undefined) {
@@ -111,7 +132,7 @@ const StudentListPage = async ({
             };
             break;
           case "search":
-            query.name = { contains: value, mode: "insensitive" };
+            query.name = { contains: value };
             break;
           default:
             break;
@@ -147,9 +168,6 @@ const StudentListPage = async ({
               <Image src="/sort.png" alt="" width={14} height={14} />
             </button>
             {role === "admin" && (
-              // <button className="w-8 h-8 flex items-center justify-center rounded-full bg-hsYellow">
-              //   <Image src="/plus.png" alt="" width={14} height={14} />
-              // </button>
               <FormContainer table="student" type="create" />
             )}
           </div>

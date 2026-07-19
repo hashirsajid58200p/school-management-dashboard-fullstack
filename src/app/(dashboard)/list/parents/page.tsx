@@ -17,7 +17,7 @@ const ParentListPage = async ({
   searchParams: { [key: string]: string | undefined };
 }) => {
 
-const { sessionClaims } = auth();
+const { userId, sessionClaims } = auth();
 const role = (sessionClaims?.metadata as { role?: string })?.role;
 
 
@@ -58,12 +58,12 @@ const renderRow = (item: ParentList) => (
   >
     <td className="flex items-center gap-4 p-4">
       <div className="flex flex-col">
-        <h3 className="font-semibold">{item.name}</h3>
+        <h3 className="font-semibold">{item.name} {item.surname}</h3>
         <p className="text-xs text-gray-500">{item?.email}</p>
       </div>
     </td>
     <td className="hidden md:table-cell">
-      {item.students.map((student) => student.name).join(",")}
+      {item.students.map((student) => `${student.name} ${student.surname}`).join(",")}
     </td>
     <td className="hidden md:table-cell">{item.phone}</td>
     <td className="hidden md:table-cell">{item.address}</td>
@@ -88,12 +88,40 @@ const renderRow = (item: ParentList) => (
 
   const query: Prisma.ParentWhereInput = {};
 
+  // ROLE CONDITIONS
+  switch (role) {
+    case "teacher":
+      const teacher = await prisma.teacher.findUnique({
+        where: { id: userId! },
+        select: { classes: { select: { id: true } } }
+      });
+      const teacherClassIds = teacher?.classes.map(c => c.id) || [];
+      query.students = {
+        some: {
+          classId: { in: teacherClassIds }
+        }
+      };
+      break;
+    case "student":
+      const student = await prisma.student.findUnique({
+        where: { id: userId! },
+        select: { parentId: true }
+      });
+      query.id = student?.parentId || "none";
+      break;
+    case "parent":
+      query.id = userId!;
+      break;
+    default:
+      break;
+  }
+
   if (queryParams) {
     for (const [key, value] of Object.entries(queryParams)) {
       if (value !== undefined) {
         switch (key) {
           case "search":
-            query.name = { contains: value, mode: "insensitive" };
+            query.name = { contains: value };
             break;
           default:
             break;

@@ -145,6 +145,22 @@ const ClassForm = ({
             </p>
           )}
         </div>
+        <div className="flex flex-col gap-2 w-full md:w-1/4">
+          <label className="text-xs text-gray-500">Section</label>
+          <select
+            className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full bg-white focus:outline-none focus:ring-2 focus:ring-hsYellow focus:border-transparent transition-all cursor-pointer"
+            {...register("section")}
+            defaultValue={data?.section}
+          >
+            <option value="Boys">Boys</option>
+            <option value="Girls">Girls</option>
+          </select>
+          {errors.section?.message && (
+            <p className="text-xs text-red-400">
+              {errors.section.message.toString()}
+            </p>
+          )}
+        </div>
       </div>
       {state.error && (
         <span className="text-red-500">Something went wrong!</span>

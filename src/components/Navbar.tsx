@@ -36,11 +36,11 @@ const Navbar = async () => {
         </div>
         <div className="flex items-center gap-3">
           <Image
-            src="/noAvatar.png"
+            src={user?.img || "/noAvatar.png"}
             alt="Avatar"
             width={36}
             height={36}
-            className="rounded-full object-cover border border-gray-200"
+            className="rounded-full w-9 h-9 object-cover border border-gray-200"
           />
           <a
             href="/logout"

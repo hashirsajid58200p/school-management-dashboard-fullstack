@@ -46,7 +46,8 @@ export async function POST(req: Request) {
       role,
       name: user.name || user.username,
       surname: user.surname || "",
-      username: user.username || ""
+      username: user.username || "",
+      img: user.img || null
     };
 
     const token = encrypt(JSON.stringify(sessionData));

@@ -104,7 +104,7 @@ const EventListPage = async ({
       if (value !== undefined) {
         switch (key) {
           case "search":
-            query.title = { contains: value, mode: "insensitive" };
+            query.title = { contains: value };
             break;
           default:
             break;
@@ -115,18 +115,35 @@ const EventListPage = async ({
 
   // ROLE CONDITIONS
 
-  const roleConditions = {
-    teacher: { lessons: { some: { teacherId: currentUserId! } } },
-    student: { students: { some: { id: currentUserId! } } },
-    parent: { students: { some: { parentId: currentUserId! } } },
-  };
+  let classQuery: Prisma.ClassWhereInput = {};
 
-  query.OR = [
-    { classId: null },
-    {
-      class: roleConditions[role as keyof typeof roleConditions] || {},
-    },
-  ];
+  switch (role) {
+    case "teacher":
+      const teacher = await prisma.teacher.findUnique({
+        where: { id: currentUserId! },
+        select: { classes: { select: { id: true } } }
+      });
+      const teacherClassIds = teacher?.classes.map(c => c.id) || [];
+      classQuery = { id: { in: teacherClassIds } };
+      break;
+    case "student":
+      classQuery = { students: { some: { id: currentUserId! } } };
+      break;
+    case "parent":
+      classQuery = { students: { some: { parentId: currentUserId! } } };
+      break;
+    default:
+      break;
+  }
+
+  if (role !== "admin") {
+    query.OR = [
+      { classId: null },
+      {
+        class: classQuery,
+      },
+    ];
+  }
 
   const [data, count] = await prisma.$transaction([
     prisma.event.findMany({

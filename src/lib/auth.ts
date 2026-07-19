@@ -45,6 +45,7 @@ export async function currentUser() {
       firstName: user.name,
       lastName: user.surname,
       username: user.username,
+      img: user.img,
       publicMetadata: {
         role: user.role
       }

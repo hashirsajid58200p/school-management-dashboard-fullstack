@@ -19,7 +19,7 @@ const LessonListPage = async ({
   searchParams: { [key: string]: string | undefined };
 }) => {
 
-const { sessionClaims } = auth();
+const { userId, sessionClaims } = auth();
 const role = (sessionClaims?.metadata as { role?: string })?.role;
 
 
@@ -78,6 +78,35 @@ const renderRow = (item: LessonList) => (
 
   const query: Prisma.LessonWhereInput = {};
 
+  // ROLE CONDITIONS
+  switch (role) {
+    case "teacher":
+      const teacher = await prisma.teacher.findUnique({
+        where: { id: userId! },
+        select: { classes: { select: { id: true } } }
+      });
+      const teacherClassIds = teacher?.classes.map(c => c.id) || [];
+      query.classId = { in: teacherClassIds };
+      break;
+    case "student":
+      const student = await prisma.student.findUnique({
+        where: { id: userId! },
+        select: { classId: true }
+      });
+      query.classId = student?.classId || 0;
+      break;
+    case "parent":
+      const parent = await prisma.parent.findUnique({
+        where: { id: userId! },
+        select: { students: { select: { classId: true } } }
+      });
+      const childrenClassIds = parent?.students.map(s => s.classId) || [];
+      query.classId = { in: childrenClassIds };
+      break;
+    default:
+      break;
+  }
+
   if (queryParams) {
     for (const [key, value] of Object.entries(queryParams)) {
       if (value !== undefined) {
@@ -90,8 +119,8 @@ const renderRow = (item: LessonList) => (
             break;
           case "search":
             query.OR = [
-              { subject: { name: { contains: value, mode: "insensitive" } } },
-              { teacher: { name: { contains: value, mode: "insensitive" } } },
+              { subject: { name: { contains: value } } },
+              { teacher: { name: { contains: value } } },
             ];
             break;
           default:

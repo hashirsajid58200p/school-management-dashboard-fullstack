@@ -56,7 +56,7 @@ const TeacherForm = ({
     }
   }, [state, router, type, setOpen]);
 
-  const { subjects } = relatedData;
+  const { subjects, classes } = relatedData;
 
   return (
     <form className="flex flex-col gap-4" onSubmit={onSubmit}>
@@ -191,24 +191,60 @@ const TeacherForm = ({
           )}
         </div>
         <div className="flex flex-col gap-2 w-full md:w-1/4">
-          <label className="text-xs text-gray-500">Subjects</label>
-          <div className="flex flex-col gap-1 max-h-[120px] overflow-y-auto ring-[1.5px] ring-gray-300 p-2 rounded-md bg-white">
+          <label className="text-xs text-gray-500">Subject</label>
+          <select
+            className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full bg-white focus:outline-none focus:ring-2 focus:ring-hsYellow focus:border-transparent transition-all cursor-pointer"
+            {...register("subjectId")}
+            defaultValue={data?.subjectId}
+          >
             {subjects.map((subject: { id: number; name: string }) => (
-              <label key={subject.id} className="flex items-center gap-2 text-xs cursor-pointer hover:bg-gray-50 p-1 rounded">
+              <option value={subject.id} key={subject.id}>
+                {subject.name}
+              </option>
+            ))}
+          </select>
+          {errors.subjectId?.message && (
+            <p className="text-xs text-red-400">
+              {errors.subjectId.message.toString()}
+            </p>
+          )}
+        </div>
+        <div className="flex flex-col gap-2 w-full md:w-1/4">
+          <label className="text-xs text-gray-500">Level</label>
+          <select
+            className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full bg-white focus:outline-none focus:ring-2 focus:ring-hsYellow focus:border-transparent transition-all cursor-pointer"
+            {...register("level")}
+            defaultValue={data?.level}
+          >
+            <option value="Junior">Junior</option>
+            <option value="Mid">Mid</option>
+            <option value="Senior">Senior</option>
+          </select>
+          {errors.level?.message && (
+            <p className="text-xs text-red-400">
+              {errors.level.message.toString()}
+            </p>
+          )}
+        </div>
+        <div className="flex flex-col gap-2 w-full md:w-1/4">
+          <label className="text-xs text-gray-500">Assigned Classes</label>
+          <div className="flex flex-col gap-1 max-h-[120px] overflow-y-auto ring-[1.5px] ring-gray-300 p-2 rounded-md bg-white">
+            {classes?.map((cls: { id: number; name: string }) => (
+              <label key={cls.id} className="flex items-center gap-2 text-xs cursor-pointer hover:bg-gray-50 p-1 rounded">
                 <input
                   type="checkbox"
-                  value={subject.id}
+                  value={cls.id}
                   className="accent-hsYellow"
-                  {...register("subjects")}
-                  defaultChecked={data?.subjects?.some((s: any) => (typeof s === 'object' ? s.id === subject.id : s === subject.id))}
+                  {...register("classes")}
+                  defaultChecked={data?.classes?.some((c: any) => (typeof c === 'object' ? c.id === cls.id : c === cls.id.toString()))}
                 />
-                {subject.name}
+                {cls.name}
               </label>
             ))}
           </div>
-          {errors.subjects?.message && (
+          {errors.classes?.message && (
             <p className="text-xs text-red-400">
-              {errors.subjects.message.toString()}
+              {errors.classes.message.toString()}
             </p>
           )}
         </div>

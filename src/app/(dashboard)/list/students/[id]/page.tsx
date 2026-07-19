@@ -16,14 +16,11 @@ const SingleStudentPage = async ({
 }: {
   params: { id: string };
 }) => {
-  const { sessionClaims } = auth();
+  const { userId, sessionClaims } = auth();
   const role = (sessionClaims?.metadata as { role?: string })?.role;
+  const currentUserId = userId;
 
-  const student:
-    | (Student & {
-        class: Class & { _count: { lessons: number } };
-      })
-    | null = await prisma.student.findUnique({
+  const student = await prisma.student.findUnique({
     where: { id },
     include: {
       class: { include: { _count: { select: { lessons: true } } } },
@@ -31,6 +28,31 @@ const SingleStudentPage = async ({
   });
 
   if (!student) {
+    return notFound();
+  }
+
+  // Guard check
+  let isAllowed = false;
+  if (role === "admin") {
+    isAllowed = true;
+  } else if (role === "teacher") {
+    const teacher = await prisma.teacher.findUnique({
+      where: { id: currentUserId! },
+      select: { classes: { select: { id: true } } }
+    });
+    const teacherClassIds = teacher?.classes.map(c => c.id) || [];
+    isAllowed = teacherClassIds.includes(student.classId);
+  } else if (role === "student") {
+    const loggedInStudent = await prisma.student.findUnique({
+      where: { id: currentUserId! },
+      select: { classId: true }
+    });
+    isAllowed = loggedInStudent?.classId === student.classId;
+  } else if (role === "parent") {
+    isAllowed = student.parentId === currentUserId;
+  }
+
+  if (!isAllowed) {
     return notFound();
   }
 

@@ -15,19 +15,51 @@ const SingleTeacherPage = async ({
 }: {
   params: { id: string };
 }) => {
-  const { sessionClaims } = auth();
+  const { userId, sessionClaims } = auth();
   const role = (sessionClaims?.metadata as { role?: string })?.role;
+  const currentUserId = userId;
 
-  const teacher:
-    | (Teacher & {
-        _count: { subjects: number; lessons: number; classes: number };
-      })
-    | null = await prisma.teacher.findUnique({
+  // 1. Guard check
+  let isAllowed = false;
+  if (role === "admin") {
+    isAllowed = true;
+  } else if (role === "teacher") {
+    isAllowed = id === currentUserId;
+  } else if (role === "student") {
+    const student = await prisma.student.findUnique({
+      where: { id: currentUserId! },
+      select: { classId: true }
+    });
+    if (student) {
+      const teachesInClass = await prisma.lesson.findFirst({
+        where: { teacherId: id, classId: student.classId }
+      });
+      isAllowed = !!teachesInClass;
+    }
+  } else if (role === "parent") {
+    const parent = await prisma.parent.findUnique({
+      where: { id: currentUserId! },
+      select: { students: { select: { classId: true } } }
+    });
+    if (parent) {
+      const childrenClassIds = parent.students.map(s => s.classId);
+      const teachesInChildrenClass = await prisma.lesson.findFirst({
+        where: { teacherId: id, classId: { in: childrenClassIds } }
+      });
+      isAllowed = !!teachesInChildrenClass;
+    }
+  }
+
+  if (!isAllowed) {
+    return notFound();
+  }
+
+  const teacher = await prisma.teacher.findUnique({
     where: { id },
     include: {
+      subject: true,
       _count: {
         select: {
-          subjects: true,
           lessons: true,
           classes: true,
         },
@@ -116,9 +148,9 @@ const SingleTeacherPage = async ({
               />
               <div className="">
                 <h1 className="text-xl font-semibold">
-                  {teacher._count.subjects}
+                  {teacher.subject?.name || "-"}
                 </h1>
-                <span className="text-sm text-gray-400">Branches</span>
+                <span className="text-sm text-gray-400">Subject</span>
               </div>
             </div>
             {/* CARD */}
