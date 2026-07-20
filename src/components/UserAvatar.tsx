@@ -72,18 +72,18 @@ const UserAvatar: React.FC<UserAvatarProps> = ({
           /* BOY STUDENT - Minimalist Outline Silhouette */
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={`w-3/5 h-3/5 ${palette.fill}`}>
             <path d="M6 21a6 6 0 0 1 12 0" />
-            <circle cx="12" cy="10" r="3.5" />
-            <path d="M9.5 8a2.5 2.5 0 0 1 5 0c0 .5-.2.8-.5 1h-4c-.3-.2-.5-.5-.5-1z" fill="currentColor" className="opacity-25" />
+            <circle cx="12" cy="9" r="3.5" />
+            {/* Student Cap / Hairline */}
+            <path d="M9 7c1-1 2-1 3-1s2 0 3 1" />
           </svg>
         ) : (
           /* GIRL STUDENT - Minimalist Outline Silhouette */
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={`w-3/5 h-3/5 ${palette.fill}`}>
             <path d="M6 21a6 6 0 0 1 12 0" />
-            <circle cx="12" cy="10" r="3.5" />
-            {/* Ponytails */}
-            <circle cx="7.5" cy="10" r="1.2" fill="currentColor" />
-            <circle cx="16.5" cy="10" r="1.2" fill="currentColor" />
-            <path d="M9.5 8a2.5 2.5 0 0 1 5 0" />
+            <circle cx="12" cy="9" r="3.5" />
+            {/* Ribbons / Hair-buns */}
+            <circle cx="7.5" cy="8" r="1.2" fill="currentColor" />
+            <circle cx="16.5" cy="8" r="1.2" fill="currentColor" />
           </svg>
         )
       ) : (
@@ -91,18 +91,18 @@ const UserAvatar: React.FC<UserAvatarProps> = ({
           /* ADULT MAN - Minimalist Outline Silhouette */
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={`w-3/5 h-3/5 ${palette.fill}`}>
             <path d="M5 21a7 7 0 0 1 14 0" />
-            <circle cx="12" cy="9.5" r="3.8" />
-            <path d="M9.5 7.5c1-1 3-1 5 0" />
-            {/* Neck neckwear V-collar */}
-            <path d="M10 16.5l2 1.5 2-1.5" />
+            <circle cx="12" cy="9" r="3.8" />
+            {/* Tie / V-Collar */}
+            <path d="M12 12.8v3.5" />
+            <path d="M10 12.8l2 1 2-1" />
           </svg>
         ) : (
           /* ADULT WOMAN - Minimalist Outline Silhouette */
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={`w-3/5 h-3/5 ${palette.fill}`}>
             <path d="M5 21a7 7 0 0 1 14 0" />
-            <circle cx="12" cy="9.5" r="3.8" />
-            {/* Long hair outlines */}
-            <path d="M8.2 10v4c0 1 .8 2 1.8 2M15.8 10v4c0 1-.8 2-1.8 2" />
+            <circle cx="12" cy="9" r="3.8" />
+            {/* Long Hair Framing */}
+            <path d="M8.2 9.5v4c0 1.2.8 2 1.8 2.2M15.8 9.5v4c0 1.2-.8 2-1.8 2.2" />
           </svg>
         )
       )}
