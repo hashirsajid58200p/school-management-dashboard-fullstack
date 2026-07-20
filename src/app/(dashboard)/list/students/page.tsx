@@ -64,17 +64,15 @@ const StudentListPage = async ({
       className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-hsPurpleLight"
     >
       <td className="flex items-center gap-4 p-4">
-        {role !== "parent" && (
-          <div className="md:hidden xl:block">
-            <UserAvatar
-              name={item.name}
-              role="student"
-              sex={item.sex}
-              img={item.img}
-              className="w-10 h-10"
-            />
-          </div>
-        )}
+        <div className="md:hidden xl:block">
+          <UserAvatar
+            name={item.name}
+            role="student"
+            sex={item.sex}
+            img={item.img}
+            className="w-10 h-10"
+          />
+        </div>
         <div className="flex flex-col">
           <h3 className="font-semibold">{item.name}</h3>
           <span className="text-xs text-gray-500">{item.class.name}</span>
