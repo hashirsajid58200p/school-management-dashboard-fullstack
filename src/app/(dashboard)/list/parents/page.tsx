@@ -6,6 +6,7 @@ import prisma from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/settings";
 import { Parent, Prisma, Student } from "@prisma/client";
 import Image from "next/image";
+import UserAvatar from "@/components/UserAvatar";
 
 import { auth } from "@/lib/auth";
 
@@ -57,6 +58,12 @@ const renderRow = (item: ParentList) => (
     className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-hsPurpleLight"
   >
     <td className="flex items-center gap-4 p-4">
+      <UserAvatar
+        name={`${item.name} ${item.surname}`}
+        role="parent"
+        img={null}
+        className="w-10 h-10"
+      />
       <div className="flex flex-col">
         <h3 className="font-semibold">{item.name} {item.surname}</h3>
         <p className="text-xs text-gray-500">{item?.email}</p>
