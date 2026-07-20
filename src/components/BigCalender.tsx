@@ -105,10 +105,10 @@ const BigCalendar = ({
             }
           };
         }
-        if (event.isMyLesson === false) {
-          return { className: "rbc-event-colleague" };
+        if (event.isMyLesson === true) {
+          return { className: "rbc-event-mine" };
         }
-        return { className: "rbc-event-mine" };
+        return {};
       }}
       components={{
         toolbar: CustomToolbar,
@@ -139,7 +139,23 @@ const BigCalendar = ({
               </div>
             );
           }
+          const isMine = event.isMyLesson === true;
           const isColleague = event.isMyLesson === false;
+
+          let timeColor = "#6b7280";
+          let titleColor = "#111827";
+          let teacherColor = "#4b5563";
+
+          if (isMine) {
+            timeColor = "#e0f2fe";
+            titleColor = "#ffffff";
+            teacherColor = "#f0f9ff";
+          } else if (isColleague) {
+            timeColor = "#94a3b8";
+            titleColor = "#64748b";
+            teacherColor = "#64748b";
+          }
+
           return (
             <div
               style={{
@@ -154,7 +170,7 @@ const BigCalendar = ({
               <span
                 style={{
                   fontSize: "9px",
-                  color: isColleague ? "#94a3b8" : "#6b7280",
+                  color: timeColor,
                   fontWeight: 500,
                   lineHeight: 1.2,
                   whiteSpace: "nowrap",
@@ -166,7 +182,7 @@ const BigCalendar = ({
                 style={{
                   fontSize: "11px",
                   fontWeight: isColleague ? 600 : 700,
-                  color: isColleague ? "#64748b" : "#111827",
+                  color: titleColor,
                   lineHeight: 1.3,
                   overflow: "hidden",
                   textOverflow: "ellipsis",
@@ -179,7 +195,7 @@ const BigCalendar = ({
                 <span
                   style={{
                     fontSize: "9px",
-                    color: isColleague ? "#64748b" : "#4b5563",
+                    color: teacherColor,
                     lineHeight: 1.2,
                     overflow: "hidden",
                     textOverflow: "ellipsis",
