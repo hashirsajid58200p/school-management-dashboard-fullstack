@@ -1859,16 +1859,18 @@ export const getChatParticipants = async () => {
   const role = (sessionClaims?.metadata as { role?: string })?.role;
 
   try {
-    let rawContacts: { id: string; name: string; role: string; img?: string | null }[] = [];
+    let rawContacts: { id: string; name: string; role: string; img?: string | null; subject?: string }[] = [];
 
     // 1. Fetch allowed contacts based on active academic role
     if (role === "admin") {
-      const teachers = await prisma.teacher.findMany({ select: { id: true, name: true, surname: true, img: true } });
+      const teachers = await prisma.teacher.findMany({
+        select: { id: true, name: true, surname: true, img: true, subject: { select: { name: true } } },
+      });
       const students = await prisma.student.findMany({ select: { id: true, name: true, surname: true, img: true } });
       const parents = await prisma.parent.findMany({ select: { id: true, name: true, surname: true } });
 
       rawContacts = [
-        ...teachers.map(t => ({ id: t.id, name: `${t.name} ${t.surname}`, role: "teacher", img: t.img })),
+        ...teachers.map(t => ({ id: t.id, name: `${t.name} ${t.surname}`, role: "teacher", img: t.img, subject: t.subject.name })),
         ...students.map(s => ({ id: s.id, name: `${s.name} ${s.surname}`, role: "student", img: s.img })),
         ...parents.map(p => ({ id: p.id, name: `${p.name} ${p.surname}`, role: "parent" })),
       ];
@@ -1910,7 +1912,11 @@ export const getChatParticipants = async () => {
         include: {
           class: {
             include: {
-              teachers: true,
+              teachers: {
+                include: {
+                  subject: true,
+                },
+              },
             },
           },
         },
@@ -1922,6 +1928,7 @@ export const getChatParticipants = async () => {
           name: `${t.name} ${t.surname}`,
           role: "teacher",
           img: t.img,
+          subject: t.subject.name,
         }));
       }
     } else if (role === "parent") {
@@ -1932,7 +1939,11 @@ export const getChatParticipants = async () => {
             include: {
               class: {
                 include: {
-                  teachers: true,
+                  teachers: {
+                    include: {
+                      subject: true,
+                    },
+                  },
                 },
               },
             },
@@ -1941,11 +1952,11 @@ export const getChatParticipants = async () => {
       });
 
       if (parent) {
-        const teacherMap = new Map<string, { id: string; name: string; role: string; img?: string | null }>();
+        const teacherMap = new Map<string, { id: string; name: string; role: string; img?: string | null; subject?: string }>();
         parent.students.forEach(std => {
           if (std.class) {
             std.class.teachers.forEach(t => {
-              teacherMap.set(t.id, { id: t.id, name: `${t.name} ${t.surname}`, role: "teacher", img: t.img });
+              teacherMap.set(t.id, { id: t.id, name: `${t.name} ${t.surname}`, role: "teacher", img: t.img, subject: t.subject.name });
             });
           }
         });
