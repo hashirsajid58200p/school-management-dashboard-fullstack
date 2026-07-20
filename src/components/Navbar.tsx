@@ -1,9 +1,12 @@
 import { currentUser } from "@/lib/auth";
 import Image from "next/image";
 import GlobalSearch from "./GlobalSearch";
+import NavbarMessageIcon from "./NavbarMessageIcon";
+import { getUnreadMessagesCount } from "@/lib/actions";
 
 const Navbar = async () => {
   const user = await currentUser();
+  const unreadCount = user ? await getUnreadMessagesCount() : 0;
   
   return (
     <div className="flex items-center justify-between p-4">
@@ -13,9 +16,7 @@ const Navbar = async () => {
       </div>
       {/* ICONS AND USER */}
       <div className="flex items-center gap-6 justify-end w-full">
-        <div className="bg-white rounded-full w-7 h-7 flex items-center justify-center cursor-pointer">
-          <Image src="/message.png" alt="" width={20} height={20} />
-        </div>
+        <NavbarMessageIcon initialCount={unreadCount} currentUserId={user?.id || ""} />
         <div className="bg-white rounded-full w-7 h-7 flex items-center justify-center cursor-pointer relative">
           <Image src="/announcement.png" alt="" width={20} height={20} />
           <div className="absolute -top-3 -right-3 w-5 h-5 flex items-center justify-center bg-purple-500 text-white rounded-full text-xs">
