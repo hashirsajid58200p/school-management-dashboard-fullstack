@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { getChatHistory, sendMessage, markConversationAsRead } from "@/lib/actions";
 import { pusherClient } from "@/lib/pusher-client";
+import UserAvatar from "@/components/UserAvatar";
 
 type Contact = {
   id: string;
@@ -306,14 +307,12 @@ const ChatClientPage: React.FC<ChatClientPageProps> = ({
                         : "hover:bg-slate-50/50 border border-transparent"
                     }`}
                   >
-                    <div className="relative w-11 h-11 flex-shrink-0">
-                      <Image
-                        src={contact.img || "/noAvatar.png"}
-                        alt=""
-                        fill
-                        className="rounded-full object-cover shadow-sm border-2 border-white"
-                      />
-                    </div>
+                    <UserAvatar
+                      name={contact.name}
+                      role={contact.role}
+                      img={contact.img}
+                      className="w-11 h-11"
+                    />
                     <div className="flex-grow min-w-0">
                       <div className="flex items-center justify-between gap-2 mb-0.5">
                         <div className="flex items-center gap-1.5 min-w-0">
@@ -354,14 +353,12 @@ const ChatClientPage: React.FC<ChatClientPageProps> = ({
                     key={contact.id}
                     className="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50/50 border border-transparent transition-all"
                   >
-                    <div className="relative w-11 h-11 flex-shrink-0">
-                      <Image
-                        src={contact.img || "/noAvatar.png"}
-                        alt=""
-                        fill
-                        className="rounded-full object-cover shadow-sm border border-white"
-                      />
-                    </div>
+                    <UserAvatar
+                      name={contact.name}
+                      role={contact.role}
+                      img={contact.img}
+                      className="w-11 h-11"
+                    />
                     <div className="flex-grow min-w-0">
                       <div className="flex items-center gap-1.5 min-w-0 mb-0.5 font-semibold">
                         <span className="font-bold text-slate-800 text-sm truncate">
@@ -409,14 +406,12 @@ const ChatClientPage: React.FC<ChatClientPageProps> = ({
             {/* CHAT HEADER */}
             <div className="bg-white p-4 border-b border-slate-100 flex items-center justify-between shadow-sm">
               <div className="flex items-center gap-3">
-                <div className="relative w-10 h-10 flex-shrink-0">
-                  <Image
-                    src={activeContact?.img || "/noAvatar.png"}
-                    alt=""
-                    fill
-                    className="rounded-full object-cover border border-slate-100"
-                  />
-                </div>
+                <UserAvatar
+                  name={activeContact?.name || "User"}
+                  role={activeContact?.role || "contact"}
+                  img={activeContact?.img}
+                  className="w-10 h-10"
+                />
                 <div>
                   <div className="flex items-center gap-2">
                     <h2 className="font-bold text-slate-800 text-sm">

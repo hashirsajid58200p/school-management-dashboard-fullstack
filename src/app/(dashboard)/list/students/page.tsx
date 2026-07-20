@@ -11,6 +11,7 @@ import Link from "next/link";
 
 import { auth } from "@/lib/auth";
 import { SortButton, FilterButton } from "@/components/TableActions";
+import UserAvatar from "@/components/UserAvatar";
 
 type StudentList = Student & { class: Class };
 
@@ -64,13 +65,15 @@ const StudentListPage = async ({
     >
       <td className="flex items-center gap-4 p-4">
         {role !== "parent" && (
-          <Image
-            src={item.img || "/noAvatar.png"}
-            alt=""
-            width={40}
-            height={40}
-            className="md:hidden xl:block w-10 h-10 rounded-full object-cover"
-          />
+          <div className="md:hidden xl:block">
+            <UserAvatar
+              name={item.name}
+              role="student"
+              sex={item.sex}
+              img={item.img}
+              className="w-10 h-10"
+            />
+          </div>
         )}
         <div className="flex flex-col">
           <h3 className="font-semibold">{item.name}</h3>

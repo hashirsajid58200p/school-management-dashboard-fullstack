@@ -9,6 +9,7 @@ import { Class, Student } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import UserAvatar from "@/components/UserAvatar";
 import { Suspense } from "react";
 
 const SingleStudentPage = async ({
@@ -64,15 +65,13 @@ const SingleStudentPage = async ({
         <div className="flex flex-col lg:flex-row gap-4 w-full">
           {/* USER INFO CARD */}
           <div className="bg-hsSky py-6 px-6 rounded-2xl w-full lg:w-[calc(58%-8px)] flex gap-6 items-center shadow-sm">
-            <div className="w-32 h-32 md:w-36 md:h-36 flex-shrink-0">
-              <Image
-                src={student.img || "/noAvatar.png"}
-                alt=""
-                width={144}
-                height={144}
-                className="w-32 h-32 md:w-36 md:h-36 rounded-full object-cover shadow-sm border-2 border-white"
-              />
-            </div>
+            <UserAvatar
+              name={`${student.name} ${student.surname}`}
+              role="student"
+              sex={student.sex}
+              img={student.img}
+              className="w-32 h-32 md:w-36 md:h-36 border-2 border-white shadow-sm"
+            />
             <div className="flex-grow flex flex-col justify-center gap-2.5 w-full">
               <div className="flex items-center justify-between gap-4">
                 <h1 className="text-xl font-bold text-slate-800">
