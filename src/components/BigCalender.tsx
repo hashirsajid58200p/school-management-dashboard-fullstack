@@ -147,9 +147,9 @@ const BigCalendar = ({
           let teacherColor = "#4b5563";
 
           if (isMine) {
-            timeColor = "#e0f2fe";
-            titleColor = "#ffffff";
-            teacherColor = "#f0f9ff";
+            timeColor = "#0284c7";
+            titleColor = "#0284c7";
+            teacherColor = "#0284c7";
           } else if (isColleague) {
             timeColor = "#94a3b8";
             titleColor = "#64748b";
