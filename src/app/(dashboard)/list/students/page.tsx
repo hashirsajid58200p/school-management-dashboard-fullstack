@@ -66,7 +66,7 @@ const StudentListPage = async ({
       <td className="flex items-center gap-4 p-4">
         <div className="md:hidden xl:block">
           <UserAvatar
-            name={item.name}
+            name={`${item.name} ${item.surname}`}
             role="student"
             sex={item.sex}
             img={item.img}
