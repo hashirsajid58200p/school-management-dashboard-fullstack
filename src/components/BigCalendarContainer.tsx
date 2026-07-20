@@ -23,7 +23,7 @@ const BigCalendarContainer = async ({
     
     dataRes = await prisma.lesson.findMany({
       where: {
-        teacherId: id as string,
+        classId: { in: teacherClassIds },
       },
       include: {
         teacher: true,

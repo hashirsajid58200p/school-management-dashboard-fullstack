@@ -15,6 +15,7 @@ interface LessonItem {
   teacherName: string;
   isBreak: boolean;
   classId: number;
+  isMyLesson?: boolean;
 }
 
 const TeacherScheduleView = ({

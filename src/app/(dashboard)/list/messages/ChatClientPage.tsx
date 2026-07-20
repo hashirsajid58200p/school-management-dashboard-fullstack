@@ -291,9 +291,12 @@ const ChatClientPage: React.FC<ChatClientPageProps> = ({
               chatsList.map((contact) => {
                 const isSelected = contact.id === selectedContactId;
                 const formattedTime = contact.lastMessageTime
-                  ? new Intl.DateTimeFormat("en-GB", {
+                  ? new Intl.DateTimeFormat("en-US", {
+                      month: "short",
+                      day: "numeric",
                       hour: "2-digit",
                       minute: "2-digit",
+                      hour12: true,
                     }).format(new Date(contact.lastMessageTime))
                   : "";
 
@@ -440,9 +443,12 @@ const ChatClientPage: React.FC<ChatClientPageProps> = ({
               ) : (
                 messages.map((msg) => {
                   const isOwnMessage = msg.senderId === currentUserId;
-                  const formattedTime = new Intl.DateTimeFormat("en-GB", {
+                  const formattedTime = new Intl.DateTimeFormat("en-US", {
+                    month: "short",
+                    day: "numeric",
                     hour: "2-digit",
                     minute: "2-digit",
+                    hour12: true,
                   }).format(new Date(msg.createdAt));
 
                   return (
