@@ -9,27 +9,32 @@ const localizer = momentLocalizer(moment);
 const BigCalendar = ({
   data,
   title,
+  headerContent,
 }: {
   data: { title: string; start: Date; end: Date; [key: string]: any }[];
   title?: string;
+  headerContent?: React.ReactNode;
 }) => {
   // Dynamic CustomToolbar to capture title prop in local scope
   const CustomToolbar = (toolbar: any) => {
     return (
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
-        {title && (
-          <h1 className="text-xl font-bold text-slate-800 select-none">
-            {title}
-          </h1>
-        )}
-        <div className="flex items-center gap-4 ml-auto md:ml-0">
-          <span className="text-sm font-semibold text-slate-500">
-            {toolbar.label}
-          </span>
-          <span className="bg-[#dbdafe] text-slate-700 px-4 py-1.5 rounded-md text-sm font-medium select-none">
-            Work Week
-          </span>
+      <div className="w-full mb-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+          {title && (
+            <h1 className="text-xl font-bold text-slate-800 select-none">
+              {title}
+            </h1>
+          )}
+          <div className="flex items-center gap-4 ml-auto md:ml-0">
+            <span className="text-sm font-semibold text-slate-500">
+              {toolbar.label}
+            </span>
+            <span className="bg-[#dbdafe] text-slate-700 px-4 py-1.5 rounded-md text-sm font-medium select-none">
+              Work Week
+            </span>
+          </div>
         </div>
+        {headerContent}
       </div>
     );
   };
