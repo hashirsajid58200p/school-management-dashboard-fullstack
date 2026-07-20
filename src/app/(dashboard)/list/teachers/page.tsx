@@ -70,7 +70,7 @@ const TeacherListPage = async ({
       <td className="flex items-center gap-4 p-4">
         <div className="md:hidden xl:block">
           <UserAvatar
-            name={item.name}
+            name={`${item.name} ${item.surname}`}
             role="teacher"
             sex={item.sex}
             img={item.img}
