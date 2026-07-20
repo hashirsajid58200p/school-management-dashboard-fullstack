@@ -3,6 +3,7 @@ import Image from "next/image";
 import GlobalSearch from "./GlobalSearch";
 import NavbarMessageIcon from "./NavbarMessageIcon";
 import { getUnreadMessagesCount } from "@/lib/actions";
+import UserAvatar from "./UserAvatar";
 
 const Navbar = async () => {
   const user = await currentUser();
@@ -32,12 +33,11 @@ const Navbar = async () => {
           </span>
         </div>
         <div className="flex items-center gap-3">
-          <Image
-            src={user?.img || "/noAvatar.png"}
-            alt="Avatar"
-            width={36}
-            height={36}
-            className="rounded-full w-9 h-9 object-cover border border-gray-200"
+          <UserAvatar
+            name={user ? `${user.firstName} ${user.lastName}` : "Guest"}
+            role={user?.publicMetadata?.role as string || "guest"}
+            img={user?.img}
+            className="w-9 h-9"
           />
           <a
             href="/logout"
