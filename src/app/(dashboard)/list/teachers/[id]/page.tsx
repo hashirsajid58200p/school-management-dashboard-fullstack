@@ -96,7 +96,7 @@ const SingleTeacherPage = async ({
                   <FormContainer table="teacher" type="update" data={teacher} />
                 )}
               </div>
-              <p className="text-xs text-slate-500 italic leading-relaxed">
+              <p className="text-xs text-slate-500 leading-relaxed">
                 Senior educator committed to fostering a supportive, high-engagement classroom environment.
               </p>
               <div className="flex flex-col gap-2 w-full mt-2 text-xs font-semibold text-slate-700">

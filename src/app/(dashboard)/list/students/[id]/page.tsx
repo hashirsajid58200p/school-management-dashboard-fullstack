@@ -82,7 +82,7 @@ const SingleStudentPage = async ({
                   <FormContainer table="student" type="update" data={student} />
                 )}
               </div>
-              <p className="text-xs text-slate-500 italic leading-relaxed">
+              <p className="text-xs text-slate-500 leading-relaxed">
                 Student enrolled and actively participating in academic curriculum activities.
               </p>
               <div className="flex flex-col gap-2 w-full mt-2 text-xs font-semibold text-slate-700">
