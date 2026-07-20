@@ -1795,3 +1795,306 @@ export const searchGlobal = async (query: string): Promise<GlobalSearchResult[]>
   }
 };
 
+// --- CHAT SYSTEM ACTIONS ---
+
+export const getUnreadMessagesCount = async () => {
+  const { userId } = auth();
+  if (!userId) return 0;
+  try {
+    return await prisma.message.count({
+      where: { receiverId: userId, isRead: false },
+    });
+  } catch (err) {
+    console.error(err);
+    return 0;
+  }
+};
+
+export const markConversationAsRead = async (senderId: string) => {
+  const { userId } = auth();
+  if (!userId) return { success: false };
+  try {
+    await prisma.message.updateMany({
+      where: { senderId, receiverId: userId, isRead: false },
+      data: { isRead: true },
+    });
+    return { success: true };
+  } catch (err) {
+    console.error(err);
+    return { success: false };
+  }
+};
+
+export const getChatHistory = async (participantId: string) => {
+  const { userId } = auth();
+  if (!userId) return [];
+  try {
+    // 1. Fetch historical messages
+    const messages = await prisma.message.findMany({
+      where: {
+        OR: [
+          { senderId: userId, receiverId: participantId },
+          { senderId: participantId, receiverId: userId },
+        ],
+      },
+      orderBy: { createdAt: "asc" },
+    });
+
+    // 2. Mark incoming messages as read
+    await prisma.message.updateMany({
+      where: { senderId: participantId, receiverId: userId, isRead: false },
+      data: { isRead: true },
+    });
+
+    return messages;
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
+};
+
+export const getChatParticipants = async () => {
+  const { userId, sessionClaims } = auth();
+  if (!userId) return [];
+  const role = (sessionClaims?.metadata as { role?: string })?.role;
+
+  try {
+    let rawContacts: { id: string; name: string; role: string; img?: string | null }[] = [];
+
+    // 1. Fetch allowed contacts based on active academic role
+    if (role === "admin") {
+      const teachers = await prisma.teacher.findMany({ select: { id: true, name: true, surname: true, img: true } });
+      const students = await prisma.student.findMany({ select: { id: true, name: true, surname: true, img: true } });
+      const parents = await prisma.parent.findMany({ select: { id: true, name: true, surname: true } });
+
+      rawContacts = [
+        ...teachers.map(t => ({ id: t.id, name: `${t.name} ${t.surname}`, role: "teacher", img: t.img })),
+        ...students.map(s => ({ id: s.id, name: `${s.name} ${s.surname}`, role: "student", img: s.img })),
+        ...parents.map(p => ({ id: p.id, name: `${p.name} ${p.surname}`, role: "parent" })),
+      ];
+    } else if (role === "teacher") {
+      const teacher = await prisma.teacher.findUnique({
+        where: { id: userId },
+        include: {
+          classes: {
+            include: {
+              students: {
+                include: {
+                  parent: true,
+                },
+              },
+            },
+          },
+        },
+      });
+
+      if (teacher) {
+        // Collect students
+        const studentMap = new Map<string, { id: string; name: string; role: string; img?: string | null }>();
+        const parentMap = new Map<string, { id: string; name: string; role: string }>();
+
+        teacher.classes.forEach(cls => {
+          cls.students.forEach(std => {
+            studentMap.set(std.id, { id: std.id, name: `${std.name} ${std.surname}`, role: "student", img: std.img });
+            if (std.parent) {
+              parentMap.set(std.parent.id, { id: std.parent.id, name: `${std.parent.name} ${std.parent.surname}`, role: "parent" });
+            }
+          });
+        });
+
+        rawContacts = [...Array.from(studentMap.values()), ...Array.from(parentMap.values())];
+      }
+    } else if (role === "student") {
+      const student = await prisma.student.findUnique({
+        where: { id: userId },
+        include: {
+          class: {
+            include: {
+              teachers: true,
+            },
+          },
+        },
+      });
+
+      if (student && student.class) {
+        rawContacts = student.class.teachers.map(t => ({
+          id: t.id,
+          name: `${t.name} ${t.surname}`,
+          role: "teacher",
+          img: t.img,
+        }));
+      }
+    } else if (role === "parent") {
+      const parent = await prisma.parent.findUnique({
+        where: { id: userId },
+        include: {
+          students: {
+            include: {
+              class: {
+                include: {
+                  teachers: true,
+                },
+              },
+            },
+          },
+        },
+      });
+
+      if (parent) {
+        const teacherMap = new Map<string, { id: string; name: string; role: string; img?: string | null }>();
+        parent.students.forEach(std => {
+          if (std.class) {
+            std.class.teachers.forEach(t => {
+              teacherMap.set(t.id, { id: t.id, name: `${t.name} ${t.surname}`, role: "teacher", img: t.img });
+            });
+          }
+        });
+        rawContacts = Array.from(teacherMap.values());
+      }
+    }
+
+    // 2. Fetch last messages and unread counts for each contact in parallel
+    const contacts = await Promise.all(
+      rawContacts.map(async (c) => {
+        // Last message
+        const lastMsg = await prisma.message.findFirst({
+          where: {
+            OR: [
+              { senderId: userId, receiverId: c.id },
+              { senderId: c.id, receiverId: userId },
+            ],
+          },
+          orderBy: { createdAt: "desc" },
+        });
+
+        // Unread messages count from this contact
+        const unreadCount = await prisma.message.count({
+          where: { senderId: c.id, receiverId: userId, isRead: false },
+        });
+
+        return {
+          ...c,
+          lastMessage: lastMsg ? lastMsg.content : null,
+          lastMessageTime: lastMsg ? lastMsg.createdAt : null,
+          unreadCount,
+        };
+      })
+    );
+
+    // 3. Sort contacts: those with messages first (most recent first), then alphabetically
+    return contacts.sort((a, b) => {
+      if (a.lastMessageTime && b.lastMessageTime) {
+        return new Date(b.lastMessageTime).getTime() - new Date(a.lastMessageTime).getTime();
+      }
+      if (a.lastMessageTime) return -1;
+      if (b.lastMessageTime) return 1;
+      return a.name.localeCompare(b.name);
+    });
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
+};
+
+export const sendMessage = async (receiverId: string, content: string) => {
+  const { userId, sessionClaims } = auth();
+  if (!userId) return { success: false, error: "Unauthorized" };
+  const role = (sessionClaims?.metadata as { role?: string })?.role;
+
+  try {
+    // 1. Fetch sender name
+    let senderName = "User";
+    if (role === "admin") {
+      const admin = await prisma.admin.findUnique({ where: { id: userId } });
+      senderName = admin?.username || "Admin";
+    } else if (role === "teacher") {
+      const teacher = await prisma.teacher.findUnique({ where: { id: userId } });
+      senderName = teacher ? `${teacher.name} ${teacher.surname}` : "Teacher";
+    } else if (role === "student") {
+      const student = await prisma.student.findUnique({ where: { id: userId } });
+      senderName = student ? `${student.name} ${student.surname}` : "Student";
+    } else if (role === "parent") {
+      const parent = await prisma.parent.findUnique({ where: { id: userId } });
+      senderName = parent ? `${parent.name} ${parent.surname}` : "Parent";
+    }
+
+    // 2. Perform Role Scoping guards (Who can message whom)
+    let isAllowed = false;
+    if (role === "admin") {
+      isAllowed = true;
+    } else if (role === "teacher") {
+      // Check if receiver is a student in teacher's class or parent of a student in teacher's class
+      const teacherClasses = await prisma.class.findMany({
+        where: { teachers: { some: { id: userId } } },
+        select: { id: true },
+      });
+      const teacherClassIds = teacherClasses.map(c => c.id);
+
+      const targetStudent = await prisma.student.findFirst({
+        where: { id: receiverId, classId: { in: teacherClassIds } },
+      });
+      const targetParent = await prisma.parent.findFirst({
+        where: {
+          id: receiverId,
+          students: { some: { classId: { in: teacherClassIds } } },
+        },
+      });
+
+      if (targetStudent || targetParent) {
+        isAllowed = true;
+      }
+    } else if (role === "student") {
+      // Check if receiver is a teacher of student's class
+      const student = await prisma.student.findUnique({
+        where: { id: userId },
+        select: { classId: true },
+      });
+      if (student) {
+        const teacherClass = await prisma.class.findFirst({
+          where: { id: student.classId, teachers: { some: { id: receiverId } } },
+        });
+        if (teacherClass) {
+          isAllowed = true;
+        }
+      }
+    } else if (role === "parent") {
+      // Check if receiver is a teacher of one of parent's children's classes
+      const parentStudents = await prisma.student.findMany({
+        where: { parentId: userId },
+        select: { classId: true },
+      });
+      const childrenClassIds = parentStudents.map(s => s.classId);
+
+      const teacherClass = await prisma.class.findFirst({
+        where: { id: { in: childrenClassIds }, teachers: { some: { id: receiverId } } },
+      });
+      if (teacherClass) {
+        isAllowed = true;
+      }
+    }
+
+    if (!isAllowed) {
+      return { success: false, error: "Unauthorized conversation path" };
+    }
+
+    // 3. Create message in DB
+    const message = await prisma.message.create({
+      data: {
+        senderId: userId,
+        senderName,
+        receiverId,
+        content,
+      },
+    });
+
+    // 4. Trigger Pusher broadcast
+    const { pusherServer } = require("./pusher");
+    await pusherServer.trigger(`user-${receiverId}`, "new-message", message);
+
+    return { success: true, message };
+  } catch (err) {
+    console.error(err);
+    return { success: false, error: "Failed to send message" };
+  }
+};
+
