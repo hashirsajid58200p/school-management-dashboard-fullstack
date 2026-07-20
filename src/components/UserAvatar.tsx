@@ -47,7 +47,7 @@ const UserAvatar: React.FC<UserAvatarProps> = ({
     );
   }
 
-  // Otherwise, render a premium themed minimalist outline avatar
+  // Otherwise, render a premium themed solid-silhouette avatar
   const normalizedSex = sex 
     ? (sex.toUpperCase() as "MALE" | "FEMALE") 
     : guessSexFromName(name);
@@ -69,40 +69,50 @@ const UserAvatar: React.FC<UserAvatarProps> = ({
     <div className={`rounded-full flex items-center justify-center overflow-hidden shrink-0 shadow-sm relative ${palette.bg} ${className}`}>
       {role.toLowerCase() === "student" ? (
         normalizedSex === "MALE" ? (
-          /* BOY STUDENT - Minimalist Outline Silhouette */
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={`w-3/5 h-3/5 ${palette.fill}`}>
-            <path d="M6 21a6 6 0 0 1 12 0" />
-            <circle cx="12" cy="9" r="3.5" />
-            {/* Student Cap / Hairline */}
-            <path d="M9 7c1-1 2-1 3-1s2 0 3 1" />
+          /* BOY STUDENT - Graduation Cap Silhouette */
+          <svg viewBox="0 0 24 24" className={`w-3/5 h-3/5 ${palette.fill}`}>
+            {/* Mortarboard Diamond Top */}
+            <path d="M12 4L5 7.5l7 3.5 7-3.5z" fill="currentColor" />
+            {/* Tassel */}
+            <path d="M19 7.5v4c0 .8-.5 1.5-1.2 1.5" stroke="currentColor" strokeWidth="1.2" fill="none" />
+            <circle cx="17.8" cy="13" r="0.6" fill="currentColor" />
+            {/* Head underneath */}
+            <path d="M9 9.5v1.5c0 1.6 1.3 3 3 3s3-1.4 3-3V9.5" fill="currentColor" opacity="0.85" />
+            {/* Shoulders */}
+            <path d="M6 21c0-2.8 2.2-5 5-5h2c2.8 0 5 2.2 5 5z" fill="currentColor" opacity="0.75" />
           </svg>
         ) : (
-          /* GIRL STUDENT - Minimalist Outline Silhouette */
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={`w-3/5 h-3/5 ${palette.fill}`}>
-            <path d="M6 21a6 6 0 0 1 12 0" />
-            <circle cx="12" cy="9" r="3.5" />
-            {/* Ribbons / Hair-buns */}
-            <circle cx="7.5" cy="8" r="1.2" fill="currentColor" />
-            <circle cx="16.5" cy="8" r="1.2" fill="currentColor" />
+          /* GIRL STUDENT - Pigtails Silhouette */
+          <svg viewBox="0 0 24 24" className={`w-3/5 h-3/5 ${palette.fill}`}>
+            {/* Hair Pigtails */}
+            <circle cx="7" cy="9.5" r="2.2" fill="currentColor" />
+            <circle cx="17" cy="9.5" r="2.2" fill="currentColor" />
+            {/* Head */}
+            <circle cx="12" cy="10" r="3.5" fill="currentColor" />
+            {/* Shoulders */}
+            <path d="M6 21c0-2.8 2.2-5 5-5h2c2.8 0 5 2.2 5 5z" fill="currentColor" opacity="0.75" />
           </svg>
         )
       ) : (
         normalizedSex === "MALE" ? (
-          /* ADULT MAN - Minimalist Outline Silhouette */
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={`w-3/5 h-3/5 ${palette.fill}`}>
-            <path d="M5 21a7 7 0 0 1 14 0" />
-            <circle cx="12" cy="9" r="3.8" />
-            {/* Tie / V-Collar */}
-            <path d="M12 12.8v3.5" />
-            <path d="M10 12.8l2 1 2-1" />
+          /* ADULT MAN - Silhouette with Necktie */
+          <svg viewBox="0 0 24 24" className={`w-3/5 h-3/5 ${palette.fill}`}>
+            {/* Head */}
+            <circle cx="12" cy="9" r="3.8" fill="currentColor" />
+            {/* Shoulders */}
+            <path d="M5 21c0-3.3 2.7-6 6-6h2c3.3 0 6 2.7 6 6z" fill="currentColor" opacity="0.75" />
+            {/* Necktie Overlay (White) */}
+            <path d="M12 15l-1 1.2.3 3 .7-1.2.7 1.2.3-3z" fill="#ffffff" />
           </svg>
         ) : (
-          /* ADULT WOMAN - Minimalist Outline Silhouette */
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={`w-3/5 h-3/5 ${palette.fill}`}>
-            <path d="M5 21a7 7 0 0 1 14 0" />
-            <circle cx="12" cy="9" r="3.8" />
-            {/* Long Hair Framing */}
-            <path d="M8.2 9.5v4c0 1.2.8 2 1.8 2.2M15.8 9.5v4c0 1.2-.8 2-1.8 2.2" />
+          /* ADULT WOMAN - Bob Hair Silhouette */
+          <svg viewBox="0 0 24 24" className={`w-3/5 h-3/5 ${palette.fill}`}>
+            {/* Hair back & sides bob */}
+            <path d="M8 9.5c0-2.2 1.8-4 4-4s4 1.8 4 4v4c0 1.2-.8 2.2-1.8 2.5H9.8c-1-.3-1.8-1.3-1.8-2.5z" fill="currentColor" />
+            {/* Face cutout */}
+            <circle cx="12" cy="10" r="3" fill="#ffffff" />
+            {/* Shoulders */}
+            <path d="M5 21c0-3.3 2.7-6 6-6h2c3.3 0 6 2.7 6 6z" fill="currentColor" opacity="0.75" />
           </svg>
         )
       )}
