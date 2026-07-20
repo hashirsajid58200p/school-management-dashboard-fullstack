@@ -39,6 +39,9 @@ const TeacherScheduleView = ({
     end: new Date(l.end),
   }));
 
+  const activeClass = classes.find((cls) => cls.id === activeClassId);
+  const title = activeClass ? `Schedule (${activeClass.name})` : "Schedule";
+
   return (
     <div className="flex flex-col gap-4 h-full">
       {/* CLASS SELECTION TABS */}
@@ -68,7 +71,7 @@ const TeacherScheduleView = ({
       )}
 
       <div style={{ height: "900px" }}>
-        <BigCalendar data={filteredLessons} />
+        <BigCalendar data={filteredLessons} title={title} />
       </div>
     </div>
   );

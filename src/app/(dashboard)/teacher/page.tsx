@@ -76,7 +76,6 @@ const TeacherPage = async () => {
       {/* LEFT */}
       <div className="w-full xl:w-2/3">
         <div className="bg-white p-4 rounded-md">
-          <h1 className="text-xl font-semibold mb-4">Schedule</h1>
           <TeacherScheduleView classes={teacherClasses} lessons={serializedLessons} />
         </div>
       </div>
