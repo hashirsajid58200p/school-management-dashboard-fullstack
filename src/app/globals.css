@@ -194,3 +194,8 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+/* Hide current-time indicator green line in react-big-calendar */
+.rbc-current-time-indicator {
+  display: none !important;
+}
