@@ -199,3 +199,17 @@
 .rbc-current-time-indicator {
   display: none !important;
 }
+
+/* Colleague's lessons: soft light gray with dashed borders */
+.rbc-event.rbc-event-colleague {
+  background-color: #f8fafc !important;
+  border: 1px dashed #cbd5e1 !important;
+  color: #64748b !important;
+}
+
+/* Teacher's own lessons: darker/distinguished sky blue with solid borders */
+.rbc-event.rbc-event-mine {
+  background-color: #c3ebfa !important;
+  border: 1.5px solid #0284c7 !important;
+  color: #0369a1 !important;
+}

@@ -7,27 +7,24 @@ import { adjustScheduleToCurrentWeek } from "@/lib/utils";
 const TeacherPage = async () => {
   const { userId } = auth();
 
-  // Fetch all lessons where this teacher teaches, with class info
+  // 1. Fetch all classes assigned to this teacher
+  const teacher = await prisma.teacher.findUnique({
+    where: { id: userId! },
+    select: { classes: { select: { id: true, name: true } } }
+  });
+  const teacherClasses = teacher?.classes.sort((a, b) => a.name.localeCompare(b.name)) || [];
+  const teacherClassIds = teacherClasses.map(c => c.id);
+
+  // 2. Fetch all lessons for all of these classes
   const dataRes = await prisma.lesson.findMany({
     where: {
-      teacherId: userId!,
+      classId: { in: teacherClassIds },
     },
     include: {
       teacher: true,
       class: true,
     },
   });
-
-  // Get unique classes where this teacher has lessons (ordered by name)
-  const classMap = new Map<number, { id: number; name: string }>();
-  for (const lesson of dataRes) {
-    if (!classMap.has(lesson.classId)) {
-      classMap.set(lesson.classId, { id: lesson.classId, name: lesson.class.name });
-    }
-  }
-  const teacherClasses = Array.from(classMap.values()).sort((a, b) =>
-    a.name.localeCompare(b.name)
-  );
 
   // Create virtual break events for each weekday (Mon-Fri) 12 PM - 1 PM
   const baseDate = new Date(2025, 0, 6); // Monday Jan 6, 2025
@@ -48,6 +45,7 @@ const TeacherPage = async () => {
       teacherName: "",
       isBreak: true,
       classId: 0,
+      isMyLesson: false,
     });
   }
 
@@ -59,6 +57,7 @@ const TeacherPage = async () => {
       teacherName: `${lesson.teacher.name} ${lesson.teacher.surname}`,
       isBreak: false,
       classId: lesson.classId,
+      isMyLesson: lesson.teacherId === userId!,
     })),
     ...breakLessons,
   ];

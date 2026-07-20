@@ -106,14 +106,9 @@ const BigCalendar = ({
           };
         }
         if (event.isMyLesson === false) {
-          return {
-            style: {
-              backgroundColor: "#f1f5f9",
-              border: "1px dashed #cbd5e1",
-            }
-          };
+          return { className: "rbc-event-colleague" };
         }
-        return {};
+        return { className: "rbc-event-mine" };
       }}
       components={{
         toolbar: CustomToolbar,
