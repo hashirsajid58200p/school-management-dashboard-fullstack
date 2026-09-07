@@ -162,11 +162,6 @@ export async function POST(req: Request) {
     return response;
   } catch (e: any) {
     console.error("Login API error:", e);
-    return NextResponse.json({
-      error: "Internal server error",
-      message: e?.message || String(e),
-      hasDbUrl: !!process.env.DATABASE_URL,
-      dbUrlPrefix: process.env.DATABASE_URL ? process.env.DATABASE_URL.substring(0, 15) : "none",
-    }, { status: 500 });
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
