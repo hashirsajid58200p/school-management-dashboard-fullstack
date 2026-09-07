@@ -4,7 +4,7 @@ import SettingsClientPage from "./SettingsClientPage";
 
 const SettingsPage = async () => {
   const user = await currentUser();
-  const { userId, sessionClaims } = auth();
+  const { userId, sessionClaims } = await auth();
   const role = (sessionClaims?.metadata as { role?: string })?.role;
 
   let profileRecord: any = null;

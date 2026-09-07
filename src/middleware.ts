@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { decrypt, decryptSync } from "@/lib/session";
+import { decrypt } from "@/lib/session";
 import { routeAccessMap } from "./lib/settings";
 
 const matchers = Object.keys(routeAccessMap).map((route) => ({
@@ -30,7 +30,7 @@ export async function middleware(req: NextRequest) {
   const sessionCookie = req.cookies.get("auth_session")?.value;
   let user: any = null;
   if (sessionCookie) {
-    const decrypted = (await decrypt(sessionCookie)) || decryptSync(sessionCookie);
+    const decrypted = await decrypt(sessionCookie);
     if (decrypted) {
       user = typeof decrypted === "string" ? JSON.parse(decrypted) : decrypted;
     }

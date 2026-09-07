@@ -9,13 +9,12 @@ vi.mock("next/headers", () => ({
 }));
 
 vi.mock("@/lib/session", () => ({
-  decryptSync: (token: string) => {
+  decrypt: vi.fn(async (token: string) => {
     if (token === "admin_token") return { id: "admin_1", role: "admin" };
     if (token === "student_token") return { id: "student_1", role: "student" };
     return null;
-  },
+  }),
   encrypt: vi.fn(),
-  decrypt: vi.fn(),
 }));
 
 import { requireRole, auth } from "@/lib/auth";
@@ -25,24 +24,24 @@ describe("requireRole Security Helper", () => {
     currentCookieValue = undefined;
   });
 
-  it("permits access and returns role when user role is in allowed list", () => {
+  it("permits access and returns role when user role is in allowed list", async () => {
     currentCookieValue = "admin_token";
-    const role = requireRole(["admin", "teacher"]);
+    const role = await requireRole(["admin", "teacher"]);
     expect(role).toBe("admin");
   });
 
-  it("throws Unauthorized when user has a role not in allowed list", () => {
+  it("throws Unauthorized when user has a role not in allowed list", async () => {
     currentCookieValue = "student_token";
-    expect(() => requireRole(["admin", "teacher"])).toThrow("Unauthorized");
+    await expect(requireRole(["admin", "teacher"])).rejects.toThrow("Unauthorized");
   });
 
-  it("throws Unauthorized when user has no session cookie (logged out)", () => {
+  it("throws Unauthorized when user has no session cookie (logged out)", async () => {
     currentCookieValue = undefined;
-    expect(() => requireRole(["admin"])).toThrow("Unauthorized");
+    await expect(requireRole(["admin"])).rejects.toThrow("Unauthorized");
   });
 
-  it("throws Unauthorized when token is invalid or tampered with", () => {
+  it("throws Unauthorized when token is invalid or tampered with", async () => {
     currentCookieValue = "tampered_fake_token";
-    expect(() => requireRole(["admin"])).toThrow("Unauthorized");
+    await expect(requireRole(["admin"])).rejects.toThrow("Unauthorized");
   });
 });

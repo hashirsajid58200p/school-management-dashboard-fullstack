@@ -3,7 +3,14 @@ import { encrypt } from "@/lib/session";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 
-// In-memory rate limiter tracking failed attempts per email / client
+/**
+ * SERVERLESS CONCURRENCY LIMITATION NOTICE:
+ * This in-memory rate limiter tracks failed login attempts per key (email/IP) within an isolated runtime process.
+ * On serverless platforms like Vercel, function invocations run in ephemeral, auto-scaled, stateless containers.
+ * In-memory state is isolated to each concurrent instance and resets on cold starts.
+ * For production-grade distributed brute-force protection across multiple serverless instances,
+ * this should be backed by an external distributed cache (e.g. Upstash Redis / Vercel KV) or a persistent database table.
+ */
 interface AttemptRecord {
   count: number;
   firstAttempt: number;

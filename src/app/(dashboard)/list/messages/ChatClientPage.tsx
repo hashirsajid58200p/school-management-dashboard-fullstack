@@ -106,7 +106,7 @@ const ChatClientPage: React.FC<ChatClientPageProps> = ({
   useEffect(() => {
     if (!pusherClient) return;
 
-    const channelName = `user-${currentUserId}`;
+    const channelName = `private-user-${currentUserId}`;
     const channel = pusherClient.subscribe(channelName);
 
     const handleNewMessage = (msg: Message) => {

@@ -2,7 +2,14 @@ import { SignJWT } from "jose/jwt/sign";
 import { jwtVerify } from "jose/jwt/verify";
 
 const getSecretKey = () => {
-  const secret = process.env.SESSION_SECRET || "school_management_system_secure_secret_key_long_enough_32_bytes";
+  const secret = process.env.SESSION_SECRET;
+  if (!secret) {
+    if (process.env.NODE_ENV === "production") {
+      throw new Error("FATAL: SESSION_SECRET environment variable is missing in production.");
+    }
+    console.warn("WARNING: SESSION_SECRET is not set. Using local development fallback secret.");
+    return new TextEncoder().encode("dev_insecure_local_secret_must_be_32_bytes_long_min");
+  }
   return new TextEncoder().encode(secret);
 };
 
@@ -23,46 +30,6 @@ export async function decrypt(token: string | undefined = ""): Promise<any | nul
     });
     return payload;
   } catch (err) {
-    return null;
-  }
-}
-
-export function decryptSync(token: string | undefined = ""): any | null {
-  if (!token || typeof token !== "string") return null;
-  try {
-    const parts = token.split(".");
-    if (parts.length !== 3) return null;
-    const [, payloadB64] = parts;
-
-    let b64 = payloadB64.replace(/-/g, "+").replace(/_/g, "/");
-    while (b64.length % 4) {
-      b64 += "=";
-    }
-
-    const payloadJson =
-      typeof Buffer !== "undefined"
-        ? Buffer.from(payloadB64, "base64url").toString("utf-8")
-        : typeof atob !== "undefined"
-        ? decodeURIComponent(
-            atob(b64)
-              .split("")
-              .map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
-              .join("")
-          )
-        : null;
-
-    if (!payloadJson) return null;
-    const payload = JSON.parse(payloadJson);
-
-    if (payload.exp && typeof payload.exp === "number") {
-      const now = Math.floor(Date.now() / 1000);
-      if (now > payload.exp) {
-        return null;
-      }
-    }
-
-    return payload;
-  } catch (e) {
     return null;
   }
 }

@@ -43,7 +43,7 @@ export const createSubject = async (
   data: SubjectSchema
 ) => {
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
     await prisma.subject.create({
       data: {
         name: data.name,
@@ -56,7 +56,7 @@ export const createSubject = async (
     revalidatePath("/list/subjects");
     return { success: true, error: false, message: "Subject created successfully!" };
   } catch (err: any) {
-    console.log(err);
+    console.error(err);
     return { success: false, error: true, message: getErrorMessage(err, "Failed to create subject") };
   }
 };
@@ -66,7 +66,7 @@ export const updateSubject = async (
   data: SubjectSchema
 ) => {
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
     await prisma.subject.update({
       where: {
         id: data.id,
@@ -82,7 +82,7 @@ export const updateSubject = async (
     revalidatePath("/list/subjects");
     return { success: true, error: false, message: "Subject updated successfully!" };
   } catch (err: any) {
-    console.log(err);
+    console.error(err);
     return { success: false, error: true, message: getErrorMessage(err, "Failed to update subject") };
   }
 };
@@ -93,7 +93,7 @@ export const deleteSubject = async (
 ) => {
   const id = data.get("id") as string;
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
     await prisma.subject.delete({
       where: {
         id: parseInt(id),
@@ -103,7 +103,7 @@ export const deleteSubject = async (
     revalidatePath("/list/subjects");
     return { success: true, error: false, message: "Subject deleted successfully!" };
   } catch (err: any) {
-    console.log(err);
+    console.error(err);
     return { success: false, error: true, message: getErrorMessage(err, "Failed to delete subject") };
   }
 };
@@ -113,7 +113,7 @@ export const createClass = async (
   data: ClassSchema
 ) => {
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
     await prisma.class.create({
       data,
     });
@@ -121,7 +121,7 @@ export const createClass = async (
     revalidatePath("/list/classes");
     return { success: true, error: false, message: "Class created successfully!" };
   } catch (err: any) {
-    console.log(err);
+    console.error(err);
     return { success: false, error: true, message: getErrorMessage(err, "Failed to create class") };
   }
 };
@@ -131,7 +131,7 @@ export const updateClass = async (
   data: ClassSchema
 ) => {
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
     await prisma.class.update({
       where: {
         id: data.id,
@@ -142,7 +142,7 @@ export const updateClass = async (
     revalidatePath("/list/classes");
     return { success: true, error: false, message: "Class updated successfully!" };
   } catch (err: any) {
-    console.log(err);
+    console.error(err);
     return { success: false, error: true, message: getErrorMessage(err, "Failed to update class") };
   }
 };
@@ -153,7 +153,7 @@ export const deleteClass = async (
 ) => {
   const id = data.get("id") as string;
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
     await prisma.class.delete({
       where: {
         id: parseInt(id),
@@ -163,7 +163,7 @@ export const deleteClass = async (
     revalidatePath("/list/classes");
     return { success: true, error: false, message: "Class deleted successfully!" };
   } catch (err: any) {
-    console.log(err);
+    console.error(err);
     return { success: false, error: true, message: getErrorMessage(err, "Failed to delete class") };
   }
 };
@@ -173,7 +173,7 @@ export const createTeacher = async (
   data: TeacherSchema
 ) => {
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
 
     // 1. Cap class count to at most 3
     if (data.classes && data.classes.length > 3) {
@@ -230,7 +230,7 @@ export const createTeacher = async (
     revalidatePath("/list/teachers");
     return { success: true, error: false, message: "Teacher created successfully!" };
   } catch (err: any) {
-    console.log(err);
+    console.error(err);
     return { success: false, error: true, message: getErrorMessage(err, "Failed to create teacher") };
   }
 };
@@ -244,7 +244,7 @@ export const updateTeacher = async (
   }
 
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
 
     // 1. Cap class count to at most 3
     if (data.classes && data.classes.length > 3) {
@@ -301,7 +301,7 @@ export const updateTeacher = async (
     revalidatePath("/list/teachers");
     return { success: true, error: false, message: "Teacher updated successfully!" };
   } catch (err: any) {
-    console.log(err);
+    console.error(err);
     return { success: false, error: true, message: getErrorMessage(err, "Failed to update teacher") };
   }
 };
@@ -312,7 +312,7 @@ export const deleteTeacher = async (
 ) => {
   const id = data.get("id") as string;
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
 
     await prisma.teacher.delete({
       where: {
@@ -323,7 +323,7 @@ export const deleteTeacher = async (
     revalidatePath("/list/teachers");
     return { success: true, error: false, message: "Teacher deleted successfully!" };
   } catch (err: any) {
-    console.log(err);
+    console.error(err);
     return { success: false, error: true, message: getErrorMessage(err, "Failed to delete teacher") };
   }
 };
@@ -333,7 +333,7 @@ export const createStudent = async (
   data: StudentSchema
 ) => {
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
 
     const classItem = await prisma.class.findUnique({
       where: { id: data.classId },
@@ -371,7 +371,7 @@ export const createStudent = async (
     revalidatePath("/list/students");
     return { success: true, error: false, message: "Student created successfully!" };
   } catch (err: any) {
-    console.log(err);
+    console.error(err);
     return { success: false, error: true, message: getErrorMessage(err, "Failed to create student") };
   }
 };
@@ -384,7 +384,7 @@ export const updateStudent = async (
     return { success: false, error: true, message: "Student ID is required" };
   }
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
 
     const hashedPassword = data.password && data.password.length > 0 ? await bcrypt.hash(data.password, 10) : undefined;
 
@@ -413,7 +413,7 @@ export const updateStudent = async (
     revalidatePath("/list/students");
     return { success: true, error: false, message: "Student updated successfully!" };
   } catch (err: any) {
-    console.log(err);
+    console.error(err);
     return { success: false, error: true, message: getErrorMessage(err, "Failed to update student") };
   }
 };
@@ -424,7 +424,7 @@ export const deleteStudent = async (
 ) => {
   const id = data.get("id") as string;
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
 
     await prisma.student.delete({
       where: {
@@ -435,7 +435,7 @@ export const deleteStudent = async (
     revalidatePath("/list/students");
     return { success: true, error: false, message: "Student deleted successfully!" };
   } catch (err: any) {
-    console.log(err);
+    console.error(err);
     return { success: false, error: true, message: getErrorMessage(err, "Failed to delete student") };
   }
 };
@@ -445,7 +445,7 @@ export const createExam = async (
   data: ExamSchema
 ) => {
   try {
-    requireRole(["admin", "teacher"]);
+    await requireRole(["admin", "teacher"]);
 
     await prisma.exam.create({
       data: {
@@ -459,7 +459,7 @@ export const createExam = async (
     revalidatePath("/list/exams");
     return { success: true, error: false, message: "Exam created successfully!" };
   } catch (err: any) {
-    console.log(err);
+    console.error(err);
     return { success: false, error: true, message: getErrorMessage(err, "Failed to create exam") };
   }
 };
@@ -469,7 +469,7 @@ export const updateExam = async (
   data: ExamSchema
 ) => {
   try {
-    requireRole(["admin", "teacher"]);
+    await requireRole(["admin", "teacher"]);
 
     await prisma.exam.update({
       where: {
@@ -486,7 +486,7 @@ export const updateExam = async (
     revalidatePath("/list/exams");
     return { success: true, error: false, message: "Exam updated successfully!" };
   } catch (err: any) {
-    console.log(err);
+    console.error(err);
     return { success: false, error: true, message: getErrorMessage(err, "Failed to update exam") };
   }
 };
@@ -497,7 +497,7 @@ export const deleteExam = async (
 ) => {
   const id = data.get("id") as string;
   try {
-    requireRole(["admin", "teacher"]);
+    await requireRole(["admin", "teacher"]);
 
     await prisma.exam.delete({
       where: {
@@ -508,7 +508,7 @@ export const deleteExam = async (
     revalidatePath("/list/exams");
     return { success: true, error: false, message: "Exam deleted successfully!" };
   } catch (err: any) {
-    console.log(err);
+    console.error(err);
     return { success: false, error: true, message: getErrorMessage(err, "Failed to delete exam") };
   }
 };
@@ -518,7 +518,7 @@ export const createParent = async (
   data: ParentSchema
 ) => {
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
 
     const hashedPassword = await bcrypt.hash(data.password && data.password.length > 0 ? data.password : "123456", 10);
 
@@ -540,7 +540,7 @@ export const createParent = async (
     revalidatePath("/list/parents");
     return { success: true, error: false, message: "Parent created successfully!" };
   } catch (err: any) {
-    console.log(err);
+    console.error(err);
     return { success: false, error: true, message: getErrorMessage(err, "Failed to create parent") };
   }
 };
@@ -553,7 +553,7 @@ export const updateParent = async (
     return { success: false, error: true, message: "Parent ID is required" };
   }
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
 
     const hashedPassword = data.password && data.password.length > 0 ? await bcrypt.hash(data.password, 10) : undefined;
 
@@ -575,7 +575,7 @@ export const updateParent = async (
     revalidatePath("/list/parents");
     return { success: true, error: false, message: "Parent updated successfully!" };
   } catch (err: any) {
-    console.log(err);
+    console.error(err);
     return { success: false, error: true, message: getErrorMessage(err, "Failed to update parent") };
   }
 };
@@ -586,7 +586,7 @@ export const deleteParent = async (
 ) => {
   const id = data.get("id") as string;
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
 
     await prisma.parent.delete({
       where: {
@@ -597,7 +597,7 @@ export const deleteParent = async (
     revalidatePath("/list/parents");
     return { success: true, error: false, message: "Parent deleted successfully!" };
   } catch (err: any) {
-    console.log(err);
+    console.error(err);
     return { success: false, error: true, message: getErrorMessage(err, "Failed to delete parent") };
   }
 };
@@ -606,7 +606,7 @@ export const createLesson = async (
   currentState: CurrentState,
   data: LessonSchema
 ) => {
-  const { sessionClaims } = auth();
+  const { sessionClaims } = await auth();
   const role = (sessionClaims?.metadata as { role?: string })?.role;
   if (role !== "admin") {
     return { success: false, error: true, message: "Unauthorized" };
@@ -680,7 +680,7 @@ export const createLesson = async (
 
     return { success: true, error: false, message: "Lesson created successfully!" };
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return { success: false, error: true, message: getErrorMessage(err, "Failed to create lesson") };
   }
 };
@@ -689,7 +689,7 @@ export const updateLesson = async (
   currentState: CurrentState,
   data: LessonSchema
 ) => {
-  const { sessionClaims } = auth();
+  const { sessionClaims } = await auth();
   const role = (sessionClaims?.metadata as { role?: string })?.role;
   if (role !== "admin") {
     return { success: false, error: true, message: "Unauthorized" };
@@ -762,7 +762,7 @@ export const updateLesson = async (
 
     return { success: true, error: false, message: "Lesson updated successfully!" };
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return { success: false, error: true, message: getErrorMessage(err, "Failed to update lesson") };
   }
 };
@@ -772,7 +772,7 @@ export const deleteLesson = async (
   data: FormData
 ) => {
   const id = data.get("id") as string;
-  const { sessionClaims } = auth();
+  const { sessionClaims } = await auth();
   const role = (sessionClaims?.metadata as { role?: string })?.role;
   if (role !== "admin") {
     return { success: false, error: true, message: "Unauthorized" };
@@ -797,7 +797,7 @@ export const deleteLesson = async (
 
     return { success: true, error: false, message: "Lesson deleted successfully!" };
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return { success: false, error: true, message: getErrorMessage(err, "Failed to delete lesson") };
   }
 };
@@ -806,7 +806,7 @@ export const promoteAcademicYear = async (
   data?: { clearHistory?: boolean }
 ) => {
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
 
     await prisma.$transaction(async (tx) => {
       if (data?.clearHistory) {
@@ -891,7 +891,7 @@ export const generateAITimetable = async (
   currentState: CurrentState
 ) => {
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
 
     await prisma.$transaction(async (tx) => {
       // Fetch classes and teachers
@@ -1011,7 +1011,7 @@ export const generateAITimetable = async (
     revalidatePath("/list/lessons");
     return { success: true, error: false, message: "AI timetable generated successfully!" };
   } catch (err: any) {
-    console.log(err);
+    console.error(err);
     return { success: false, error: true, message: getErrorMessage(err, "Failed to generate timetable") };
   }
 };
@@ -1026,7 +1026,7 @@ export const updateProfile = async (
     email?: string;
   }
 ) => {
-  const { userId, sessionClaims } = auth();
+  const { userId, sessionClaims } = await auth();
   const role = (sessionClaims?.metadata as { role?: string })?.role;
   if (!userId || !role) {
     return { success: false, error: true, message: "Unauthorized" };
@@ -1045,12 +1045,7 @@ export const updateProfile = async (
         existingRecord = await prisma.parent.findUnique({ where: { id: userId } });
       }
 
-      const defaultDbPw = existingRecord?.password || "123456";
-      const isMatch = defaultDbPw.startsWith("$2")
-        ? await bcrypt.compare(data.currentPassword, defaultDbPw)
-        : data.currentPassword === defaultDbPw;
-
-      if (!isMatch) {
+      if (!existingRecord?.password || !(await bcrypt.compare(data.currentPassword, existingRecord.password))) {
         return { success: false, error: true, message: "Current password does not match." };
       }
     }
@@ -1103,7 +1098,7 @@ export const generateAttendanceSimulation = async (
   days: number = 30
 ) => {
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
 
     await prisma.$transaction(async (tx) => {
       const today = new Date();
@@ -1190,7 +1185,7 @@ export const submitAttendance = async (
     attendance: { studentId: string; present: boolean }[];
   }
 ) => {
-  const { userId, sessionClaims } = auth();
+  const { userId, sessionClaims } = await auth();
   const role = (sessionClaims?.metadata as { role?: string })?.role;
   if (!userId || (role !== "teacher" && role !== "admin")) {
     return { success: false, error: true, message: "Unauthorized" };
@@ -1246,7 +1241,7 @@ export const submitAttendance = async (
 
 export const getStudentsByClass = async (classId: number) => {
   try {
-    const { userId } = auth();
+    const { userId } = await auth();
     if (!userId) return [];
     if (!classId || isNaN(classId) || classId <= 0) return [];
 
@@ -1263,7 +1258,7 @@ export const getStudentsByClass = async (classId: number) => {
 
 export const getAttendanceRecord = async (classId: number, date: string) => {
   try {
-    const { userId } = auth();
+    const { userId } = await auth();
     if (!userId) return [];
     if (!classId || !date) return [];
 
@@ -1284,7 +1279,7 @@ export const getAttendanceRecord = async (classId: number, date: string) => {
 
 export const archiveMonthlyAttendanceLogs = async (currentState: CurrentState) => {
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
 
     return await prisma.$transaction(async (tx) => {
       const today = new Date();
@@ -1384,7 +1379,7 @@ export const createEvent = async (
   data: EventSchema
 ) => {
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
 
     await prisma.event.create({
       data: {
@@ -1409,7 +1404,7 @@ export const updateEvent = async (
   data: EventSchema
 ) => {
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
 
     await prisma.event.update({
       where: { id: data.id },
@@ -1435,7 +1430,7 @@ export const deleteEvent = async (
   data: FormData
 ) => {
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
 
     const id = data.get("id") as string;
     await prisma.event.delete({
@@ -1455,7 +1450,7 @@ export const createAssignment = async (
   data: AssignmentSchema
 ) => {
   try {
-    requireRole(["admin", "teacher"]);
+    await requireRole(["admin", "teacher"]);
 
     await prisma.assignment.create({
       data: {
@@ -1479,7 +1474,7 @@ export const updateAssignment = async (
   data: AssignmentSchema
 ) => {
   try {
-    requireRole(["admin", "teacher"]);
+    await requireRole(["admin", "teacher"]);
 
     await prisma.assignment.update({
       where: { id: data.id },
@@ -1505,7 +1500,7 @@ export const deleteAssignment = async (
 ) => {
   const id = data.get("id") as string;
   try {
-    requireRole(["admin", "teacher"]);
+    await requireRole(["admin", "teacher"]);
 
     await prisma.assignment.delete({
       where: { id: parseInt(id) },
@@ -1524,7 +1519,7 @@ export const createResult = async (
   data: ResultSchema
 ) => {
   try {
-    requireRole(["admin", "teacher"]);
+    await requireRole(["admin", "teacher"]);
 
     await prisma.result.create({
       data: {
@@ -1548,7 +1543,7 @@ export const updateResult = async (
   data: ResultSchema
 ) => {
   try {
-    requireRole(["admin", "teacher"]);
+    await requireRole(["admin", "teacher"]);
 
     await prisma.result.update({
       where: { id: data.id },
@@ -1574,7 +1569,7 @@ export const deleteResult = async (
 ) => {
   const id = data.get("id") as string;
   try {
-    requireRole(["admin", "teacher"]);
+    await requireRole(["admin", "teacher"]);
 
     await prisma.result.delete({
       where: { id: parseInt(id) },
@@ -1593,7 +1588,7 @@ export const createAnnouncement = async (
   data: AnnouncementSchema
 ) => {
   try {
-    requireRole(["admin", "teacher"]);
+    await requireRole(["admin", "teacher"]);
 
     await prisma.announcement.create({
       data: {
@@ -1617,7 +1612,7 @@ export const updateAnnouncement = async (
   data: AnnouncementSchema
 ) => {
   try {
-    requireRole(["admin", "teacher"]);
+    await requireRole(["admin", "teacher"]);
 
     await prisma.announcement.update({
       where: { id: data.id },
@@ -1643,7 +1638,7 @@ export const deleteAnnouncement = async (
 ) => {
   const id = data.get("id") as string;
   try {
-    requireRole(["admin", "teacher"]);
+    await requireRole(["admin", "teacher"]);
 
     await prisma.announcement.delete({
       where: { id: parseInt(id) },
@@ -1662,7 +1657,7 @@ export const createFeePayment = async (
   data: FeePaymentSchema
 ) => {
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
 
     await prisma.feePayment.create({
       data: {
@@ -1689,7 +1684,7 @@ export const deleteFeePayment = async (
 ) => {
   const id = data.get("id") as string;
   try {
-    requireRole(["admin"]);
+    await requireRole(["admin"]);
 
     await prisma.feePayment.delete({
       where: { id: parseInt(id) },
@@ -1712,7 +1707,7 @@ export type GlobalSearchResult = {
 };
 
 export const searchGlobal = async (query: string): Promise<GlobalSearchResult[]> => {
-  const { userId, sessionClaims } = auth();
+  const { userId, sessionClaims } = await auth();
   const role = (sessionClaims?.metadata as { role?: string })?.role;
   if (!userId || !role || !query || query.trim().length < 2) {
     return [];
@@ -2024,7 +2019,7 @@ export const searchGlobal = async (query: string): Promise<GlobalSearchResult[]>
 // --- CHAT SYSTEM ACTIONS ---
 
 export const getUnreadMessagesCount = async () => {
-  const { userId } = auth();
+  const { userId } = await auth();
   if (!userId) return 0;
   try {
     return await prisma.message.count({
@@ -2037,7 +2032,7 @@ export const getUnreadMessagesCount = async () => {
 };
 
 export const markConversationAsRead = async (senderId: string) => {
-  const { userId } = auth();
+  const { userId } = await auth();
   if (!userId) return { success: false };
   try {
     await prisma.message.updateMany({
@@ -2052,7 +2047,7 @@ export const markConversationAsRead = async (senderId: string) => {
 };
 
 export const getChatHistory = async (participantId: string) => {
-  const { userId } = auth();
+  const { userId } = await auth();
   if (!userId) return [];
   try {
     // 1. Fetch historical messages
@@ -2080,7 +2075,7 @@ export const getChatHistory = async (participantId: string) => {
 };
 
 export const getChatParticipants = async () => {
-  const { userId, sessionClaims } = auth();
+  const { userId, sessionClaims } = await auth();
   if (!userId) return [];
   const role = (sessionClaims?.metadata as { role?: string })?.role;
 
@@ -2236,7 +2231,7 @@ export const getChatParticipants = async () => {
 };
 
 export const sendMessage = async (receiverId: string, content: string) => {
-  const { userId, sessionClaims } = auth();
+  const { userId, sessionClaims } = await auth();
   if (!userId) return { success: false, error: "Unauthorized" };
   const role = (sessionClaims?.metadata as { role?: string })?.role;
 
@@ -2328,7 +2323,7 @@ export const sendMessage = async (receiverId: string, content: string) => {
 
     // 4. Trigger Pusher broadcast
     const { pusherServer } = require("./pusher");
-    await pusherServer.trigger(`user-${receiverId}`, "new-message", message);
+    await pusherServer.trigger(`private-user-${receiverId}`, "new-message", message);
 
     return { success: true, message };
   } catch (err) {

@@ -36,21 +36,24 @@ A full-stack, enterprise-grade School Management System designed for educational
 
 ## 🔒 Security Architecture & Hardening
 
-This codebase underwent a security audit and migration away from third-party vendor lock-in (Clerk) to a self-contained, auditable authentication system:
+This codebase underwent a security audit and hardening pass to ensure zero-bypass access control:
 
-1. **Signed Session Tokens (`jose` / HS256):**
-   - Sessions are cryptographically signed using a server-only secret (`SESSION_SECRET`, never exposed to clients).
-   - Cookies are tamper-proof with a 7-day `exp` claim. Any tampering or unsigned base64 modifications are rejected immediately by Edge middleware.
-2. **Server-Side Authorization (`requireRole`):**
-   - Server Actions independently verify the caller's role directly from the verified session claims before executing database mutations (`requireRole(["admin"])`).
-   - Prevents bypasses from direct POST server-action invocations.
-3. **Bcrypt Password Hashing:**
-   - Replaced all legacy plaintext password storage with 10-round `bcryptjs` hashing across seeds and CRUD actions.
-4. **Brute-Force Rate Limiting:**
-   - `/api/login` implements an in-memory IP + email sliding window rate limiter, enforcing 429 lockout after 5 consecutive failed attempts.
-5. **Database Integrity & Atomic Transactions:**
-   - All multi-step actions (`promoteAcademicYear`, `generateAITimetable`, `generateAttendanceSimulation`, `archiveMonthlyAttendanceLogs`) run inside `prisma.$transaction`.
-   - Solvers roll back deletions automatically if a conflict-free solution cannot be found.
+1. **Cryptographically Verified Session Tokens (`jose` / HS256):**
+   - Sessions are signed and verified using a server-only secret (`SESSION_SECRET`). If `SESSION_SECRET` is unset in production, the application fails closed immediately at startup.
+   - All token inspection uses `jose`'s `jwtVerify` with strict HMAC-SHA256 signature checking. Unverified payload decoding has been completely eliminated.
+   - Verified across Edge middleware, server components, and server actions. Forged or untrusted tokens signed with foreign secrets are rejected.
+2. **Server-Side Authorization (`requireRole` & `auth`):**
+   - Every server action and privileged route explicitly awaits verified session claims before executing database mutations (`await requireRole(["admin"])`).
+   - Prevents unauthorized execution from direct server action POST calls.
+3. **Authorized Private Messaging Channels:**
+   - Real-time communication is isolated to authenticated private channels (`private-user-${userId}`).
+   - Channel subscription requests are strictly gated by `POST /api/pusher/auth`, verifying the caller's authenticated session and preventing unauthorized cross-user event eavesdropping.
+4. **Bcrypt Password Security:**
+   - Passwords use 10-round `bcryptjs` hashing across database seeding, credential verification, and profile updates. Plaintext fallbacks are strictly eliminated.
+5. **Brute-Force Rate Limiting:**
+   - `/api/login` implements an IP + email sliding window rate limiter, enforcing 429 lockout after 5 consecutive failed attempts.
+6. **Database Integrity & Atomic Transactions:**
+   - Multi-step operations (`promoteAcademicYear`, `generateAITimetable`, `generateAttendanceSimulation`, `archiveMonthlyAttendanceLogs`) execute inside `prisma.$transaction` with automatic rollback on conflicts.
 
 ---
 

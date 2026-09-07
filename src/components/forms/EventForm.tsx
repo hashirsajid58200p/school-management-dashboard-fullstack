@@ -39,7 +39,6 @@ const EventForm = ({
   );
 
   const onSubmit = handleSubmit((formData) => {
-    console.log(formData);
     formAction(formData);
   });
 

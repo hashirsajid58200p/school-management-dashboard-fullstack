@@ -3,7 +3,7 @@ import { auth } from "@/lib/auth";
 import Link from "next/link";
 
 const Announcements = async () => {
-  const { userId, sessionClaims } = auth();
+  const { userId, sessionClaims } = await auth();
   const role = (sessionClaims?.metadata as { role?: string })?.role;
 
   const roleConditions = {

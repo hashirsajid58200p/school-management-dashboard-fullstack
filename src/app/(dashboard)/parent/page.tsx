@@ -10,7 +10,7 @@ const ParentPage = async ({
 }: {
   searchParams: { [keys: string]: string | undefined };
 }) => {
-  const { userId } = auth();
+  const { userId } = await auth();
   if (!userId) return null;
   const currentUserId = userId;
   

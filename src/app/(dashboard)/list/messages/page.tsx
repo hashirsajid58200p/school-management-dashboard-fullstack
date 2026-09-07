@@ -4,7 +4,7 @@ import ChatClientPage from "./ChatClientPage";
 import { redirect } from "next/navigation";
 
 const MessagesPage = async () => {
-  const { userId, sessionClaims } = auth();
+  const { userId, sessionClaims } = await auth();
   if (!userId) {
     redirect("/sign-in");
   }

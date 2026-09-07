@@ -8,5 +8,6 @@ export const pusherClient = (key && cluster)
   ? new PusherClient(key, {
       cluster,
       forceTLS: true,
+      authEndpoint: "/api/pusher/auth",
     })
   : null;

@@ -9,7 +9,7 @@ const StudentPage = async ({
 }: {
   searchParams: { [keys: string]: string | undefined };
 }) => {
-  const { userId } = auth();
+  const { userId } = await auth();
   if (!userId) return null;
 
   const classItem = await prisma.class.findMany({

@@ -5,7 +5,7 @@ import { auth } from "@/lib/auth";
 import { adjustScheduleToCurrentWeek } from "@/lib/utils";
 
 const TeacherPage = async () => {
-  const { userId } = auth();
+  const { userId } = await auth();
   if (!userId) return null;
 
   // 1. Fetch all classes assigned to this teacher

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import ProfileForm from "@/components/ProfileForm";
 
 const ProfilePage = async () => {
-  const { userId, sessionClaims } = auth();
+  const { userId, sessionClaims } = await auth();
   const role = (sessionClaims?.metadata as { role?: string })?.role;
 
   if (!userId || !role) {

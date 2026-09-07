@@ -7,7 +7,7 @@ const AttendancePage = async ({
 }: {
   searchParams: { [key: string]: string | undefined };
 }) => {
-  const { userId, sessionClaims } = auth();
+  const { userId, sessionClaims } = await auth();
   if (!userId) return null;
   const role = (sessionClaims?.metadata as { role?: string })?.role || "student";
 

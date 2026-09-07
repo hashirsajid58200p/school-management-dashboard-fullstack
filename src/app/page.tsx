@@ -2,7 +2,7 @@ import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
 export default async function Homepage() {
-  const { sessionClaims, userId } = auth();
+  const { sessionClaims, userId } = await auth();
 
   if (!userId) {
     redirect("/sign-in");

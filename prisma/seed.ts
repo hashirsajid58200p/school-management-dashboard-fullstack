@@ -1,4 +1,6 @@
-import {
+import seedData from "./seedData.json";
+
+const {
   teachersData,
   studentsData,
   parentsData,
@@ -10,7 +12,7 @@ import {
   resultsData,
   eventsData,
   announcementsData,
-} from "../src/lib/data";
+} = seedData;
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 
@@ -145,7 +147,7 @@ async function main() {
   // 6. Connect Teachers to their assigned Classes
   for (const t of teachersData) {
     const tId = teacherMap.get(t.name)!;
-    const clsConnects = t.classes.map(clsName => ({ id: classMap.get(clsName)! }));
+    const clsConnects = t.classes.map((clsName: string) => ({ id: classMap.get(clsName)! }));
     await prisma.teacher.update({
       where: { id: tId },
       data: {
@@ -249,7 +251,7 @@ async function main() {
   // 10. Exams
   const examDbMap = new Map<number, number>();
   for (const exam of examsData) {
-    const matchingLesson = lessonsData.find(l => l.class === exam.class && l.subject === exam.subject)!;
+    const matchingLesson = lessonsData.find((l: any) => l.class === exam.class && l.subject === exam.subject)!;
     
     const dbExam = await prisma.exam.create({
       data: {
@@ -267,7 +269,7 @@ async function main() {
   // 11. Assignments
   const assignDbMap = new Map<number, number>();
   for (const asgn of assignmentsData) {
-    const matchingLesson = lessonsData.find(l => l.class === asgn.class && l.subject === asgn.subject)!;
+    const matchingLesson = lessonsData.find((l: any) => l.class === asgn.class && l.subject === asgn.subject)!;
 
     const dbAsgn = await prisma.assignment.create({
       data: {
@@ -288,10 +290,10 @@ async function main() {
     let assignmentId: number | null = null;
 
     if (result.type === "exam") {
-      const matchingExam = examsData.find(e => e.class === result.class && e.subject === result.subject && e.date === result.date)!;
+      const matchingExam = examsData.find((e: any) => e.class === result.class && e.subject === result.subject && e.date === result.date)!;
       examId = matchingExam.id;
     } else {
-      const matchingAsgn = assignmentsData.find(a => a.class === result.class && a.subject === result.subject)!;
+      const matchingAsgn = assignmentsData.find((a: any) => a.class === result.class && a.subject === result.subject)!;
       assignmentId = matchingAsgn.id;
     }
 

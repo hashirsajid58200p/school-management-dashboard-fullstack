@@ -17,7 +17,7 @@ const SingleStudentPage = async ({
 }: {
   params: { id: string };
 }) => {
-  const { userId, sessionClaims } = auth();
+  const { userId, sessionClaims } = await auth();
   const role = (sessionClaims?.metadata as { role?: string })?.role;
   const currentUserId = userId;
 
