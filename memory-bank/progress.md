@@ -1,6 +1,10 @@
 # Project Progress
 
 ## What Works
+- **Vercel & Serverless Deployment**:
+  - Auto-replication of bundled template SQLite DB to writable `/tmp/school_prod.db` on Vercel Serverless
+  - Dynamic Prisma schema switcher (`scripts/prepare-prisma.js`) supporting both PostgreSQL and SQLite
+  - Deployed site `https://school-management-dashboard-fullsta.vercel.app` fully operational (HTTP 200 on login & dashboard)
 - **Authentication & RBAC**:
   - Signed JWT session authentication via `jose` and `SESSION_SECRET` with 7-day expiration (`/api/login`, `src/lib/session.ts`, `src/middleware.ts`)
   - Both email and username supported for login (`/api/login`)
@@ -10,7 +14,7 @@
   - Purged legacy Clerk mock code in favor of native standard `crypto.randomUUID()`
 - **Git & Repository Hygiene**:
   - Permanently purged `prisma/dev.db` from all Git history via `git-filter-repo`
-  - `.gitignore` ignores all local SQLite database files
+  - `.gitignore` ignores all local SQLite development databases while whitelisting `!prisma/template.db`
   - Unused imports, orphaned code, and static placeholder elements cleaned across the app
 - **Data Integrity & Automations**:
   - Conflict-free timetable generator wrapped in atomic `prisma.$transaction` rollback
@@ -34,8 +38,8 @@
   - Settings page queries Prisma for live profile info and executes `updateProfile` server action
   - Password change validates current password against bcrypt hash before updating
   - System preferences (language, theme, calendar view) and notifications persist to local storage
-- **Production DevOps & Vercel Readiness**:
-  - `package.json` build script configured with `"prisma generate && next build"`
+- **Production DevOps & Engineering Quality**:
+  - `package.json` build script configured with `"node scripts/prepare-prisma.js && prisma generate && next build"`
   - `jose` imports optimized to prevent Edge Runtime deflate warnings
   - Multi-stage `Dockerfile` with standalone Next.js build, non-root runner, and `docker-entrypoint.sh`
   - PostgreSQL schema ready (`prisma/schema.postgresql.prisma`)

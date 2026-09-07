@@ -1,6 +1,9 @@
 # Active Context
 
 ## Current Status
+- **Vercel 500 Resolution**: Fixed root cause `Error code 14: Unable to open the database file` on Vercel serverless. Implemented automatic SQLite replication from bundled `prisma/template.db` into `/tmp/school_prod.db` with `outputFileTracingIncludes` in `next.config.mjs`.
+- **Hybrid Database Architecture**: Implemented `scripts/prepare-prisma.js` to dynamically detect PostgreSQL URLs (`postgres://` or `postgresql://`) vs SQLite (`file:`) and configure `schema.prisma` automatically during build.
+- **Production Status**: Deployed site `https://school-management-dashboard-fullsta.vercel.app` verified live; `/api/login` and dashboard routes return HTTP/2 200 OK.
 - **Zero Dummy/Showcase Features**: All entities, metric cards, modals, and settings are 100% connected to live database operations and server actions.
 - **Lesson Management**: Created `LessonForm.tsx` and wired into `FormContainer` and `FormModal`, completing full CRUD for lessons.
 - **Dynamic Performance & Metrics**:
@@ -14,8 +17,7 @@
 - **UserCard & Charts**:
   - Dynamic academic year computation (`${year}/${(year+1)}`).
   - `CountChartContainer` guarded against division by zero.
-- **Deployment & Vercel Readiness**:
-  - Purged legacy Clerk mock code (`clerkClient`, `useClerk`) in favor of native standard `crypto.randomUUID()`.
-  - Optimized `jose` imports (`jose/jwt/sign` and `jose/jwt/verify`) eliminating Edge Runtime deflate warnings.
-  - Build script configured as `"prisma generate && next build"`.
-  - All 21 Vitest tests passing (`npm test`), ESLint passing with zero warnings (`npm run lint`), and production build passing (`npm run build`).
+- **Engineering Quality**:
+  - All 21 Vitest tests passing (`npm test`).
+  - ESLint passing with zero warnings (`npm run lint`).
+  - Production build passing with zero errors (`npm run build`).
