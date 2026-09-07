@@ -1,16 +1,39 @@
 import prisma from "@/lib/prisma";
 
 const EventList = async ({ dateParam }: { dateParam: string | undefined }) => {
-  const date = dateParam ? new Date(dateParam) : new Date();
+  let date = new Date();
+  if (dateParam) {
+    const parsed = new Date(dateParam);
+    if (!isNaN(parsed.getTime())) {
+      date = parsed;
+    }
+  }
+
+  const startOfDay = new Date(date);
+  startOfDay.setHours(0, 0, 0, 0);
+
+  const endOfDay = new Date(date);
+  endOfDay.setHours(23, 59, 59, 999);
 
   const data = await prisma.event.findMany({
     where: {
       startTime: {
-        gte: new Date(date.setHours(0, 0, 0, 0)),
-        lte: new Date(date.setHours(23, 59, 59, 999)),
+        gte: startOfDay,
+        lte: endOfDay,
       },
     },
+    orderBy: {
+      startTime: "asc",
+    },
   });
+
+  if (!data || data.length === 0) {
+    return (
+      <div className="py-6 text-center text-xs text-gray-400 font-medium">
+        No events scheduled for this date.
+      </div>
+    );
+  }
 
   return data.map((event) => (
     <div

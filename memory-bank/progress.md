@@ -38,6 +38,13 @@
   - Settings page queries Prisma for live profile info and executes `updateProfile` server action
   - Password change validates current password against bcrypt hash before updating
   - System preferences (language, theme, calendar view) and notifications persist to local storage
+- **Client-Side Robustness & Crash Prevention**:
+  - Eliminated runtime crashes (`TypeError: Cannot read properties of undefined (reading 'length')` and `(reading 'forEach')`)
+  - Hardened `AttendanceClient.tsx` with default props and safe array operations
+  - Wrapped `getStudentsByClass` and `getAttendanceRecord` in error-handling try/catch blocks
+  - Fixed fall-through bug in `FormContainer.tsx` (added missing `break;` in `case "exam"`)
+  - Hardened all modal forms (`ExamForm`, `StudentForm`, `SubjectForm`, `TeacherForm`, `ClassForm`) with safe defaults
+  - Fortified `TableActions`, `CustomSelect`, `Table`, `TeacherScheduleView`, `UserAvatar`, `EventList`, `StudentAttendanceCard`, and `ChatClientPage`
 - **Production DevOps & Engineering Quality**:
   - `package.json` build script configured with `"node scripts/prepare-prisma.js && prisma generate && next build"`
   - `jose` imports optimized to prevent Edge Runtime deflate warnings

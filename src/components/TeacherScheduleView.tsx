@@ -19,20 +19,23 @@ interface LessonItem {
 }
 
 const TeacherScheduleView = ({
-  classes,
-  lessons,
+  classes = [],
+  lessons = [],
 }: {
-  classes: ClassItem[];
-  lessons: LessonItem[];
+  classes?: ClassItem[];
+  lessons?: LessonItem[];
 }) => {
+  const safeClasses = classes || [];
+  const safeLessons = lessons || [];
+
   const [activeClassId, setActiveClassId] = useState<number | null>(
-    classes.length > 0 ? classes[0].id : null
+    safeClasses.length > 0 ? safeClasses[0].id : null
   );
 
   const filteredLessons = (
     activeClassId
-      ? lessons.filter((l) => l.classId === activeClassId || l.isBreak)
-      : lessons
+      ? safeLessons.filter((l) => l && (l.classId === activeClassId || l.isBreak))
+      : safeLessons
   )
     .filter((l) => l && l.start && l.end)
     .map((l) => ({
@@ -41,15 +44,15 @@ const TeacherScheduleView = ({
       end: new Date(l.end),
     }));
 
-  const activeClass = classes.find((cls) => cls.id === activeClassId);
+  const activeClass = safeClasses.find((cls) => cls.id === activeClassId);
   const title = activeClass ? `Schedule (${activeClass.name})` : "Schedule";
 
-  const tabsContent = classes.length > 0 ? (
+  const tabsContent = safeClasses.length > 0 ? (
     <div className="flex flex-wrap items-center gap-2 mb-2">
       <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider mr-2">
         Select Class:
       </span>
-      {classes.map((cls) => (
+      {safeClasses.map((cls) => (
         <button
           key={cls.id}
           onClick={() => setActiveClassId(cls.id)}

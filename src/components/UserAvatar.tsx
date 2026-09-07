@@ -34,7 +34,8 @@ const UserAvatar: React.FC<UserAvatarProps> = ({
   }
 
   // Otherwise, render a premium initials monogram avatar
-  const initials = name
+  const safeName = (name || "User").toString().trim();
+  const initials = (safeName.length > 0 ? safeName : "User")
     .split(" ")
     .filter(Boolean)
     .map((n) => n[0])
@@ -42,7 +43,7 @@ const UserAvatar: React.FC<UserAvatarProps> = ({
     .join("")
     .toUpperCase();
 
-  const hash = name.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const hash = safeName.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
   
   const palettes = [
     { bg: "bg-[#EDF9FD] border border-[#C3EBFA]/50", fill: "text-[#0284c7]" }, // Sky Blue

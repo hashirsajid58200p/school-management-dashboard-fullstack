@@ -17,7 +17,15 @@
 - **UserCard & Charts**:
   - Dynamic academic year computation (`${year}/${(year+1)}`).
   - `CountChartContainer` guarded against division by zero.
+- **Client Crash & Error Elimination**:
+  - Traced client runtime crash (`TypeError: Cannot read properties of undefined (reading 'length')` and `(reading 'forEach')`) to `AttendanceClient.tsx` and server action error propagation.
+  - Hardened `AttendanceClient.tsx` with default props (`classes = []`, `parentChildren = []`, `initialRecords = []`, `monthlySummaries = []`), safe array aliases, non-zero classId guards before fetching, and defensive checklist loops.
+  - Updated `getStudentsByClass` and `getAttendanceRecord` in `src/lib/actions.ts` with try/catch error handling returning safe empty arrays `[]` instead of throwing unhandled action rejections to the client.
+  - Fixed fall-through bug in `FormContainer.tsx` (missing `break;` in `case "exam"`) that wiped out exam lessons and crashed `ExamForm`.
+  - Hardened `TableActions.tsx` (`FilterButton`), `CustomSelect.tsx`, `TeacherScheduleView.tsx`, `Table.tsx`, `UserAvatar.tsx`, `EventList.tsx`, `StudentAttendanceCard.tsx`, and `ChatClientPage.tsx` with safe array guards and defensive fallbacks.
+  - Hardened all modal forms (`ExamForm.tsx`, `StudentForm.tsx`, `SubjectForm.tsx`, `TeacherForm.tsx`, `ClassForm.tsx`) with safe destructured defaults on `relatedData`.
 - **Engineering Quality**:
   - All 21 Vitest tests passing (`npm test`).
   - ESLint passing with zero warnings (`npm run lint`).
-  - Production build passing with zero errors (`npm run build`).
+  - TypeScript compiler passing with zero errors (`npx tsc --noEmit`).
+  - Production build passing with all 28 routes compiled cleanly (`npm run build`).

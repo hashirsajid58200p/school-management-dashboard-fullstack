@@ -45,14 +45,16 @@ export const SortButton = () => {
   );
 };
 
-export const FilterButton = ({ options }: { options: FilterOption[] }) => {
+export const FilterButton = ({ options = [] }: { options?: FilterOption[] }) => {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  const safeOptions = options || [];
+
   // Detect if any option is currently active
-  const activeOption = options.find((opt) => searchParams.get(opt.paramName) === opt.value);
+  const activeOption = safeOptions.find((opt) => searchParams.get(opt.paramName) === opt.value);
   const isActive = !!activeOption;
   const activeVal = activeOption?.value || "";
 
@@ -76,7 +78,7 @@ export const FilterButton = ({ options }: { options: FilterOption[] }) => {
       params.delete(paramName);
     } else {
       // Clear other filters from this options set to prevent conflicts
-      options.forEach((opt) => params.delete(opt.paramName));
+      safeOptions.forEach((opt) => params.delete(opt.paramName));
       params.set(paramName, value);
     }
     setOpen(false);
@@ -85,12 +87,12 @@ export const FilterButton = ({ options }: { options: FilterOption[] }) => {
 
   const handleClear = () => {
     const params = new URLSearchParams(window.location.search);
-    options.forEach((opt) => params.delete(opt.paramName));
+    safeOptions.forEach((opt) => params.delete(opt.paramName));
     setOpen(false);
     router.push(`${window.location.pathname}?${params.toString()}`);
   };
 
-  if (!options || options.length === 0) return null;
+  if (!safeOptions || safeOptions.length === 0) return null;
 
   return (
     <div ref={containerRef} className="relative z-40">
@@ -116,7 +118,7 @@ export const FilterButton = ({ options }: { options: FilterOption[] }) => {
             Filter Scope
           </div>
           <div className="max-h-[200px] overflow-y-auto py-1">
-            {options.map((opt) => (
+            {safeOptions.map((opt) => (
               <button
                 key={`${opt.paramName}-${opt.value}`}
                 onClick={() => handleFilter(opt.paramName, opt.value)}

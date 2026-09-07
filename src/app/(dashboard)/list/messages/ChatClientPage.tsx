@@ -34,11 +34,11 @@ type ChatClientPageProps = {
 };
 
 const ChatClientPage: React.FC<ChatClientPageProps> = ({
-  currentUserId,
-  currentUserRole,
-  initialContacts,
+  currentUserId = "",
+  currentUserRole = "",
+  initialContacts = [],
 }) => {
-  const [contacts, setContacts] = useState<Contact[]>(initialContacts);
+  const [contacts, setContacts] = useState<Contact[]>(initialContacts || []);
   const [selectedContactId, setSelectedContactId] = useState<string | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState("");
@@ -49,20 +49,21 @@ const ChatClientPage: React.FC<ChatClientPageProps> = ({
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   // 1. Filtered contacts based on search query
-  const filteredContacts = contacts.filter((c) =>
-    c.name.toLowerCase().includes(searchQuery.toLowerCase())
+  const safeContacts = contacts || [];
+  const filteredContacts = safeContacts.filter((c) =>
+    c && c.name && c.name.toLowerCase().includes((searchQuery || "").toLowerCase())
   );
 
   // Active Chats: Conversations with messages, or unread count, or the currently selected contact
   const chatsList = filteredContacts.filter(
-    (c) => c.lastMessageTime !== null || c.unreadCount > 0 || c.id === selectedContactId
+    (c) => c && (c.lastMessageTime !== null || c.unreadCount > 0 || c.id === selectedContactId)
   );
 
   // Directory / Teachers: All allowed contacts
   const directoryList = filteredContacts;
 
   // Get currently active contact details
-  const activeContact = contacts.find((c) => c.id === selectedContactId);
+  const activeContact = safeContacts.find((c) => c && c.id === selectedContactId);
 
   // Scroll to bottom helper
   const scrollToBottom = (behavior: ScrollBehavior = "smooth") => {

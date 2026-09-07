@@ -8,27 +8,32 @@ import { CustomSelect } from "./CustomSelect";
 
 interface AttendanceClientProps {
   role: string;
-  classes: any[];
+  classes?: any[];
   lessons?: any[];
-  parentChildren: any[];
-  initialRecords: any[];
-  monthlySummaries: any[];
+  parentChildren?: any[];
+  initialRecords?: any[];
+  monthlySummaries?: any[];
 }
 
 const AttendanceClient = ({
-  role,
-  classes,
-  parentChildren,
-  initialRecords,
-  monthlySummaries,
+  role = "student",
+  classes = [],
+  parentChildren = [],
+  initialRecords = [],
+  monthlySummaries = [],
 }: AttendanceClientProps) => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
+  const safeClasses = classes || [];
+  const safeParentChildren = parentChildren || [];
+  const safeInitialRecords = initialRecords || [];
+  const safeMonthlySummaries = monthlySummaries || [];
+
   // --- TEACHER / ADMIN STATE ---
   const [selectedClassId, setSelectedClassId] = useState<string>(
-    role === "teacher" && classes.length > 0 ? String(classes[0].id) : ""
+    role === "teacher" && safeClasses.length > 0 ? String(safeClasses[0].id) : ""
   );
   const [selectedDate, setSelectedDate] = useState<string>(
     new Date().toISOString().split("T")[0]
@@ -40,45 +45,76 @@ const AttendanceClient = ({
 
   // --- PARENT / STUDENT STATE ---
   const [activeStudentId, setActiveStudentId] = useState<string>(
-    role === "parent" ? parentChildren[0]?.id || "" : ""
+    role === "parent" ? safeParentChildren[0]?.id || "" : ""
   );
 
   // --- TRIGGER DATA LOAD FOR TEACHER/ADMIN ---
   useEffect(() => {
     if (role !== "teacher" && role !== "admin") return;
-    if (!selectedClassId || !selectedDate) {
+    if (!selectedClassId || !selectedDate || Number(selectedClassId) <= 0) {
       setStudents([]);
       setChecklist({});
       return;
     }
 
+    let isMounted = true;
+
     const loadRollCall = async () => {
       setLoadingStudents(true);
       try {
         const fetchedStudents = await getStudentsByClass(Number(selectedClassId));
+        if (!isMounted) return;
+
+        if (!Array.isArray(fetchedStudents)) {
+          setStudents([]);
+          setChecklist({});
+          return;
+        }
+
         setStudents(fetchedStudents);
 
-        const existingRecords = await getAttendanceRecord(
-          Number(selectedClassId),
-          selectedDate
-        );
+        let existingRecords: any[] = [];
+        try {
+          const records = await getAttendanceRecord(
+            Number(selectedClassId),
+            selectedDate
+          );
+          if (Array.isArray(records)) {
+            existingRecords = records;
+          }
+        } catch (recErr) {
+          console.error("Failed to load existing records:", recErr);
+        }
 
         const initialChecklist: { [studentId: string]: boolean } = {};
         fetchedStudents.forEach((student: any) => {
-          const record = existingRecords.find((r) => r.studentId === student.id);
+          if (!student) return;
+          const record = existingRecords.find((r: any) => r && r.studentId === student.id);
           initialChecklist[student.id] = record ? record.present : true;
         });
 
-        setChecklist(initialChecklist);
+        if (isMounted) {
+          setChecklist(initialChecklist);
+        }
       } catch (err) {
-        console.error(err);
-        toast.error("Failed to load class roster.");
+        console.error("Failed to load class roster:", err);
+        if (isMounted) {
+          setStudents([]);
+          setChecklist({});
+          toast.error("Failed to load class roster.");
+        }
       } finally {
-        setLoadingStudents(false);
+        if (isMounted) {
+          setLoadingStudents(false);
+        }
       }
     };
 
     loadRollCall();
+
+    return () => {
+      isMounted = false;
+    };
   }, [selectedClassId, selectedDate, role]);
 
   const handleTogglePresent = (studentId: string) => {
@@ -90,16 +126,20 @@ const AttendanceClient = ({
 
   const handleMarkAll = (present: boolean) => {
     const updated: { [studentId: string]: boolean } = {};
-    students.forEach((s) => {
-      updated[s.id] = present;
+    (students || []).forEach((s) => {
+      if (s && s.id) {
+        updated[s.id] = present;
+      }
     });
     setChecklist(updated);
   };
 
   const handleRandomize = () => {
     const updated: { [studentId: string]: boolean } = {};
-    students.forEach((s) => {
-      updated[s.id] = Math.random() > 0.03;
+    (students || []).forEach((s) => {
+      if (s && s.id) {
+        updated[s.id] = Math.random() > 0.03;
+      }
     });
     setChecklist(updated);
     toast.info("Roster randomized! (97% present / 3% absent probability)");
@@ -181,7 +221,7 @@ const AttendanceClient = ({
   // ==========================================
   if (role === "teacher" || role === "admin") {
     // Supervisor Guard Check
-    if (role === "teacher" && classes.length === 0) {
+    if (role === "teacher" && safeClasses.length === 0) {
       return (
         <div className="bg-slate-50 border border-slate-100 rounded-xl p-12 text-center text-sm font-medium text-slate-500 shadow-inner">
           Access Denied: You are not assigned as a supervisor for any class, so you cannot mark daily attendance.
@@ -201,7 +241,7 @@ const AttendanceClient = ({
             <CustomSelect
               value={selectedClassId}
               onChange={(val) => setSelectedClassId(val)}
-              options={classes.map((cls) => ({ value: String(cls.id), label: cls.name }))}
+              options={safeClasses.map((cls) => ({ value: String(cls.id), label: cls.name }))}
               placeholder="Select Class..."
             />
 
@@ -335,12 +375,12 @@ const AttendanceClient = ({
       </div>
 
       {/* PARENT DROPDOWN FOR SELECTING CHILD */}
-      {role === "parent" && parentChildren.length > 0 && (
+      {role === "parent" && safeParentChildren.length > 0 && (
         <div className="flex flex-col gap-2 max-w-xs bg-slate-50 p-4 rounded-xl border border-slate-100">
           <CustomSelect
             value={activeStudentId}
             onChange={(val) => handleParentChildChange(val)}
-            options={parentChildren.map((child) => ({
+            options={safeParentChildren.map((child) => ({
               value: child.id,
               label: `${child.name} ${child.surname}`,
             }))}
@@ -378,7 +418,7 @@ const AttendanceClient = ({
 
             // Find if there is an attendance record for this day
             const targetDateStr = `${currentYear}-${String(currentMonthIdx + 1).padStart(2, "0")}-${String(cell.dateNum).padStart(2, "0")}`;
-            const record = initialRecords.find((r) => r.date === targetDateStr);
+            const record = safeInitialRecords.find((r) => r.date === targetDateStr);
             const isWeekend = new Date(currentYear, currentMonthIdx, cell.dateNum).getDay() === 0 || 
                               new Date(currentYear, currentMonthIdx, cell.dateNum).getDay() === 6;
 
@@ -438,8 +478,8 @@ const AttendanceClient = ({
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 text-slate-700">
-              {monthlySummaries.length > 0 ? (
-                monthlySummaries.map((summary) => (
+              {safeMonthlySummaries.length > 0 ? (
+                safeMonthlySummaries.map((summary) => (
                   <tr key={summary.id} className="border-b border-gray-100 text-sm hover:bg-slate-50/50 transition-all">
                     <td className="p-4 font-semibold text-slate-800">
                       {monthNames[summary.month - 1]} {summary.year}

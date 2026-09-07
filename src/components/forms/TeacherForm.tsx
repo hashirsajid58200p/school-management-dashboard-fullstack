@@ -61,7 +61,7 @@ const TeacherForm = ({
     }
   }, [state, router, type, setOpen]);
 
-  const { subjects, classes } = relatedData;
+  const { subjects = [], classes = [] } = relatedData || {};
 
   return (
     <form className="flex flex-col gap-4" onSubmit={onSubmit}>

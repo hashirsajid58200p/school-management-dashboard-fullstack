@@ -7,11 +7,11 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 const localizer = momentLocalizer(moment);
 
 const BigCalendar = ({
-  data,
+  data = [],
   title,
   headerContent,
 }: {
-  data: { title: string; start: Date; end: Date; [key: string]: any }[];
+  data?: { title: string; start: Date; end: Date; [key: string]: any }[];
   title?: string;
   headerContent?: React.ReactNode;
 }) => {

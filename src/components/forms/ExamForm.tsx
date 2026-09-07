@@ -69,7 +69,7 @@ const ExamForm = ({
     }
   }, [state, router, type, setOpen]);
 
-  const { lessons } = relatedData;
+  const lessons = relatedData?.lessons || [];
 
   return (
     <form className="flex flex-col gap-4" onSubmit={onSubmit}>

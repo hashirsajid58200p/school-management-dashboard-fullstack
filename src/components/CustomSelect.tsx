@@ -10,7 +10,7 @@ type SelectOption = {
 type CustomSelectProps = {
   value: string;
   onChange: (val: string) => void;
-  options: SelectOption[];
+  options?: SelectOption[];
   placeholder?: string;
   label?: string;
 };
@@ -18,14 +18,15 @@ type CustomSelectProps = {
 export const CustomSelect = ({
   value,
   onChange,
-  options,
+  options = [],
   placeholder = "Select Option...",
   label,
 }: CustomSelectProps) => {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const selectedOpt = options.find((opt) => opt.value === value);
+  const safeOptions = options || [];
+  const selectedOpt = safeOptions.find((opt) => opt.value === value);
   const displayText = selectedOpt ? selectedOpt.label : placeholder;
 
   useEffect(() => {
@@ -59,7 +60,7 @@ export const CustomSelect = ({
 
       {open && (
         <div className="absolute left-0 right-0 mt-1.5 bg-white border border-slate-100 rounded-xl shadow-xl z-50 py-1.5 max-h-[220px] overflow-y-auto divide-y divide-slate-50">
-          {options.map((opt) => (
+          {safeOptions.map((opt) => (
             <button
               key={opt.value}
               type="button"

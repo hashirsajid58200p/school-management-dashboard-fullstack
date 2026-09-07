@@ -1245,26 +1245,41 @@ export const submitAttendance = async (
 };
 
 export const getStudentsByClass = async (classId: number) => {
-  const { userId } = auth();
-  if (!userId) throw new Error("Unauthorized");
+  try {
+    const { userId } = auth();
+    if (!userId) return [];
+    if (!classId || isNaN(classId) || classId <= 0) return [];
 
-  return prisma.student.findMany({
-    where: { classId },
-    select: { id: true, name: true, surname: true },
-    orderBy: { name: "asc" },
-  });
+    return await prisma.student.findMany({
+      where: { classId },
+      select: { id: true, name: true, surname: true },
+      orderBy: { name: "asc" },
+    });
+  } catch (err) {
+    console.error("Error in getStudentsByClass:", err);
+    return [];
+  }
 };
 
 export const getAttendanceRecord = async (classId: number, date: string) => {
-  const { userId } = auth();
-  if (!userId) throw new Error("Unauthorized");
+  try {
+    const { userId } = auth();
+    if (!userId) return [];
+    if (!classId || !date) return [];
 
-  return prisma.attendance.findMany({
-    where: {
-      classId,
-      date: new Date(date),
-    },
-  });
+    const parsedDate = new Date(date);
+    if (isNaN(parsedDate.getTime())) return [];
+
+    return await prisma.attendance.findMany({
+      where: {
+        classId,
+        date: parsedDate,
+      },
+    });
+  } catch (err) {
+    console.error("Error in getAttendanceRecord:", err);
+    return [];
+  }
 };
 
 export const archiveMonthlyAttendanceLogs = async (currentState: CurrentState) => {
