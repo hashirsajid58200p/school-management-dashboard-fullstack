@@ -24,6 +24,12 @@
   - Fixed fall-through bug in `FormContainer.tsx` (missing `break;` in `case "exam"`) that wiped out exam lessons and crashed `ExamForm`.
   - Hardened `TableActions.tsx` (`FilterButton`), `CustomSelect.tsx`, `TeacherScheduleView.tsx`, `Table.tsx`, `UserAvatar.tsx`, `EventList.tsx`, `StudentAttendanceCard.tsx`, and `ChatClientPage.tsx` with safe array guards and defensive fallbacks.
   - Hardened all modal forms (`ExamForm.tsx`, `StudentForm.tsx`, `SubjectForm.tsx`, `TeacherForm.tsx`, `ClassForm.tsx`) with safe destructured defaults on `relatedData`.
+- **Spontaneous Logout & AI Automation Navigation Fix**:
+  - Root Cause: `<Link href="/api/logout">` in `Menu.tsx` was automatically prefetched over HTTP `GET` by Next.js router when the sidebar rendered. `GET /api/logout` was clearing the `auth_session` cookie in the response, destroying the user session and causing sudden logouts when clicking on AI Automation or other side menu options.
+  - Fix: Disallowed cookie clearing on `GET /api/logout` (only explicit `POST /api/logout` clears session). Created dedicated client-side `LogoutButton.tsx` and `NavbarLogoutButton.tsx` (using button `onClick` with `POST /api/logout`).
+  - Set `sameSite: "lax"` in `api/login/route.ts` for reliable top-level navigations.
+  - Added fallback to `decryptSync` in `middleware.ts` and fortified base64url padding in `decryptSync`.
+  - Expanded `routeAccessMap` in `src/lib/settings.ts` to cover `/list/messages(.*)`, `/profile(.*)`, `/settings(.*)`, and sub-paths for all list entities.
 - **Engineering Quality**:
   - All 21 Vitest tests passing (`npm test`).
   - ESLint passing with zero warnings (`npm run lint`).

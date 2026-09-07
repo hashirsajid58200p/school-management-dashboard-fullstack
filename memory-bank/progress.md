@@ -45,6 +45,12 @@
   - Fixed fall-through bug in `FormContainer.tsx` (added missing `break;` in `case "exam"`)
   - Hardened all modal forms (`ExamForm`, `StudentForm`, `SubjectForm`, `TeacherForm`, `ClassForm`) with safe defaults
   - Fortified `TableActions`, `CustomSelect`, `Table`, `TeacherScheduleView`, `UserAvatar`, `EventList`, `StudentAttendanceCard`, and `ChatClientPage`
+- **Session Stability & Logout Fix**:
+  - Eliminated spontaneous logouts caused by Next.js router prefetching `<Link href="/api/logout">`
+  - Replaced prefetchable Links with dedicated `LogoutButton` and `NavbarLogoutButton` using explicit `POST /api/logout`
+  - Disabled destructive cookie mutation on `GET /api/logout`
+  - Set `sameSite: "lax"` on auth session cookies for seamless navigation
+  - Added fallback to `decryptSync` with strict base64url padding support in middleware
 - **Production DevOps & Engineering Quality**:
   - `package.json` build script configured with `"node scripts/prepare-prisma.js && prisma generate && next build"`
   - `jose` imports optimized to prevent Edge Runtime deflate warnings

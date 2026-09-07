@@ -6,6 +6,7 @@ import GlobalSearch from "./GlobalSearch";
 import NavbarMessageIcon from "./NavbarMessageIcon";
 import { getUnreadMessagesCount } from "@/lib/actions";
 import UserAvatar from "./UserAvatar";
+import NavbarLogoutButton from "./NavbarLogoutButton";
 
 const Navbar = async () => {
   const user = await currentUser();
@@ -67,13 +68,7 @@ const Navbar = async () => {
             img={user?.img}
             className="w-9 h-9"
           />
-          <a
-            href="/api/logout"
-            className="p-1.5 hover:bg-gray-100 rounded-full transition-all flex items-center justify-center"
-            title="Log Out"
-          >
-            <Image src="/logout.png" alt="Logout" width={18} height={18} />
-          </a>
+          <NavbarLogoutButton />
         </div>
       </div>
     </div>

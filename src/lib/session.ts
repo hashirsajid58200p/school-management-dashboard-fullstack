@@ -34,12 +34,17 @@ export function decryptSync(token: string | undefined = ""): any | null {
     if (parts.length !== 3) return null;
     const [, payloadB64] = parts;
 
+    let b64 = payloadB64.replace(/-/g, "+").replace(/_/g, "/");
+    while (b64.length % 4) {
+      b64 += "=";
+    }
+
     const payloadJson =
       typeof Buffer !== "undefined"
         ? Buffer.from(payloadB64, "base64url").toString("utf-8")
         : typeof atob !== "undefined"
         ? decodeURIComponent(
-            atob(payloadB64.replace(/-/g, "+").replace(/_/g, "/"))
+            atob(b64)
               .split("")
               .map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
               .join("")
