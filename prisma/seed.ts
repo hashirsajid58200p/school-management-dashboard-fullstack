@@ -12,6 +12,7 @@ import {
   announcementsData,
 } from "../src/lib/data";
 import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
 
@@ -40,6 +41,8 @@ const SLOT_TIMES = [
 
 async function main() {
   console.log("🧹  Cleaning old data...");
+  await prisma.feePayment.deleteMany({});
+  await prisma.monthlyAttendanceSummary.deleteMany({});
   await prisma.attendance.deleteMany({});
   await prisma.result.deleteMany({});
   await prisma.assignment.deleteMany({});
@@ -49,12 +52,14 @@ async function main() {
   await prisma.event.deleteMany({});
   await prisma.student.deleteMany({});
   await prisma.parent.deleteMany({});
+  await prisma.teacher.deleteMany({});
   await prisma.class.deleteMany({});
   await prisma.subject.deleteMany({});
-  await prisma.teacher.deleteMany({});
   await prisma.grade.deleteMany({});
   await prisma.admin.deleteMany({});
   console.log("✅  Cleanup done.\n");
+
+  const defaultHashedPassword = await bcrypt.hash("password", 10);
 
   // 1. Admin
   await prisma.admin.create({
@@ -62,7 +67,7 @@ async function main() {
       id: "admin_test",
       username: "admin",
       email: "admin@school.com",
-      password: "password"
+      password: defaultHashedPassword
     }
   });
   console.log("✅  Admin seeded.");
@@ -109,7 +114,7 @@ async function main() {
         bloodType: "O+",
         sex: i % 2 === 0 ? "MALE" : "FEMALE",
         birthday: new Date("1985-06-15"),
-        password: "password",
+        password: defaultHashedPassword,
         level: t.level,
         subjectId: subjectMap.get(t.subject)!,
       }
@@ -169,7 +174,7 @@ async function main() {
         email,
         phone: p.phone,
         address: p.address,
-        password: "password",
+        password: defaultHashedPassword,
       }
     });
     parentMap.set(p.name, dbId);
@@ -208,7 +213,7 @@ async function main() {
         bloodType: "O+",
         sex: s.class.includes("B") ? "MALE" : "FEMALE",
         birthday: new Date(2019 - s.grade, 5, 1),
-        password: "password",
+        password: defaultHashedPassword,
         classId,
         gradeId,
         parentId,
@@ -331,7 +336,51 @@ async function main() {
   }
   console.log(`✅  ${announcementsData.length} announcements seeded.`);
 
-  console.log("\n🎉  Database fully seeded from data.ts with conflict-free schedules!");
+  // 15. Fee Payments (Income & Expenses across months)
+  const allStudents = await prisma.student.findMany({ select: { id: true } });
+  const currentYear = new Date().getFullYear();
+  const feePayments = [
+    { month: 0, income: 4500, expense: 2100 },
+    { month: 1, income: 3800, expense: 1900 },
+    { month: 2, income: 5200, expense: 2800 },
+    { month: 3, income: 4100, expense: 2300 },
+    { month: 4, income: 4800, expense: 3100 },
+    { month: 5, income: 3500, expense: 2500 },
+    { month: 6, income: 6000, expense: 3400 },
+    { month: 7, income: 5500, expense: 3200 },
+    { month: 8, income: 4900, expense: 2900 },
+    { month: 9, income: 5100, expense: 3000 },
+    { month: 10, income: 4700, expense: 2700 },
+    { month: 11, income: 5300, expense: 3300 },
+  ];
+
+  for (let i = 0; i < feePayments.length; i++) {
+    const fp = feePayments[i];
+    const studentId = allStudents[i % allStudents.length]?.id || "student_test";
+    await prisma.feePayment.create({
+      data: {
+        studentId,
+        amount: fp.income,
+        type: "income",
+        category: "Tuition",
+        description: `Tuition & Term Fees (Month ${fp.month + 1})`,
+        date: new Date(currentYear, fp.month, 10),
+      },
+    });
+    await prisma.feePayment.create({
+      data: {
+        studentId,
+        amount: fp.expense,
+        type: "expense",
+        category: "Operations",
+        description: `Operations & Maintenance (Month ${fp.month + 1})`,
+        date: new Date(currentYear, fp.month, 20),
+      },
+    });
+  }
+  console.log(`✅  Fee payments seeded.`);
+
+  console.log("\n🎉  Database fully seeded from data.ts with conflict-free schedules and finance data!");
 }
 
 main()

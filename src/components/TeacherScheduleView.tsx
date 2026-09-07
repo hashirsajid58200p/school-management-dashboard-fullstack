@@ -33,11 +33,13 @@ const TeacherScheduleView = ({
     activeClassId
       ? lessons.filter((l) => l.classId === activeClassId || l.isBreak)
       : lessons
-  ).map((l) => ({
-    ...l,
-    start: new Date(l.start),
-    end: new Date(l.end),
-  }));
+  )
+    .filter((l) => l && l.start && l.end)
+    .map((l) => ({
+      ...l,
+      start: new Date(l.start),
+      end: new Date(l.end),
+    }));
 
   const activeClass = classes.find((cls) => cls.id === activeClassId);
   const title = activeClass ? `Schedule (${activeClass.name})` : "Schedule";

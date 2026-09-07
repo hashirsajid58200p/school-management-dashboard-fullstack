@@ -1,9 +1,10 @@
 version: '3.8'
 
 services:
-  postgress:
-    image: postgres:15
+  postgres:
+    image: postgres:15-alpine
     container_name: postgres_db
+    restart: always
     environment:
       POSTGRES_USER: myuser
       POSTGRES_PASSWORD: mypassword
@@ -12,16 +13,27 @@ services:
       - '5432:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U myuser -d mydb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
     
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: nextjs_app
+    restart: always
     ports:
       - '3000:3000'
     environment:
-      - DATABASE_URL: postgresql://myuser:mypassword@[YOUR_SERVER_IP]:5432/mydb
+      - DATABASE_URL=postgresql://myuser:mypassword@postgres:5432/mydb
+      - SESSION_SECRET=change_me_to_a_secure_random_string_at_least_32_chars_long
+      - NODE_ENV=production
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
 
 volumes:
   postgres_data:

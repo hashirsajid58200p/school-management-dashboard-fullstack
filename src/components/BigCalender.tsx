@@ -41,33 +41,50 @@ const BigCalendar = ({
 
   // Center events vertically in their 60-minute timeslot by shifting start/end by 5 minutes.
   // We keep displayStart and displayEnd to show the correct time labels inside the card.
-  const centeredEvents = data.map((event) => {
-    const displayStart = new Date(event.start);
-    const displayEnd = new Date(event.end);
-    
-    const isBreak = event.isBreak;
-    const isSchoolEvent = event.isSchoolEvent;
-    const isPtm = event.isPtm;
-    const startOffset = 5 * 60 * 1000;
-    
-    const centeredStart = new Date(event.start.getTime() + startOffset);
-    let centeredEnd = new Date(event.end.getTime() + startOffset);
+  const centeredEvents = (data || [])
+    .filter((event) => event && event.start && event.end)
+    .map((event) => {
+      const displayStart = new Date(event.start);
+      const displayEnd = new Date(event.end);
 
-    if (isBreak) {
-      centeredEnd = new Date(event.start.getTime() + 55 * 60 * 1000);
-    } else if (isSchoolEvent || isPtm) {
-      // Shrink by 5 minutes at the end to create a bottom gap
-      centeredEnd = new Date(event.end.getTime() - startOffset);
-    }
+      if (isNaN(displayStart.getTime()) || isNaN(displayEnd.getTime())) {
+        return null;
+      }
+      
+      const isBreak = event.isBreak;
+      const isSchoolEvent = event.isSchoolEvent;
+      const isPtm = event.isPtm;
+      const startOffset = 5 * 60 * 1000;
+      
+      const centeredStart = new Date(displayStart.getTime() + startOffset);
+      let centeredEnd = new Date(displayEnd.getTime() + startOffset);
 
-    return {
-      ...event,
-      displayStart,
-      displayEnd,
-      start: centeredStart,
-      end: centeredEnd,
-    };
-  });
+      if (isBreak) {
+        centeredEnd = new Date(displayStart.getTime() + 55 * 60 * 1000);
+      } else if (isSchoolEvent || isPtm) {
+        // Shrink by 5 minutes at the end to create a bottom gap
+        centeredEnd = new Date(displayEnd.getTime() - startOffset);
+      }
+
+      return {
+        ...event,
+        displayStart,
+        displayEnd,
+        start: centeredStart,
+        end: centeredEnd,
+      };
+    })
+    .filter((item): item is NonNullable<typeof item> => Boolean(item));
+
+  // Determine reference date from first valid event or current week's Monday
+  const defaultDate = centeredEvents.length > 0 && centeredEvents[0]?.start
+    ? new Date(centeredEvents[0].start)
+    : new Date();
+
+  const minTime = new Date(defaultDate);
+  minTime.setHours(8, 0, 0, 0);
+  const maxTime = new Date(defaultDate);
+  maxTime.setHours(14, 0, 0, 0);
 
   return (
     <Calendar
@@ -77,9 +94,10 @@ const BigCalendar = ({
       endAccessor="end"
       views={["work_week"]}
       defaultView={Views.WORK_WEEK}
+      defaultDate={defaultDate}
       style={{ height: "100%" }}
-      min={new Date(new Date().setHours(8, 0, 0, 0))}
-      max={new Date(new Date().setHours(14, 0, 0, 0))}
+      min={minTime}
+      max={maxTime}
       formats={{
         dayFormat: (date: Date, culture: any, localizer: any) =>
           localizer.format(date, "dddd", culture),

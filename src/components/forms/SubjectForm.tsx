@@ -36,6 +36,7 @@ const SubjectForm = ({
     {
       success: false,
       error: false,
+      message: "",
     }
   );
 
@@ -48,9 +49,13 @@ const SubjectForm = ({
 
   useEffect(() => {
     if (state.success) {
-      toast(`Subject has been ${type === "create" ? "created" : "updated"}!`);
+      toast.success(
+        state.message || `Subject has been ${type === "create" ? "created" : "updated"}!`
+      );
       setOpen(false);
       router.refresh();
+    } else if (state.error) {
+      toast.error(state.message || "Failed to save subject.");
     }
   }, [state, router, type, setOpen]);
 

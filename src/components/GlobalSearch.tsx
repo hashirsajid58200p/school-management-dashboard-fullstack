@@ -144,7 +144,7 @@ const GlobalSearch = () => {
             </div>
           ) : (
             <div className="p-6 text-center text-slate-400 text-xs font-medium">
-              No matches found for "{query}"
+              No matches found for &quot;{query}&quot;
             </div>
           )}
         </div>

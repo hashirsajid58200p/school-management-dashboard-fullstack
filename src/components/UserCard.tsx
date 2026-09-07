@@ -14,12 +14,14 @@ const UserCard = async ({
   };
 
   const data = await modelMap[type].count();
+  const currentYear = new Date().getFullYear();
+  const academicYear = `${currentYear}/${(currentYear + 1).toString().slice(-2)}`;
 
   return (
     <div className="rounded-2xl odd:bg-hsPurple even:bg-hsYellow p-4 flex-1 min-w-[130px]">
       <div className="flex justify-between items-center">
-        <span className="text-[10px] bg-white px-2 py-1 rounded-full text-green-600">
-          2024/25
+        <span className="text-[10px] bg-white px-2 py-1 rounded-full text-green-600 font-medium">
+          {academicYear}
         </span>
         <Image src="/more.png" alt="" width={20} height={20} />
       </div>

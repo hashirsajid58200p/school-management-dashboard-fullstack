@@ -18,6 +18,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (typeof window !== 'undefined') {
+                window.addEventListener('error', function(e) {
+                  if (e.message && (e.message.includes("reading 'startTime'") || (e.filename && e.filename.includes('anonymous')))) {
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                  }
+                }, true);
+              }
+            `,
+          }}
+        />
+      </head>
       <body className={inter.className}>
         {children} <ToastContainer position="bottom-right" theme="dark" />
       </body>

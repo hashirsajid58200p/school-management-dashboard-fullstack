@@ -37,6 +37,7 @@ model Student {
   birthday         DateTime
   password         String?                    @default("123456")
   monthlySummaries MonthlyAttendanceSummary[]
+  feePayments      FeePayment[]
 }
 
 model Teacher {
@@ -168,6 +169,8 @@ model Attendance {
   student   Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
   classId   Int
   class     Class   @relation(fields: [classId], references: [id], onDelete: Cascade)
+
+  @@unique([studentId, date])
 }
 
 model MonthlyAttendanceSummary {
@@ -210,5 +213,16 @@ model Message {
   isRead     Boolean  @default(false)
 
   @@index([senderId, receiverId])
+}
+
+model FeePayment {
+  id          Int      @id @default(autoincrement())
+  amount      Float
+  type        String   // "income" or "expense"
+  category    String   // "Tuition", "Salaries", "Maintenance", "Equipment", etc.
+  date        DateTime @default(now())
+  description String?
+  studentId   String?
+  student     Student? @relation(fields: [studentId], references: [id], onDelete: SetNull)
 }
 

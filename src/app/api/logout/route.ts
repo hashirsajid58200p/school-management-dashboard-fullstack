@@ -9,3 +9,13 @@ export async function POST() {
   });
   return response;
 }
+
+export async function GET(request: Request) {
+  const response = NextResponse.redirect(new URL("/sign-in", request.url));
+  response.cookies.set("auth_session", "", {
+    httpOnly: true,
+    expires: new Date(0),
+    path: "/",
+  });
+  return response;
+}

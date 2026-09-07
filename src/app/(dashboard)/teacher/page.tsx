@@ -6,10 +6,11 @@ import { adjustScheduleToCurrentWeek } from "@/lib/utils";
 
 const TeacherPage = async () => {
   const { userId } = auth();
+  if (!userId) return null;
 
   // 1. Fetch all classes assigned to this teacher
   const teacher = await prisma.teacher.findUnique({
-    where: { id: userId! },
+    where: { id: userId },
     select: { classes: { select: { id: true, name: true } } }
   });
   const teacherClasses = teacher?.classes.sort((a, b) => a.name.localeCompare(b.name)) || [];

@@ -6,8 +6,8 @@ import prisma from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/settings";
 import { Prisma } from "@prisma/client";
 import Image from "next/image";
-
 import { auth } from "@/lib/auth";
+import { SortButton, FilterButton } from "@/components/TableActions";
 
 type ResultList = {
   id: number;
@@ -78,7 +78,7 @@ const renderRow = (item: ResultList) => (
     className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-hsPurpleLight"
   >
     <td className="flex items-center gap-4 p-4">{item.title}</td>
-    <td>{item.studentName + " " + item.studentName}</td>
+    <td>{item.studentName + " " + item.studentSurname}</td>
     <td className="hidden md:table-cell">{item.score}</td>
     <td className="hidden md:table-cell">
       {item.teacherName + " " + item.teacherSurname}
@@ -103,6 +103,7 @@ const renderRow = (item: ResultList) => (
   const { page, ...queryParams } = searchParams;
 
   const p = page ? parseInt(page) : 1;
+  const sort = searchParams?.sort === "desc" ? "desc" : "asc";
 
   // URL PARAMS CONDITION
 
@@ -112,6 +113,11 @@ const renderRow = (item: ResultList) => (
     for (const [key, value] of Object.entries(queryParams)) {
       if (value !== undefined) {
         switch (key) {
+          case "classId":
+            query.student = {
+              classId: parseInt(value),
+            };
+            break;
           case "studentId":
             query.studentId = value;
             break;
@@ -179,6 +185,7 @@ const renderRow = (item: ResultList) => (
           },
         },
       },
+      orderBy: { score: sort },
       take: ITEM_PER_PAGE,
       skip: ITEM_PER_PAGE * (p - 1),
     }),
@@ -205,6 +212,15 @@ const renderRow = (item: ResultList) => (
     };
   });
 
+  const filterClasses = await prisma.class.findMany({
+    select: { id: true, name: true },
+  });
+  const filterOptions = filterClasses.map((c) => ({
+    label: `Class ${c.name}`,
+    value: String(c.id),
+    paramName: "classId",
+  }));
+
   return (
     <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
       {/* TOP */}
@@ -213,12 +229,12 @@ const renderRow = (item: ResultList) => (
         <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
           {role !== "parent" && <TableSearch />}
           <div className="flex items-center gap-4 self-end">
-            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-hsYellow">
-              <Image src="/filter.png" alt="" width={14} height={14} />
-            </button>
-            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-hsYellow">
-              <Image src="/sort.png" alt="" width={14} height={14} />
-            </button>
+            {count > 1 && (
+              <>
+                <FilterButton options={filterOptions} />
+                <SortButton />
+              </>
+            )}
             {(role === "admin" || role === "teacher") && (
               <FormContainer table="result" type="create" />
             )}

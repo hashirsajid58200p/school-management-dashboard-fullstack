@@ -138,4 +138,46 @@ export const eventSchema = z.object({
 
 export type EventSchema = z.infer<typeof eventSchema>;
 
+export const assignmentSchema = z.object({
+  id: z.coerce.number().optional(),
+  title: z.string().min(1, { message: "Title is required!" }),
+  startDate: z.coerce.date({ message: "Start date is required!" }),
+  dueDate: z.coerce.date({ message: "Due date is required!" }),
+  lessonId: z.coerce.number({ message: "Lesson is required!" }),
+});
+
+export type AssignmentSchema = z.infer<typeof assignmentSchema>;
+
+export const resultSchema = z.object({
+  id: z.coerce.number().optional(),
+  score: z.coerce.number().min(0, { message: "Score must be at least 0!" }).max(100, { message: "Score must be at most 100!" }),
+  studentId: z.string().min(1, { message: "Student is required!" }),
+  examId: z.coerce.number().optional().nullable().or(z.literal("")),
+  assignmentId: z.coerce.number().optional().nullable().or(z.literal("")),
+});
+
+export type ResultSchema = z.infer<typeof resultSchema>;
+
+export const announcementSchema = z.object({
+  id: z.coerce.number().optional(),
+  title: z.string().min(1, { message: "Title is required!" }),
+  description: z.string().min(1, { message: "Description is required!" }),
+  date: z.coerce.date({ message: "Date is required!" }),
+  classId: z.coerce.number().optional().nullable().or(z.literal("")),
+});
+
+export type AnnouncementSchema = z.infer<typeof announcementSchema>;
+
+export const feePaymentSchema = z.object({
+  id: z.coerce.number().optional(),
+  amount: z.coerce.number().min(1, { message: "Amount must be greater than 0!" }),
+  type: z.enum(["income", "expense"], { message: "Type is required!" }),
+  category: z.string().min(1, { message: "Category is required!" }),
+  date: z.coerce.date({ message: "Date is required!" }),
+  description: z.string().optional(),
+  studentId: z.string().optional().nullable().or(z.literal("")),
+});
+
+export type FeePaymentSchema = z.infer<typeof feePaymentSchema>;
+
 

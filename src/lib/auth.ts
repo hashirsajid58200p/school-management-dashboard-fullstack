@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { decrypt } from "./session";
+import { decrypt, decryptSync } from "./session";
 
 export interface SessionClaims {
   metadata: {
@@ -8,17 +8,17 @@ export interface SessionClaims {
 }
 
 export function auth() {
-  const cookieStore = cookies();
-  const sessionCookie = cookieStore.get("auth_session")?.value;
-  if (!sessionCookie) {
-    return { userId: null, sessionClaims: null };
-  }
-  const decrypted = decrypt(sessionCookie);
-  if (!decrypted) {
-    return { userId: null, sessionClaims: null };
-  }
   try {
-    const user = JSON.parse(decrypted);
+    const cookieStore = cookies();
+    const sessionCookie = cookieStore.get("auth_session")?.value;
+    if (!sessionCookie) {
+      return { userId: null, sessionClaims: null };
+    }
+    const decrypted = decryptSync(sessionCookie);
+    if (!decrypted) {
+      return { userId: null, sessionClaims: null };
+    }
+    const user = typeof decrypted === "string" ? JSON.parse(decrypted) : decrypted;
     return {
       userId: user.id,
       sessionClaims: {
@@ -32,14 +32,23 @@ export function auth() {
   }
 }
 
+export function requireRole(allowed: string[]) {
+  const { sessionClaims } = auth();
+  const role = (sessionClaims?.metadata as { role?: string })?.role;
+  if (!role || !allowed.includes(role)) {
+    throw new Error("Unauthorized");
+  }
+  return role;
+}
+
 export async function currentUser() {
   const cookieStore = cookies();
   const sessionCookie = cookieStore.get("auth_session")?.value;
   if (!sessionCookie) return null;
-  const decrypted = decrypt(sessionCookie);
-  if (!decrypted) return null;
   try {
-    const user = JSON.parse(decrypted);
+    const decrypted = (await decrypt(sessionCookie)) || decryptSync(sessionCookie);
+    if (!decrypted) return null;
+    const user = typeof decrypted === "string" ? JSON.parse(decrypted) : decrypted;
     return {
       id: user.id,
       firstName: user.name,
@@ -53,37 +62,4 @@ export async function currentUser() {
   } catch (e) {
     return null;
   }
-}
-
-// Mock clerkClient for actions.ts to completely bypass Clerk API calls
-export const clerkClient = {
-  users: {
-    createUser: async (data: any) => {
-      // Return a mock object with generated user ID.
-      // This allows actions.ts to proceed to save record to local DB.
-      return { id: `mock_user_${Math.random().toString(36).substring(2, 11)}` };
-    },
-    updateUser: async (id: string, data: any) => {
-      return {};
-    },
-    deleteUser: async (id: string) => {
-      return {};
-    }
-  }
-};
-
-// Client-side hook mock for logout.tsx
-export function useClerk() {
-  return {
-    signOut: (callback?: () => void) => {
-      fetch("/api/logout", { method: "POST" })
-        .then(() => {
-          if (callback) callback();
-          else window.location.href = "/sign-in";
-        })
-        .catch(() => {
-          window.location.href = "/sign-in";
-        });
-    }
-  };
 }

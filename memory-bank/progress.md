@@ -2,27 +2,43 @@
 
 ## What Works
 - **Authentication & RBAC**:
-  - Custom encrypted cookie auth (`/api/login`, `/api/logout`, `src/lib/session.ts`)
-  - Middleware route security based on roles (`admin`, `teacher`, `student`, `parent`)
-- **Dashboard Views**:
-  - Admin Dashboard (`/admin`): Key metrics, CountChart, AttendanceChart, FinanceChart, EventCalendar, Announcements
-  - Teacher Dashboard (`/teacher`): Schedule view, Teacher-specific announcements and classes
-  - Student Dashboard (`/student`): Daily schedule, Exam/Assignment calendar, Class announcements
-  - Parent Dashboard (`/parent`): Children overview, schedules, and announcements
-- **Entity Management (CRUD)**:
-  - Teachers, Students, Parents, Subjects, Classes, Lessons, Exams, Assignments, Results, Events, Announcements
-  - Forms with Zod validation and React Hook Form
-- **Attendance System**:
-  - Interactive Attendance client (`src/components/AttendanceClient.tsx`)
-  - Daily & monthly attendance tracking and summaries
-- **Realtime Messaging**:
-  - Messages list & UI with Pusher integration (`src/lib/pusher.ts`, `src/lib/pusher-client.ts`)
-- **Settings & Profile**:
-  - Dynamic user profile and settings management (`/profile`, `/settings`)
-
-## In Progress / Backlog
-- Waiting for user's next objective/instructions.
-
-## Known Notes & Considerations
-- Auth is fully decoupled from Clerk cloud API using custom session management and mock interfaces in `src/lib/auth.ts`.
-- Local database uses SQLite (`dev.db`), while Docker Compose provides a PostgreSQL container setup for production deployment.
+  - Signed JWT session authentication via `jose` and `SESSION_SECRET` with 7-day expiration (`/api/login`, `src/lib/session.ts`, `src/middleware.ts`)
+  - Both email and username supported for login (`/api/login`)
+  - Server-side authorization helper `requireRole` on all mutating Server Actions in `src/lib/actions.ts`
+  - In-memory rate limiting against brute-force login attempts
+  - 10-round bcrypt password hashing on seed, login, and all user CRUD operations
+  - Purged legacy Clerk mock code in favor of native standard `crypto.randomUUID()`
+- **Git & Repository Hygiene**:
+  - Permanently purged `prisma/dev.db` from all Git history via `git-filter-repo`
+  - `.gitignore` ignores all local SQLite database files
+  - Unused imports, orphaned code, and static placeholder elements cleaned across the app
+- **Data Integrity & Automations**:
+  - Conflict-free timetable generator wrapped in atomic `prisma.$transaction` rollback
+  - Pre-execution snapshot logic in `promoteAcademicYear` preventing double-promotion of recycled Grade 10 students
+  - Atomic transactions in `generateAttendanceSimulation` and `archiveMonthlyAttendanceLogs`
+  - Unique DB constraint `@@unique([studentId, date])` and `upsert` in `submitAttendance`
+- **Entity Management (100% Full CRUD)**:
+  - Teachers, Students, Parents, Subjects, Classes, Lessons, Exams, Assignments, Results, Events, Announcements, FeePayments
+  - Created missing `LessonForm.tsx`, wired into `FormContainer` and `FormModal`
+  - Created form modals (`AssignmentForm`, `ResultForm`, `AnnouncementForm`, `FeePaymentForm`) with Zod schemas
+  - Corrected `deleteActionMap` to delete proper models rather than subjects
+- **Dynamic Metrics & Cards**:
+  - Replaced static 9.2 mock score in `Performance.tsx` with dynamic GPA and slice calculation
+  - Student detail (`/list/students/[id]`): computes live GPA from actual `Result` records
+  - Teacher detail (`/list/teachers/[id]`): calculates real attendance rate and student exam/assignment averages
+  - Navbar announcement bell icon displays real dynamic count and links to `/list/announcements`
+  - Announcements card "View All" links to `/list/announcements`
+  - UserCards compute dynamic academic year `${year}/${(year+1)}`
+  - `CountChartContainer` guarded against `boys + girls === 0`
+- **Settings & User Profile**:
+  - Settings page queries Prisma for live profile info and executes `updateProfile` server action
+  - Password change validates current password against bcrypt hash before updating
+  - System preferences (language, theme, calendar view) and notifications persist to local storage
+- **Production DevOps & Vercel Readiness**:
+  - `package.json` build script configured with `"prisma generate && next build"`
+  - `jose` imports optimized to prevent Edge Runtime deflate warnings
+  - Multi-stage `Dockerfile` with standalone Next.js build, non-root runner, and `docker-entrypoint.sh`
+  - PostgreSQL schema ready (`prisma/schema.postgresql.prisma`)
+  - `.env.example` documenting all configuration keys
+  - Vitest test suite with 21 passing unit tests and GitHub Actions CI workflow (`.github/workflows/ci.yml`)
+  - Zero ESLint warnings or errors (`npm run lint`), zero TypeScript errors (`npx tsc --noEmit`), and clean production build (`npm run build`)

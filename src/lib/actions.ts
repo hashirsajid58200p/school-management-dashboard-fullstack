@@ -10,17 +10,40 @@ import {
   TeacherSchema,
   LessonSchema,
   EventSchema,
+  AssignmentSchema,
+  ResultSchema,
+  AnnouncementSchema,
+  FeePaymentSchema,
 } from "./formValidationSchemas";
 import prisma from "./prisma";
-import { clerkClient, auth } from "@/lib/auth";
+import { auth, requireRole } from "@/lib/auth";
+import bcrypt from "bcryptjs";
 
-type CurrentState = { success: boolean; error: boolean };
+export type CurrentState = { success: boolean; error: boolean; message?: string };
+
+function getErrorMessage(err: any, defaultMsg: string = "Something went wrong!"): string {
+  if (err?.message && (err.message.startsWith("Unauthorized") || err.message.includes("conflict-free") || err.message.includes("Access Denied") || err.message.includes("capacity"))) {
+    return err.message;
+  }
+  if (err?.code === "P2002") {
+    const targets = err.meta?.target ? ` (${Array.isArray(err.meta.target) ? err.meta.target.join(", ") : err.meta.target})` : "";
+    return `A record with this value already exists${targets}.`;
+  }
+  if (err?.code === "P2003") {
+    return "Foreign key constraint failed. Related record does not exist or is referenced elsewhere.";
+  }
+  if (err?.code === "P2025") {
+    return "Record not found or already deleted.";
+  }
+  return err?.message || defaultMsg;
+}
 
 export const createSubject = async (
   currentState: CurrentState,
   data: SubjectSchema
 ) => {
   try {
+    requireRole(["admin"]);
     await prisma.subject.create({
       data: {
         name: data.name,
@@ -30,11 +53,11 @@ export const createSubject = async (
       },
     });
 
-    // revalidatePath("/list/subjects");
-    return { success: true, error: false };
-  } catch (err) {
+    revalidatePath("/list/subjects");
+    return { success: true, error: false, message: "Subject created successfully!" };
+  } catch (err: any) {
     console.log(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to create subject") };
   }
 };
 
@@ -43,6 +66,7 @@ export const updateSubject = async (
   data: SubjectSchema
 ) => {
   try {
+    requireRole(["admin"]);
     await prisma.subject.update({
       where: {
         id: data.id,
@@ -55,11 +79,11 @@ export const updateSubject = async (
       },
     });
 
-    // revalidatePath("/list/subjects");
-    return { success: true, error: false };
-  } catch (err) {
+    revalidatePath("/list/subjects");
+    return { success: true, error: false, message: "Subject updated successfully!" };
+  } catch (err: any) {
     console.log(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to update subject") };
   }
 };
 
@@ -69,17 +93,18 @@ export const deleteSubject = async (
 ) => {
   const id = data.get("id") as string;
   try {
+    requireRole(["admin"]);
     await prisma.subject.delete({
       where: {
         id: parseInt(id),
       },
     });
 
-    // revalidatePath("/list/subjects");
-    return { success: true, error: false };
-  } catch (err) {
+    revalidatePath("/list/subjects");
+    return { success: true, error: false, message: "Subject deleted successfully!" };
+  } catch (err: any) {
     console.log(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to delete subject") };
   }
 };
 
@@ -88,15 +113,16 @@ export const createClass = async (
   data: ClassSchema
 ) => {
   try {
+    requireRole(["admin"]);
     await prisma.class.create({
       data,
     });
 
-    // revalidatePath("/list/class");
-    return { success: true, error: false };
-  } catch (err) {
+    revalidatePath("/list/classes");
+    return { success: true, error: false, message: "Class created successfully!" };
+  } catch (err: any) {
     console.log(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to create class") };
   }
 };
 
@@ -105,6 +131,7 @@ export const updateClass = async (
   data: ClassSchema
 ) => {
   try {
+    requireRole(["admin"]);
     await prisma.class.update({
       where: {
         id: data.id,
@@ -112,11 +139,11 @@ export const updateClass = async (
       data,
     });
 
-    // revalidatePath("/list/class");
-    return { success: true, error: false };
-  } catch (err) {
+    revalidatePath("/list/classes");
+    return { success: true, error: false, message: "Class updated successfully!" };
+  } catch (err: any) {
     console.log(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to update class") };
   }
 };
 
@@ -126,17 +153,18 @@ export const deleteClass = async (
 ) => {
   const id = data.get("id") as string;
   try {
+    requireRole(["admin"]);
     await prisma.class.delete({
       where: {
         id: parseInt(id),
       },
     });
 
-    // revalidatePath("/list/class");
-    return { success: true, error: false };
-  } catch (err) {
+    revalidatePath("/list/classes");
+    return { success: true, error: false, message: "Class deleted successfully!" };
+  } catch (err: any) {
     console.log(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to delete class") };
   }
 };
 
@@ -144,16 +172,12 @@ export const createTeacher = async (
   currentState: CurrentState,
   data: TeacherSchema
 ) => {
-  const { sessionClaims } = auth();
-  const role = (sessionClaims?.metadata as { role?: string })?.role;
-  if (role !== "admin") {
-    return { success: false, error: true };
-  }
-
   try {
+    requireRole(["admin"]);
+
     // 1. Cap class count to at most 3
     if (data.classes && data.classes.length > 3) {
-      return { success: false, error: true };
+      return { success: false, error: true, message: "A teacher can be assigned to at most 3 classes." };
     }
     // 2. Validate grade level matches teacher level
     if (data.classes && data.classes.length > 0) {
@@ -164,28 +188,24 @@ export const createTeacher = async (
       for (const cls of selectedClasses) {
         const gradeLevel = cls.grade.level;
         if (data.level === "Junior" && (gradeLevel < 1 || gradeLevel > 3)) {
-          return { success: false, error: true };
+          return { success: false, error: true, message: "Junior teachers can only teach grades 1-3." };
         }
         if (data.level === "Mid" && (gradeLevel < 4 || gradeLevel > 7)) {
-          return { success: false, error: true };
+          return { success: false, error: true, message: "Mid-level teachers can only teach grades 4-7." };
         }
         if (data.level === "Senior" && (gradeLevel < 8 || gradeLevel > 10)) {
-          return { success: false, error: true };
+          return { success: false, error: true, message: "Senior teachers can only teach grades 8-10." };
         }
       }
     }
 
-    const user = await clerkClient.users.createUser({
-      username: data.username,
-      password: data.password,
-      firstName: data.name,
-      lastName: data.surname,
-      publicMetadata:{role:"teacher"}
-    });
+    const hashedPassword = await bcrypt.hash(data.password && data.password.length > 0 ? data.password : "123456", 10);
+
+    const teacherId = crypto.randomUUID();
 
     await prisma.teacher.create({
       data: {
-        id: user.id,
+        id: teacherId,
         username: data.username,
         name: data.name,
         surname: data.surname,
@@ -196,7 +216,7 @@ export const createTeacher = async (
         bloodType: data.bloodType,
         sex: data.sex,
         birthday: data.birthday,
-        password: data.password || "123456",
+        password: hashedPassword,
         subjectId: data.subjectId,
         level: data.level,
         classes: {
@@ -207,10 +227,11 @@ export const createTeacher = async (
       },
     });
 
-    return { success: true, error: false };
-  } catch (err) {
+    revalidatePath("/list/teachers");
+    return { success: true, error: false, message: "Teacher created successfully!" };
+  } catch (err: any) {
     console.log(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to create teacher") };
   }
 };
 
@@ -218,20 +239,16 @@ export const updateTeacher = async (
   currentState: CurrentState,
   data: TeacherSchema
 ) => {
-  const { sessionClaims } = auth();
-  const role = (sessionClaims?.metadata as { role?: string })?.role;
-  if (role !== "admin") {
-    return { success: false, error: true };
-  }
-
   if (!data.id) {
-    return { success: false, error: true };
+    return { success: false, error: true, message: "Teacher ID is required" };
   }
 
   try {
+    requireRole(["admin"]);
+
     // 1. Cap class count to at most 3
     if (data.classes && data.classes.length > 3) {
-      return { success: false, error: true };
+      return { success: false, error: true, message: "A teacher can be assigned to at most 3 classes." };
     }
     // 2. Validate grade level matches teacher level
     if (data.classes && data.classes.length > 0) {
@@ -242,30 +259,25 @@ export const updateTeacher = async (
       for (const cls of selectedClasses) {
         const gradeLevel = cls.grade.level;
         if (data.level === "Junior" && (gradeLevel < 1 || gradeLevel > 3)) {
-          return { success: false, error: true };
+          return { success: false, error: true, message: "Junior teachers can only teach grades 1-3." };
         }
         if (data.level === "Mid" && (gradeLevel < 4 || gradeLevel > 7)) {
-          return { success: false, error: true };
+          return { success: false, error: true, message: "Mid-level teachers can only teach grades 4-7." };
         }
         if (data.level === "Senior" && (gradeLevel < 8 || gradeLevel > 10)) {
-          return { success: false, error: true };
+          return { success: false, error: true, message: "Senior teachers can only teach grades 8-10." };
         }
       }
     }
 
-    await clerkClient.users.updateUser(data.id, {
-      username: data.username,
-      ...(data.password !== "" && { password: data.password }),
-      firstName: data.name,
-      lastName: data.surname,
-    });
+    const hashedPassword = data.password && data.password.length > 0 ? await bcrypt.hash(data.password, 10) : undefined;
 
     await prisma.teacher.update({
       where: {
         id: data.id,
       },
       data: {
-        ...(data.password !== "" && { password: data.password }),
+        ...(hashedPassword ? { password: hashedPassword } : {}),
         username: data.username,
         name: data.name,
         surname: data.surname,
@@ -285,10 +297,12 @@ export const updateTeacher = async (
         },
       },
     });
-    return { success: true, error: false };
-  } catch (err) {
+
+    revalidatePath("/list/teachers");
+    return { success: true, error: false, message: "Teacher updated successfully!" };
+  } catch (err: any) {
     console.log(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to update teacher") };
   }
 };
 
@@ -298,7 +312,7 @@ export const deleteTeacher = async (
 ) => {
   const id = data.get("id") as string;
   try {
-    await clerkClient.users.deleteUser(id);
+    requireRole(["admin"]);
 
     await prisma.teacher.delete({
       where: {
@@ -306,11 +320,11 @@ export const deleteTeacher = async (
       },
     });
 
-    // revalidatePath("/list/teachers");
-    return { success: true, error: false };
-  } catch (err) {
+    revalidatePath("/list/teachers");
+    return { success: true, error: false, message: "Teacher deleted successfully!" };
+  } catch (err: any) {
     console.log(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to delete teacher") };
   }
 };
 
@@ -318,28 +332,25 @@ export const createStudent = async (
   currentState: CurrentState,
   data: StudentSchema
 ) => {
-  console.log(data);
   try {
+    requireRole(["admin"]);
+
     const classItem = await prisma.class.findUnique({
       where: { id: data.classId },
       include: { _count: { select: { students: true } } },
     });
 
     if (classItem && classItem.capacity === classItem._count.students) {
-      return { success: false, error: true };
+      return { success: false, error: true, message: "Class is at maximum capacity!" };
     }
 
-    const user = await clerkClient.users.createUser({
-      username: data.username,
-      password: data.password,
-      firstName: data.name,
-      lastName: data.surname,
-      publicMetadata:{role:"student"}
-    });
+    const hashedPassword = await bcrypt.hash(data.password && data.password.length > 0 ? data.password : "123456", 10);
+
+    const studentId = crypto.randomUUID();
 
     await prisma.student.create({
       data: {
-        id: user.id,
+        id: studentId,
         username: data.username,
         name: data.name,
         surname: data.surname,
@@ -353,15 +364,15 @@ export const createStudent = async (
         gradeId: data.gradeId,
         classId: data.classId,
         parentId: data.parentId,
-        password: data.password || "123456",
+        password: hashedPassword,
       },
     });
 
-    // revalidatePath("/list/students");
-    return { success: true, error: false };
-  } catch (err) {
+    revalidatePath("/list/students");
+    return { success: true, error: false, message: "Student created successfully!" };
+  } catch (err: any) {
     console.log(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to create student") };
   }
 };
 
@@ -370,22 +381,19 @@ export const updateStudent = async (
   data: StudentSchema
 ) => {
   if (!data.id) {
-    return { success: false, error: true };
+    return { success: false, error: true, message: "Student ID is required" };
   }
   try {
-    const user = await clerkClient.users.updateUser(data.id, {
-      username: data.username,
-      ...(data.password !== "" && { password: data.password }),
-      firstName: data.name,
-      lastName: data.surname,
-    });
+    requireRole(["admin"]);
+
+    const hashedPassword = data.password && data.password.length > 0 ? await bcrypt.hash(data.password, 10) : undefined;
 
     await prisma.student.update({
       where: {
         id: data.id,
       },
       data: {
-        ...(data.password !== "" && { password: data.password }),
+        ...(hashedPassword ? { password: hashedPassword } : {}),
         username: data.username,
         name: data.name,
         surname: data.surname,
@@ -401,11 +409,12 @@ export const updateStudent = async (
         parentId: data.parentId,
       },
     });
-    // revalidatePath("/list/students");
-    return { success: true, error: false };
-  } catch (err) {
+
+    revalidatePath("/list/students");
+    return { success: true, error: false, message: "Student updated successfully!" };
+  } catch (err: any) {
     console.log(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to update student") };
   }
 };
 
@@ -415,7 +424,7 @@ export const deleteStudent = async (
 ) => {
   const id = data.get("id") as string;
   try {
-    await clerkClient.users.deleteUser(id);
+    requireRole(["admin"]);
 
     await prisma.student.delete({
       where: {
@@ -423,11 +432,11 @@ export const deleteStudent = async (
       },
     });
 
-    // revalidatePath("/list/students");
-    return { success: true, error: false };
-  } catch (err) {
+    revalidatePath("/list/students");
+    return { success: true, error: false, message: "Student deleted successfully!" };
+  } catch (err: any) {
     console.log(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to delete student") };
   }
 };
 
@@ -435,22 +444,8 @@ export const createExam = async (
   currentState: CurrentState,
   data: ExamSchema
 ) => {
-  // const { userId, sessionClaims } = auth();
-  // const role = (sessionClaims?.metadata as { role?: string })?.role;
-
   try {
-    // if (role === "teacher") {
-    //   const teacherLesson = await prisma.lesson.findFirst({
-    //     where: {
-    //       teacherId: userId!,
-    //       id: data.lessonId,
-    //     },
-    //   });
-
-    //   if (!teacherLesson) {
-    //     return { success: false, error: true };
-    //   }
-    // }
+    requireRole(["admin", "teacher"]);
 
     await prisma.exam.create({
       data: {
@@ -461,11 +456,11 @@ export const createExam = async (
       },
     });
 
-    // revalidatePath("/list/subjects");
-    return { success: true, error: false };
-  } catch (err) {
+    revalidatePath("/list/exams");
+    return { success: true, error: false, message: "Exam created successfully!" };
+  } catch (err: any) {
     console.log(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to create exam") };
   }
 };
 
@@ -473,22 +468,8 @@ export const updateExam = async (
   currentState: CurrentState,
   data: ExamSchema
 ) => {
-  // const { userId, sessionClaims } = auth();
-  // const role = (sessionClaims?.metadata as { role?: string })?.role;
-
   try {
-    // if (role === "teacher") {
-    //   const teacherLesson = await prisma.lesson.findFirst({
-    //     where: {
-    //       teacherId: userId!,
-    //       id: data.lessonId,
-    //     },
-    //   });
-
-    //   if (!teacherLesson) {
-    //     return { success: false, error: true };
-    //   }
-    // }
+    requireRole(["admin", "teacher"]);
 
     await prisma.exam.update({
       where: {
@@ -502,11 +483,11 @@ export const updateExam = async (
       },
     });
 
-    // revalidatePath("/list/subjects");
-    return { success: true, error: false };
-  } catch (err) {
+    revalidatePath("/list/exams");
+    return { success: true, error: false, message: "Exam updated successfully!" };
+  } catch (err: any) {
     console.log(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to update exam") };
   }
 };
 
@@ -515,23 +496,20 @@ export const deleteExam = async (
   data: FormData
 ) => {
   const id = data.get("id") as string;
-
-  // const { userId, sessionClaims } = auth();
-  // const role = (sessionClaims?.metadata as { role?: string })?.role;
-
   try {
+    requireRole(["admin", "teacher"]);
+
     await prisma.exam.delete({
       where: {
         id: parseInt(id),
-        // ...(role === "teacher" ? { lesson: { teacherId: userId! } } : {}),
       },
     });
 
-    // revalidatePath("/list/subjects");
-    return { success: true, error: false };
-  } catch (err) {
+    revalidatePath("/list/exams");
+    return { success: true, error: false, message: "Exam deleted successfully!" };
+  } catch (err: any) {
     console.log(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to delete exam") };
   }
 };
 
@@ -540,31 +518,30 @@ export const createParent = async (
   data: ParentSchema
 ) => {
   try {
-    const user = await clerkClient.users.createUser({
-      username: data.username,
-      password: data.password,
-      firstName: data.name,
-      lastName: data.surname,
-      publicMetadata: { role: "parent" },
-    });
+    requireRole(["admin"]);
+
+    const hashedPassword = await bcrypt.hash(data.password && data.password.length > 0 ? data.password : "123456", 10);
+
+    const parentId = crypto.randomUUID();
 
     await prisma.parent.create({
       data: {
-        id: user.id,
+        id: parentId,
         username: data.username,
         name: data.name,
         surname: data.surname,
         email: data.email || null,
         phone: data.phone,
         address: data.address,
-        password: data.password || "123456",
+        password: hashedPassword,
       },
     });
 
-    return { success: true, error: false };
-  } catch (err) {
+    revalidatePath("/list/parents");
+    return { success: true, error: false, message: "Parent created successfully!" };
+  } catch (err: any) {
     console.log(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to create parent") };
   }
 };
 
@@ -573,22 +550,19 @@ export const updateParent = async (
   data: ParentSchema
 ) => {
   if (!data.id) {
-    return { success: false, error: true };
+    return { success: false, error: true, message: "Parent ID is required" };
   }
   try {
-    await clerkClient.users.updateUser(data.id, {
-      username: data.username,
-      ...(data.password !== "" && { password: data.password }),
-      firstName: data.name,
-      lastName: data.surname,
-    });
+    requireRole(["admin"]);
+
+    const hashedPassword = data.password && data.password.length > 0 ? await bcrypt.hash(data.password, 10) : undefined;
 
     await prisma.parent.update({
       where: {
         id: data.id,
       },
       data: {
-        ...(data.password !== "" && { password: data.password }),
+        ...(hashedPassword ? { password: hashedPassword } : {}),
         username: data.username,
         name: data.name,
         surname: data.surname,
@@ -598,10 +572,11 @@ export const updateParent = async (
       },
     });
 
-    return { success: true, error: false };
-  } catch (err) {
+    revalidatePath("/list/parents");
+    return { success: true, error: false, message: "Parent updated successfully!" };
+  } catch (err: any) {
     console.log(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to update parent") };
   }
 };
 
@@ -611,7 +586,7 @@ export const deleteParent = async (
 ) => {
   const id = data.get("id") as string;
   try {
-    await clerkClient.users.deleteUser(id);
+    requireRole(["admin"]);
 
     await prisma.parent.delete({
       where: {
@@ -619,10 +594,11 @@ export const deleteParent = async (
       },
     });
 
-    return { success: true, error: false };
-  } catch (err) {
+    revalidatePath("/list/parents");
+    return { success: true, error: false, message: "Parent deleted successfully!" };
+  } catch (err: any) {
     console.log(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to delete parent") };
   }
 };
 
@@ -702,10 +678,10 @@ export const createLesson = async (
       },
     });
 
-    return { success: true, error: false };
+    return { success: true, error: false, message: "Lesson created successfully!" };
   } catch (err) {
     console.log(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to create lesson") };
   }
 };
 
@@ -720,7 +696,7 @@ export const updateLesson = async (
   }
 
   if (!data.id) {
-    return { success: false, error: true };
+    return { success: false, error: true, message: "Lesson ID is required" };
   }
 
   try {
@@ -784,10 +760,10 @@ export const updateLesson = async (
       },
     });
 
-    return { success: true, error: false };
+    return { success: true, error: false, message: "Lesson updated successfully!" };
   } catch (err) {
     console.log(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to update lesson") };
   }
 };
 
@@ -819,226 +795,224 @@ export const deleteLesson = async (
       where: { id: parseInt(id) },
     });
 
-    return { success: true, error: false };
+    return { success: true, error: false, message: "Lesson deleted successfully!" };
   } catch (err) {
     console.log(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to delete lesson") };
   }
 };
-
 export const promoteAcademicYear = async (
   currentState: CurrentState,
   data?: { clearHistory?: boolean }
 ) => {
-  const { sessionClaims } = auth();
-  const role = (sessionClaims?.metadata as { role?: string })?.role;
-  if (role !== "admin") {
-    return { success: false, error: true, message: "Unauthorized" };
-  }
-
   try {
-    if (data?.clearHistory) {
-      await prisma.result.deleteMany({});
-      await prisma.exam.deleteMany({});
-      await prisma.assignment.deleteMany({});
-    }
+    requireRole(["admin"]);
 
-    const grades = await prisma.grade.findMany({
-      orderBy: { level: "desc" },
-    });
+    await prisma.$transaction(async (tx) => {
+      if (data?.clearHistory) {
+        await tx.result.deleteMany({});
+        await tx.exam.deleteMany({});
+        await tx.assignment.deleteMany({});
+      }
 
-    for (const grade of grades) {
-      const students = await prisma.student.findMany({
-        where: { gradeId: grade.id },
+      // 1. Snapshot all grades and classes
+      const grades = await tx.grade.findMany({
+        orderBy: { level: "desc" },
+        include: { classess: true },
       });
 
-      if (grade.level === 10) {
-        const grade1 = grades.find((g) => g.level === 1);
-        if (grade1) {
-          const g1Classes = await prisma.class.findMany({
-            where: { gradeId: grade1.id },
-          });
-          const boysClass = g1Classes.find((c) => c.section === "Boys") || g1Classes[0];
-          const girlsClass = g1Classes.find((c) => c.section === "Girls") || g1Classes[0];
+      // 2. Snapshot ALL students in memory BEFORE any mutation
+      const studentSnapshots = await tx.student.findMany({
+        select: {
+          id: true,
+          gradeId: true,
+          sex: true,
+          grade: { select: { level: true } },
+        },
+      });
 
-          for (const student of students) {
+      // 3. Precalculate target grade and class for every student based solely on snapshot
+      const updates: { studentId: string; targetGradeId: number; targetClassId: number }[] = [];
+
+      for (const student of studentSnapshots) {
+        const currentLevel = student.grade.level;
+
+        if (currentLevel === 10) {
+          // Recycled to Grade 1
+          const grade1 = grades.find((g) => g.level === 1);
+          if (grade1 && grade1.classess.length > 0) {
+            const boysClass = grade1.classess.find((c) => c.section === "Boys") || grade1.classess[0];
+            const girlsClass = grade1.classess.find((c) => c.section === "Girls") || grade1.classess[0];
             const targetClass = student.sex === "MALE" ? boysClass : girlsClass;
-            if (targetClass) {
-              await prisma.student.update({
-                where: { id: student.id },
-                data: {
-                  gradeId: grade1.id,
-                  classId: targetClass.id,
-                },
-              });
-            }
+            updates.push({
+              studentId: student.id,
+              targetGradeId: grade1.id,
+              targetClassId: targetClass.id,
+            });
           }
-        }
-      } else {
-        const targetGrade = grades.find((g) => g.level === grade.level + 1);
-        if (targetGrade) {
-          const targetClasses = await prisma.class.findMany({
-            where: { gradeId: targetGrade.id },
-          });
-          const boysClass = targetClasses.find((c) => c.section === "Boys") || targetClasses[0];
-          const girlsClass = targetClasses.find((c) => c.section === "Girls") || targetClasses[0];
-
-          for (const student of students) {
+        } else {
+          // Promote to next level (currentLevel + 1)
+          const targetGrade = grades.find((g) => g.level === currentLevel + 1);
+          if (targetGrade && targetGrade.classess.length > 0) {
+            const boysClass = targetGrade.classess.find((c) => c.section === "Boys") || targetGrade.classess[0];
+            const girlsClass = targetGrade.classess.find((c) => c.section === "Girls") || targetGrade.classess[0];
             const targetClass = student.sex === "MALE" ? boysClass : girlsClass;
-            if (targetClass) {
-              await prisma.student.update({
-                where: { id: student.id },
-                data: {
-                  gradeId: targetGrade.id,
-                  classId: targetClass.id,
-                },
-              });
-            }
+            updates.push({
+              studentId: student.id,
+              targetGradeId: targetGrade.id,
+              targetClassId: targetClass.id,
+            });
           }
         }
       }
-    }
 
-    return { success: true, error: false };
-  } catch (err) {
-    console.log(err);
-    return { success: false, error: true };
+      // 4. Apply calculated updates inside the transaction
+      for (const u of updates) {
+        await tx.student.update({
+          where: { id: u.studentId },
+          data: {
+            gradeId: u.targetGradeId,
+            classId: u.targetClassId,
+          },
+        });
+      }
+    });
+
+    revalidatePath("/list/students");
+    revalidatePath("/list/classes");
+    return { success: true, error: false, message: "Academic year promoted successfully!" };
+  } catch (err: any) {
+    console.error(err);
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to promote academic year") };
   }
 };
 
 export const generateAITimetable = async (
   currentState: CurrentState
 ) => {
-  const { sessionClaims } = auth();
-  const role = (sessionClaims?.metadata as { role?: string })?.role;
-  if (role !== "admin") {
-    return { success: false, error: true, message: "Unauthorized" };
-  }
-
   try {
-    // Delete existing dependencies first
-    await prisma.result.deleteMany({});
-    await prisma.exam.deleteMany({});
-    await prisma.assignment.deleteMany({});
-    await prisma.lesson.deleteMany({});
+    requireRole(["admin"]);
 
-    // Fetch classes and teachers
-    const classes = await prisma.class.findMany({
-      include: {
-        teachers: {
-          include: {
-            subject: true,
+    await prisma.$transaction(async (tx) => {
+      // Fetch classes and teachers
+      const classes = await tx.class.findMany({
+        include: {
+          teachers: {
+            include: {
+              subject: true,
+            },
           },
         },
-      },
-    });
+      });
 
-    const allTeachers = await prisma.teacher.findMany({
-      include: {
-        subject: true,
-      },
-    });
+      const allTeachers = await tx.teacher.findMany({
+        include: {
+          subject: true,
+        },
+      });
 
-    const Days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] as const;
-    type DayType = typeof Days[number];
+      const Days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] as const;
 
-    const SLOT_TIMES = [
-      { start: "08:00:00", end: "08:50:00" },
-      { start: "09:00:00", end: "09:50:00" },
-      { start: "10:00:00", end: "10:50:00" },
-      { start: "11:00:00", end: "11:50:00" },
-      { start: "13:00:00", end: "13:50:00" },
-    ];
+      const SLOT_TIMES = [
+        { start: "08:00:00", end: "08:50:00" },
+        { start: "09:00:00", end: "09:50:00" },
+        { start: "10:00:00", end: "10:50:00" },
+        { start: "11:00:00", end: "11:50:00" },
+        { start: "13:00:00", end: "13:50:00" },
+      ];
 
-    const DAY_DATES: Record<string, string> = {
-      Monday: "2025-01-06",
-      Tuesday: "2025-01-07",
-      Wednesday: "2025-01-08",
-      Thursday: "2025-01-09",
-      Friday: "2025-01-10",
-    };
+      const DAY_DATES: Record<string, string> = {
+        Monday: "2025-01-06",
+        Tuesday: "2025-01-07",
+        Wednesday: "2025-01-08",
+        Thursday: "2025-01-09",
+        Friday: "2025-01-10",
+      };
 
-    // Bookings index: teacherBookings[teacherId][day][slot] = boolean
-    const teacherBookings: Record<string, Record<string, Record<number, boolean>>> = {};
-    const classLessons: Record<number, any[]> = {};
-    for (const cls of classes) {
-      classLessons[cls.id] = [];
-    }
-
-    const solve = (classIndex: number, dayIndex: number, slotIndex: number): boolean => {
-      if (classIndex === classes.length) {
-        return true;
+      const teacherBookings: Record<string, Record<string, Record<number, boolean>>> = {};
+      const classLessons: Record<number, any[]> = {};
+      for (const cls of classes) {
+        classLessons[cls.id] = [];
       }
 
-      const nextSlot = (slotIndex + 1) % 5;
-      const nextDay = nextSlot === 0 ? (dayIndex + 1) % 5 : dayIndex;
-      const nextClass = nextSlot === 0 && nextDay === 0 ? classIndex + 1 : classIndex;
-
-      const currentClass = classes[classIndex];
-      const dayName = Days[dayIndex];
-      const slotNum = slotIndex + 1;
-
-      // Try teachers assigned to this class first, shuffled to make it dynamic
-      const classTeachers = [...currentClass.teachers].sort(() => Math.random() - 0.5);
-      const candidates = classTeachers.length > 0 ? classTeachers : allTeachers;
-
-      for (const teacher of candidates) {
-        if (!teacher.subjectId) continue;
-        const teacherId = teacher.id;
-
-        // Check if teacher is double-booked
-        if (teacherBookings[teacherId]?.[dayName]?.[slotNum]) {
-          continue;
-        }
-
-        // Apply booking
-        if (!teacherBookings[teacherId]) teacherBookings[teacherId] = {};
-        if (!teacherBookings[teacherId][dayName]) teacherBookings[teacherId][dayName] = {};
-        teacherBookings[teacherId][dayName][slotNum] = true;
-
-        const dateStr = DAY_DATES[dayName];
-        const slotTime = SLOT_TIMES[slotNum - 1];
-        const startTime = new Date(`${dateStr}T${slotTime.start}`);
-        const endTime = new Date(`${dateStr}T${slotTime.end}`);
-
-        classLessons[currentClass.id].push({
-          name: `${currentClass.name} - ${teacher.subject?.name || "Lesson"}`,
-          day: dayName,
-          slot: slotNum,
-          startTime,
-          endTime,
-          subjectId: teacher.subjectId,
-          classId: currentClass.id,
-          teacherId: teacher.id,
-        });
-
-        if (solve(nextClass, nextDay, nextSlot)) {
+      const solve = (classIndex: number, dayIndex: number, slotIndex: number): boolean => {
+        if (classIndex === classes.length) {
           return true;
         }
 
-        // Backtrack
-        teacherBookings[teacherId][dayName][slotNum] = false;
-        classLessons[currentClass.id].pop();
+        const nextSlot = (slotIndex + 1) % 5;
+        const nextDay = nextSlot === 0 ? (dayIndex + 1) % 5 : dayIndex;
+        const nextClass = nextSlot === 0 && nextDay === 0 ? classIndex + 1 : classIndex;
+
+        const currentClass = classes[classIndex];
+        const dayName = Days[dayIndex];
+        const slotNum = slotIndex + 1;
+
+        const classTeachers = [...currentClass.teachers].sort(() => Math.random() - 0.5);
+        const candidates = classTeachers.length > 0 ? classTeachers : allTeachers;
+
+        for (const teacher of candidates) {
+          if (!teacher.subjectId) continue;
+          const teacherId = teacher.id;
+
+          if (teacherBookings[teacherId]?.[dayName]?.[slotNum]) {
+            continue;
+          }
+
+          if (!teacherBookings[teacherId]) teacherBookings[teacherId] = {};
+          if (!teacherBookings[teacherId][dayName]) teacherBookings[teacherId][dayName] = {};
+          teacherBookings[teacherId][dayName][slotNum] = true;
+
+          const dateStr = DAY_DATES[dayName];
+          const slotTime = SLOT_TIMES[slotNum - 1];
+          const startTime = new Date(`${dateStr}T${slotTime.start}`);
+          const endTime = new Date(`${dateStr}T${slotTime.end}`);
+
+          classLessons[currentClass.id].push({
+            name: `${currentClass.name} - ${teacher.subject?.name || "Lesson"}`,
+            day: dayName,
+            slot: slotNum,
+            startTime,
+            endTime,
+            subjectId: teacher.subjectId,
+            classId: currentClass.id,
+            teacherId: teacher.id,
+          });
+
+          if (solve(nextClass, nextDay, nextSlot)) {
+            return true;
+          }
+
+          teacherBookings[teacherId][dayName][slotNum] = false;
+          classLessons[currentClass.id].pop();
+        }
+
+        return false;
+      };
+
+      // Wipe old schedule inside transaction
+      await tx.result.deleteMany({});
+      await tx.exam.deleteMany({});
+      await tx.assignment.deleteMany({});
+      await tx.lesson.deleteMany({});
+
+      const solved = solve(0, 0, 0);
+      if (!solved) {
+        throw new Error("Could not find a conflict-free schedule");
       }
 
-      return false;
-    };
-
-    const solved = solve(0, 0, 0);
-    if (!solved) {
-      return { success: false, error: true, message: "Could not find a conflict-free schedule" };
-    }
-
-    // Insert all generated lessons into DB
-    const lessonsToInsert = Object.values(classLessons).flat();
-    await prisma.lesson.createMany({
-      data: lessonsToInsert,
+      // Insert all generated lessons into DB
+      const lessonsToInsert = Object.values(classLessons).flat();
+      await tx.lesson.createMany({
+        data: lessonsToInsert,
+      });
     });
 
-    return { success: true, error: false };
-  } catch (err) {
+    revalidatePath("/list/lessons");
+    return { success: true, error: false, message: "AI timetable generated successfully!" };
+  } catch (err: any) {
     console.log(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to generate timetable") };
   }
 };
 
@@ -1048,6 +1022,7 @@ export const updateProfile = async (
     phone?: string;
     address?: string;
     password?: string;
+    currentPassword?: string;
     email?: string;
   }
 ) => {
@@ -1058,17 +1033,44 @@ export const updateProfile = async (
   }
 
   try {
+    if (data.password && data.password.length > 0 && data.currentPassword !== undefined) {
+      let existingRecord: any = null;
+      if (role === "admin") {
+        existingRecord = await prisma.admin.findUnique({ where: { id: userId } });
+      } else if (role === "teacher") {
+        existingRecord = await prisma.teacher.findUnique({ where: { id: userId } });
+      } else if (role === "student") {
+        existingRecord = await prisma.student.findUnique({ where: { id: userId } });
+      } else if (role === "parent") {
+        existingRecord = await prisma.parent.findUnique({ where: { id: userId } });
+      }
+
+      const defaultDbPw = existingRecord?.password || "123456";
+      const isMatch = defaultDbPw.startsWith("$2")
+        ? await bcrypt.compare(data.currentPassword, defaultDbPw)
+        : data.currentPassword === defaultDbPw;
+
+      if (!isMatch) {
+        return { success: false, error: true, message: "Current password does not match." };
+      }
+    }
+
+    const hashedPassword = data.password && data.password.length > 0 ? await bcrypt.hash(data.password, 10) : undefined;
+
     const updateData = {
       ...(data.phone !== undefined && { phone: data.phone }),
       ...(data.address !== undefined && { address: data.address }),
-      ...(data.password && { password: data.password }),
+      ...(hashedPassword ? { password: hashedPassword } : {}),
       ...(data.email !== undefined && { email: data.email }),
     };
 
     if (role === "admin") {
       await prisma.admin.update({
         where: { id: userId },
-        data: updateData,
+        data: {
+          ...(hashedPassword ? { password: hashedPassword } : {}),
+          ...(data.email !== undefined && { email: data.email }),
+        },
       });
     } else if (role === "teacher") {
       await prisma.teacher.update({
@@ -1087,10 +1089,12 @@ export const updateProfile = async (
       });
     }
 
-    return { success: true, error: false };
-  } catch (err) {
+    revalidatePath("/profile");
+    revalidatePath("/settings");
+    return { success: true, error: false, message: "Profile updated successfully!" };
+  } catch (err: any) {
     console.error(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to update profile") };
   }
 };
 
@@ -1098,96 +1102,83 @@ export const generateAttendanceSimulation = async (
   currentState: CurrentState,
   days: number = 30
 ) => {
-  const { userId, sessionClaims } = auth();
-  const role = (sessionClaims?.metadata as { role?: string })?.role;
-  if (!userId || role !== "admin") {
-    return { success: false, error: true, message: "Unauthorized" };
-  }
-
   try {
-    const today = new Date();
-    const currentYear = today.getFullYear();
-    const currentMonth = today.getMonth(); // 0-indexed (Jan = 0)
+    requireRole(["admin"]);
 
-    // 1. Fetch all students with their classId
-    const students = await prisma.student.findMany({
-      select: { id: true, classId: true },
-    });
+    await prisma.$transaction(async (tx) => {
+      const today = new Date();
+      const currentYear = today.getFullYear();
+      const currentMonth = today.getMonth();
 
-    const attendanceRecords = [];
+      const students = await tx.student.findMany({
+        select: { id: true, classId: true },
+      });
 
-    // 2. Clear all daily attendance logs for the current month
-    const startOfCurrentMonth = new Date(Date.UTC(currentYear, currentMonth, 1));
-    await prisma.attendance.deleteMany({
-      where: {
-        date: {
-          gte: startOfCurrentMonth,
+      const attendanceRecords = [];
+      const startOfCurrentMonth = new Date(Date.UTC(currentYear, currentMonth, 1));
+
+      await tx.attendance.deleteMany({
+        where: {
+          date: {
+            gte: startOfCurrentMonth,
+          },
         },
-      },
+      });
+
+      for (let day = 1; day <= today.getDate(); day++) {
+        const currentDate = new Date(Date.UTC(currentYear, currentMonth, day));
+        const dayOfWeek = currentDate.getUTCDay();
+        if (dayOfWeek === 0 || dayOfWeek === 6) continue;
+
+        for (const student of students) {
+          const isPresent = Math.random() > 0.03;
+          attendanceRecords.push({
+            date: currentDate,
+            present: isPresent,
+            studentId: student.id,
+            classId: student.classId,
+          });
+        }
+      }
+
+      if (attendanceRecords.length > 0) {
+        await tx.attendance.createMany({
+          data: attendanceRecords,
+        });
+      }
+
+      await tx.monthlyAttendanceSummary.deleteMany({});
+
+      const summaries = [];
+      const prevMonths = [
+        { month: currentMonth === 0 ? 12 : currentMonth, year: currentMonth === 0 ? currentYear - 1 : currentYear },
+        { month: currentMonth <= 1 ? 11 + currentMonth : currentMonth - 1, year: currentMonth <= 1 ? currentYear - 1 : currentYear }
+      ];
+
+      for (const pm of prevMonths) {
+        for (const student of students) {
+          const percentage = parseFloat((86 + Math.random() * 12).toFixed(1));
+          summaries.push({
+            studentId: student.id,
+            month: pm.month,
+            year: pm.year,
+            percentage: percentage,
+          });
+        }
+      }
+
+      if (summaries.length > 0) {
+        await tx.monthlyAttendanceSummary.createMany({
+          data: summaries,
+        });
+      }
     });
 
-    // 3. Generate daily logs for the current month (from 1st of this month to today)
-    for (let day = 1; day <= today.getDate(); day++) {
-      const currentDate = new Date(Date.UTC(currentYear, currentMonth, day));
-      const dayOfWeek = currentDate.getUTCDay();
-      
-      // Skip weekends
-      if (dayOfWeek === 0 || dayOfWeek === 6) continue;
-
-      for (const student of students) {
-        // 97% present rate, 3% absent rate
-        const isPresent = Math.random() > 0.03;
-
-        attendanceRecords.push({
-          date: currentDate,
-          present: isPresent,
-          studentId: student.id,
-          classId: student.classId,
-        });
-      }
-    }
-
-    // Insert daily attendance records for the current month
-    if (attendanceRecords.length > 0) {
-      await prisma.attendance.createMany({
-        data: attendanceRecords,
-      });
-    }
-
-    // 4. Seed MonthlyAttendanceSummary for the previous two months
-    // We will clear existing summaries first
-    await prisma.monthlyAttendanceSummary.deleteMany({});
-
-    const summaries = [];
-    const prevMonths = [
-      { month: currentMonth === 0 ? 12 : currentMonth, year: currentMonth === 0 ? currentYear - 1 : currentYear }, // Last Month
-      { month: currentMonth <= 1 ? 11 + currentMonth : currentMonth - 1, year: currentMonth <= 1 ? currentYear - 1 : currentYear } // Two Months Ago
-    ];
-
-    for (const pm of prevMonths) {
-      for (const student of students) {
-        // Random overall attendance percentage between 86% and 98%
-        const percentage = parseFloat((86 + Math.random() * 12).toFixed(1));
-
-        summaries.push({
-          studentId: student.id,
-          month: pm.month, // 1-12 value (Jan = 0 is stored as 1, etc.)
-          year: pm.year,
-          percentage: percentage,
-        });
-      }
-    }
-
-    if (summaries.length > 0) {
-      await prisma.monthlyAttendanceSummary.createMany({
-        data: summaries,
-      });
-    }
-
-    return { success: true, error: false };
-  } catch (err) {
+    revalidatePath("/list/attendance");
+    return { success: true, error: false, message: "Attendance simulation generated successfully!" };
+  } catch (err: any) {
     console.error(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to generate attendance simulation") };
   }
 };
 
@@ -1206,7 +1197,6 @@ export const submitAttendance = async (
   }
 
   try {
-    // If user is a teacher, verify that they supervise the class
     if (role === "teacher") {
       const supervisedClass = await prisma.class.findFirst({
         where: { id: data.classId, supervisorId: userId },
@@ -1222,175 +1212,155 @@ export const submitAttendance = async (
 
     const recordDate = new Date(data.date);
 
-    for (const item of data.attendance) {
-      const existing = await prisma.attendance.findFirst({
-        where: {
-          studentId: item.studentId,
-          classId: data.classId,
-          date: recordDate,
-        },
-      });
-
-      if (existing) {
-        await prisma.attendance.update({
-          where: { id: existing.id },
-          data: { present: item.present },
-        });
-      } else {
-        await prisma.attendance.create({
-          data: {
+    // Atomic race-condition safe upsert using unique constraint on [studentId, date]
+    await prisma.$transaction(
+      data.attendance.map((item) =>
+        prisma.attendance.upsert({
+          where: {
+            studentId_date: {
+              studentId: item.studentId,
+              date: recordDate,
+            },
+          },
+          update: {
+            present: item.present,
+            classId: data.classId,
+          },
+          create: {
             studentId: item.studentId,
             classId: data.classId,
             date: recordDate,
             present: item.present,
           },
-        });
-      }
-    }
+        })
+      )
+    );
 
-    return { success: true, error: false };
-  } catch (err) {
+    revalidatePath("/list/attendance");
+    return { success: true, error: false, message: "Attendance submitted successfully!" };
+  } catch (err: any) {
     console.error(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to submit attendance") };
   }
 };
 
 export const getStudentsByClass = async (classId: number) => {
   const { userId } = auth();
-  if (!userId) return [];
-  try {
-    return await prisma.student.findMany({
-      where: { classId },
-      select: { id: true, name: true, surname: true },
-      orderBy: { name: "asc" },
-    });
-  } catch (err) {
-    console.error(err);
-    return [];
-  }
+  if (!userId) throw new Error("Unauthorized");
+
+  return prisma.student.findMany({
+    where: { classId },
+    select: { id: true, name: true, surname: true },
+    orderBy: { name: "asc" },
+  });
 };
 
 export const getAttendanceRecord = async (classId: number, date: string) => {
   const { userId } = auth();
-  if (!userId) return [];
-  try {
-    const searchDate = new Date(date);
+  if (!userId) throw new Error("Unauthorized");
 
-    return await prisma.attendance.findMany({
-      where: {
-        classId,
-        date: searchDate,
-      },
-      select: { studentId: true, present: true },
-    });
-  } catch (err) {
-    console.error(err);
-    return [];
-  }
+  return prisma.attendance.findMany({
+    where: {
+      classId,
+      date: new Date(date),
+    },
+  });
 };
 
 export const archiveMonthlyAttendanceLogs = async (currentState: CurrentState) => {
-  const { userId, sessionClaims } = auth();
-  const role = (sessionClaims?.metadata as { role?: string })?.role;
-  if (!userId || role !== "admin") {
-    return { success: false, error: true, message: "Unauthorized" };
-  }
-
   try {
-    const today = new Date();
-    // Start of the current month in UTC
-    const startOfCurrentMonth = new Date(Date.UTC(today.getFullYear(), today.getMonth(), 1));
+    requireRole(["admin"]);
 
-    // 1. Fetch daily logs from past months (any record before the 1st of the current month)
-    const pastLogs = await prisma.attendance.findMany({
-      where: {
-        date: {
-          lt: startOfCurrentMonth,
-        },
-      },
-    });
+    return await prisma.$transaction(async (tx) => {
+      const today = new Date();
+      const startOfCurrentMonth = new Date(Date.UTC(today.getFullYear(), today.getMonth(), 1));
 
-    if (pastLogs.length === 0) {
-      return { success: true, error: false, message: "No past months daily logs found to archive." };
-    }
-
-    // 2. Group records by studentId, month, and year
-    // Key: studentId_year_month (month is 1-indexed for summaries: 1-12)
-    const groupings: {
-      [key: string]: {
-        studentId: string;
-        year: number;
-        month: number;
-        present: number;
-        total: number;
-      };
-    } = {};
-
-    for (const log of pastLogs) {
-      const logDate = new Date(log.date);
-      const year = logDate.getFullYear();
-      const month = logDate.getMonth() + 1; // 1-12
-      const key = `${log.studentId}_${year}_${month}`;
-
-      if (!groupings[key]) {
-        groupings[key] = {
-          studentId: log.studentId,
-          year,
-          month,
-          present: 0,
-          total: 0,
-        };
-      }
-
-      groupings[key].total += 1;
-      if (log.present) {
-        groupings[key].present += 1;
-      }
-    }
-
-    // 3. Upsert MonthlyAttendanceSummary records
-    for (const group of Object.values(groupings)) {
-      const percentage = parseFloat(((group.present / group.total) * 100).toFixed(1));
-
-      // Find if summary already exists
-      const existing = await prisma.monthlyAttendanceSummary.findFirst({
+      const pastLogs = await tx.attendance.findMany({
         where: {
-          studentId: group.studentId,
-          month: group.month,
-          year: group.year,
+          date: {
+            lt: startOfCurrentMonth,
+          },
         },
       });
 
-      if (existing) {
-        await prisma.monthlyAttendanceSummary.update({
-          where: { id: existing.id },
-          data: { percentage },
-        });
-      } else {
-        await prisma.monthlyAttendanceSummary.create({
-          data: {
+      if (pastLogs.length === 0) {
+        return { success: true, error: false, message: "No past months daily logs found to archive." };
+      }
+
+      const groupings: {
+        [key: string]: {
+          studentId: string;
+          year: number;
+          month: number;
+          present: number;
+          total: number;
+        };
+      } = {};
+
+      for (const log of pastLogs) {
+        const logDate = new Date(log.date);
+        const year = logDate.getFullYear();
+        const month = logDate.getMonth() + 1;
+        const key = `${log.studentId}_${year}_${month}`;
+
+        if (!groupings[key]) {
+          groupings[key] = {
+            studentId: log.studentId,
+            year,
+            month,
+            present: 0,
+            total: 0,
+          };
+        }
+
+        groupings[key].total += 1;
+        if (log.present) {
+          groupings[key].present += 1;
+        }
+      }
+
+      for (const group of Object.values(groupings)) {
+        const percentage = parseFloat(((group.present / group.total) * 100).toFixed(1));
+
+        const existing = await tx.monthlyAttendanceSummary.findFirst({
+          where: {
             studentId: group.studentId,
             month: group.month,
             year: group.year,
-            percentage,
           },
         });
+
+        if (existing) {
+          await tx.monthlyAttendanceSummary.update({
+            where: { id: existing.id },
+            data: { percentage },
+          });
+        } else {
+          await tx.monthlyAttendanceSummary.create({
+            data: {
+              studentId: group.studentId,
+              month: group.month,
+              year: group.year,
+              percentage,
+            },
+          });
+        }
       }
-    }
 
-    // 4. Delete past daily logs that we just archived
-    await prisma.attendance.deleteMany({
-      where: {
-        date: {
-          lt: startOfCurrentMonth,
+      await tx.attendance.deleteMany({
+        where: {
+          date: {
+            lt: startOfCurrentMonth,
+          },
         },
-      },
-    });
+      });
 
-    return { success: true, error: false, message: "Past months daily logs archived successfully!" };
-  } catch (err) {
+      revalidatePath("/list/attendance");
+      return { success: true, error: false, message: "Past months daily logs archived successfully!" };
+    });
+  } catch (err: any) {
     console.error(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to archive logs") };
   }
 };
 
@@ -1398,13 +1368,9 @@ export const createEvent = async (
   currentState: CurrentState,
   data: EventSchema
 ) => {
-  const { userId, sessionClaims } = auth();
-  const role = (sessionClaims?.metadata as { role?: string })?.role;
-  if (!userId || role !== "admin") {
-    return { success: false, error: true, message: "Unauthorized" };
-  }
-
   try {
+    requireRole(["admin"]);
+
     await prisma.event.create({
       data: {
         title: data.title,
@@ -1416,10 +1382,10 @@ export const createEvent = async (
     });
 
     revalidatePath("/list/events");
-    return { success: true, error: false };
-  } catch (err) {
+    return { success: true, error: false, message: "Event created successfully!" };
+  } catch (err: any) {
     console.error(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to create event") };
   }
 };
 
@@ -1427,13 +1393,9 @@ export const updateEvent = async (
   currentState: CurrentState,
   data: EventSchema
 ) => {
-  const { userId, sessionClaims } = auth();
-  const role = (sessionClaims?.metadata as { role?: string })?.role;
-  if (!userId || role !== "admin") {
-    return { success: false, error: true, message: "Unauthorized" };
-  }
-
   try {
+    requireRole(["admin"]);
+
     await prisma.event.update({
       where: { id: data.id },
       data: {
@@ -1446,10 +1408,10 @@ export const updateEvent = async (
     });
 
     revalidatePath("/list/events");
-    return { success: true, error: false };
-  } catch (err) {
+    return { success: true, error: false, message: "Event updated successfully!" };
+  } catch (err: any) {
     console.error(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to update event") };
   }
 };
 
@@ -1457,23 +1419,272 @@ export const deleteEvent = async (
   currentState: CurrentState,
   data: FormData
 ) => {
-  const { userId, sessionClaims } = auth();
-  const role = (sessionClaims?.metadata as { role?: string })?.role;
-  if (!userId || role !== "admin") {
-    return { success: false, error: true, message: "Unauthorized" };
-  }
-
   try {
+    requireRole(["admin"]);
+
     const id = data.get("id") as string;
     await prisma.event.delete({
       where: { id: Number(id) },
     });
 
     revalidatePath("/list/events");
-    return { success: true, error: false };
-  } catch (err) {
+    return { success: true, error: false, message: "Event deleted successfully!" };
+  } catch (err: any) {
     console.error(err);
-    return { success: false, error: true };
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to delete event") };
+  }
+};
+
+export const createAssignment = async (
+  currentState: CurrentState,
+  data: AssignmentSchema
+) => {
+  try {
+    requireRole(["admin", "teacher"]);
+
+    await prisma.assignment.create({
+      data: {
+        title: data.title,
+        startDate: new Date(data.startDate),
+        dueDate: new Date(data.dueDate),
+        lessonId: data.lessonId,
+      },
+    });
+
+    revalidatePath("/list/assignments");
+    return { success: true, error: false, message: "Assignment created successfully!" };
+  } catch (err: any) {
+    console.error(err);
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to create assignment") };
+  }
+};
+
+export const updateAssignment = async (
+  currentState: CurrentState,
+  data: AssignmentSchema
+) => {
+  try {
+    requireRole(["admin", "teacher"]);
+
+    await prisma.assignment.update({
+      where: { id: data.id },
+      data: {
+        title: data.title,
+        startDate: new Date(data.startDate),
+        dueDate: new Date(data.dueDate),
+        lessonId: data.lessonId,
+      },
+    });
+
+    revalidatePath("/list/assignments");
+    return { success: true, error: false, message: "Assignment updated successfully!" };
+  } catch (err: any) {
+    console.error(err);
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to update assignment") };
+  }
+};
+
+export const deleteAssignment = async (
+  currentState: CurrentState,
+  data: FormData
+) => {
+  const id = data.get("id") as string;
+  try {
+    requireRole(["admin", "teacher"]);
+
+    await prisma.assignment.delete({
+      where: { id: parseInt(id) },
+    });
+
+    revalidatePath("/list/assignments");
+    return { success: true, error: false, message: "Assignment deleted successfully!" };
+  } catch (err: any) {
+    console.error(err);
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to delete assignment") };
+  }
+};
+
+export const createResult = async (
+  currentState: CurrentState,
+  data: ResultSchema
+) => {
+  try {
+    requireRole(["admin", "teacher"]);
+
+    await prisma.result.create({
+      data: {
+        score: data.score,
+        studentId: data.studentId,
+        ...(data.examId ? { examId: Number(data.examId) } : {}),
+        ...(data.assignmentId ? { assignmentId: Number(data.assignmentId) } : {}),
+      },
+    });
+
+    revalidatePath("/list/results");
+    return { success: true, error: false, message: "Result recorded successfully!" };
+  } catch (err: any) {
+    console.error(err);
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to record result") };
+  }
+};
+
+export const updateResult = async (
+  currentState: CurrentState,
+  data: ResultSchema
+) => {
+  try {
+    requireRole(["admin", "teacher"]);
+
+    await prisma.result.update({
+      where: { id: data.id },
+      data: {
+        score: data.score,
+        studentId: data.studentId,
+        examId: data.examId ? Number(data.examId) : null,
+        assignmentId: data.assignmentId ? Number(data.assignmentId) : null,
+      },
+    });
+
+    revalidatePath("/list/results");
+    return { success: true, error: false, message: "Result updated successfully!" };
+  } catch (err: any) {
+    console.error(err);
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to update result") };
+  }
+};
+
+export const deleteResult = async (
+  currentState: CurrentState,
+  data: FormData
+) => {
+  const id = data.get("id") as string;
+  try {
+    requireRole(["admin", "teacher"]);
+
+    await prisma.result.delete({
+      where: { id: parseInt(id) },
+    });
+
+    revalidatePath("/list/results");
+    return { success: true, error: false, message: "Result deleted successfully!" };
+  } catch (err: any) {
+    console.error(err);
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to delete result") };
+  }
+};
+
+export const createAnnouncement = async (
+  currentState: CurrentState,
+  data: AnnouncementSchema
+) => {
+  try {
+    requireRole(["admin", "teacher"]);
+
+    await prisma.announcement.create({
+      data: {
+        title: data.title,
+        description: data.description,
+        date: new Date(data.date),
+        ...(data.classId ? { classId: Number(data.classId) } : {}),
+      },
+    });
+
+    revalidatePath("/list/announcements");
+    return { success: true, error: false, message: "Announcement created successfully!" };
+  } catch (err: any) {
+    console.error(err);
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to create announcement") };
+  }
+};
+
+export const updateAnnouncement = async (
+  currentState: CurrentState,
+  data: AnnouncementSchema
+) => {
+  try {
+    requireRole(["admin", "teacher"]);
+
+    await prisma.announcement.update({
+      where: { id: data.id },
+      data: {
+        title: data.title,
+        description: data.description,
+        date: new Date(data.date),
+        classId: data.classId ? Number(data.classId) : null,
+      },
+    });
+
+    revalidatePath("/list/announcements");
+    return { success: true, error: false, message: "Announcement updated successfully!" };
+  } catch (err: any) {
+    console.error(err);
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to update announcement") };
+  }
+};
+
+export const deleteAnnouncement = async (
+  currentState: CurrentState,
+  data: FormData
+) => {
+  const id = data.get("id") as string;
+  try {
+    requireRole(["admin", "teacher"]);
+
+    await prisma.announcement.delete({
+      where: { id: parseInt(id) },
+    });
+
+    revalidatePath("/list/announcements");
+    return { success: true, error: false, message: "Announcement deleted successfully!" };
+  } catch (err: any) {
+    console.error(err);
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to delete announcement") };
+  }
+};
+
+export const createFeePayment = async (
+  currentState: CurrentState,
+  data: FeePaymentSchema
+) => {
+  try {
+    requireRole(["admin"]);
+
+    await prisma.feePayment.create({
+      data: {
+        amount: data.amount,
+        type: data.type,
+        category: data.category,
+        date: new Date(data.date),
+        description: data.description || null,
+        ...(data.studentId ? { studentId: data.studentId } : {}),
+      },
+    });
+
+    revalidatePath("/admin");
+    return { success: true, error: false, message: "Financial record saved successfully!" };
+  } catch (err: any) {
+    console.error(err);
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to save financial record") };
+  }
+};
+
+export const deleteFeePayment = async (
+  currentState: CurrentState,
+  data: FormData
+) => {
+  const id = data.get("id") as string;
+  try {
+    requireRole(["admin"]);
+
+    await prisma.feePayment.delete({
+      where: { id: parseInt(id) },
+    });
+
+    revalidatePath("/admin");
+    return { success: true, error: false, message: "Financial record deleted successfully!" };
+  } catch (err: any) {
+    console.error(err);
+    return { success: false, error: true, message: getErrorMessage(err, "Failed to delete financial record") };
   }
 };
 

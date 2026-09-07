@@ -1,13 +1,10 @@
 import Announcements from "@/components/Announcements";
 import BigCalendarContainer from "@/components/BigCalendarContainer";
-import BigCalendar from "@/components/BigCalender";
 import FormContainer from "@/components/FormContainer";
 import Performance from "@/components/Performance";
 import prisma from "@/lib/prisma";
 import { auth } from "@/lib/auth";
-import { Teacher } from "@prisma/client";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import UserAvatar from "@/components/UserAvatar";
 
@@ -71,6 +68,59 @@ const SingleTeacherPage = async ({
   if (!teacher) {
     return notFound();
   }
+
+  // Calculate real attendance across teacher's assigned classes
+  const teacherClasses = await prisma.class.findMany({
+    where: {
+      OR: [
+        { supervisorId: teacher.id },
+        { teachers: { some: { id: teacher.id } } },
+        { lessons: { some: { teacherId: teacher.id } } },
+      ],
+    },
+    select: { id: true },
+  });
+  const classIds = teacherClasses.map((c) => c.id);
+
+  const teacherStudents = await prisma.student.findMany({
+    where: { classId: { in: classIds } },
+    select: { id: true },
+  });
+  const studentIds = teacherStudents.map((s) => s.id);
+
+  let attendanceRate = "-";
+  if (studentIds.length > 0) {
+    const [totalAtt, presentAtt] = await Promise.all([
+      prisma.attendance.count({ where: { studentId: { in: studentIds } } }),
+      prisma.attendance.count({ where: { studentId: { in: studentIds }, present: true } }),
+    ]);
+    if (totalAtt > 0) {
+      attendanceRate = `${((presentAtt / totalAtt) * 100).toFixed(1)}%`;
+    }
+  }
+
+  // Calculate real performance across teacher's lessons
+  const teacherLessons = await prisma.lesson.findMany({
+    where: { teacherId: teacher.id },
+    select: { id: true },
+  });
+  const lessonIds = teacherLessons.map((l) => l.id);
+
+  const teacherResults = await prisma.result.findMany({
+    where: {
+      OR: [
+        { exam: { lessonId: { in: lessonIds } } },
+        { assignment: { lessonId: { in: lessonIds } } },
+      ],
+    },
+    select: { score: true },
+  });
+
+  const teacherAvgScore =
+    teacherResults.length > 0
+      ? Math.round(teacherResults.reduce((acc, r) => acc + r.score, 0) / teacherResults.length)
+      : null;
+
   return (
     <div className="flex-1 p-4 flex flex-col gap-4 xl:flex-row">
       {/* LEFT */}
@@ -134,7 +184,7 @@ const SingleTeacherPage = async ({
                 className="w-6 h-6 shrink-0"
               />
               <div className="overflow-hidden">
-                <h1 className="text-sm md:text-base font-bold text-slate-800 leading-tight">90%</h1>
+                <h1 className="text-sm md:text-base font-bold text-slate-800 leading-tight">{attendanceRate}</h1>
                 <span className="text-[11px] text-slate-400 font-medium block truncate">Attendance</span>
               </div>
             </div>
@@ -195,7 +245,7 @@ const SingleTeacherPage = async ({
       </div>
       {/* RIGHT */}
       <div className="w-full xl:w-1/3 flex flex-col gap-4">
-        <Performance />
+        <Performance score={teacherAvgScore} label="Teacher Performance" />
         <Announcements />
       </div>
     </div>

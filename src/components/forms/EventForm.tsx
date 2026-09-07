@@ -34,6 +34,7 @@ const EventForm = ({
     {
       success: false,
       error: false,
+      message: "",
     }
   );
 
@@ -46,9 +47,13 @@ const EventForm = ({
 
   useEffect(() => {
     if (state.success) {
-      toast(`Event has been ${type === "create" ? "created" : "updated"}!`);
+      toast.success(
+        state.message || `Event has been ${type === "create" ? "created" : "updated"}!`
+      );
       setOpen(false);
       router.refresh();
+    } else if (state.error) {
+      toast.error(state.message || "Failed to save event.");
     }
   }, [state, router, type, setOpen]);
 

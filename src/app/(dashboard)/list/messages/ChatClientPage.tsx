@@ -103,10 +103,7 @@ const ChatClientPage: React.FC<ChatClientPageProps> = ({
 
   // 3. Real-time Pusher event listener
   useEffect(() => {
-    if (!pusherClient) {
-      console.warn("Pusher client is not initialized.");
-      return;
-    }
+    if (!pusherClient) return;
 
     const channelName = `user-${currentUserId}`;
     const channel = pusherClient.subscribe(channelName);

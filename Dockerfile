@@ -1,26 +1,46 @@
-# Use Node.js as the base image
-FROM node:18
-
-# Set the working directory inside the container
+# Stage 1: Dependencies
+FROM node:18-alpine AS deps
+RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Copy package.json and package-lock.json files
 COPY package*.json ./
+COPY prisma ./prisma/
+RUN npm ci
 
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the application code
+# Stage 2: Builder
+FROM node:18-alpine AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Generate Database
-RUN npx prisma migrate dev --name init
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=production
 
-# Build the Next.js application
+RUN npx prisma generate
 RUN npm run build
 
-# Expose the port the app runs on
+# Stage 3: Production Runner
+FROM node:18-alpine AS runner
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
+
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+# Copy static assets and standalone server
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/prisma ./prisma
+COPY --from=builder --chown=nextjs:nodejs /app/docker-entrypoint.sh ./docker-entrypoint.sh
+
+USER nextjs
+
 EXPOSE 3000
 
-# Start the Next.js application
-CMD ["npm", "start"]
+ENTRYPOINT ["./docker-entrypoint.sh"]
+CMD ["node", "server.js"]

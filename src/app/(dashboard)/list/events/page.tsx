@@ -7,6 +7,7 @@ import { ITEM_PER_PAGE } from "@/lib/settings";
 import { Class, Event, Prisma } from "@prisma/client";
 import Image from "next/image";
 import { auth } from "@/lib/auth";
+import { SortButton, FilterButton } from "@/components/TableActions";
 
 type EventList = Event & { class: Class };
 
@@ -94,6 +95,7 @@ const EventListPage = async ({
   const { page, ...queryParams } = searchParams;
 
   const p = page ? parseInt(page) : 1;
+  const sort = searchParams?.sort === "desc" ? "desc" : "asc";
 
   // URL PARAMS CONDITION
 
@@ -103,6 +105,9 @@ const EventListPage = async ({
     for (const [key, value] of Object.entries(queryParams)) {
       if (value !== undefined) {
         switch (key) {
+          case "classId":
+            query.classId = parseInt(value);
+            break;
           case "search":
             query.title = { contains: value };
             break;
@@ -151,11 +156,21 @@ const EventListPage = async ({
       include: {
         class: true,
       },
+      orderBy: { startTime: sort },
       take: ITEM_PER_PAGE,
       skip: ITEM_PER_PAGE * (p - 1),
     }),
     prisma.event.count({ where: query }),
   ]);
+
+  const filterClasses = await prisma.class.findMany({
+    select: { id: true, name: true },
+  });
+  const filterOptions = filterClasses.map((c) => ({
+    label: `Class ${c.name}`,
+    value: String(c.id),
+    paramName: "classId",
+  }));
 
   return (
     <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
@@ -165,12 +180,12 @@ const EventListPage = async ({
         <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
           {role !== "parent" && <TableSearch />}
           <div className="flex items-center gap-4 self-end">
-            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-hsYellow">
-              <Image src="/filter.png" alt="" width={14} height={14} />
-            </button>
-            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-hsYellow">
-              <Image src="/sort.png" alt="" width={14} height={14} />
-            </button>
+            {count > 1 && (
+              <>
+                <FilterButton options={filterOptions} />
+                <SortButton />
+              </>
+            )}
             {role === "admin" && <FormContainer table="event" type="create" />}
           </div>
         </div>

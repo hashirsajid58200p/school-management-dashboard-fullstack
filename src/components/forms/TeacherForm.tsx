@@ -38,6 +38,7 @@ const TeacherForm = ({
     {
       success: false,
       error: false,
+      message: "",
     }
   );
 
@@ -50,9 +51,13 @@ const TeacherForm = ({
 
   useEffect(() => {
     if (state.success) {
-      toast(`Teacher has been ${type === "create" ? "created" : "updated"}!`);
+      toast.success(
+        state.message || `Teacher has been ${type === "create" ? "created" : "updated"}!`
+      );
       setOpen(false);
       router.refresh();
+    } else if (state.error) {
+      toast.error(state.message || "Failed to save teacher.");
     }
   }, [state, router, type, setOpen]);
 

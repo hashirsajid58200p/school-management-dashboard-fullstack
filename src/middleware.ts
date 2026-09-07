@@ -13,7 +13,7 @@ const matchers = Object.keys(routeAccessMap).map((route) => ({
   allowedRoles: routeAccessMap[route],
 }));
 
-export function middleware(req: NextRequest) {
+export async function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname;
   
   // 1. Skip static assets, api routes, and static files
@@ -30,11 +30,9 @@ export function middleware(req: NextRequest) {
   const sessionCookie = req.cookies.get("auth_session")?.value;
   let user: any = null;
   if (sessionCookie) {
-    const decrypted = decrypt(sessionCookie);
+    const decrypted = await decrypt(sessionCookie);
     if (decrypted) {
-      try {
-        user = JSON.parse(decrypted);
-      } catch (e) {}
+      user = typeof decrypted === "string" ? JSON.parse(decrypted) : decrypted;
     }
   }
 

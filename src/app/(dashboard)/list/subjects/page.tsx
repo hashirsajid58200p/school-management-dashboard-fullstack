@@ -7,6 +7,7 @@ import { ITEM_PER_PAGE } from "@/lib/settings";
 import { Prisma, Subject, Teacher } from "@prisma/client";
 import Image from "next/image";
 import { auth } from "@/lib/auth";
+import { SortButton, FilterButton } from "@/components/TableActions";
 
 type SubjectList = Subject & { teachers: Teacher[] };
 
@@ -59,6 +60,7 @@ const SubjectListPage = async ({
   const { page, ...queryParams } = searchParams;
 
   const p = page ? parseInt(page) : 1;
+  const sort = searchParams?.sort === "desc" ? "desc" : "asc";
 
   // URL PARAMS CONDITION
 
@@ -68,6 +70,13 @@ const SubjectListPage = async ({
     for (const [key, value] of Object.entries(queryParams)) {
       if (value !== undefined) {
         switch (key) {
+          case "teacherId":
+            query.teachers = {
+              some: {
+                id: value,
+              },
+            };
+            break;
           case "search":
             query.name = { contains: value };
             break;
@@ -84,11 +93,21 @@ const SubjectListPage = async ({
       include: {
         teachers: true,
       },
+      orderBy: { name: sort },
       take: ITEM_PER_PAGE,
       skip: ITEM_PER_PAGE * (p - 1),
     }),
     prisma.subject.count({ where: query }),
   ]);
+
+  const filterTeachers = await prisma.teacher.findMany({
+    select: { id: true, name: true, surname: true },
+  });
+  const filterOptions = filterTeachers.map((t) => ({
+    label: `${t.name} ${t.surname}`,
+    value: t.id,
+    paramName: "teacherId",
+  }));
 
   return (
     <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
@@ -98,12 +117,12 @@ const SubjectListPage = async ({
         <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
           {role !== "parent" && <TableSearch />}
           <div className="flex items-center gap-4 self-end">
-            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-hsYellow">
-              <Image src="/filter.png" alt="" width={14} height={14} />
-            </button>
-            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-hsYellow">
-              <Image src="/sort.png" alt="" width={14} height={14} />
-            </button>
+            {count > 1 && (
+              <>
+                <FilterButton options={filterOptions} />
+                <SortButton />
+              </>
+            )}
             {role === "admin" && (
               <FormContainer table="subject" type="create" />
             )}

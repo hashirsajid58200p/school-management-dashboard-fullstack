@@ -32,6 +32,15 @@ const SingleStudentPage = async ({
     return notFound();
   }
 
+  const results = await prisma.result.findMany({
+    where: { studentId: student.id },
+    select: { score: true },
+  });
+  const avgScore =
+    results.length > 0
+      ? Math.round(results.reduce((acc, r) => acc + r.score, 0) / results.length)
+      : null;
+
   // Guard check
   let isAllowed = false;
   if (role === "admin") {
@@ -178,7 +187,7 @@ const SingleStudentPage = async ({
       </div>
       {/* RIGHT */}
       <div className="w-full xl:w-1/3 flex flex-col gap-4">
-        <Performance />
+        <Performance score={avgScore} label="Student Performance" />
         <Announcements />
       </div>
     </div>

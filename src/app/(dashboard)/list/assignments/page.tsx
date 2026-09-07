@@ -1,4 +1,4 @@
-import FormModal from "@/components/FormModal";
+import FormContainer from "@/components/FormContainer";
 import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
@@ -7,6 +7,7 @@ import { ITEM_PER_PAGE } from "@/lib/settings";
 import { Assignment, Class, Prisma, Subject, Teacher } from "@prisma/client";
 import Image from "next/image";
 import { auth } from "@/lib/auth";
+import { SortButton, FilterButton } from "@/components/TableActions";
 
 type AssignmentList = Assignment & {
   lesson: {
@@ -25,7 +26,6 @@ const AssignmentListPage = async ({
   const { userId, sessionClaims } = auth();
   const role = (sessionClaims?.metadata as { role?: string })?.role;
   const currentUserId = userId;
-  
   
   const columns = [
     {
@@ -73,8 +73,8 @@ const AssignmentListPage = async ({
         <div className="flex items-center gap-2">
           {(role === "admin" || role === "teacher") && (
             <>
-              <FormModal table="assignment" type="update" data={item} />
-              <FormModal table="assignment" type="delete" id={item.id} />
+              <FormContainer table="assignment" type="update" data={item} />
+              <FormContainer table="assignment" type="delete" id={item.id} />
             </>
           )}
         </div>
@@ -85,6 +85,7 @@ const AssignmentListPage = async ({
   const { page, ...queryParams } = searchParams;
 
   const p = page ? parseInt(page) : 1;
+  const sort = searchParams?.sort === "desc" ? "desc" : "asc";
 
   // URL PARAMS CONDITION
 
@@ -156,11 +157,22 @@ const AssignmentListPage = async ({
           },
         },
       },
+      orderBy: { title: sort },
       take: ITEM_PER_PAGE,
       skip: ITEM_PER_PAGE * (p - 1),
     }),
     prisma.assignment.count({ where: query }),
   ]);
+
+  const filterClasses = await prisma.class.findMany({
+    select: { id: true, name: true },
+  });
+  const filterOptions = filterClasses.map((c) => ({
+    label: `Class ${c.name}`,
+    value: String(c.id),
+    paramName: "classId",
+  }));
+
   return (
     <div className="bg-white p-4 rounded-md flex-1 m-4 mt-0">
       {/* TOP */}
@@ -171,16 +183,15 @@ const AssignmentListPage = async ({
         <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
           {role !== "parent" && <TableSearch />}
           <div className="flex items-center gap-4 self-end">
-            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-hsYellow">
-              <Image src="/filter.png" alt="" width={14} height={14} />
-            </button>
-            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-hsYellow">
-              <Image src="/sort.png" alt="" width={14} height={14} />
-            </button>
-            {role === "admin" ||
-              (role === "teacher" && (
-                <FormModal table="assignment" type="create" />
-              ))}
+            {count > 1 && (
+              <>
+                <FilterButton options={filterOptions} />
+                <SortButton />
+              </>
+            )}
+            {(role === "admin" || role === "teacher") && (
+              <FormContainer table="assignment" type="create" />
+            )}
           </div>
         </div>
       </div>

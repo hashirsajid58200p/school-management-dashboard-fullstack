@@ -11,11 +11,12 @@ const ParentPage = async ({
   searchParams: { [keys: string]: string | undefined };
 }) => {
   const { userId } = auth();
+  if (!userId) return null;
   const currentUserId = userId;
   
   const students = await prisma.student.findMany({
     where: {
-      parentId: currentUserId!,
+      parentId: currentUserId,
     },
   });
 
